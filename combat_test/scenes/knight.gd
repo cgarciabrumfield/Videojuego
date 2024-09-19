@@ -1,6 +1,6 @@
 extends Area2D
 
-@export var speed = 400 # How fast the player will move (pixels/sec).
+@export var speed = 200 # How fast the player will move (pixels/sec).
 @export var life = 3
 var screen_size # Size of the game window.
 var direction #izquierda derecha arriba abajo, segun a donde mire
@@ -14,6 +14,12 @@ var second_attack_queued = false
 @onready var slash_VFX = $VFXs/Sword_VFX
 @onready var hurt_VFX = $VFXs/hurt_VFX
 @onready var walk_VFX = $VFXs/walk_grass_VFX
+
+@export var knockback_strength: float = 300  # Fuerza del retroceso
+var knockback_velocity: Vector2 = Vector2.ZERO
+var knockback_duration: float = 0.2  # Duración del retroceso en segundos
+var knockback_timer: float = 0.0
+
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -100,32 +106,40 @@ func block():
 
 #Función de recivir daño. Solo se activa cuando la hurtbox del personaje detecte una hitbox 
 # con un valor de daño asociado que llamaremos amount		
-func take_damage(ammount: int) -> void:
+func take_damage(damage: int, knockback_direction: Vector2) -> void:
 	hurt_VFX.play()
-	life -= ammount
-	#Tras restar el daño recivido a la vida, si estamos en 0 o menos, morimos
+	life -= damage
 	if life <= 0:
 		kill()
-	elif is_hurt == false:  #Verifica que el jugador no esté ya siendo dañado
-		is_hurt = true #Activamos el estado de estar siendo dañados
-		$KnightSprite.play(str("damage_" + direction))  #Reproduce la animación de daño
-		#Cuando termine de reproducir la animación, iniciamos animation finished de daño
-		#Se hace de esta forma tan distinta porque si no luego había problemas para continuar
-		# con las demás animaciones, o con recivir inputs, ya que esta función no se llama
-		# desde el método _process sino desde un script a parte (hurtbox)
-		$KnightSprite.connect("animation_finished", self._on_hurt_animation_finished) 
+	elif not is_hurt:
+		is_hurt = true
+		knockback_velocity = knockback_direction * knockback_strength
+		knockback_timer = knockback_duration
+		$KnightSprite.play(str("damage_" + direction))
+		$KnightSprite.connect("animation_finished", self._on_hurt_animation_finished)
+		
+func _physics_process(delta: float) -> void:
+	if knockback_timer > 0:
+		position += knockback_velocity * delta  # Actualiza la posición manualmente
+		# Reducir suavemente la velocidad del retroceso
+		knockback_velocity = lerp(knockback_velocity, Vector2.ZERO, 0.1)
+		#Reduce el temporizador del retroceso
+		knockback_timer -= delta
 		
 func _on_hurt_animation_finished():
 	if $KnightSprite.animation == str("damage_" + direction):  # Verifica si la animación terminada es "hurt"
 		$KnightSprite.disconnect("animation_finished", self._on_hurt_animation_finished)
 		is_hurt = false #Quitamos el estado de estar siendo dañados, ya podemos volver a controlar al pj
+		print("test1")
+		await get_tree().create_timer(0.8).timeout
+		print("test2")
 #Animación que se reproduce al morir
 func kill():
 	is_hurt = true #Ponemos el estado de ser dañado simplemente para bloquear otras acciones
 	speed = 0; #Ya no nos movemos mas, por si acaso, aunque creo que no hace falta
 	$KnightSprite.play(str("death_" + direction)) #Animación de el cuerpo me pide tierra
 	await get_tree().create_timer(0.8).timeout  #Esperamos a que termine y eliminamos el pj
-	queue_free() #TODO realmente aquí iria la pantalla de gameover o la cinematica de revivir, etc
+	get_tree().reload_current_scene() #TODO realmente aquí iria la pantalla de gameover o la cinematica de revivir, etc
 
 func depth_control():
 	#Actualizamos el valor de profundidad del eje z según la altura del personaje en el eje y
