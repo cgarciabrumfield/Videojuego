@@ -1,4 +1,4 @@
-[gd_scene load_steps=51 format=3 uid="uid://i18myxiswp6c"]
+[gd_scene load_steps=50 format=3 uid="uid://i18myxiswp6c"]
 
 [ext_resource type="Script" path="res://scenes/slime.gd" id="1_3q008"]
 [ext_resource type="Texture2D" uid="uid://qcipw4u341lj" path="res://assets/sprites/enemies/Green Slime.png" id="1_ievx7"]
@@ -425,7 +425,7 @@ tracks/5/path = NodePath(".:is_hurt")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/keys = {
-"times": PackedFloat32Array(0, 0.5),
+"times": PackedFloat32Array(0.0333333, 0.5),
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
 "values": [true, false]
@@ -546,66 +546,13 @@ tracks/1/keys = {
 "update": 1,
 "values": [0, 1, 2, 3, 4, 5, 6, 7]
 }
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath(".:speed")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0, 0.8),
-"transitions": PackedFloat32Array(1, 1),
-"update": 1,
-"values": [50, 50]
-}
-
-[sub_resource type="Animation" id="Animation_qyy30"]
-resource_name = "run"
-length = 0.5
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("SlimeSprite:animation")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [&"default"]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("SlimeSprite:frame")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.0666667, 0.133333, 0.2, 0.266667, 0.333333, 0.4, 0.466667),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
-"update": 1,
-"values": [0, 1, 2, 3, 4, 5, 6, 7]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath(".:speed")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0, 0.5),
-"transitions": PackedFloat32Array(1, 1),
-"update": 1,
-"values": [80, 80]
-}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_80kol"]
 _data = {
 "RESET": SubResource("Animation_7ilby"),
 "damage": SubResource("Animation_m06v4"),
 "death": SubResource("Animation_ybnpn"),
-"default": SubResource("Animation_3dsk4"),
-"run": SubResource("Animation_qyy30")
+"default": SubResource("Animation_3dsk4")
 }
 
 [node name="Slime" type="Area2D"]
@@ -614,6 +561,7 @@ texture_repeat = 1
 scale = Vector2(5, 5)
 disable_mode = 1
 script = ExtResource("1_3q008")
+is_hurt = false
 
 [node name="SlimeSprite" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_jyt8v")

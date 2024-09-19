@@ -3,14 +3,17 @@ var rng = RandomNumberGenerator.new()
 @export var life = 4
 var is_hurt = false
 var screen_size
-const SPEED = 50
+const NORMAL_SPEED = 50
+const RUN_SPEED = 80
 @onready var timer_vida = $Timer #Timer que controla cuando se actualiza la barra de vida
-@export var speed = SPEED #Velocidad a la que se moverá el limo
+@export var speed = NORMAL_SPEED #Velocidad a la que se moverá el limo
+@export var detection_range = 200
 var direction_change_interval: float = 2.0 #Tiempo para cambiar de dirección
 var timer: float = 0.0 #Timer para controlar el cambio de dirección
 var direction: Vector2 = Vector2.ZERO # Vector de dirección inicial
 var normalized_Y_pos #Posicion en el eje Y normalizada entre 0 y 1 para el calculo de profundidad asociado
 @onready var hurt_VFX = $hurt_vfx
+var player_position
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -18,12 +21,12 @@ func _ready() -> void:
 	position = Vector2(rng.randi_range(0, screen_size.x), rng.randi_range(0, screen_size.y))
 	$Healthbar_red.frame = life
 	$Healthbar_trans.frame = life
+	player_position = screen_size/2
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	if is_hurt == false: #Mientras no esté siendo herido, el limo se mueve normal
-		$SlimeSprite.play("default")
-	move(delta)
+		move(player_position, delta)
 	depth_control()
 	#Actualiza el timer para cambiar la dirección
 	timer -= delta
@@ -41,7 +44,6 @@ func change_direction():
 func take_damage(ammount: int) -> void:
 	hurt_VFX.play()
 	life -= ammount
-	speed = 0
 	timer_vida.start()
 	$Healthbar_trans.frame = life
 	if life <= 0:
@@ -57,15 +59,29 @@ func _on_timer_timeout() -> void:
 func kill():
 	$AnimationPlayer.play("death")
 	await get_tree().create_timer(0.9).timeout
-	queue_free() #Importante esto ojo aquí. Esto sirve para eliminar al limo de la escena
+	set_process(false)
+	set_physics_process(false)
+	set_process_input(false)
 	
-func move(delta):
-	#Mueve al limo en la dirección aleatoria
+func move(player_position: Vector2, delta):
+	var distance = position.distance_to(player_position)
+	if (distance <= detection_range):
+		speed = RUN_SPEED
+		$SlimeSprite.speed_scale = 2
+		$SlimeSprite.play("default")
+		direction = (player_position - position).normalized()
+	else:
+		speed = NORMAL_SPEED
+		$SlimeSprite.speed_scale = 1
+		$SlimeSprite.play("default")
 	position += direction * speed * delta
 	position = position.clamp(Vector2.ZERO, screen_size)
-
+	
 func depth_control():
 	#Actualizamos el valor de profundidad del eje z según la altura del personaje en el eje y
 	normalized_Y_pos = position.y / screen_size.y
 	#Esta cosa extraña es para poner el valor de z en el rango posible según donde se ejecute el juego
 	z_index = normalized_Y_pos * 2*RenderingServer.CANVAS_ITEM_Z_MAX + RenderingServer.CANVAS_ITEM_Z_MIN
+
+func get_player_position(coords: Vector2):
+	player_position = coords

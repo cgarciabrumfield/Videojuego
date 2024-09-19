@@ -3807,7 +3807,7 @@ tracks/3/keys = {
 }
 tracks/4/type = "value"
 tracks/4/imported = false
-tracks/4/enabled = true
+tracks/4/enabled = false
 tracks/4/path = NodePath(".:is_hurt")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
