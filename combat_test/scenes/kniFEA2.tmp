@@ -5671,5 +5671,4 @@ stream = ExtResource("14_rntyo")
 [node name="block_VFX" type="AudioStreamPlayer2D" parent="VFXs"]
 stream = ExtResource("15_b0tda")
 
-[connection signal="area_exited" from="Hurtbox" to="Hurtbox" method="_on_area_exited"]
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]

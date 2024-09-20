@@ -1,13 +1,15 @@
 extends Area2D
 
 @export var speed = 200 # How fast the player will move (pixels/sec).
-@export var life = 3
+@export var life = 100
 var screen_size # Size of the game window.
 var direction # Izquierda derecha arriba abajo, segun a donde mire
 @export var is_attacking = false # Si está atacando bloquea las demás acciones y entradas
 @export var is_blocking = false # Si está bloqueando bloquea las demás acciones y entradas
 var normalized_Y_pos # Posicion en el eje Y normalizada entre 0 y 1 para el calculo de profundidad asociado
 @export var is_hurt = false # Al recibir daño se bloquean las demas acciones y entradas
+var is_inmune = false
+@export var inmune_time = 1.5
 # Variable para el temporizador de enfriamiento
 var attack_timer = Timer
 var second_attack_queued = false
@@ -86,7 +88,6 @@ func attack():
 func _on_animation_player_animation_finished(anim_name: StringName) -> void:
 	if anim_name.begins_with("attack_"):
 		if second_attack_queued:
-			print("a")
 			$AnimationPlayer.play(str("attack_" + direction))
 			$AnimationPlayer.stop(false)
 			slash_VFX.play()
@@ -106,6 +107,9 @@ func block():
 # Función de recivir daño. Solo se activa cuando la hurtbox del personaje detecte una hitbox 
 # con un valor de daño asociado que llamaremos amount		
 func take_damage(damage: int, knockback_direction: Vector2, knockback_strength: int) -> void:
+	if is_inmune:
+		return
+	is_inmune = true
 	hurt_VFX.play()
 	life -= damage
 	if life <= 0:
@@ -132,6 +136,7 @@ func _on_hurt_animation_finished():
 		print("test1")
 		await get_tree().create_timer(0.8).timeout
 		print("test2")
+		is_inmune = false
 # Animación que se reproduce al morir
 func kill():
 	is_hurt = true # Ponemos el estado de ser dañado simplemente para bloquear otras acciones
