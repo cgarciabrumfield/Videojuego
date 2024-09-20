@@ -624,6 +624,7 @@ light_mask = 0
 visibility_layer = 2
 script = ExtResource("2_4nqb6")
 damage = 1
+knockback = 400
 
 [node name="Hitbox_Shape" type="CollisionShape2D" parent="Hitbox"]
 position = Vector2(0, 0.8)

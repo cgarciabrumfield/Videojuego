@@ -22,6 +22,7 @@ func _ready() -> void:
 # Called every frame.
 func _process(delta: float) -> void:
 	# Llama al método `move` en cada instancia de slime
+	# Ya se que delta no se usa tio deja de recordármelo
 	for slime in slimes:
 		if slime.is_inside_tree():
 			slime.get_player_position($Player.position)
