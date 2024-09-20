@@ -1,4 +1,4 @@
-[gd_scene load_steps=250 format=3 uid="uid://bp8hvd0qc4txe"]
+[gd_scene load_steps=249 format=3 uid="uid://bp8hvd0qc4txe"]
 
 [ext_resource type="Script" path="res://scenes/knight.gd" id="1_02emr"]
 [ext_resource type="Texture2D" uid="uid://bvhoh6ek5sxhx" path="res://assets/sprites/knights/green_knight/Green Knight attack 1 Sprite-sheet 32x32.png" id="1_cwjgh"]
@@ -14,7 +14,6 @@
 [ext_resource type="Texture2D" uid="uid://dlhgyyvbwxj7r" path="res://assets/sprites/Shadow.png" id="12_h0mt4"]
 [ext_resource type="AudioStream" uid="uid://5is71ajip613" path="res://assets/sounds/12_Player_Movement_SFX/56_Attack_03.wav" id="13_4p0r4"]
 [ext_resource type="AudioStream" uid="uid://dishman0meeb5" path="res://assets/sounds/12_Player_Movement_SFX/03_Step_grass_03.wav" id="14_rntyo"]
-[ext_resource type="AudioStream" uid="uid://ddteofdbmqcge" path="res://assets/sounds/10_Battle_SFX/39_Block_03.wav" id="15_b0tda"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_eomvg"]
 atlas = ExtResource("2_cbhjw")
@@ -5619,7 +5618,6 @@ animation = &"iddle_down"
 light_mask = 2
 visibility_layer = 2
 script = ExtResource("9_1d40x")
-knockback = 300
 
 [node name="Hitbox_Sword1" type="CollisionShape2D" parent="Sword1"]
 position = Vector2(0, 11)
@@ -5637,7 +5635,6 @@ shape = SubResource("RectangleShape2D_xt1ms")
 [node name="Sword2" type="Area2D" parent="."]
 script = ExtResource("9_1d40x")
 damage = 2
-knockback = 500
 
 [node name="Hitbox_Sword2" type="CollisionShape2D" parent="Sword2"]
 position = Vector2(0, 16)
@@ -5666,8 +5663,5 @@ stream = ExtResource("13_4p0r4")
 
 [node name="walk_grass_VFX" type="AudioStreamPlayer2D" parent="VFXs"]
 stream = ExtResource("14_rntyo")
-
-[node name="block_VFX" type="AudioStreamPlayer2D" parent="VFXs"]
-stream = ExtResource("15_b0tda")
 
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
