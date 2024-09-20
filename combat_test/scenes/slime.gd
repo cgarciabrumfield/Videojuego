@@ -46,9 +46,6 @@ func change_direction():
 
 # Literalmente lo mismo que la del caballero pero mas facil. Id a mirar los comentarios en knight.gd
 func take_damage(ammount: int, knockback_direction: Vector2, knockback_strength) -> void:
-	print(ammount)
-	print(knockback_direction)
-	print(knockback_strength)
 	hurt_VFX.play()
 	life -= ammount
 	timer_vida.start()
