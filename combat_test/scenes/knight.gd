@@ -14,6 +14,7 @@ var second_attack_queued = false
 @onready var slash_VFX = $VFXs/Sword_VFX
 @onready var hurt_VFX = $VFXs/hurt_VFX
 @onready var walk_VFX = $VFXs/walk_grass_VFX
+@onready var block_VFX = $VFXs/block_VFX
 
 @export var knockback_strength: float = 300  # Fuerza del retroceso
 var knockback_velocity: Vector2 = Vector2.ZERO
@@ -42,7 +43,8 @@ func _process(delta):
 	move(delta) #Nos movemos si se ha pulsado algo
 	if Input.is_action_just_pressed("attack"):	
 		attack()
-	block() #Bloqueamos si procede
+	if Input.is_action_just_pressed("block"):	
+		block() #Bloqueamos si procede
 	depth_control()
 
 func move(delta): #Función que mueve al personaje
@@ -62,10 +64,10 @@ func move(delta): #Función que mueve al personaje
 			velocity.y -= 1
 			direction = "up"
 		#Si nos estamos moviendo, y no hemos sido heridos, animación de correr. 
-		if velocity.length() > 0:
+		if is_attacking == false && is_blocking == false && is_hurt == false && velocity.length() > 0:
 			velocity = velocity.normalized() * speed
 			$AnimationPlayer.play(str("run_" + direction))
-		else: #Si no estamos corriendo y tampoco hemos sido heridos, animación iddle
+		elif is_attacking == false && is_blocking == false && is_hurt == false: #Si no estamos corriendo y tampoco hemos sido heridos, animación iddle
 			$AnimationPlayer.play(str("iddle_" + direction))
 		#Actualizamos la posición según el vector de dirección y delta (constancia fps)
 		position += velocity * delta
@@ -98,11 +100,9 @@ func _on_attack_timer_timeout():
 
 #Función de bloqueo. Funciona de manera practicamente idéntica a ataque, aunque la hitbox y su uso no está implementado
 func block():
-	if Input.is_action_just_pressed("block") && is_attacking == false && is_blocking == false:
-		is_blocking = true
-		$KnightSprite.play(str("block_" + direction))
-		await get_tree().create_timer(0.8).timeout
-		is_blocking = false
+	if is_attacking == false && is_blocking == false && is_hurt == false:
+		block_VFX.play()
+		$AnimationPlayer.play(str("block_" + direction))
 
 #Función de recivir daño. Solo se activa cuando la hurtbox del personaje detecte una hitbox 
 # con un valor de daño asociado que llamaremos amount		
