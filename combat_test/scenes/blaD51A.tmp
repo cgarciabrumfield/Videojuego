@@ -12,8 +12,8 @@
 [ext_resource type="Script" path="res://scripts/Hurtbox.gd" id="10_gwbob"]
 [ext_resource type="Texture2D" uid="uid://dlhgyyvbwxj7r" path="res://assets/sprites/Shadow.png" id="11_j8uof"]
 [ext_resource type="AudioStream" uid="uid://cmk86b5y2lm4f" path="res://assets/sounds/ROBLOX Oof Sound Effect.wav" id="12_dnaev"]
-[ext_resource type="AudioStream" uid="uid://ckyeisewce5ci" path="res://assets/sounds/10_Battle_SFX/22_Slash_04.wav" id="13_b4y00"]
-[ext_resource type="AudioStream" uid="uid://tc5d3mw3h6ma" path="res://assets/sounds/12_Player_Movement_SFX/08_Step_rock_02.wav" id="14_jwsha"]
+[ext_resource type="AudioStream" uid="uid://5is71ajip613" path="res://assets/sounds/12_Player_Movement_SFX/56_Attack_03.wav" id="13_uo1no"]
+[ext_resource type="AudioStream" uid="uid://dishman0meeb5" path="res://assets/sounds/12_Player_Movement_SFX/03_Step_grass_03.wav" id="14_717uq"]
 [ext_resource type="AudioStream" uid="uid://ddteofdbmqcge" path="res://assets/sounds/10_Battle_SFX/39_Block_03.wav" id="15_ys5b1"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_isacm"]
@@ -1698,7 +1698,7 @@ tracks/10/keys = {
 tracks/11/type = "value"
 tracks/11/imported = false
 tracks/11/enabled = true
-tracks/11/path = NodePath("VFXs/walk_stone_VFX:playing")
+tracks/11/path = NodePath("VFXs/walk_grass_VFX:playing")
 tracks/11/interp = 1
 tracks/11/loop_wrap = true
 tracks/11/keys = {
@@ -5110,7 +5110,7 @@ tracks/10/keys = {
 tracks/11/type = "value"
 tracks/11/imported = false
 tracks/11/enabled = true
-tracks/11/path = NodePath("VFXs/walk_stone_VFX:playing")
+tracks/11/path = NodePath("VFXs/walk_grass_VFX:playing")
 tracks/11/interp = 1
 tracks/11/loop_wrap = true
 tracks/11/keys = {
@@ -5258,7 +5258,7 @@ tracks/10/keys = {
 tracks/11/type = "value"
 tracks/11/imported = false
 tracks/11/enabled = true
-tracks/11/path = NodePath("VFXs/walk_stone_VFX:playing")
+tracks/11/path = NodePath("VFXs/walk_grass_VFX:playing")
 tracks/11/interp = 1
 tracks/11/loop_wrap = true
 tracks/11/keys = {
@@ -5406,7 +5406,7 @@ tracks/10/keys = {
 tracks/11/type = "value"
 tracks/11/imported = false
 tracks/11/enabled = true
-tracks/11/path = NodePath("VFXs/walk_stone_VFX:playing")
+tracks/11/path = NodePath("VFXs/walk_grass_VFX:playing")
 tracks/11/interp = 1
 tracks/11/loop_wrap = true
 tracks/11/keys = {
@@ -5554,7 +5554,7 @@ tracks/10/keys = {
 tracks/11/type = "value"
 tracks/11/imported = false
 tracks/11/enabled = true
-tracks/11/path = NodePath("VFXs/walk_stone_VFX:playing")
+tracks/11/path = NodePath("VFXs/walk_grass_VFX:playing")
 tracks/11/interp = 1
 tracks/11/loop_wrap = true
 tracks/11/keys = {
@@ -5650,14 +5650,13 @@ libraries = {
 [node name="hurt_VFX" type="AudioStreamPlayer2D" parent="VFXs"]
 scale = Vector2(5, 5)
 stream = ExtResource("12_dnaev")
-pitch_scale = 0.9
 
 [node name="Sword_VFX" type="AudioStreamPlayer2D" parent="VFXs"]
 scale = Vector2(5, 5)
-stream = ExtResource("13_b4y00")
+stream = ExtResource("13_uo1no")
 
-[node name="walk_stone_VFX" type="AudioStreamPlayer2D" parent="VFXs"]
-stream = ExtResource("14_jwsha")
+[node name="walk_grass_VFX" type="AudioStreamPlayer2D" parent="VFXs"]
+stream = ExtResource("14_717uq")
 
 [node name="block_VFX" type="AudioStreamPlayer2D" parent="VFXs"]
 stream = ExtResource("15_ys5b1")
