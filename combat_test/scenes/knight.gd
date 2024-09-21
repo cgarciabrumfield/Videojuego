@@ -133,9 +133,7 @@ func _on_hurt_animation_finished():
 	if $KnightSprite.animation == str("damage_" + direction):  # Verifica si la animación terminada es "hurt"
 		$KnightSprite.disconnect("animation_finished", self._on_hurt_animation_finished)
 		is_hurt = false # Quitamos el estado de estar siendo dañados, ya podemos volver a controlar al pj
-		print("test1")
 		await get_tree().create_timer(0.8).timeout
-		print("test2")
 		is_inmune = false
 # Animación que se reproduce al morir
 func kill():
@@ -144,9 +142,18 @@ func kill():
 	$KnightSprite.play(str("death_" + direction))  #Animación de el cuerpo me pide tierra
 	await get_tree().create_timer(0.8).timeout  # Esperamos a que termine y eliminamos el pj
 	get_tree().reload_current_scene() #TODO realmente aquí iria la pantalla de gameover o la cinematica de revivir, etc
-
+	
 func depth_control():
 	# Actualizamos el valor de profundidad del eje z según la altura del personaje en el eje y
 	normalized_Y_pos = position.y / screen_size.y
 	# Esta cosa extraña es para poner el valor de z en el rango posible según donde se ejecute el juego
 	z_index = normalized_Y_pos * 2*RenderingServer.CANVAS_ITEM_Z_MAX + RenderingServer.CANVAS_ITEM_Z_MIN
+
+func status():
+	print("...............")
+	print("is_attacking: ")
+	print(is_attacking)
+	print("is_blocking: ")
+	print(is_blocking)
+	print("is_hurt: ")
+	print(is_hurt)
