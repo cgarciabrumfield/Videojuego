@@ -3,7 +3,6 @@ extends Area2D
 
 var knockback_direction
 var knockback_strengh
-
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	collision_mask = 2

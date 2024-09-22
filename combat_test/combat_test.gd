@@ -4,7 +4,7 @@ var scene_slime = preload("res://scenes/slime.tscn")
 var slimes = []
 var player_position
 
-# Called when the node enters the scene tree for the first time.
+ #Called when the node enters the scene tree for the first time.
 #func _ready() -> void:
 	#var instance_slime = scene_slime.instantiate()
 	#var instance_slime2 = scene_slime.instantiate()
@@ -20,5 +20,5 @@ var player_position
 		#add_child(slime)
 
 # Called every frame.
-func _process(delta: float) -> void:
-	pass
+#func _process(delta: float) -> void:
+	#pass

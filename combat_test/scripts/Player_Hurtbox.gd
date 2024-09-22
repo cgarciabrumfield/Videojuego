@@ -1,8 +1,13 @@
 class_name Player_Hurtbox
 extends Area2D
 
+# Variables según la hitbox que golpee
+var damage
 var knockback_direction
 var knockback_strengh
+var attacker
+var can_be_parried
+
 var timer = Timer.new()
 var inside = false
 var last_hitbox
@@ -16,9 +21,7 @@ func _ready() -> void:
 	timer.wait_time = get_parent().inmune_time  # Duración del temporizador en segundos
 	timer.one_shot = true  # Para que se ejecute solo una vez
 	add_child(timer)  # Añadir el Timer como hijo del nodo actual	
-	
-func _process(delta: float) -> void:
-	pass
+
 #Cuando algo entra en la hurtbox, se comprueba que sea una hitbox y que no sea la nuestra
 func _on_area_entered(hitbox) -> void:
 	if hitbox == null || hitbox is not Hitbox || hitbox.owner == owner:
@@ -29,9 +32,13 @@ func _on_area_entered(hitbox) -> void:
 		last_hitbox = hitbox
 		inside = true
 		timer.start()
+		damage = hitbox.damage
 		knockback_direction = (owner.global_position - hitbox.global_position).normalized()
 		knockback_strengh = hitbox.knockback
-		owner.take_damage(hitbox.damage, knockback_direction, knockback_strengh)
+		attacker = hitbox.owner
+		can_be_parried = hitbox.can_be_parried
+		owner.take_damage(damage, knockback_direction,
+		 knockback_strengh, attacker, can_be_parried)
 		
 func _on_area_exited(hitbox) -> void:
 	if hitbox == last_hitbox:
@@ -42,4 +49,5 @@ func _on_timer_timeout():
 	timer.start()
 	knockback_direction = (owner.global_position - last_hitbox.global_position).normalized()
 	knockback_strengh = last_hitbox.knockback
-	owner.take_damage(last_hitbox.damage, knockback_direction, knockback_strengh)
+	owner.take_damage(last_hitbox.damage, knockback_direction,
+	 knockback_strengh, last_hitbox.owner, can_be_parried)

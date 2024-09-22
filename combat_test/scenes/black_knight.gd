@@ -8,6 +8,7 @@ var direction_vector
 @export var is_blocking = false # Si está bloqueando bloquea las demás acciones y entradas
 var normalized_Y_pos # Posicion en el eje Y normalizada entre 0 y 1 para el calculo de profundidad asociado
 @export var is_hurt = false # Al recibir daño se bloquean las demas acciones y entradas
+@export var was_parried = false
 var timer: float = 0.0 # Timer para controlar el cambio de dirección
 var direction_change_interval: float = 2.0 # Tiempo para cambiar de dirección
 # Variable para el temporizador de enfriamiento
@@ -51,12 +52,10 @@ func _process(delta):
 		print(move_chance)
 		change_direction()
 	set_directionVector_string()
-	if !is_attacking && !is_blocking && !is_hurt:
+	if !is_attacking && !is_blocking && !is_hurt && !was_parried:
 		move(delta) # Nos movemos si se ha pulsado algo
 	#if Input.is_action_just_pressed("attack"):	
 	attack()
-	if Input.is_action_just_pressed("block"):	
-		block() # Bloqueamos si procede
 	depth_control()
 
 func move(delta):
@@ -89,20 +88,23 @@ func attack():
 	var player_position = get_player_position()
 	if (player_position != null):
 		if (position.distance_to(player_position) <= attack_range):
-			if is_blocking == false && is_hurt == false:
+			if !is_blocking && !is_hurt && !was_parried:
 				if is_attacking == false:
 					slash_VFX.play()
 					$AnimationPlayer.play(str("attack_" + direction_str))
 					attack_timer.start()  # Inicia el temporizador
-				elif attack_timer.time_left > 0 && second_attack_queued == false:
+				elif attack_timer.time_left > 0 && !second_attack_queued:
 					# Si la animación de ataque 1 está en curso y el temporizador no ha terminado
 					second_attack_queued = true
+
+func get_parried():
+	$AnimationPlayer.play(str("parried_") + direction_str)
+	status()
 
 # Callback cuando la animación de ataque termina
 func _on_animation_player_animation_finished(anim_name: StringName) -> void:
 	if anim_name.begins_with("attack_"):
 		if second_attack_queued:
-			print("a")
 			$AnimationPlayer.play(str("attack_" + direction_str))
 			$AnimationPlayer.stop(false)
 			slash_VFX.play()
@@ -129,6 +131,7 @@ func take_damage(damage: int, knockback_direction: Vector2, knockback_strength: 
 		hurt_VFX.play()
 		is_hurt = true
 		is_attacking = false
+		is_blocking = false
 		knockback_velocity = knockback_direction * knockback_strength
 		knockback_timer = knockback_duration
 		speed = 0
@@ -144,14 +147,7 @@ func _physics_process(delta: float) -> void:
 		knockback_velocity = lerp(knockback_velocity, Vector2.ZERO, 0.1)
 		# Reduce el temporizador del retroceso
 		knockback_timer -= delta
-		
-#func _on_hurt_animation_finished():
-	#if $KnightSprite.animation == str("damage_" + direction_str):  # Verifica si la animación terminada es "hurt"
-		#$KnightSprite.disconnect("animation_finished", self._on_hurt_animation_finished)
-		#is_hurt = false # Quitamos el estado de estar siendo dañados, ya podemos volver a controlar al pj
-		#print("test1")
-		#await get_tree().create_timer(0.8).timeout
-		#print("test2")
+
 # Animación que se reproduce al morir
 func kill():
 	hurt_VFX.pitch_scale = 0.6
@@ -159,8 +155,9 @@ func kill():
 	is_hurt = true # Ponemos el estado de ser dañado simplemente para bloquear otras acciones
 	speed = 0; # Ya no nos movemos mas, por si acaso, aunque creo que no hace falta
 	$AnimationPlayer.play(str("death_" + direction_str))  #Animación de el cuerpo me pide tierra
-	await get_tree().create_timer(0.8).timeout  # Esperamos a que termine y eliminamos el pj
-	get_tree().reload_current_scene() #TODO realmente aquí iria la pantalla de gameover o la cinematica de revivir, etc
+	set_process(false)
+	set_physics_process(false)
+	set_process_input(false)
 	
 func depth_control():
 	# Actualizamos el valor de profundidad del eje z según la altura del personaje en el eje y
