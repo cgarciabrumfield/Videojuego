@@ -10,8 +10,9 @@ var normalized_Y_pos # Posicion en el eje Y normalizada entre 0 y 1 para el calc
 @export var is_hurt = false # Al recibir daño se bloquean las demas acciones y entradas
 var is_inmune = false
 @export var inmune_time = 1.5
+var inmune_timer = Timer.new()
 # Variable para el temporizador de enfriamiento
-var attack_timer = Timer
+var attack_timer = Timer.new()
 var second_attack_queued = false
 @onready var slash_VFX = $VFXs/Sword_VFX
 @onready var hurt_VFX = $VFXs/hurt_VFX
@@ -30,23 +31,31 @@ func _ready():
 	position = screen_size / 2 # situamos al personaje en el centro de la pantalla
 	$Sword1/Hitbox_Sword1.disabled = true # La hitbox (espada) empieza emvainadas
 	$Sword2/Hitbox_Sword2.disabled = true
-	# Configura y agrega el temporizador al nodo actual
-	attack_timer = Timer.new()
+	# Configura y agrega el temporizador de inmunidad al nodo actual
+	inmune_timer.wait_time = $AnimationPlayer.get_animation("damage_down").length + 0.5
+	add_child(inmune_timer)
+	inmune_timer.connect("timeout", self._on_inmune_timer_timeout)
+	# Configura y agrega el temporizador de ataque al nodo actual
 	# El tiempo de espera del input del 2º ataque es la duracion del primer ataque
 	attack_timer.wait_time = $AnimationPlayer.get_animation("attack_down").length
 	attack_timer.one_shot = true  # Solo se ejecuta una vez
 	add_child(attack_timer)
-
 	attack_timer.connect("timeout", self._on_attack_timer_timeout)
+	$Parry_effect_sprite.z_index = RenderingServer.CANVAS_ITEM_Z_MAX
+	
+
+func _on_inmune_timer_timeout():
+	is_inmune = false
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):	
+func _process(delta):
 	move(delta) # Nos movemos si se ha pulsado algo
 	if Input.is_action_just_pressed("attack"):	
 		attack()
 	if Input.is_action_just_pressed("block"):	
 		block() # Bloqueamos si procede
 	depth_control()
+	#status()
 
 func move(delta): # Función que mueve al personaje
 	var velocity = Vector2.ZERO #Vector de movimiento del jugador
@@ -106,10 +115,16 @@ func block():
 
 # Función de recivir daño. Solo se activa cuando la hurtbox del personaje detecte una hitbox 
 # con un valor de daño asociado que llamaremos amount		
-func take_damage(damage: int, knockback_direction: Vector2, knockback_strength: int) -> void:
+func take_damage(damage: int, knockback_direction: Vector2,
+ knockback_strength: int, attacker: Node2D, can_be_parried: bool) -> void:
 	if is_inmune:
 		return
+	if is_blocking and can_be_parried:
+		try_parry(attacker)
+		return
+	is_blocking = false
 	is_inmune = true
+	is_attacking = false
 	hurt_VFX.play()
 	life -= damage
 	if life <= 0:
@@ -118,8 +133,10 @@ func take_damage(damage: int, knockback_direction: Vector2, knockback_strength: 
 		is_hurt = true
 		knockback_velocity = knockback_direction * knockback_strength
 		knockback_timer = knockback_duration
-		$KnightSprite.play(str("damage_" + direction))
-		$KnightSprite.connect("animation_finished", self._on_hurt_animation_finished)
+		inmune_timer.start()
+		$AnimationPlayer.play(str("damage_" + direction))
+		await get_tree().create_timer(0.6).timeout
+		is_hurt = false
 		
 func _physics_process(delta: float) -> void:
 	if knockback_timer > 0:
@@ -128,18 +145,34 @@ func _physics_process(delta: float) -> void:
 		knockback_velocity = lerp(knockback_velocity, Vector2.ZERO, 0.1)
 		# Reduce el temporizador del retroceso
 		knockback_timer -= delta
-		
-func _on_hurt_animation_finished():
-	if $KnightSprite.animation == str("damage_" + direction):  # Verifica si la animación terminada es "hurt"
-		$KnightSprite.disconnect("animation_finished", self._on_hurt_animation_finished)
-		is_hurt = false # Quitamos el estado de estar siendo dañados, ya podemos volver a controlar al pj
-		await get_tree().create_timer(0.8).timeout
-		is_inmune = false
+
+func try_parry(attacker: Node2D):
+	var attacker_direction_vector = (attacker.position - position).normalized()
+	var x = attacker_direction_vector.x
+	var y = attacker_direction_vector.y
+	var attacker_position_str
+	if y < - abs(x):
+		attacker_position_str = "up"
+	elif x > abs(y):
+		attacker_position_str = "right"
+	elif y > abs(x):
+		attacker_position_str = "down"
+	elif x < abs(y):
+		attacker_position_str = "left"
+	if attacker_position_str == direction:
+		$Animation_parry_effect.play(str("parry_" + direction))
+		attacker.get_parried()
+		status()
+		is_blocking = false
+		status()
+
 # Animación que se reproduce al morir
 func kill():
+	hurt_VFX.pitch_scale = 0.8
+	hurt_VFX.play()
 	is_hurt = true # Ponemos el estado de ser dañado simplemente para bloquear otras acciones
 	speed = 0; # Ya no nos movemos mas, por si acaso, aunque creo que no hace falta
-	$KnightSprite.play(str("death_" + direction))  #Animación de el cuerpo me pide tierra
+	$AnimationPlayer.play(str("death_" + direction))  #Animación de el cuerpo me pide tierra
 	await get_tree().create_timer(0.8).timeout  # Esperamos a que termine y eliminamos el pj
 	get_tree().reload_current_scene() #TODO realmente aquí iria la pantalla de gameover o la cinematica de revivir, etc
 	
@@ -147,8 +180,9 @@ func depth_control():
 	# Actualizamos el valor de profundidad del eje z según la altura del personaje en el eje y
 	normalized_Y_pos = position.y / screen_size.y
 	# Esta cosa extraña es para poner el valor de z en el rango posible según donde se ejecute el juego
-	z_index = normalized_Y_pos * 2*RenderingServer.CANVAS_ITEM_Z_MAX + RenderingServer.CANVAS_ITEM_Z_MIN
-
+	var z_value = normalized_Y_pos * 2*RenderingServer.CANVAS_ITEM_Z_MAX + RenderingServer.CANVAS_ITEM_Z_MIN
+	z_index = z_value
+	
 func status():
 	print("...............")
 	print("is_attacking: ")
