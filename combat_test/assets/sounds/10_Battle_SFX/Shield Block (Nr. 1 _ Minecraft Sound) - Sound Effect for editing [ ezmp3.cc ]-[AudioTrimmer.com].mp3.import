@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://vh5hictka5gs"
+path="res://.godot/imported/Shield Block (Nr. 1 _ Minecraft Sound) - Sound Effect for editing [ ezmp3.cc ]-[AudioTrimmer.com].mp3-ab06df7f372a75b8e879b27329773967.mp3str"
+
+[deps]
+
+source_file="res://assets/sounds/10_Battle_SFX/Shield Block (Nr. 1 _ Minecraft Sound) - Sound Effect for editing [ ezmp3.cc ]-[AudioTrimmer.com].mp3"
+dest_files=["res://.godot/imported/Shield Block (Nr. 1 _ Minecraft Sound) - Sound Effect for editing [ ezmp3.cc ]-[AudioTrimmer.com].mp3-ab06df7f372a75b8e879b27329773967.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

@@ -7,6 +7,7 @@ var knockback_direction
 var knockback_strengh
 var attacker
 var can_be_parried
+var can_be_blocked
 
 var timer = Timer.new()
 var inside = false
@@ -37,8 +38,9 @@ func _on_area_entered(hitbox) -> void:
 		knockback_strengh = hitbox.knockback
 		attacker = hitbox.owner
 		can_be_parried = hitbox.can_be_parried
+		can_be_blocked = hitbox.can_be_blocked
 		owner.take_damage(damage, knockback_direction,
-		 knockback_strengh, attacker, can_be_parried)
+		 knockback_strengh, attacker, can_be_parried, can_be_blocked)
 		
 func _on_area_exited(hitbox) -> void:
 	if hitbox == last_hitbox:
@@ -49,5 +51,7 @@ func _on_timer_timeout():
 	timer.start()
 	knockback_direction = (owner.global_position - last_hitbox.global_position).normalized()
 	knockback_strengh = last_hitbox.knockback
+	can_be_parried = last_hitbox.can_be_parried
+	can_be_blocked = last_hitbox.can_be_blocked
 	owner.take_damage(last_hitbox.damage, knockback_direction,
-	 knockback_strengh, last_hitbox.owner, can_be_parried)
+	 knockback_strengh, last_hitbox.owner, can_be_parried, can_be_blocked)
