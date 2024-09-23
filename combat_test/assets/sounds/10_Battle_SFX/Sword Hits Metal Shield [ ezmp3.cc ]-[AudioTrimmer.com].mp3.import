@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://b436qjtsc2p1s"
+path="res://.godot/imported/Sword Hits Metal Shield [ ezmp3.cc ]-[AudioTrimmer.com].mp3-f1479a8ed73e06e63d4c118db315f5be.mp3str"
+
+[deps]
+
+source_file="res://assets/sounds/10_Battle_SFX/Sword Hits Metal Shield [ ezmp3.cc ]-[AudioTrimmer.com].mp3"
+dest_files=["res://.godot/imported/Sword Hits Metal Shield [ ezmp3.cc ]-[AudioTrimmer.com].mp3-f1479a8ed73e06e63d4c118db315f5be.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

@@ -11,13 +11,14 @@ var normalized_Y_pos # Posicion en el eje Y normalizada entre 0 y 1 para el calc
 @export var was_parried = false
 var timer: float = 0.0 # Timer para controlar el cambio de dirección
 var direction_change_interval: float = 2.0 # Tiempo para cambiar de dirección
-# Variable para el temporizador de enfriamiento
-var attack_timer = Timer
-var second_attack_queued = false
 @onready var slash_VFX = $VFXs/Sword_VFX
 @onready var hurt_VFX = $VFXs/hurt_VFX
 @onready var walk_VFX = $VFXs/walk_stone_VFX
 @onready var block_VFX = $VFXs/block_VFX
+
+var attack_count = 0
+var attack_cooldown_time = 1.0  # 1 segundo entre ataques
+@onready var attack_cooldown_timer = Timer.new()
 
 const MOVE_CHANCE = 0.7
 var move_chance = MOVE_CHANCE
@@ -36,33 +37,30 @@ func _ready():
 	position = Vector2(randi_range(0, screen_size.x), randi_range(0, screen_size.y))
 	$Sword1/Hitbox_Sword1.disabled = true # La hitbox (espada) empieza emvainadas
 	$Sword2/Hitbox_Sword2.disabled = true
-	# Configura y agrega el temporizador al nodo actual
-	attack_timer = Timer.new()
-	# El tiempo de espera del input del 2º ataque es la duracion del primer ataque
-	attack_timer.wait_time = $AnimationPlayer.get_animation("attack_down").length
-	attack_timer.one_shot = true  # Solo se ejecuta una vez
-	add_child(attack_timer)
-	attack_timer.connect("timeout", self._on_attack_timer_timeout)
+	add_child(attack_cooldown_timer)
+	attack_cooldown_timer.wait_time = attack_cooldown_time
+	attack_cooldown_timer.one_shot = true
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	# "Timer" para el movimiento random
-	timer -= delta
-	if timer <= 0:
-		print(move_chance)
-		change_direction()
-	set_directionVector_string()
+	
 	if !is_attacking && !is_blocking && !is_hurt && !was_parried:
+		timer -= delta
+		if timer <= 0:
+			print(move_chance)
+			change_direction()
+		set_directionVector_string()
 		move(delta) # Nos movemos si se ha pulsado algo
-	#if Input.is_action_just_pressed("attack"):	
-	attack()
-	depth_control()
+		attack()
+		depth_control()
 
 func move(delta):
 	var player_position = get_player_position()
 	if (player_position != null):
 		if (position.distance_to(player_position) <= detection_range):
-			move_towards_player(player_position, delta)
+			if !(position.distance_to(player_position) <= attack_range):
+				move_towards_player(player_position, delta)
 		else:
 			move_randomly(delta)
 	else:
@@ -86,34 +84,37 @@ func move_towards_player(player_position: Vector2, delta: float):
 # Función de ataque. Si ha sido pulsado y no estamos bloqueando ni reciviendo daño, tiene lugar	
 func attack():
 	var player_position = get_player_position()
-	if (player_position != null):
-		if (position.distance_to(player_position) <= attack_range):
-			if !is_blocking && !is_hurt && !was_parried:
-				if is_attacking == false:
+	if player_position != null:
+		if position.distance_to(player_position) <= attack_range:
+			if !is_blocking and !is_hurt and !was_parried:
+				if !is_attacking and attack_cooldown_timer.is_stopped():
+					# Verifica si no está atacando y si ya pasó el cooldown de 1 segundo
+					is_attacking = true
+					attack_count += 1  # Incrementa el contador de ataques
 					slash_VFX.play()
-					$AnimationPlayer.play(str("attack_" + direction_str))
-					attack_timer.start()  # Inicia el temporizador
-				elif attack_timer.time_left > 0 && !second_attack_queued:
-					# Si la animación de ataque 1 está en curso y el temporizador no ha terminado
-					second_attack_queued = true
+					# Determina si debe ser el segundo ataque después de 3 ataques
+					if attack_count % 3 == 0:
+						$Exclamation.modulate = Color.RED
+						$AnimationPlayer.play(str("attack_" + direction_str + "_2"))
+					else:
+						$Exclamation.modulate = Color.WHITE
+						$AnimationPlayer.play("attack_" + direction_str)
+					# Reinicia el temporizador de cooldown entre ataques
+					attack_cooldown_timer.start()
 
 func get_parried():
 	$AnimationPlayer.play(str("parried_") + direction_str)
 	status()
 
 # Callback cuando la animación de ataque termina
-func _on_animation_player_animation_finished(anim_name: StringName) -> void:
-	if anim_name.begins_with("attack_"):
-		if second_attack_queued:
-			$AnimationPlayer.play(str("attack_" + direction_str))
-			$AnimationPlayer.stop(false)
-			slash_VFX.play()
-			$AnimationPlayer.play(str("attack_" + direction_str + "_2"))  # Reproducir la segunda animación de ataque
-			second_attack_queued = false
-
-func _on_attack_timer_timeout():
-	# Cuando el temporizador se agota, resetea la cola de ataque
-	second_attack_queued = false
+#func _on_animation_player_animation_finished(anim_name: StringName) -> void:
+	#if anim_name.begins_with("attack_"):
+		#if second_attack_queued:
+			#$AnimationPlayer.play(str("attack_" + direction_str))
+			#$AnimationPlayer.stop(false)
+			#slash_VFX.play()
+			#$AnimationPlayer.play(str("attack_" + direction_str + "_2"))  # Reproducir la segunda animación de ataque
+			#second_attack_queued = false
 
 #Función de bloqueo. Funciona de manera practicamente idéntica a ataque, aunque la hitbox y su uso no está implementado
 func block():
@@ -131,7 +132,6 @@ func take_damage(damage: int, knockback_direction: Vector2, knockback_strength: 
 		hurt_VFX.play()
 		is_hurt = true
 		is_attacking = false
-		is_blocking = false
 		knockback_velocity = knockback_direction * knockback_strength
 		knockback_timer = knockback_duration
 		speed = 0

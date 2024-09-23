@@ -4,6 +4,7 @@ extends Area2D
 @export var damage = 10
 @export var knockback = 100
 @export var can_be_parried = false
+@export var can_be_blocked = true
 
 func _ready() -> void:
 	collision_mask = 0
