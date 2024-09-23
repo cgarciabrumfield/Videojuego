@@ -1,4 +1,4 @@
-extends Area2D
+extends CharacterBody2D
 
 @export var life = 3
 var screen_size # Size of the game window.
@@ -32,7 +32,8 @@ var knockback_duration: float = 0.2  # Duración del retroceso en segundos
 var knockback_timer: float = 0.0
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	screen_size = get_viewport_rect().size #Vector de resolución de pantalla
+	var screen = get_limits_of_movement() #Vector de resolución de pantalla
+	screen_size = screen.texture.get_size()
 	position = Vector2(randi_range(0, screen_size.x), randi_range(0, screen_size.y))
 	$Sword1/Hitbox_Sword1.disabled = true # La hitbox (espada) empieza emvainadas
 	$Sword2/Hitbox_Sword2.disabled = true
@@ -56,9 +57,9 @@ func _process(delta):
 		move(delta) # Nos movemos si se ha pulsado algo
 	#if Input.is_action_just_pressed("attack"):	
 	attack()
-	depth_control()
 
 func move(delta):
+	var velocity = Vector2.ZERO
 	var player_position = get_player_position()
 	if (player_position != null):
 		if (position.distance_to(player_position) <= detection_range):
@@ -71,6 +72,7 @@ func move(delta):
 		$AnimationPlayer.play(str("run_" + direction_str))
 	elif is_attacking == false && is_blocking == false && is_hurt == false: #Si no estamos corriendo y tampoco hemos sido heridos, animación iddle
 		$AnimationPlayer.play(str("iddle_" + direction_str))
+	velocity = move_and_slide()
 
 func move_randomly(delta):
 	speed = NORMAL_SPEED
@@ -81,7 +83,7 @@ func move_towards_player(player_position: Vector2, delta: float):
 	speed = RUN_SPEED
 	direction_vector = (player_position - position).normalized()
 	position += direction_vector * speed * delta
-	position = position.clamp(Vector2.ZERO, screen_size)
+	position = position.clamp(-screen_size/2, screen_size/2)
 
 # Función de ataque. Si ha sido pulsado y no estamos bloqueando ni reciviendo daño, tiene lugar	
 func attack():
@@ -105,7 +107,7 @@ func get_parried():
 func _on_animation_player_animation_finished(anim_name: StringName) -> void:
 	if anim_name.begins_with("attack_"):
 		if second_attack_queued:
-			$AnimationPlayer.play(str("attack_" + direction_str))
+			$AnimationPlayer.play(str("attack_" + direction_str)) #no funciona para ataques diagonales
 			$AnimationPlayer.stop(false)
 			slash_VFX.play()
 			$AnimationPlayer.play(str("attack_" + direction_str + "_2"))  # Reproducir la segunda animación de ataque
@@ -158,18 +160,22 @@ func kill():
 	set_process(false)
 	set_physics_process(false)
 	set_process_input(false)
-	
-func depth_control():
-	# Actualizamos el valor de profundidad del eje z según la altura del personaje en el eje y
-	normalized_Y_pos = position.y / screen_size.y
-	# Esta cosa extraña es para poner el valor de z en el rango posible según donde se ejecute el juego
-	z_index = normalized_Y_pos * 2*RenderingServer.CANVAS_ITEM_Z_MAX + RenderingServer.CANVAS_ITEM_Z_MIN
+	await get_tree().create_timer(1).timeout
+	queue_free()
 	
 func get_player_position():
 	if get_parent() != null:
 		var parent = get_parent()
-		if parent.has_node("Player"):
-			return parent.get_node("Player").position
+		if parent.has_node("knight"):
+			return parent.get_node("knight").position
+	return null
+	
+func get_limits_of_movement():
+	if get_parent() != null:
+		var parent = get_parent()
+		if parent.has_node("sala"):
+			#sprite.texture.get_size()
+			return parent.get_node("sala/Suelo")
 	return null
 	
 func change_direction():

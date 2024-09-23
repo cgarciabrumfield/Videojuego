@@ -1,4 +1,4 @@
-[gd_scene load_steps=262 format=3 uid="uid://bp8hvd0qc4txe"]
+[gd_scene load_steps=263 format=3 uid="uid://bp8hvd0qc4txe"]
 
 [ext_resource type="Script" path="res://scenes/knight.gd" id="1_02emr"]
 [ext_resource type="Texture2D" uid="uid://bvhoh6ek5sxhx" path="res://assets/sprites/knights/green_knight/Green Knight attack 1 Sprite-sheet 32x32.png" id="1_cwjgh"]
@@ -5846,15 +5846,20 @@ _data = {
 "parry_up": SubResource("Animation_prb3a")
 }
 
-[node name="Player" type="Area2D"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_83crh"]
+size = Vector2(14.8, 16)
+
+[node name="Player" type="CharacterBody2D"]
 texture_filter = 1
 scale = Vector2(5, 5)
+motion_mode = 1
+slide_on_ceiling = false
+safe_margin = 0.1
 script = ExtResource("1_02emr")
-speed = 300
-life = 5
 metadata/_edit_group_ = true
 
 [node name="KnightSprite" type="AnimatedSprite2D" parent="."]
+z_index = 1
 sprite_frames = SubResource("SpriteFrames_0mgto")
 animation = &"iddle_down"
 
@@ -5887,8 +5892,6 @@ position = Vector2(0, 16)
 shape = SubResource("RectangleShape2D_gwitc")
 
 [node name="Shadow" type="Sprite2D" parent="."]
-z_index = -1
-y_sort_enabled = true
 position = Vector2(0, 8.2)
 texture = ExtResource("12_h0mt4")
 
@@ -5924,6 +5927,11 @@ stream = ExtResource("14_rntyo")
 
 [node name="block_VFX" type="AudioStreamPlayer2D" parent="VFXs"]
 stream = ExtResource("15_b0tda")
+
+[node name="ChoqueParedes" type="CollisionShape2D" parent="."]
+position = Vector2(0, 2)
+scale = Vector2(0.5, 0.5)
+shape = SubResource("RectangleShape2D_83crh")
 
 [connection signal="area_exited" from="Hurtbox" to="Hurtbox" method="_on_area_exited"]
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
