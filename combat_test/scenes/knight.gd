@@ -129,6 +129,7 @@ func _input(event):
 	if event.is_action_released("block"):
 		if parry_timer.time_left > 0:
 			print("Parry")
+			status()
 			$AnimationPlayer.play(str("parry_") + direction)
 		else:
 			$AnimationPlayer.play(str("stop_block_") + direction)
@@ -146,7 +147,6 @@ func take_damage(damage: int, knockback_direction: Vector2, knockback_strength: 
  attacker: Node2D, can_be_parried: bool, can_be_blocked: bool) -> void:
 	if is_inmune:
 		return
-	status()
 	if is_parrying and can_be_parried:
 		try_parry(attacker)
 		return
@@ -210,10 +210,12 @@ func try_parry(attacker: Node2D):
 	elif x < abs(y):
 		attacker_position_str = "left"
 	if attacker_position_str == direction:
+		is_attacking = false
+		is_blocking = false
+		is_parrying = false
 		parry_VFX.play()
 		$Animation_parry_effect.play(str("parry_" + direction))
 		attacker.get_parried()
-		is_blocking = false
 
 # Animación que se reproduce al morir
 func kill():
