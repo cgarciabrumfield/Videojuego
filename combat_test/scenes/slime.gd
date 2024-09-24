@@ -1,4 +1,4 @@
-extends Area2D
+extends CharacterBody2D
 @export var life = 4
 var is_hurt = false
 var screen_size
@@ -74,6 +74,7 @@ func kill():
 	set_process(false)
 	set_physics_process(false)
 	set_process_input(false)
+	queue_free()
 	
 func move(delta):
 	var player_position = get_player_position()
@@ -82,6 +83,7 @@ func move(delta):
 			move_towards_player(player_position, delta)
 			return
 	move_randomly(delta)
+	move_and_slide()
 
 func move_randomly(delta):
 	speed = NORMAL_SPEED

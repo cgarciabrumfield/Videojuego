@@ -9,6 +9,10 @@
 [ext_resource type="Texture2D" uid="uid://x4ewbkooba7v" path="res://assets/sprites/interface/healrhbar_4hp_alt.png" id="6_yfq5k"]
 [ext_resource type="AudioStream" uid="uid://cgj1t2p8yrs0x" path="res://assets/sounds/10_Battle_SFX/77_flesh_02.wav" id="8_epxbu"]
 
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ayddb"]
+radius = 4.0
+height = 12.0
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_1m1pa"]
 atlas = ExtResource("1_ievx7")
 region = Rect2(0, 48, 48, 48)
@@ -173,10 +177,6 @@ animations = [{
 "name": &"default",
 "speed": 10.0
 }]
-
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ayddb"]
-radius = 4.0
-height = 12.0
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_v3v8b"]
 radius = 4.0
@@ -608,12 +608,18 @@ _data = {
 "run": SubResource("Animation_qyy30")
 }
 
-[node name="Slime" type="Area2D"]
+[node name="Slime" type="CharacterBody2D"]
 texture_filter = 1
 texture_repeat = 1
 scale = Vector2(5, 5)
 disable_mode = 1
+motion_mode = 1
 script = ExtResource("1_3q008")
+
+[node name="CollisionBox" type="CollisionShape2D" parent="."]
+position = Vector2(0, 0.8)
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_ayddb")
 
 [node name="SlimeSprite" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_jyt8v")

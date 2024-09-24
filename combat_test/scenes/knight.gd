@@ -1,4 +1,4 @@
-extends Area2D
+extends CharacterBody2D
 
 @export var speed = 200 # How fast the player will move (pixels/sec).
 @export var life = 100
@@ -35,7 +35,7 @@ func _ready():
 	$Sword1/Hitbox_Sword1.disabled = true # La hitbox (espada) empieza emvainadas
 	$Sword2/Hitbox_Sword2.disabled = true
 	# Configura y agrega el temporizador de parry al nodo actual
-	parry_timer.wait_time = 0.09
+	parry_timer.wait_time = 0.1
 	add_child(parry_timer)
 	parry_timer.connect("timeout", self._on_parry_timer_timeout)
 	# Configura y agrega el temporizador de inmunidad al nodo actual
@@ -49,23 +49,18 @@ func _ready():
 	add_child(attack_timer)
 	attack_timer.connect("timeout", self._on_attack_timer_timeout)
 	$Parry_effect_sprite.z_index = RenderingServer.CANVAS_ITEM_Z_MAX
-	
-
-func _on_inmune_timer_timeout():
-	is_inmune = false
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	var current_animation = $AnimationPlayer.current_animation  # Obtiene la animación actual
+	#var current_animation = $AnimationPlayer.current_animation  # Obtiene la animación actual
 	#print("Animación en curso: ", current_animation)
-	status()
 	move(delta) # Nos movemos si se ha pulsado algo
 	if Input.is_action_just_pressed("attack"):	
 		attack()
 	if Input.is_action_just_pressed("block"):	
 		block() # Bloqueamos si procede
 	depth_control()
-	#status()
+	status()
 
 func move(delta): # Función que mueve al personaje
 	var velocity = Vector2.ZERO #Vector de movimiento del jugador
@@ -91,6 +86,7 @@ func move(delta): # Función que mueve al personaje
 			$AnimationPlayer.play(str("iddle_" + direction))
 		# Actualizamos la posición según el vector de dirección y delta (constancia fps)
 		position += velocity * delta
+		velocity = move_and_slide()
 		position = position.clamp(Vector2.ZERO, screen_size)
 # Función de ataque. Si ha sido pulsado y no estamos bloqueando ni reciviendo daño, tiene lugar	
 func attack():
@@ -169,6 +165,9 @@ func take_damage(damage: int, knockback_direction: Vector2, knockback_strength: 
 		$AnimationPlayer.play(str("damage_" + direction))
 		await get_tree().create_timer(0.6).timeout
 		is_hurt = false
+
+func _on_inmune_timer_timeout():
+	is_inmune = false
 		
 func _physics_process(delta: float) -> void:
 	if knockback_timer > 0:
@@ -244,3 +243,5 @@ func status():
 	print(is_parrying)
 	print("is_hurt: ")
 	print(is_hurt)
+	print("is_inmune: ")
+	print(is_inmune)

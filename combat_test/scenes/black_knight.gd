@@ -1,4 +1,4 @@
-extends Area2D
+extends CharacterBody2D
 
 @export var life = 3
 var screen_size # Size of the game window.
@@ -28,6 +28,7 @@ const RUN_SPEED = 80
 @export var detection_range = 400
 @export var attack_range = 80
 
+var near_player = false
 var knockback_velocity: Vector2 = Vector2.ZERO
 var knockback_duration: float = 0.2  # Duración del retroceso en segundos
 var knockback_timer: float = 0.0
@@ -47,7 +48,7 @@ func _process(delta):
 	
 	if !is_attacking && !is_blocking && !is_hurt && !was_parried:
 		timer -= delta
-		if timer <= 0:
+		if timer <= 0 and !near_player:
 			print(move_chance)
 			change_direction()
 		set_directionVector_string()
@@ -56,19 +57,25 @@ func _process(delta):
 		depth_control()
 
 func move(delta):
+	var velocity = Vector2.ZERO
 	var player_position = get_player_position()
 	if (player_position != null):
 		if (position.distance_to(player_position) <= detection_range):
+			near_player = true
 			if !(position.distance_to(player_position) <= attack_range):
 				move_towards_player(player_position, delta)
 		else:
 			move_randomly(delta)
+			near_player = false
 	else:
 		move_randomly(delta)
+		near_player = false
+	
 	if is_attacking == false && is_blocking == false && is_hurt == false && direction_vector != Vector2(0,0):
 		$AnimationPlayer.play(str("run_" + direction_str))
 	elif is_attacking == false && is_blocking == false && is_hurt == false: #Si no estamos corriendo y tampoco hemos sido heridos, animación iddle
 		$AnimationPlayer.play(str("iddle_" + direction_str))
+	velocity = move_and_slide()
 
 func move_randomly(delta):
 	speed = NORMAL_SPEED
@@ -158,6 +165,8 @@ func kill():
 	set_process(false)
 	set_physics_process(false)
 	set_process_input(false)
+	await get_tree().create_timer(0.9).timeout
+	queue_free()
 	
 func depth_control():
 	# Actualizamos el valor de profundidad del eje z según la altura del personaje en el eje y
