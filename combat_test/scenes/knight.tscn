@@ -1,4 +1,4 @@
-[gd_scene load_steps=303 format=3 uid="uid://bp8hvd0qc4txe"]
+[gd_scene load_steps=304 format=3 uid="uid://bp8hvd0qc4txe"]
 
 [ext_resource type="Script" path="res://scenes/knight.gd" id="1_02emr"]
 [ext_resource type="Texture2D" uid="uid://bvhoh6ek5sxhx" path="res://assets/sprites/knights/green_knight/Green Knight attack 1 Sprite-sheet 32x32.png" id="1_cwjgh"]
@@ -21,6 +21,8 @@
 [ext_resource type="Texture2D" uid="uid://w5xs36knmsrm" path="res://assets/sprites/effects/white_slash_effect/SFX304_04.png" id="15_v77qa"]
 [ext_resource type="Texture2D" uid="uid://8geoquij4gpl" path="res://assets/sprites/effects/white_slash_effect/SFX304_05.png" id="16_h5wdk"]
 [ext_resource type="AudioStream" uid="uid://b436qjtsc2p1s" path="res://assets/sounds/10_Battle_SFX/Sword Hits Metal Shield [ ezmp3.cc ]-[AudioTrimmer.com].mp3" id="20_3p3tk"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_c2apc"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_eomvg"]
 atlas = ExtResource("2_cbhjw")
@@ -8075,13 +8077,21 @@ _data = {
 "parry_up": SubResource("Animation_prb3a")
 }
 
-[node name="Player" type="Area2D"]
+[node name="Player" type="CharacterBody2D"]
 texture_filter = 1
 scale = Vector2(5, 5)
+motion_mode = 1
 script = ExtResource("1_02emr")
 speed = 300
 life = 5
+is_inmune = true
 metadata/_edit_group_ = true
+
+[node name="CollisionBox" type="CollisionShape2D" parent="."]
+z_as_relative = false
+position = Vector2(0, 2)
+scale = Vector2(0.5, 0.5)
+shape = SubResource("RectangleShape2D_c2apc")
 
 [node name="KnightSprite" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_0mgto")

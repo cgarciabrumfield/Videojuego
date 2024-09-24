@@ -48,6 +48,7 @@ func _on_area_exited(hitbox) -> void:
 		timer.stop()
 
 func _on_timer_timeout():
+	print("oof")
 	timer.start()
 	knockback_direction = (owner.global_position - last_hitbox.global_position).normalized()
 	knockback_strengh = last_hitbox.knockback

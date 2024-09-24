@@ -1,4 +1,4 @@
-[gd_scene load_steps=279 format=3 uid="uid://bd1rec7dsrw3y"]
+[gd_scene load_steps=280 format=3 uid="uid://bd1rec7dsrw3y"]
 
 [ext_resource type="Script" path="res://scenes/black_knight.gd" id="1_58v2s"]
 [ext_resource type="Texture2D" uid="uid://csypftj7ixnex" path="res://assets/sprites/enemies/black_knight/Dark Yellow Knight attack 2 Sprite-sheet 32x32.png" id="2_g2gem"]
@@ -17,6 +17,8 @@
 [ext_resource type="AudioStream" uid="uid://tc5d3mw3h6ma" path="res://assets/sounds/12_Player_Movement_SFX/08_Step_rock_02.wav" id="14_jwsha"]
 [ext_resource type="AudioStream" uid="uid://ddteofdbmqcge" path="res://assets/sounds/10_Battle_SFX/39_Block_03.wav" id="15_ys5b1"]
 [ext_resource type="Texture2D" uid="uid://bp086jaeixx13" path="res://assets/sprites/interface/exclamation.png" id="16_jgomi"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_s7fvf"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_isacm"]
 atlas = ExtResource("2_g2gem")
@@ -6911,11 +6913,18 @@ _data = {
 "run_up": SubResource("Animation_n8d07")
 }
 
-[node name="black_knight" type="Area2D"]
+[node name="black_knight" type="CharacterBody2D"]
 texture_filter = 1
 scale = Vector2(5, 5)
+motion_mode = 1
 script = ExtResource("1_58v2s")
 metadata/_edit_group_ = true
+
+[node name="CollisionBox" type="CollisionShape2D" parent="."]
+z_as_relative = false
+position = Vector2(0, 2)
+scale = Vector2(0.5, 0.5)
+shape = SubResource("RectangleShape2D_s7fvf")
 
 [node name="KnightSprite" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_0mgto")
@@ -6983,5 +6992,3 @@ stream = ExtResource("14_jwsha")
 
 [node name="block_VFX" type="AudioStreamPlayer2D" parent="VFXs"]
 stream = ExtResource("15_ys5b1")
-
-[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
