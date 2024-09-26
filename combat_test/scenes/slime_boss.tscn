@@ -521,12 +521,12 @@ _data = {
 "run": SubResource("Animation_qyy30")
 }
 
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_um35v"]
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_qotx5"]
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_tofjk"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_23si1"]
 bg_color = Color(0.8, 0, 0.184314, 1)
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_mxu3f"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7qcup"]
 bg_color = Color(0.22782, 0.180842, 0.222009, 1)
 expand_margin_left = 1.0
 expand_margin_top = 1.0
@@ -535,13 +535,13 @@ expand_margin_bottom = 1.0
 shadow_color = Color(0.439216, 0.439216, 0.439216, 1)
 shadow_offset = Vector2(0, 1)
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_hldm7"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_vrcxv"]
 bg_color = Color(1, 0.525374, 0.464771, 1)
 
-[node name="Slime" type="CharacterBody2D"]
+[node name="Slime_boss" type="CharacterBody2D"]
 texture_filter = 1
 texture_repeat = 1
-scale = Vector2(5, 5)
+scale = Vector2(10, 10)
 disable_mode = 1
 motion_mode = 1
 script = ExtResource("1_oqi86")
@@ -559,7 +559,7 @@ animation = &"death"
 light_mask = 0
 visibility_layer = 2
 script = ExtResource("3_r53pb")
-damage = 1
+damage = 2
 knockback = 400
 
 [node name="Hitbox_Shape" type="CollisionShape2D" parent="Hitbox"]
@@ -590,27 +590,32 @@ libraries = {
 [node name="hurt_vfx" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("6_8tsav")
 
-[node name="Healthbar" type="ProgressBar" parent="."]
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Healthbar" type="ProgressBar" parent="CanvasLayer"]
 z_index = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -7.0
-offset_top = -11.0
-offset_right = 7.0
-offset_bottom = -9.0
+offset_left = -558.0
+offset_top = 285.0
+offset_right = -446.0
+offset_bottom = 287.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_styles/background = SubResource("StyleBoxEmpty_um35v")
-theme_override_styles/fill = SubResource("StyleBoxFlat_tofjk")
+scale = Vector2(10, 10)
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_styles/background = SubResource("StyleBoxEmpty_qotx5")
+theme_override_styles/fill = SubResource("StyleBoxFlat_23si1")
 show_percentage = false
 script = ExtResource("7_usm8h")
 
-[node name="Timer" type="Timer" parent="Healthbar"]
+[node name="Timer" type="Timer" parent="CanvasLayer/Healthbar"]
 
-[node name="Damagebar" type="ProgressBar" parent="Healthbar"]
+[node name="Damagebar" type="ProgressBar" parent="CanvasLayer/Healthbar"]
 z_index = -1
 layout_mode = 1
 anchors_preset = 15
@@ -618,9 +623,9 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_styles/background = SubResource("StyleBoxFlat_mxu3f")
-theme_override_styles/fill = SubResource("StyleBoxFlat_hldm7")
+theme_override_styles/background = SubResource("StyleBoxFlat_7qcup")
+theme_override_styles/fill = SubResource("StyleBoxFlat_vrcxv")
 show_percentage = false
 script = ExtResource("7_usm8h")
 
-[connection signal="timeout" from="Healthbar/Timer" to="." method="_on_timer_timeout"]
+[connection signal="timeout" from="CanvasLayer/Healthbar/Timer" to="." method="_on_timer_timeout"]

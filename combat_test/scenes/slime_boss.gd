@@ -1,21 +1,21 @@
 extends CharacterBody2D
 
-@export var maxHealth = 3
+@export var maxHealth = 15
 @export var health = maxHealth
 var is_hurt = false
 var screen_size
 const NORMAL_SPEED = 50
 const RUN_SPEED = 80
 @export var speed = NORMAL_SPEED # Velocidad a la que se moverá el limo
-@export var detection_range = 200
+@export var detection_range = 600
 var direction_change_interval: float = 2.0 # Tiempo para cambiar de dirección
 var timer: float = 0.0 # Timer para controlar el cambio de dirección
 var direction: Vector2 = Vector2.ZERO # Vector de dirección inicial
 var normalized_Y_pos # Posicion en el eje Y normalizada entre 0 y 1 para el calculo de profundidad asociado
 @onready var hurt_VFX = $hurt_vfx
-@onready var healthbar = $Healthbar
-@onready var damagebar = $Healthbar/Damagebar
-@onready var timer_vida = $Healthbar/Timer
+@onready var healthbar = $CanvasLayer/Healthbar
+@onready var damagebar = $CanvasLayer/Healthbar/Damagebar
+@onready var timer_vida = $CanvasLayer/Healthbar/Timer
 # Físicas
 var knockback_velocity: Vector2 = Vector2.ZERO
 var knockback_duration: float = 0.2  # Duración del retroceso en segundos
@@ -80,18 +80,19 @@ func kill():
 	queue_free()
 	
 func move(delta):
+	var velocity
 	var player_position = get_player_position()
 	if (player_position != null):
 		if (position.distance_to(player_position) <= detection_range):
 			move_towards_player(player_position, delta)
 			return
 	move_randomly(delta)
-	move_and_slide()
 
 func move_randomly(delta):
 	speed = NORMAL_SPEED
 	$SlimeSprite.speed_scale = 1
 	position += direction * speed * delta
+	move_and_slide()
 	position = position.clamp(Vector2.ZERO, screen_size)
 	
 func move_towards_player(player_position: Vector2, delta: float):
@@ -99,6 +100,7 @@ func move_towards_player(player_position: Vector2, delta: float):
 	$SlimeSprite.speed_scale = 2
 	direction = (player_position - position).normalized()
 	position += direction * speed * delta
+	move_and_slide()
 	position = position.clamp(Vector2.ZERO, screen_size)
 	
 func depth_control():
