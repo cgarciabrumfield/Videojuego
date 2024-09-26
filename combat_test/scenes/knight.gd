@@ -1,7 +1,7 @@
 extends CharacterBody2D
 
-@export var speed = 200 # How fast the player will move (pixels/sec).
-@export var life = 100
+@export var speed = 150 # How fast the player will move (pixels/sec).
+@export var life = 10
 var screen_size # Size of the game window.
 var direction # Izquierda derecha arriba abajo, segun a donde mire
 @export var is_attacking = false # Si está atacando bloquea las demás acciones y entradas
@@ -60,10 +60,9 @@ func _process(delta):
 	if Input.is_action_just_pressed("block"):	
 		block() # Bloqueamos si procede
 	depth_control()
-	status()
 
 func move(delta): # Función que mueve al personaje
-	var velocity = Vector2.ZERO #Vector de movimiento del jugador
+	velocity = Vector2.ZERO #Vector de movimiento del jugador
 	if !is_attacking && !is_blocking && !is_hurt && !is_parrying:
 		if Input.is_action_pressed("right"):
 			velocity.x += 1
@@ -86,7 +85,7 @@ func move(delta): # Función que mueve al personaje
 			$AnimationPlayer.play(str("iddle_" + direction))
 		# Actualizamos la posición según el vector de dirección y delta (constancia fps)
 		position += velocity * delta
-		velocity = move_and_slide()
+		move_and_slide()
 		position = position.clamp(Vector2.ZERO, screen_size)
 # Función de ataque. Si ha sido pulsado y no estamos bloqueando ni reciviendo daño, tiene lugar	
 func attack():

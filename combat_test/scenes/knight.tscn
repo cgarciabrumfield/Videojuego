@@ -8082,9 +8082,6 @@ texture_filter = 1
 scale = Vector2(5, 5)
 motion_mode = 1
 script = ExtResource("1_02emr")
-speed = 300
-life = 5
-is_inmune = true
 metadata/_edit_group_ = true
 
 [node name="CollisionBox" type="CollisionShape2D" parent="."]
