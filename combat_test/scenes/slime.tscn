@@ -1,12 +1,11 @@
-[gd_scene load_steps=51 format=3 uid="uid://i18myxiswp6c"]
+[gd_scene load_steps=42 format=3 uid="uid://i18myxiswp6c"]
 
 [ext_resource type="Script" path="res://scenes/slime.gd" id="1_3q008"]
 [ext_resource type="Texture2D" uid="uid://qcipw4u341lj" path="res://assets/sprites/enemies/Green Slime.png" id="1_ievx7"]
 [ext_resource type="Script" path="res://scripts/Hitbox.gd" id="2_4nqb6"]
 [ext_resource type="Script" path="res://scripts/Hurtbox.gd" id="3_2ybbm"]
-[ext_resource type="Texture2D" uid="uid://wkpw0cmwa40g" path="res://assets/sprites/interface/healthbar_4hp.png" id="5_kkrf7"]
 [ext_resource type="Texture2D" uid="uid://dlhgyyvbwxj7r" path="res://assets/sprites/Shadow.png" id="6_oklnm"]
-[ext_resource type="Texture2D" uid="uid://x4ewbkooba7v" path="res://assets/sprites/interface/healrhbar_4hp_alt.png" id="6_yfq5k"]
+[ext_resource type="Script" path="res://scripts/progress_bar.gd" id="7_qu8p8"]
 [ext_resource type="AudioStream" uid="uid://cgj1t2p8yrs0x" path="res://assets/sounds/10_Battle_SFX/77_flesh_02.wav" id="8_epxbu"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ayddb"]
@@ -181,92 +180,6 @@ animations = [{
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_v3v8b"]
 radius = 4.0
 height = 12.0
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_nf6hg"]
-atlas = ExtResource("5_kkrf7")
-region = Rect2(0, 24, 34, 6)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_upokb"]
-atlas = ExtResource("5_kkrf7")
-region = Rect2(0, 18, 34, 6)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_1btva"]
-atlas = ExtResource("5_kkrf7")
-region = Rect2(0, 12, 34, 6)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_465at"]
-atlas = ExtResource("5_kkrf7")
-region = Rect2(0, 6, 34, 6)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_5ok40"]
-atlas = ExtResource("5_kkrf7")
-region = Rect2(0, 0, 34, 6)
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_8hpnm"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_nf6hg")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_upokb")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_1btva")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_465at")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_5ok40")
-}],
-"loop": true,
-"name": &"default",
-"speed": 5.0
-}]
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_v12jn"]
-atlas = ExtResource("6_yfq5k")
-region = Rect2(0, 24, 34, 6)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_y1cgr"]
-atlas = ExtResource("6_yfq5k")
-region = Rect2(0, 18, 34, 6)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_t11gs"]
-atlas = ExtResource("6_yfq5k")
-region = Rect2(0, 12, 34, 6)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_wekbk"]
-atlas = ExtResource("6_yfq5k")
-region = Rect2(0, 6, 34, 6)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_dnou4"]
-atlas = ExtResource("6_yfq5k")
-region = Rect2(0, 0, 34, 6)
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_u6tlv"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_v12jn")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_y1cgr")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_t11gs")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_wekbk")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_dnou4")
-}],
-"loop": true,
-"name": &"default",
-"speed": 5.0
-}]
 
 [sub_resource type="Animation" id="Animation_7ilby"]
 length = 0.001
@@ -608,6 +521,23 @@ _data = {
 "run": SubResource("Animation_qyy30")
 }
 
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_um35v"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_tofjk"]
+bg_color = Color(0.8, 0, 0.184314, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_mxu3f"]
+bg_color = Color(0.22782, 0.180842, 0.222009, 1)
+expand_margin_left = 1.0
+expand_margin_top = 1.0
+expand_margin_right = 1.0
+expand_margin_bottom = 1.0
+shadow_color = Color(0.439216, 0.439216, 0.439216, 1)
+shadow_offset = Vector2(0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_hldm7"]
+bg_color = Color(1, 0.525374, 0.464771, 1)
+
 [node name="Slime" type="CharacterBody2D"]
 texture_filter = 1
 texture_repeat = 1
@@ -647,16 +577,6 @@ position = Vector2(0, 0.8)
 rotation = 1.5708
 shape = SubResource("CapsuleShape2D_v3v8b")
 
-[node name="Healthbar_red" type="AnimatedSprite2D" parent="."]
-position = Vector2(0, -10)
-scale = Vector2(0.4, 0.4)
-sprite_frames = SubResource("SpriteFrames_8hpnm")
-
-[node name="Healthbar_trans" type="AnimatedSprite2D" parent="."]
-position = Vector2(0, -10)
-scale = Vector2(0.4, 0.4)
-sprite_frames = SubResource("SpriteFrames_u6tlv")
-
 [node name="Shadow" type="Sprite2D" parent="."]
 z_index = -1
 position = Vector2(0, 4.8)
@@ -667,9 +587,40 @@ libraries = {
 "": SubResource("AnimationLibrary_80kol")
 }
 
-[node name="Timer" type="Timer" parent="."]
-
 [node name="hurt_vfx" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("8_epxbu")
 
-[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+[node name="Healthbar" type="ProgressBar" parent="."]
+z_index = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -7.0
+offset_top = -11.0
+offset_right = 7.0
+offset_bottom = -9.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/background = SubResource("StyleBoxEmpty_um35v")
+theme_override_styles/fill = SubResource("StyleBoxFlat_tofjk")
+show_percentage = false
+script = ExtResource("7_qu8p8")
+
+[node name="Timer" type="Timer" parent="Healthbar"]
+
+[node name="Damagebar" type="ProgressBar" parent="Healthbar"]
+z_index = -1
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/background = SubResource("StyleBoxFlat_mxu3f")
+theme_override_styles/fill = SubResource("StyleBoxFlat_hldm7")
+show_percentage = false
+script = ExtResource("7_qu8p8")
+
+[connection signal="timeout" from="Healthbar/Timer" to="." method="_on_timer_timeout"]

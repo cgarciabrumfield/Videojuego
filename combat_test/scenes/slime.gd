@@ -1,17 +1,21 @@
 extends CharacterBody2D
-@export var life = 4
+
+@export var maxHealth = 3
+@export var health = maxHealth
 var is_hurt = false
 var screen_size
 const NORMAL_SPEED = 50
 const RUN_SPEED = 80
 @export var speed = NORMAL_SPEED # Velocidad a la que se moverá el limo
 @export var detection_range = 200
-@onready var timer_vida = $Timer # Timer que controla cuando se actualiza la barra de vida
 var direction_change_interval: float = 2.0 # Tiempo para cambiar de dirección
 var timer: float = 0.0 # Timer para controlar el cambio de dirección
 var direction: Vector2 = Vector2.ZERO # Vector de dirección inicial
 var normalized_Y_pos # Posicion en el eje Y normalizada entre 0 y 1 para el calculo de profundidad asociado
 @onready var hurt_VFX = $hurt_vfx
+@onready var healthbar = $Healthbar
+@onready var damagebar = $Healthbar/Damagebar
+@onready var timer_vida = $Healthbar/Timer
 # Físicas
 var knockback_velocity: Vector2 = Vector2.ZERO
 var knockback_duration: float = 0.2  # Duración del retroceso en segundos
@@ -19,10 +23,9 @@ var knockback_timer: float = 0.0
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	health = maxHealth
 	screen_size = get_viewport_rect().size
 	position = Vector2(randi_range(0, screen_size.x), randi_range(0, screen_size.y))
-	$Healthbar_red.frame = life
-	$Healthbar_trans.frame = life
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
@@ -45,12 +48,12 @@ func change_direction():
 # Literalmente lo mismo que la del caballero pero mas facil. Id a mirar los comentarios en knight.gd
 func take_damage(ammount: int, knockback_direction: Vector2, knockback_strength) -> void:
 	hurt_VFX.play()
-	life -= ammount
+	health -= ammount
 	timer_vida.start()
-	$Healthbar_trans.frame = life
+	healthbar.update()
 	knockback_velocity = knockback_direction * knockback_strength
 	knockback_timer = knockback_duration
-	if life <= 0:
+	if health <= 0:
 		kill()
 	elif is_hurt == false:  # Verifica que el enemigo no esté ya en animación de daño
 		$AnimationPlayer.play("damage")
@@ -64,7 +67,7 @@ func _physics_process(delta: float) -> void:
 		knockback_timer -= delta
 		
 func _on_timer_timeout() -> void:
-	$Healthbar_red.frame = life
+	damagebar.update()
 	timer_vida.stop()
 
 # Función de me voy con San Pedro del limo

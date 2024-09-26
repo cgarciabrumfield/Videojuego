@@ -1,14 +1,15 @@
 extends CharacterBody2D
 
-@export var life = 3
+@export var maxHealth = 4
+@export var health = maxHealth
 var screen_size # Size of the game window.
 var direction_str = "down" # Izquierda derecha arriba abajo, segun a donde mire
 var direction_vector
-@export var is_attacking = false # Si está atacando bloquea las demás acciones y entradas
-@export var is_blocking = false # Si está bloqueando bloquea las demás acciones y entradas
+var is_attacking = false # Si está atacando bloquea las demás acciones y entradas
+var is_blocking = false # Si está bloqueando bloquea las demás acciones y entradas
 var normalized_Y_pos # Posicion en el eje Y normalizada entre 0 y 1 para el calculo de profundidad asociado
-@export var is_hurt = false # Al recibir daño se bloquean las demas acciones y entradas
-@export var was_parried = false
+var is_hurt = false # Al recibir daño se bloquean las demas acciones y entradas
+var was_parried = false
 var timer: float = 0.0 # Timer para controlar el cambio de dirección
 var direction_change_interval: float = 2.0 # Tiempo para cambiar de dirección
 @onready var slash_VFX = $VFXs/Sword_VFX
@@ -16,6 +17,9 @@ var direction_change_interval: float = 2.0 # Tiempo para cambiar de dirección
 @onready var walk_VFX = $VFXs/walk_stone_VFX
 @onready var block_VFX = $VFXs/block_VFX
 
+@onready var healthbar = $Healthbar
+@onready var damagebar = $Healthbar/Damagebar
+@onready var timer_vida = $Healthbar/Timer
 var attack_count = 0
 var attack_cooldown_time = 1.0  # 1 segundo entre ataques
 @onready var attack_cooldown_timer = Timer.new()
@@ -34,6 +38,7 @@ var knockback_duration: float = 0.2  # Duración del retroceso en segundos
 var knockback_timer: float = 0.0
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	health = maxHealth
 	screen_size = get_viewport_rect().size #Vector de resolución de pantalla
 	position = Vector2(randi_range(0, screen_size.x), randi_range(0, screen_size.y))
 	$Sword1/Hitbox_Sword1.disabled = true # La hitbox (espada) empieza emvainadas
@@ -57,7 +62,6 @@ func _process(delta):
 		depth_control()
 
 func move(delta):
-	var velocity = Vector2.ZERO
 	var player_position = get_player_position()
 	if (player_position != null):
 		if (position.distance_to(player_position) <= detection_range):
@@ -75,7 +79,7 @@ func move(delta):
 		$AnimationPlayer.play(str("run_" + direction_str))
 	elif is_attacking == false && is_blocking == false && is_hurt == false: #Si no estamos corriendo y tampoco hemos sido heridos, animación iddle
 		$AnimationPlayer.play(str("iddle_" + direction_str))
-	velocity = move_and_slide()
+	move_and_slide()
 
 func move_randomly(delta):
 	speed = NORMAL_SPEED
@@ -132,8 +136,10 @@ func block():
 # Función de recivir daño. Solo se activa cuando la hurtbox del personaje detecte una hitbox 
 # con un valor de daño asociado que llamaremos amount		
 func take_damage(damage: int, knockback_direction: Vector2, knockback_strength: int) -> void:
-	life -= damage
-	if life <= 0:
+	health -= damage
+	timer_vida.start()
+	$Healthbar.update()
+	if health <= 0:
 		kill()
 	elif not is_hurt:
 		hurt_VFX.play()
@@ -154,6 +160,10 @@ func _physics_process(delta: float) -> void:
 		knockback_velocity = lerp(knockback_velocity, Vector2.ZERO, 0.1)
 		# Reduce el temporizador del retroceso
 		knockback_timer -= delta
+
+func _on_timer_timeout() -> void:
+	damagebar.update()
+	timer_vida.stop()
 
 # Animación que se reproduce al morir
 func kill():

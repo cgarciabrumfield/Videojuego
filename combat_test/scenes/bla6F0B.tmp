@@ -1,4 +1,4 @@
-[gd_scene load_steps=285 format=3 uid="uid://bd1rec7dsrw3y"]
+[gd_scene load_steps=295 format=3 uid="uid://bd1rec7dsrw3y"]
 
 [ext_resource type="Script" path="res://scenes/black_knight.gd" id="1_58v2s"]
 [ext_resource type="Texture2D" uid="uid://csypftj7ixnex" path="res://assets/sprites/enemies/black_knight/Dark Yellow Knight attack 2 Sprite-sheet 32x32.png" id="2_g2gem"]
@@ -14,10 +14,12 @@
 [ext_resource type="Texture2D" uid="uid://dlhgyyvbwxj7r" path="res://assets/sprites/Shadow.png" id="11_j8uof"]
 [ext_resource type="AudioStream" uid="uid://cmk86b5y2lm4f" path="res://assets/sounds/ROBLOX Oof Sound Effect.wav" id="12_dnaev"]
 [ext_resource type="AudioStream" uid="uid://ckyeisewce5ci" path="res://assets/sounds/10_Battle_SFX/22_Slash_04.wav" id="13_b4y00"]
+[ext_resource type="Texture2D" uid="uid://wkpw0cmwa40g" path="res://assets/sprites/interface/healthbar_4hp.png" id="13_muo6w"]
+[ext_resource type="Texture2D" uid="uid://x4ewbkooba7v" path="res://assets/sprites/interface/healrhbar_4hp_alt.png" id="14_gqpvv"]
 [ext_resource type="AudioStream" uid="uid://tc5d3mw3h6ma" path="res://assets/sounds/12_Player_Movement_SFX/08_Step_rock_02.wav" id="14_jwsha"]
 [ext_resource type="AudioStream" uid="uid://ddteofdbmqcge" path="res://assets/sounds/10_Battle_SFX/39_Block_03.wav" id="15_ys5b1"]
 [ext_resource type="Texture2D" uid="uid://bp086jaeixx13" path="res://assets/sprites/interface/exclamation.png" id="16_jgomi"]
-[ext_resource type="Script" path="res://scripts/progress_bar.gd" id="20_1y1rv"]
+[ext_resource type="Script" path="res://scenes/progress_bar.gd" id="20_1y1rv"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_s7fvf"]
 
@@ -1857,6 +1859,92 @@ height = 22.0
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_gwitc"]
 size = Vector2(6.6, 17)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nf6hg"]
+atlas = ExtResource("13_muo6w")
+region = Rect2(0, 24, 34, 6)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_upokb"]
+atlas = ExtResource("13_muo6w")
+region = Rect2(0, 18, 34, 6)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1btva"]
+atlas = ExtResource("13_muo6w")
+region = Rect2(0, 12, 34, 6)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_465at"]
+atlas = ExtResource("13_muo6w")
+region = Rect2(0, 6, 34, 6)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5ok40"]
+atlas = ExtResource("13_muo6w")
+region = Rect2(0, 0, 34, 6)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_fajie"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nf6hg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_upokb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1btva")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_465at")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5ok40")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_v12jn"]
+atlas = ExtResource("14_gqpvv")
+region = Rect2(0, 24, 34, 6)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_y1cgr"]
+atlas = ExtResource("14_gqpvv")
+region = Rect2(0, 18, 34, 6)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_t11gs"]
+atlas = ExtResource("14_gqpvv")
+region = Rect2(0, 12, 34, 6)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wekbk"]
+atlas = ExtResource("14_gqpvv")
+region = Rect2(0, 6, 34, 6)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dnou4"]
+atlas = ExtResource("14_gqpvv")
+region = Rect2(0, 0, 34, 6)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_4biwk"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_v12jn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_y1cgr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_t11gs")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wekbk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dnou4")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_tygpq"]
 atlas = ExtResource("16_jgomi")
@@ -6914,23 +7002,6 @@ _data = {
 "run_up": SubResource("Animation_n8d07")
 }
 
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_x6dkl"]
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_cyhc1"]
-bg_color = Color(0.8, 0, 0.184314, 1)
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_bmki3"]
-bg_color = Color(0.22782, 0.180842, 0.222009, 1)
-expand_margin_left = 1.0
-expand_margin_top = 1.0
-expand_margin_right = 1.0
-expand_margin_bottom = 1.0
-shadow_color = Color(0.439216, 0.439216, 0.439216, 1)
-shadow_offset = Vector2(0, 1)
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_sph8s"]
-bg_color = Color(1, 0.525374, 0.464771, 1)
-
 [node name="black_knight" type="CharacterBody2D"]
 texture_filter = 1
 scale = Vector2(5, 5)
@@ -6984,6 +7055,16 @@ y_sort_enabled = true
 position = Vector2(0, 8.2)
 texture = ExtResource("11_j8uof")
 
+[node name="Healthbar_red" type="AnimatedSprite2D" parent="."]
+position = Vector2(0, -10)
+scale = Vector2(0.4, 0.4)
+sprite_frames = SubResource("SpriteFrames_fajie")
+
+[node name="Healthbar_trans" type="AnimatedSprite2D" parent="."]
+position = Vector2(0, -10)
+scale = Vector2(0.4, 0.4)
+sprite_frames = SubResource("SpriteFrames_4biwk")
+
 [node name="Exclamation" type="AnimatedSprite2D" parent="."]
 position = Vector2(0, -14.8)
 scale = Vector2(0.7, 0.7)
@@ -7011,37 +7092,11 @@ stream = ExtResource("14_jwsha")
 [node name="block_VFX" type="AudioStreamPlayer2D" parent="VFXs"]
 stream = ExtResource("15_ys5b1")
 
-[node name="Healthbar" type="ProgressBar" parent="."]
-z_index = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -7.0
-offset_top = -11.0
-offset_right = 7.0
-offset_bottom = -9.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_styles/background = SubResource("StyleBoxEmpty_x6dkl")
-theme_override_styles/fill = SubResource("StyleBoxFlat_cyhc1")
-show_percentage = false
+[node name="Timer" type="Timer" parent="."]
+
+[node name="ProgressBar" type="ProgressBar" parent="."]
+offset_right = 4.0
+offset_bottom = 27.0
 script = ExtResource("20_1y1rv")
 
-[node name="Timer" type="Timer" parent="Healthbar"]
-
-[node name="Damagebar" type="ProgressBar" parent="Healthbar"]
-z_index = -1
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_styles/background = SubResource("StyleBoxFlat_bmki3")
-theme_override_styles/fill = SubResource("StyleBoxFlat_sph8s")
-show_percentage = false
-script = ExtResource("20_1y1rv")
-
-[connection signal="timeout" from="Healthbar/Timer" to="." method="_on_timer_timeout"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
