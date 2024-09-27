@@ -2,11 +2,11 @@
 
 [ext_resource type="Script" path="res://combat_test.gd" id="1_d6sd7"]
 [ext_resource type="PackedScene" uid="uid://bp8hvd0qc4txe" path="res://scenes/knight.tscn" id="2_sfd7i"]
-[ext_resource type="PackedScene" uid="uid://i18myxiswp6c" path="res://scenes/slime.tscn" id="3_qakoc"]
+[ext_resource type="PackedScene" uid="uid://bxfm6nxfi50s0" path="res://scenes/slime_boss.tscn" id="3_i4td7"]
 
 [node name="combat_test" type="Node2D"]
 script = ExtResource("1_d6sd7")
 
 [node name="Player" parent="." instance=ExtResource("2_sfd7i")]
 
-[node name="Slime" parent="." instance=ExtResource("3_qakoc")]
+[node name="Slime_boss" parent="." instance=ExtResource("3_i4td7")]
