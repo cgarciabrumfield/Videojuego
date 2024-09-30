@@ -2,8 +2,9 @@ extends CharacterBody2D
 
 @export var maxHealth = 15
 @export var health = maxHealth
-var is_hurt = false
+@export var is_hurt = false
 var screen_size
+var jump_attack_triggered = false
 const NORMAL_SPEED = 50
 const RUN_SPEED = 80
 @export var speed = NORMAL_SPEED # Velocidad a la que se moverá el limo
@@ -12,6 +13,7 @@ var direction_change_interval: float = 2.0 # Tiempo para cambiar de dirección
 var timer: float = 0.0 # Timer para controlar el cambio de dirección
 var direction: Vector2 = Vector2.ZERO # Vector de dirección inicial
 var normalized_Y_pos # Posicion en el eje Y normalizada entre 0 y 1 para el calculo de profundidad asociado
+#Sonidos
 @onready var hurt_VFX = $hurt_vfx
 @onready var healthbar = $CanvasLayer/Healthbar
 @onready var damagebar = $CanvasLayer/Healthbar/Damagebar
@@ -20,12 +22,23 @@ var normalized_Y_pos # Posicion en el eje Y normalizada entre 0 y 1 para el calc
 var knockback_velocity: Vector2 = Vector2.ZERO
 var knockback_duration: float = 0.2  # Duración del retroceso en segundos
 var knockback_timer: float = 0.0
-
+#Slimes invocados
+var scene_slime = preload("res://scenes/slime.tscn")
+var slimes = []
+var instance_slime
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	health = maxHealth
 	screen_size = get_viewport_rect().size
 	position = Vector2(randi_range(0, screen_size.x), randi_range(0, screen_size.y))
+	instance_slime = scene_slime.instantiate()
+	var instance_slime2 = scene_slime.instantiate()
+	var instance_slime3 = scene_slime.instantiate()
+	
+	#Añade las instancias a la lista
+	slimes.append(instance_slime)
+	slimes.append(instance_slime2)
+	slimes.append(instance_slime3)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
@@ -37,6 +50,10 @@ func _process(delta: float) -> void:
 	timer -= delta
 	if timer <= 0:
 		change_direction()
+	if jump_attack_triggered:
+		get_parent().add_child(instance_slime)
+		await get_tree().create_timer(0.5).timeout
+		jump_attack_triggered == false
 		
 # Función para cambiar la dirección aleatoriamente
 func change_direction():
@@ -57,6 +74,8 @@ func take_damage(ammount: int, knockback_direction: Vector2, knockback_strength)
 		kill()
 	elif is_hurt == false:  # Verifica que el enemigo no esté ya en animación de daño
 		$AnimationPlayer.play("damage")
+		if $jump_attack_timer.is_stopped():
+			jump_attack()
 		
 func _physics_process(delta: float) -> void:
 	if knockback_timer > 0:
@@ -96,7 +115,8 @@ func move_randomly(delta):
 	position = position.clamp(Vector2.ZERO, screen_size)
 	
 func move_towards_player(player_position: Vector2, delta: float):
-	speed = RUN_SPEED
+	if !jump_attack_triggered:
+		speed = RUN_SPEED
 	$SlimeSprite.speed_scale = 2
 	direction = (player_position - position).normalized()
 	position += direction * speed * delta
@@ -115,3 +135,11 @@ func get_player_position():
 		if parent.has_node("Player"):
 			return parent.get_node("Player").position
 	return null
+
+func jump_attack():
+	jump_attack_triggered = true
+	$jump_attack_timer.start()
+
+func _on_jump_attack_timer_timeout() -> void:
+	$jump_attack_timer.stop()
+	$AnimationPlayer.play("jump_attack")
