@@ -1,99 +1,99 @@
-[gd_scene load_steps=42 format=3 uid="uid://i18myxiswp6c"]
+[gd_scene load_steps=42 format=3 uid="uid://dsmgr7eeso541"]
 
-[ext_resource type="Script" path="res://scenes/slime.gd" id="1_3q008"]
-[ext_resource type="Texture2D" uid="uid://qcipw4u341lj" path="res://assets/sprites/enemies/Green Slime.png" id="1_ievx7"]
-[ext_resource type="Script" path="res://scripts/Hitbox.gd" id="2_4nqb6"]
-[ext_resource type="Script" path="res://scripts/Hurtbox.gd" id="3_2ybbm"]
-[ext_resource type="Texture2D" uid="uid://dlhgyyvbwxj7r" path="res://assets/sprites/Shadow.png" id="6_oklnm"]
-[ext_resource type="Script" path="res://scripts/progress_bar.gd" id="7_qu8p8"]
-[ext_resource type="AudioStream" uid="uid://cgj1t2p8yrs0x" path="res://assets/sounds/10_Battle_SFX/77_flesh_02.wav" id="8_epxbu"]
+[ext_resource type="Script" path="res://scenes/summoned_slime.gd" id="1_fo3sb"]
+[ext_resource type="Texture2D" uid="uid://qcipw4u341lj" path="res://assets/sprites/enemies/Green Slime.png" id="2_ef253"]
+[ext_resource type="Script" path="res://scripts/Hitbox.gd" id="3_fvo6p"]
+[ext_resource type="Script" path="res://scripts/Hurtbox.gd" id="4_g5ljv"]
+[ext_resource type="Texture2D" uid="uid://dlhgyyvbwxj7r" path="res://assets/sprites/Shadow.png" id="5_q04fg"]
+[ext_resource type="AudioStream" uid="uid://cgj1t2p8yrs0x" path="res://assets/sounds/10_Battle_SFX/77_flesh_02.wav" id="6_80s64"]
+[ext_resource type="Script" path="res://scripts/progress_bar.gd" id="7_a4fw5"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ayddb"]
 radius = 4.0
 height = 12.0
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_1m1pa"]
-atlas = ExtResource("1_ievx7")
+atlas = ExtResource("2_ef253")
 region = Rect2(0, 48, 48, 48)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_865hc"]
-atlas = ExtResource("1_ievx7")
+atlas = ExtResource("2_ef253")
 region = Rect2(48, 48, 48, 48)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_tqqvr"]
-atlas = ExtResource("1_ievx7")
+atlas = ExtResource("2_ef253")
 region = Rect2(96, 48, 48, 48)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_p1r6v"]
-atlas = ExtResource("1_ievx7")
+atlas = ExtResource("2_ef253")
 region = Rect2(144, 48, 48, 48)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ggi1m"]
-atlas = ExtResource("1_ievx7")
+atlas = ExtResource("2_ef253")
 region = Rect2(192, 48, 48, 48)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ocmue"]
-atlas = ExtResource("1_ievx7")
+atlas = ExtResource("2_ef253")
 region = Rect2(240, 48, 48, 48)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_g8n3b"]
-atlas = ExtResource("1_ievx7")
+atlas = ExtResource("2_ef253")
 region = Rect2(288, 48, 48, 48)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_7jgaq"]
-atlas = ExtResource("1_ievx7")
+atlas = ExtResource("2_ef253")
 region = Rect2(336, 48, 48, 48)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_fmanu"]
-atlas = ExtResource("1_ievx7")
+atlas = ExtResource("2_ef253")
 region = Rect2(0, 96, 48, 48)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_1c111"]
-atlas = ExtResource("1_ievx7")
+atlas = ExtResource("2_ef253")
 region = Rect2(48, 96, 48, 48)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_mpkfs"]
-atlas = ExtResource("1_ievx7")
+atlas = ExtResource("2_ef253")
 region = Rect2(96, 96, 48, 48)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_vkxc2"]
-atlas = ExtResource("1_ievx7")
+atlas = ExtResource("2_ef253")
 region = Rect2(144, 96, 48, 48)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_2ylr1"]
-atlas = ExtResource("1_ievx7")
+atlas = ExtResource("2_ef253")
 region = Rect2(192, 96, 48, 48)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_rhtif"]
-atlas = ExtResource("1_ievx7")
+atlas = ExtResource("2_ef253")
 region = Rect2(0, 0, 48, 48)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_pd8xu"]
-atlas = ExtResource("1_ievx7")
+atlas = ExtResource("2_ef253")
 region = Rect2(48, 0, 48, 48)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_0gbyr"]
-atlas = ExtResource("1_ievx7")
+atlas = ExtResource("2_ef253")
 region = Rect2(96, 0, 48, 48)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_y3cud"]
-atlas = ExtResource("1_ievx7")
+atlas = ExtResource("2_ef253")
 region = Rect2(144, 0, 48, 48)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_fj1r6"]
-atlas = ExtResource("1_ievx7")
+atlas = ExtResource("2_ef253")
 region = Rect2(192, 0, 48, 48)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_v8lwo"]
-atlas = ExtResource("1_ievx7")
+atlas = ExtResource("2_ef253")
 region = Rect2(240, 0, 48, 48)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ub8sc"]
-atlas = ExtResource("1_ievx7")
+atlas = ExtResource("2_ef253")
 region = Rect2(288, 0, 48, 48)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_lmos2"]
-atlas = ExtResource("1_ievx7")
+atlas = ExtResource("2_ef253")
 region = Rect2(336, 0, 48, 48)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_jyt8v"]
@@ -538,15 +538,14 @@ shadow_offset = Vector2(0, 1)
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_hldm7"]
 bg_color = Color(1, 0.525374, 0.464771, 1)
 
-[node name="Slime" type="CharacterBody2D"]
+[node name="Summoned_Slime" type="CharacterBody2D"]
 texture_filter = 1
 texture_repeat = 1
 scale = Vector2(5, 5)
 disable_mode = 1
 collision_layer = 2
-collision_mask = 3
 motion_mode = 1
-script = ExtResource("1_3q008")
+script = ExtResource("1_fo3sb")
 
 [node name="CollisionBox" type="CollisionShape2D" parent="."]
 position = Vector2(0, 0.8)
@@ -561,7 +560,7 @@ animation = &"death"
 [node name="Hitbox" type="Area2D" parent="."]
 light_mask = 0
 visibility_layer = 2
-script = ExtResource("2_4nqb6")
+script = ExtResource("3_fvo6p")
 damage = 1
 knockback = 400
 
@@ -573,7 +572,7 @@ shape = SubResource("CapsuleShape2D_ayddb")
 [node name="Hurtbox" type="Area2D" parent="."]
 light_mask = 2
 visibility_layer = 0
-script = ExtResource("3_2ybbm")
+script = ExtResource("4_g5ljv")
 
 [node name="Hurtbox_Shape" type="CollisionShape2D" parent="Hurtbox"]
 position = Vector2(0, 0.8)
@@ -583,7 +582,7 @@ shape = SubResource("CapsuleShape2D_v3v8b")
 [node name="Shadow" type="Sprite2D" parent="."]
 z_index = -1
 position = Vector2(0, 4.8)
-texture = ExtResource("6_oklnm")
+texture = ExtResource("5_q04fg")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
@@ -591,7 +590,7 @@ libraries = {
 }
 
 [node name="hurt_vfx" type="AudioStreamPlayer2D" parent="."]
-stream = ExtResource("8_epxbu")
+stream = ExtResource("6_80s64")
 
 [node name="Healthbar" type="ProgressBar" parent="."]
 z_index = 1
@@ -609,7 +608,7 @@ grow_vertical = 2
 theme_override_styles/background = SubResource("StyleBoxEmpty_um35v")
 theme_override_styles/fill = SubResource("StyleBoxFlat_tofjk")
 show_percentage = false
-script = ExtResource("7_qu8p8")
+script = ExtResource("7_a4fw5")
 
 [node name="Timer" type="Timer" parent="Healthbar"]
 
@@ -624,6 +623,6 @@ grow_vertical = 2
 theme_override_styles/background = SubResource("StyleBoxFlat_mxu3f")
 theme_override_styles/fill = SubResource("StyleBoxFlat_hldm7")
 show_percentage = false
-script = ExtResource("7_qu8p8")
+script = ExtResource("7_a4fw5")
 
 [connection signal="timeout" from="Healthbar/Timer" to="." method="_on_timer_timeout"]

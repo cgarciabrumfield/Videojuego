@@ -64,5 +64,6 @@ block={
 
 [layer_names]
 
-2d_physics/layer_2="attacks"
-2d_physics/layer_3="parrys"
+2d_physics/layer_1="Player"
+2d_physics/layer_2="Enemies"
+2d_physics/layer_3="Bosses"

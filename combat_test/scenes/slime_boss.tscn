@@ -1,4 +1,4 @@
-[gd_scene load_steps=43 format=3 uid="uid://bxfm6nxfi50s0"]
+[gd_scene load_steps=44 format=3 uid="uid://bxfm6nxfi50s0"]
 
 [ext_resource type="Script" path="res://scenes/slime_boss.gd" id="1_oqi86"]
 [ext_resource type="Texture2D" uid="uid://qcipw4u341lj" path="res://assets/sprites/enemies/Green Slime.png" id="2_h5881"]
@@ -177,8 +177,12 @@ animations = [{
 "speed": 10.0
 }]
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_v3v8b"]
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_fm1sr"]
 radius = 4.0
+height = 12.0
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_v3v8b"]
+radius = 4.1
 height = 12.0
 
 [sub_resource type="Animation" id="Animation_7ilby"]
@@ -312,7 +316,7 @@ tracks/10/loop_wrap = true
 tracks/10/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
-"update": 1,
+"update": 0,
 "values": [false]
 }
 tracks/11/type = "value"
@@ -342,7 +346,7 @@ tracks/12/keys = {
 tracks/13/type = "value"
 tracks/13/imported = false
 tracks/13/enabled = true
-tracks/13/path = NodePath("CollisionBox:scale")
+tracks/13/path = NodePath("Hurtbox/Hurtbox_Shape:scale")
 tracks/13/interp = 1
 tracks/13/loop_wrap = true
 tracks/13/keys = {
@@ -354,7 +358,7 @@ tracks/13/keys = {
 tracks/14/type = "value"
 tracks/14/imported = false
 tracks/14/enabled = true
-tracks/14/path = NodePath("Hurtbox/Hurtbox_Shape:scale")
+tracks/14/path = NodePath("Jump_attack_hitbox/Jump_attack_hitbox_shape:scale")
 tracks/14/interp = 1
 tracks/14/loop_wrap = true
 tracks/14/keys = {
@@ -362,6 +366,30 @@ tracks/14/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 0,
 "values": [Vector2(1, 1)]
+}
+tracks/15/type = "value"
+tracks/15/imported = false
+tracks/15/enabled = true
+tracks/15/path = NodePath("Jump_attack_hitbox/Jump_attack_hitbox_shape:disabled")
+tracks/15/interp = 1
+tracks/15/loop_wrap = true
+tracks/15/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/16/type = "value"
+tracks/16/imported = false
+tracks/16/enabled = true
+tracks/16/path = NodePath(".:jump_attack_triggered")
+tracks/16/interp = 1
+tracks/16/loop_wrap = true
+tracks/16/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
 }
 
 [sub_resource type="Animation" id="Animation_m06v4"]
@@ -568,46 +596,6 @@ tracks/2/keys = {
 "values": [50, 50]
 }
 
-[sub_resource type="Animation" id="Animation_qyy30"]
-resource_name = "run"
-length = 0.5
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("SlimeSprite:animation")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [&"default"]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("SlimeSprite:frame")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.0666667, 0.133333, 0.2, 0.266667, 0.333333, 0.4, 0.466667),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
-"update": 1,
-"values": [0, 1, 2, 3, 4, 5, 6, 7]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath(".:speed")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0, 0.5),
-"transitions": PackedFloat32Array(1, 1),
-"update": 1,
-"values": [80, 80]
-}
-
 [sub_resource type="Animation" id="Animation_gy22i"]
 resource_name = "jump_attack"
 length = 5.0
@@ -690,7 +678,7 @@ tracks/6/path = NodePath("Hitbox/Hitbox_Shape:disabled")
 tracks/6/interp = 1
 tracks/6/loop_wrap = true
 tracks/6/keys = {
-"times": PackedFloat32Array(0, 1, 4.5, 5),
+"times": PackedFloat32Array(0, 1, 4.63333, 5),
 "transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 1,
 "values": [false, true, false, false]
@@ -702,10 +690,10 @@ tracks/7/path = NodePath("CollisionBox:disabled")
 tracks/7/interp = 1
 tracks/7/loop_wrap = true
 tracks/7/keys = {
-"times": PackedFloat32Array(0, 1, 4.5, 5),
-"transitions": PackedFloat32Array(1, 1, 1, 1),
-"update": 1,
-"values": [false, true, false, false]
+"times": PackedFloat32Array(0, 1, 4.5, 4.56667, 5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [false, true, true, false, false]
 }
 tracks/8/type = "value"
 tracks/8/imported = false
@@ -738,46 +726,110 @@ tracks/10/path = NodePath("Hitbox/Hitbox_Shape:scale")
 tracks/10/interp = 1
 tracks/10/loop_wrap = true
 tracks/10/keys = {
-"times": PackedFloat32Array(0, 0.966667, 4.5, 4.63333, 5),
+"times": PackedFloat32Array(0, 1, 4.5, 4.63333, 5),
 "transitions": PackedFloat32Array(1, 0.5, 0.5, 1, 1),
 "update": 0,
-"values": [Vector2(1, 1), Vector2(1.1, 1.3), Vector2(1.1, 1.3), Vector2(1, 1), Vector2(1, 1)]
+"values": [Vector2(1, 1), Vector2(1.1, 2), Vector2(1.1, 1.3), Vector2(1, 1), Vector2(1, 1)]
 }
 tracks/11/type = "value"
 tracks/11/imported = false
 tracks/11/enabled = true
-tracks/11/path = NodePath("CollisionBox:scale")
+tracks/11/path = NodePath("Hurtbox/Hurtbox_Shape:scale")
 tracks/11/interp = 1
 tracks/11/loop_wrap = true
 tracks/11/keys = {
-"times": PackedFloat32Array(0, 0.966667, 4.5, 4.63333, 5),
-"transitions": PackedFloat32Array(1, 0.5, 0.5, 1, 1),
+"times": PackedFloat32Array(0, 1, 4.5, 4.56667, 4.66667, 5),
+"transitions": PackedFloat32Array(1, 0.5, 0.5, 0.5, 1, 1),
 "update": 0,
-"values": [Vector2(1, 1), Vector2(1.1, 1.3), Vector2(1.1, 1.3), Vector2(1, 1), Vector2(1, 1)]
+"values": [Vector2(1, 1), Vector2(1.1, 2), Vector2(1.1, 1.3), Vector2(1.1, 2), Vector2(1, 1), Vector2(1, 1)]
 }
 tracks/12/type = "value"
 tracks/12/imported = false
 tracks/12/enabled = true
-tracks/12/path = NodePath("Hurtbox/Hurtbox_Shape:scale")
+tracks/12/path = NodePath(".:is_hurt")
 tracks/12/interp = 1
 tracks/12/loop_wrap = true
 tracks/12/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(1, 1)]
-}
-tracks/13/type = "value"
-tracks/13/imported = false
-tracks/13/enabled = true
-tracks/13/path = NodePath(".:is_hurt")
-tracks/13/interp = 1
-tracks/13/loop_wrap = true
-tracks/13/keys = {
 "times": PackedFloat32Array(0, 1.26667, 5),
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 1,
 "values": [true, false, false]
+}
+tracks/13/type = "value"
+tracks/13/imported = false
+tracks/13/enabled = true
+tracks/13/path = NodePath("Jump_attack_hitbox/Jump_attack_hitbox_shape:scale")
+tracks/13/interp = 1
+tracks/13/loop_wrap = true
+tracks/13/keys = {
+"times": PackedFloat32Array(0, 4.5, 4.56667, 4.66667, 5),
+"transitions": PackedFloat32Array(1, 0.5, 0.5, 1, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(1.1, 1.3), Vector2(2, 2), Vector2(1, 1), Vector2(1, 1)]
+}
+tracks/14/type = "value"
+tracks/14/imported = false
+tracks/14/enabled = true
+tracks/14/path = NodePath("Jump_attack_hitbox/Jump_attack_hitbox_shape:disabled")
+tracks/14/interp = 1
+tracks/14/loop_wrap = true
+tracks/14/keys = {
+"times": PackedFloat32Array(0, 4.5, 4.63333, 5),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [true, false, true, true]
+}
+tracks/15/type = "value"
+tracks/15/imported = false
+tracks/15/enabled = true
+tracks/15/path = NodePath(".:jump_attack_triggered")
+tracks/15/interp = 1
+tracks/15/loop_wrap = true
+tracks/15/keys = {
+"times": PackedFloat32Array(0, 5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+
+[sub_resource type="Animation" id="Animation_qyy30"]
+resource_name = "run"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("SlimeSprite:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"default"]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("SlimeSprite:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.0666667, 0.133333, 0.2, 0.266667, 0.333333, 0.4, 0.466667),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5, 6, 7]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:speed")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [80, 80]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_80kol"]
@@ -812,15 +864,20 @@ texture_filter = 1
 texture_repeat = 1
 scale = Vector2(10, 10)
 disable_mode = 1
+collision_layer = 4
+collision_mask = 5
 motion_mode = 1
 script = ExtResource("1_oqi86")
 
 [node name="CollisionBox" type="CollisionShape2D" parent="."]
+z_index = 1
 position = Vector2(0, 0.8)
 rotation = 1.5708
+scale = Vector2(0.9, 1)
 shape = SubResource("CapsuleShape2D_ayddb")
 
 [node name="SlimeSprite" type="AnimatedSprite2D" parent="."]
+modulate = Color(1, 1, 1, 0.627451)
 sprite_frames = SubResource("SpriteFrames_jyt8v")
 animation = &"death"
 
@@ -829,12 +886,23 @@ light_mask = 0
 visibility_layer = 2
 script = ExtResource("3_r53pb")
 damage = 2
-knockback = 400
+knockback = 800
 
 [node name="Hitbox_Shape" type="CollisionShape2D" parent="Hitbox"]
 position = Vector2(0, 0.8)
 rotation = 1.5708
 shape = SubResource("CapsuleShape2D_ayddb")
+
+[node name="Jump_attack_hitbox" type="Area2D" parent="."]
+script = ExtResource("3_r53pb")
+damage = 4
+knockback = 2000
+
+[node name="Jump_attack_hitbox_shape" type="CollisionShape2D" parent="Jump_attack_hitbox"]
+position = Vector2(0, 0.8)
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_fm1sr")
+disabled = true
 
 [node name="Hurtbox" type="Area2D" parent="."]
 light_mask = 2
@@ -899,5 +967,10 @@ script = ExtResource("7_usm8h")
 
 [node name="jump_attack_timer" type="Timer" parent="."]
 
+[node name="summon_slime_cooldown" type="Timer" parent="."]
+wait_time = 5.0
+one_shot = true
+
 [connection signal="timeout" from="CanvasLayer/Healthbar/Timer" to="." method="_on_timer_timeout"]
 [connection signal="timeout" from="jump_attack_timer" to="." method="_on_jump_attack_timer_timeout"]
+[connection signal="timeout" from="summon_slime_cooldown" to="." method="_on_summon_slime_cooldown_timeout"]

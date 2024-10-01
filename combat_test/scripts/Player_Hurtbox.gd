@@ -31,6 +31,7 @@ func _on_area_entered(hitbox) -> void:
 	# que estuviera asociado a la hitbox con la que colisionó
 	if owner.has_method("take_damage"):
 		last_hitbox = hitbox
+		print(hitbox)
 		inside = true
 		timer.start()
 		damage = hitbox.damage
@@ -48,7 +49,6 @@ func _on_area_exited(hitbox) -> void:
 		timer.stop()
 
 func _on_timer_timeout():
-	print("oof")
 	timer.start()
 	knockback_direction = (owner.global_position - last_hitbox.global_position).normalized()
 	knockback_strengh = last_hitbox.knockback

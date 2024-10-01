@@ -8080,6 +8080,7 @@ _data = {
 [node name="Player" type="CharacterBody2D"]
 texture_filter = 1
 scale = Vector2(5, 5)
+collision_mask = 6
 motion_mode = 1
 script = ExtResource("1_02emr")
 metadata/_edit_group_ = true

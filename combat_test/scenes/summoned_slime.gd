@@ -1,39 +1,33 @@
 extends CharacterBody2D
 
-@export var maxHealth = 15
+@export var maxHealth = 3
 @export var health = maxHealth
-@export var is_hurt = false
+var is_hurt = false
 var screen_size
-@export var jump_attack_triggered = false
 const NORMAL_SPEED = 50
 const RUN_SPEED = 80
 @export var speed = NORMAL_SPEED # Velocidad a la que se moverá el limo
-@export var detection_range = 600
+@export var detection_range = 1000
 var direction_change_interval: float = 2.0 # Tiempo para cambiar de dirección
 var timer: float = 0.0 # Timer para controlar el cambio de dirección
 var direction: Vector2 = Vector2.ZERO # Vector de dirección inicial
 var normalized_Y_pos # Posicion en el eje Y normalizada entre 0 y 1 para el calculo de profundidad asociado
-#Sonidos
 @onready var hurt_VFX = $hurt_vfx
-@onready var healthbar = $CanvasLayer/Healthbar
-@onready var damagebar = $CanvasLayer/Healthbar/Damagebar
-@onready var timer_vida = $CanvasLayer/Healthbar/Timer
+@onready var healthbar = $Healthbar
+@onready var damagebar = $Healthbar/Damagebar
+@onready var timer_vida = $Healthbar/Timer
 # Físicas
 var knockback_velocity: Vector2 = Vector2.ZERO
 var knockback_duration: float = 0.2  # Duración del retroceso en segundos
 var knockback_timer: float = 0.0
-#Slimes invocados
-var slime_scene = preload("res://scenes/summoned_slime.tscn")
-var summoned_slimes = 0
-var max_slimes = 3
-var segunda_fase_iniciada = false
-@onready var summon_slime_cooldown = $summon_slime_cooldown
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	health = maxHealth
 	screen_size = get_viewport_rect().size
 	position = Vector2(randi_range(0, screen_size.x), randi_range(0, screen_size.y))
 	
+
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	if is_hurt == false: # Mientras no esté siendo herido, el limo se mueve normal
@@ -44,9 +38,6 @@ func _process(delta: float) -> void:
 	timer -= delta
 	if timer <= 0:
 		change_direction()
-	if health * 2 <= maxHealth && !segunda_fase_iniciada:
-		segunda_fase_iniciada = true
-		summon_slime_cooldown.start()
 		
 # Función para cambiar la dirección aleatoriamente
 func change_direction():
@@ -67,8 +58,6 @@ func take_damage(ammount: int, knockback_direction: Vector2, knockback_strength)
 		kill()
 	elif is_hurt == false:  # Verifica que el enemigo no esté ya en animación de daño
 		$AnimationPlayer.play("damage")
-		if $jump_attack_timer.is_stopped():
-			jump_attack()
 		
 func _physics_process(delta: float) -> void:
 	if knockback_timer > 0:
@@ -107,8 +96,7 @@ func move_randomly(delta):
 	position = position.clamp(Vector2.ZERO, screen_size)
 	
 func move_towards_player(player_position: Vector2, delta: float):
-	if !jump_attack_triggered:
-		speed = RUN_SPEED
+	speed = RUN_SPEED
 	$SlimeSprite.speed_scale = 2
 	direction = (player_position - position).normalized()
 	position += direction * speed * delta
@@ -127,34 +115,10 @@ func get_player_position():
 		if parent.has_node("Player"):
 			return parent.get_node("Player").position
 	return null
-
-func jump_attack():
-	jump_attack_triggered = true
-	$jump_attack_timer.start()
-
-func _on_jump_attack_timer_timeout() -> void:
-	$jump_attack_timer.stop()
-	$AnimationPlayer.play("jump_attack")
-
-func summon_slime():
-	summon_slime_cooldown.stop
-	if summoned_slimes < max_slimes:
-		print("Slime summoned")
-		var new_slime = slime_scene.instantiate() # Instancia la escena
-		get_parent().add_child(new_slime)
-		new_slime.global_position = position
-		# Conectar la señal "tree_exited" para detectar cuando el slime muere
-		new_slime.connect("tree_exited", self._on_slime_died)
-		summoned_slimes += 1
-	else:
-		print("Max slimes reached")
-
-func _on_slime_died():
-	summoned_slimes -= 1
-	print("Slime died, total summoned slimes:", summoned_slimes)
 	
-func _on_summon_slime_cooldown_timeout() -> void:
-	if $AnimationPlayer.current_animation == "jump_attack":
-		await $AnimationPlayer.animation_finished
-	summon_slime()
-	summon_slime_cooldown.start()
+func get_boss():
+	if get_parent() != null:
+		var parent = get_parent()
+		if parent.has_node("Slime_boss"):
+			return parent.get_node("Slime_boss")
+	return null
