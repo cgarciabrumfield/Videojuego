@@ -107,8 +107,8 @@ func depth_control():
 	# Actualizamos el valor de profundidad del eje z según la altura del personaje en el eje y
 	normalized_Y_pos = position.y / screen_size.y
 	# Esta cosa extraña es para poner el valor de z en el rango posible según donde se ejecute el juego
-	z_index = normalized_Y_pos * 2*RenderingServer.CANVAS_ITEM_Z_MAX + RenderingServer.CANVAS_ITEM_Z_MIN
-
+	z_index = normalized_Y_pos * 90 + 10
+	
 func get_player_position():
 	if get_parent() != null:
 		var parent = get_parent()
