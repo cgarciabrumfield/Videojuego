@@ -8,7 +8,6 @@ var screen_size
 const NORMAL_SPEED = 50
 const RUN_SPEED = 80
 @export var speed = NORMAL_SPEED # Velocidad a la que se moverá el limo
-@export var detection_range = 600
 var direction_change_interval: float = 2.0 # Tiempo para cambiar de dirección
 var timer: float = 0.0 # Timer para controlar el cambio de dirección
 var direction: Vector2 = Vector2.ZERO # Vector de dirección inicial
@@ -94,9 +93,8 @@ func kill():
 func move(delta):
 	var player_position = get_player_position()
 	if (player_position != null):
-		if (position.distance_to(player_position) <= detection_range):
-			move_towards_player(player_position, delta)
-			return
+		move_towards_player(player_position, delta)
+		return
 	move_randomly(delta)
 
 func move_randomly(delta):

@@ -581,6 +581,7 @@ rotation = 1.5708
 shape = SubResource("CapsuleShape2D_v3v8b")
 
 [node name="Shadow" type="Sprite2D" parent="."]
+modulate = Color(1, 1, 1, 0.627451)
 z_index = -1
 position = Vector2(0, 4.8)
 texture = ExtResource("6_oklnm")

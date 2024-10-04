@@ -8124,6 +8124,7 @@ position = Vector2(0, 16)
 shape = SubResource("RectangleShape2D_gwitc")
 
 [node name="Shadow" type="Sprite2D" parent="."]
+modulate = Color(1, 1, 1, 0.627451)
 z_index = -1
 y_sort_enabled = true
 position = Vector2(0, 8.2)
