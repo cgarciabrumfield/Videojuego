@@ -84,11 +84,14 @@ func move(delta): # Función que mueve al personaje
 		# Actualizamos la posición según el vector de dirección y delta (constancia fps)
 		position += velocity * delta
 		velocity = move_and_slide()
+
 		#position = position.clamp(-screen_size/2, screen_size/2)
+
 		
 func get_limits_of_movement():
 	if get_parent() != null:
 		var parent = get_parent()
+
 		if parent.has_node("salaPrueba"):
 			#sprite.texture.get_size()
 			return parent.get_node("salaPrueba/Suelo")
