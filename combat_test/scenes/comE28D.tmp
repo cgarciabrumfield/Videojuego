@@ -1,0 +1,18 @@
+[gd_scene load_steps=5 format=3 uid="uid://vlctdndw8bui"]
+
+[ext_resource type="PackedScene" uid="uid://thwaj3l4h6jf" path="res://scenes/salaGeneral.tscn" id="1_q7dns"]
+[ext_resource type="PackedScene" uid="uid://xxj37rata8p8" path="res://scenes/pasilloHorizontal.tscn" id="2_2q7bx"]
+[ext_resource type="PackedScene" uid="uid://co4vy7n0u5hcd" path="res://scenes/pasilloVertical.tscn" id="3_sa1ng"]
+[ext_resource type="PackedScene" uid="uid://bp8hvd0qc4txe" path="res://scenes/knight.tscn" id="4_gpidq"]
+
+[node name="Node2D" type="Node2D"]
+
+[node name="salaPrueba" parent="." instance=ExtResource("1_q7dns")]
+
+[node name="pasilloHPrueba" parent="." instance=ExtResource("2_2q7bx")]
+position = Vector2(972, 0)
+
+[node name="pasilloVPrueba" parent="." instance=ExtResource("3_sa1ng")]
+position = Vector2(0, 971)
+
+[node name="Player" parent="." instance=ExtResource("4_gpidq")]

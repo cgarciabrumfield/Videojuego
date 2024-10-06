@@ -1,0 +1,137 @@
+[gd_scene load_steps=5 format=3 uid="uid://thwaj3l4h6jf"]
+
+[ext_resource type="Texture2D" uid="uid://n4c08xvx6j1w" path="res://assets/sprites/salas/suelo.png" id="1_3dban"]
+[ext_resource type="Texture2D" uid="uid://cp05v7px6q5p3" path="res://assets/sprites/salas/pared.png" id="2_7cq43"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_stoyh"]
+size = Vector2(1000, 30)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_wau7a"]
+size = Vector2(30.0192, 1000)
+
+[node name="Node2D" type="Node2D"]
+z_index = -1
+
+[node name="Suelo" type="Sprite2D" parent="."]
+show_behind_parent = true
+z_as_relative = false
+texture = ExtResource("1_3dban")
+
+[node name="Pared1" type="Sprite2D" parent="." groups=["paredes"]]
+z_index = 1
+z_as_relative = false
+position = Vector2(280, 485)
+scale = Vector2(0.44, 1)
+texture = ExtResource("2_7cq43")
+
+[node name="ColisionPared" type="StaticBody2D" parent="Pared1" groups=["paredes"]]
+
+[node name="FormaColision" type="CollisionShape2D" parent="Pared1/ColisionPared"]
+position = Vector2(-0.308228, 0)
+shape = SubResource("RectangleShape2D_stoyh")
+
+[node name="Pared2" type="Sprite2D" parent="." groups=["paredes"]]
+z_index = 1
+z_as_relative = false
+position = Vector2(485, 280)
+rotation = 1.5708
+scale = Vector2(0.44, 1)
+texture = ExtResource("2_7cq43")
+
+[node name="ColisionPared" type="StaticBody2D" parent="Pared2" groups=["paredes"]]
+position = Vector2(486, 484)
+rotation = -1.5708
+
+[node name="FormaColision" type="CollisionShape2D" parent="Pared2/ColisionPared"]
+position = Vector2(484, -486)
+scale = Vector2(1, 1)
+shape = SubResource("RectangleShape2D_wau7a")
+
+[node name="Pared5" type="Sprite2D" parent="." groups=["paredes"]]
+z_index = 1
+z_as_relative = false
+position = Vector2(-280, 485)
+scale = Vector2(0.44, 1)
+texture = ExtResource("2_7cq43")
+
+[node name="ColisionPared" type="StaticBody2D" parent="Pared5" groups=["paredes"]]
+
+[node name="FormaColision" type="CollisionShape2D" parent="Pared5/ColisionPared"]
+position = Vector2(0.674072, 0)
+shape = SubResource("RectangleShape2D_stoyh")
+
+[node name="Pared4" type="Sprite2D" parent="." groups=["paredes"]]
+z_index = 1
+z_as_relative = false
+position = Vector2(485, -280)
+rotation = 1.5708
+scale = Vector2(0.44, 1)
+texture = ExtResource("2_7cq43")
+
+[node name="ColisionPared" type="StaticBody2D" parent="Pared4" groups=["paredes"]]
+position = Vector2(486, 484)
+rotation = -1.5708
+
+[node name="FormaColision" type="CollisionShape2D" parent="Pared4/ColisionPared"]
+position = Vector2(484, -486)
+scale = Vector2(1, 1)
+shape = SubResource("RectangleShape2D_wau7a")
+
+[node name="Pared3" type="Sprite2D" parent="." groups=["paredes"]]
+z_index = 1
+z_as_relative = false
+position = Vector2(-485, 280)
+rotation = 1.5708
+scale = Vector2(0.44, 1)
+texture = ExtResource("2_7cq43")
+
+[node name="ColisionPared" type="StaticBody2D" parent="Pared3" groups=["paredes"]]
+position = Vector2(486, 484)
+rotation = -1.5708
+
+[node name="FormaColision" type="CollisionShape2D" parent="Pared3/ColisionPared"]
+position = Vector2(484, -486)
+scale = Vector2(1, 1)
+shape = SubResource("RectangleShape2D_wau7a")
+
+[node name="Pared8" type="Sprite2D" parent="." groups=["paredes"]]
+z_index = 1
+z_as_relative = false
+position = Vector2(-485, -280)
+rotation = 1.5708
+scale = Vector2(0.44, 1)
+texture = ExtResource("2_7cq43")
+
+[node name="ColisionPared" type="StaticBody2D" parent="Pared8" groups=["paredes"]]
+position = Vector2(486, 484)
+rotation = -1.5708
+
+[node name="FormaColision" type="CollisionShape2D" parent="Pared8/ColisionPared"]
+position = Vector2(484, -486)
+scale = Vector2(1, 1)
+shape = SubResource("RectangleShape2D_wau7a")
+
+[node name="Pared6" type="Sprite2D" parent="." groups=["paredes"]]
+z_index = 1
+z_as_relative = false
+position = Vector2(-280, -485)
+scale = Vector2(0.44, 1)
+texture = ExtResource("2_7cq43")
+
+[node name="ColisionPared" type="StaticBody2D" parent="Pared6" groups=["paredes"]]
+
+[node name="FormaColision" type="CollisionShape2D" parent="Pared6/ColisionPared"]
+position = Vector2(0.199768, 0)
+shape = SubResource("RectangleShape2D_stoyh")
+
+[node name="Pared7" type="Sprite2D" parent="." groups=["paredes"]]
+z_index = 1
+z_as_relative = false
+position = Vector2(280, -485)
+scale = Vector2(0.44, 1)
+texture = ExtResource("2_7cq43")
+
+[node name="ColisionPared" type="StaticBody2D" parent="Pared7" groups=["paredes"]]
+
+[node name="FormaColision" type="CollisionShape2D" parent="Pared7/ColisionPared"]
+shape = SubResource("RectangleShape2D_stoyh")

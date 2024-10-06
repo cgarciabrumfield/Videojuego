@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://dhq54ikvqfrx5"]
+
+[ext_resource type="Texture2D" uid="uid://cl0nbvulaum4w" path="res://assets/sprites/salas/cierreParedHorizontal.png" id="1_dhe3l"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_5kok5"]
+size = Vector2(30, 120)
+
+[node name="Node2D" type="Node2D"]
+rotation = 1.5708
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_dhe3l")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+shape = SubResource("RectangleShape2D_5kok5")

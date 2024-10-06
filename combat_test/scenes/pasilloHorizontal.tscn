@@ -1,0 +1,35 @@
+[gd_scene load_steps=5 format=3 uid="uid://xxj37rata8p8"]
+
+[ext_resource type="Texture2D" uid="uid://5cbj02gkdia3" path="res://assets/sprites/salas/pasilloH.png" id="1_b3m17"]
+[ext_resource type="Texture2D" uid="uid://cp05v7px6q5p3" path="res://assets/sprites/salas/pared.png" id="2_phuh7"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_shncn"]
+size = Vector2(1000, 30)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_wgn3a"]
+size = Vector2(1000, 30)
+
+[node name="Node2D" type="Node2D"]
+
+[node name="Suelo" type="Sprite2D" parent="."]
+texture = ExtResource("1_b3m17")
+
+[node name="Pared1" type="Sprite2D" parent="." groups=["paredes"]]
+z_index = 1
+z_as_relative = false
+position = Vector2(0, 45)
+texture = ExtResource("2_phuh7")
+
+[node name="ColisionPared" type="StaticBody2D" parent="Pared1" groups=["paredes"]]
+
+[node name="FormaColision" type="CollisionShape2D" parent="Pared1/ColisionPared"]
+shape = SubResource("RectangleShape2D_shncn")
+
+[node name="Pared2" type="Sprite2D" parent="."]
+position = Vector2(0, -45)
+texture = ExtResource("2_phuh7")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Pared2"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Pared2/StaticBody2D"]
+shape = SubResource("RectangleShape2D_wgn3a")
