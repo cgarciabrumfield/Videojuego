@@ -1,6 +1,6 @@
 extends CharacterBody2D
 
-@export var maxHealth = 4
+@export var maxHealth = 8
 @export var health = maxHealth
 var screen_size # Size of the game window.
 var direction_str = "down" # Izquierda derecha arriba abajo, segun a donde mire

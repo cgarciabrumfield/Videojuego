@@ -7,7 +7,6 @@ var screen_size
 const NORMAL_SPEED = 50
 const RUN_SPEED = 80
 @export var speed = NORMAL_SPEED # Velocidad a la que se moverá el limo
-@export var detection_range = 200
 var direction_change_interval: float = 2.0 # Tiempo para cambiar de dirección
 var timer: float = 0.0 # Timer para controlar el cambio de dirección
 var direction: Vector2 = Vector2.ZERO # Vector de dirección inicial
@@ -26,6 +25,7 @@ func _ready() -> void:
 	health = maxHealth
 	screen_size = get_viewport_rect().size
 	position = Vector2(randi_range(0, screen_size.x), randi_range(0, screen_size.y))
+	
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
@@ -82,9 +82,8 @@ func kill():
 func move(delta):
 	var player_position = get_player_position()
 	if (player_position != null):
-		if (position.distance_to(player_position) <= detection_range):
-			move_towards_player(player_position, delta)
-			return
+		move_towards_player(player_position, delta)
+		return
 	move_randomly(delta)
 
 func move_randomly(delta):
@@ -106,11 +105,18 @@ func depth_control():
 	# Actualizamos el valor de profundidad del eje z según la altura del personaje en el eje y
 	normalized_Y_pos = position.y / screen_size.y
 	# Esta cosa extraña es para poner el valor de z en el rango posible según donde se ejecute el juego
-	z_index = normalized_Y_pos * 2*RenderingServer.CANVAS_ITEM_Z_MAX + RenderingServer.CANVAS_ITEM_Z_MIN
-
+	z_index = normalized_Y_pos * 90 + 10
+	
 func get_player_position():
 	if get_parent() != null:
 		var parent = get_parent()
 		if parent.has_node("Player"):
 			return parent.get_node("Player").position
+	return null
+	
+func get_boss():
+	if get_parent() != null:
+		var parent = get_parent()
+		if parent.has_node("Slime_boss"):
+			return parent.get_node("Slime_boss")
 	return null
