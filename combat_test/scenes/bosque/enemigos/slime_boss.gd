@@ -22,7 +22,7 @@ var knockback_velocity: Vector2 = Vector2.ZERO
 var knockback_duration: float = 0.2  # Duración del retroceso en segundos
 var knockback_timer: float = 0.0
 #Slimes invocados
-var slime_scene = preload("res://scenes/summoned_slime.tscn")
+var slime_scene = preload("res://scenes/bosque/enemigos/summoned_slime.tscn")
 var summoned_slimes = 0
 var max_slimes = 3
 var segunda_fase_iniciada = false

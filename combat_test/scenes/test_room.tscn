@@ -1,0 +1,103 @@
+[gd_scene load_steps=10 format=3 uid="uid://cb2qhnv6mx7re"]
+
+[ext_resource type="Texture2D" uid="uid://b6fi4srgcv1sp" path="res://maps/test/test.png" id="4_tnl7u"]
+[ext_resource type="PackedScene" uid="uid://cdynk4xsmcu8y" path="res://scenes/bosque/Props/bush_vertical_wall_1.tscn" id="5_s523h"]
+[ext_resource type="Texture2D" uid="uid://dudkk384f7pcl" path="res://maps/test/bush_wall_up.png" id="6_pw2pw"]
+[ext_resource type="PackedScene" uid="uid://qa2iaj1behmm" path="res://scenes/bosque/Props/bush_6.tscn" id="7_2n6j4"]
+[ext_resource type="Texture2D" uid="uid://c3ivum2n4wwci" path="res://maps/test/bush_wall_down.png" id="7_u444h"]
+[ext_resource type="PackedScene" uid="uid://bjkratfq4pj3f" path="res://scenes/bosque/Props/tree_2.tscn" id="8_acgdc"]
+[ext_resource type="PackedScene" uid="uid://6gf4yb3dj8ys" path="res://scenes/bosque/Props/tree_1.tscn" id="8_toaoc"]
+[ext_resource type="PackedScene" uid="uid://dmpodkv6vbyts" path="res://scenes/bosque/Props/tree_3.tscn" id="9_ou486"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_rdcux"]
+size = Vector2(864, 23)
+
+[node name="Test_room" type="Node2D"]
+texture_filter = 1
+
+[node name="Background" type="Sprite2D" parent="."]
+z_index = -2
+texture_filter = 1
+position = Vector2(960, 540)
+scale = Vector2(6, 5.625)
+texture = ExtResource("4_tnl7u")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+anchor_mode = 0
+
+[node name="Walls" type="Node2D" parent="."]
+z_as_relative = false
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Walls"]
+collision_layer = 16
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Walls/StaticBody2D"]
+position = Vector2(433.5, 25.5)
+shape = SubResource("RectangleShape2D_rdcux")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Walls/StaticBody2D"]
+position = Vector2(1488, 23)
+shape = SubResource("RectangleShape2D_rdcux")
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="Walls/StaticBody2D"]
+position = Vector2(435, 1068)
+shape = SubResource("RectangleShape2D_rdcux")
+
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="Walls/StaticBody2D"]
+position = Vector2(1488, 1068.5)
+shape = SubResource("RectangleShape2D_rdcux")
+
+[node name="top1" type="Sprite2D" parent="Walls"]
+position = Vector2(390, 33)
+scale = Vector2(5, 5)
+texture = ExtResource("6_pw2pw")
+
+[node name="top2" type="Sprite2D" parent="Walls"]
+position = Vector2(1534, 33)
+scale = Vector2(-5, 5)
+texture = ExtResource("6_pw2pw")
+
+[node name="bottom1" type="Sprite2D" parent="Walls"]
+z_index = 100
+position = Vector2(381, 1062)
+scale = Vector2(5, 5)
+texture = ExtResource("7_u444h")
+
+[node name="bottom2" type="Sprite2D" parent="Walls"]
+z_index = 100
+position = Vector2(1546, 1062)
+scale = Vector2(-5, 5)
+texture = ExtResource("7_u444h")
+
+[node name="vertical_wall_1" parent="Walls" instance=ExtResource("5_s523h")]
+z_index = 1
+position = Vector2(0, 848)
+
+[node name="vertical_wall_2" parent="Walls" instance=ExtResource("5_s523h")]
+position = Vector2(0, 211)
+
+[node name="Bush_6" parent="Walls" instance=ExtResource("7_2n6j4")]
+z_as_relative = false
+position = Vector2(0, 633)
+collision_layer = 0
+
+[node name="vertical_wall_3" parent="Walls" instance=ExtResource("5_s523h")]
+position = Vector2(1920, 848)
+
+[node name="vertical_wall_4" parent="Walls" instance=ExtResource("5_s523h")]
+position = Vector2(1920, 211)
+
+[node name="Bush_7" parent="Walls" instance=ExtResource("7_2n6j4")]
+z_as_relative = false
+position = Vector2(1920, 633)
+collision_layer = 0
+
+[node name="Tree" parent="." instance=ExtResource("8_toaoc")]
+position = Vector2(960, 620)
+
+[node name="Tree_2" parent="." instance=ExtResource("8_acgdc")]
+position = Vector2(299, 357)
+
+[node name="Tree_3" parent="." instance=ExtResource("9_ou486")]
+position = Vector2(1591, 969)
