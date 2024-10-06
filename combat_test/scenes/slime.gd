@@ -86,12 +86,12 @@ func move(delta):
 			move_towards_player(player_position, delta)
 			return
 	move_randomly(delta)
+	move_and_slide()
 
 func move_randomly(delta):
 	speed = NORMAL_SPEED
 	$SlimeSprite.speed_scale = 1
 	position += direction * speed * delta
-	move_and_slide()
 	position = position.clamp(Vector2.ZERO, screen_size)
 	
 func move_towards_player(player_position: Vector2, delta: float):
@@ -99,7 +99,6 @@ func move_towards_player(player_position: Vector2, delta: float):
 	$SlimeSprite.speed_scale = 2
 	direction = (player_position - position).normalized()
 	position += direction * speed * delta
-	move_and_slide()
 	position = position.clamp(Vector2.ZERO, screen_size)
 	
 func depth_control():

@@ -543,8 +543,6 @@ texture_filter = 1
 texture_repeat = 1
 scale = Vector2(5, 5)
 disable_mode = 1
-collision_layer = 2
-collision_mask = 3
 motion_mode = 1
 script = ExtResource("1_3q008")
 
@@ -554,7 +552,6 @@ rotation = 1.5708
 shape = SubResource("CapsuleShape2D_ayddb")
 
 [node name="SlimeSprite" type="AnimatedSprite2D" parent="."]
-modulate = Color(1, 1, 1, 0.627451)
 sprite_frames = SubResource("SpriteFrames_jyt8v")
 animation = &"death"
 
@@ -581,7 +578,6 @@ rotation = 1.5708
 shape = SubResource("CapsuleShape2D_v3v8b")
 
 [node name="Shadow" type="Sprite2D" parent="."]
-modulate = Color(1, 1, 1, 0.627451)
 z_index = -1
 position = Vector2(0, 4.8)
 texture = ExtResource("6_oklnm")
