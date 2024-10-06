@@ -1,9 +1,11 @@
-[gd_scene load_steps=5 format=3 uid="uid://cb2qhnv6mx7re"]
+[gd_scene load_steps=6 format=3 uid="uid://cb2qhnv6mx7re"]
 
 [ext_resource type="Script" path="res://combat_test.gd" id="1_d6sd7"]
 [ext_resource type="PackedScene" uid="uid://bp8hvd0qc4txe" path="res://scenes/knight.tscn" id="2_sfd7i"]
+
 [ext_resource type="PackedScene" uid="uid://bxfm6nxfi50s0" path="res://scenes/slime_boss.tscn" id="3_i4td7"]
 [ext_resource type="Texture2D" uid="uid://b6fi4srgcv1sp" path="res://maps/test/test.png" id="4_tnl7u"]
+
 
 [node name="combat_test" type="Node2D"]
 script = ExtResource("1_d6sd7")
