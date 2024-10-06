@@ -20,6 +20,10 @@ func listener():
 		pause()
 	elif Input.is_action_just_pressed("pause") and get_tree().paused:
 		resume()
+	if Input.is_action_just_pressed("pause2") and !get_tree().paused:
+		pause()
+	elif Input.is_action_just_pressed("pause2") and get_tree().paused:
+		resume()
 
 func _on_resume_pressed() -> void:
 	resume()
