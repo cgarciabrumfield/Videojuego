@@ -22,7 +22,6 @@ script = ExtResource("1_d6sd7")
 visible = false
 
 [node name="black_knight" parent="." instance=ExtResource("5_0kaja")]
-visible = false
 
 [node name="Background" type="Sprite2D" parent="."]
 z_index = -2
