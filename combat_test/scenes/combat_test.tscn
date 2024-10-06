@@ -13,6 +13,7 @@ size = Vector2(864, 23)
 size = Vector2(20, 433)
 
 [node name="combat_test" type="Node2D"]
+texture_filter = 1
 script = ExtResource("1_d6sd7")
 
 [node name="Player" parent="." instance=ExtResource("2_sfd7i")]
