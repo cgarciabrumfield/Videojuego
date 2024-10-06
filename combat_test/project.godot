@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="combat_test"
-run/main_scene="res://scenes/combat_test.tscn"
+run/main_scene="res://scenes/screen_title.tscn"
 config/features=PackedStringArray("4.3", "Forward Plus")
 config/icon="res://icon.svg"
 
