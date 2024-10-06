@@ -84,9 +84,9 @@ func move(delta): # Función que mueve al personaje
 		elif !is_attacking && !is_blocking && !is_hurt && !is_parrying: #Si no estamos corriendo y tampoco hemos sido heridos, animación iddle
 			$AnimationPlayer.play(str("iddle_" + direction))
 		# Actualizamos la posición según el vector de dirección y delta (constancia fps)
-		position += velocity * delta
+		#position += velocity * delta
 		move_and_slide()
-		position = position.clamp(Vector2.ZERO, screen_size)
+		#position = position.clamp(Vector2.ZERO, screen_size)
 # Función de ataque. Si ha sido pulsado y no estamos bloqueando ni reciviendo daño, tiene lugar	
 func attack():
 	if !is_blocking && !is_hurt && !is_parrying:
@@ -170,7 +170,8 @@ func _on_inmune_timer_timeout():
 		
 func _physics_process(delta: float) -> void:
 	if knockback_timer > 0:
-		position += knockback_velocity * delta  # Actualiza la posición manualmente
+		velocity = knockback_velocity
+		move_and_slide()
 		# Reducir suavemente la velocidad del retroceso
 		knockback_velocity = lerp(knockback_velocity, Vector2.ZERO, 0.1)
 		# Reduce el temporizador del retroceso

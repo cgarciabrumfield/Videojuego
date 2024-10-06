@@ -60,10 +60,11 @@ func take_damage(ammount: int, knockback_direction: Vector2, knockback_strength)
 		
 func _physics_process(delta: float) -> void:
 	if knockback_timer > 0:
-		position += knockback_velocity * delta  # Actualiza la posición manualmente
+		velocity = knockback_velocity
+		move_and_slide()
 		# Reducir suavemente la velocidad del retroceso
 		knockback_velocity = lerp(knockback_velocity, Vector2.ZERO, 0.1)
-		#Reduce el temporizador del retroceso
+		# Reduce el temporizador del retroceso
 		knockback_timer -= delta
 		
 func _on_timer_timeout() -> void:
@@ -80,18 +81,11 @@ func kill():
 	queue_free()
 	
 func move(delta):
+	velocity = Vector2.ZERO
 	var player_position = get_player_position()
 	if (player_position != null):
 		move_towards_player(player_position, delta)
 		return
-	move_randomly(delta)
-
-func move_randomly(delta):
-	speed = NORMAL_SPEED
-	$SlimeSprite.speed_scale = 1
-	position += direction * speed * delta
-	move_and_slide()
-	position = position.clamp(Vector2.ZERO, screen_size)
 	
 func move_towards_player(player_position: Vector2, delta: float):
 	speed = RUN_SPEED

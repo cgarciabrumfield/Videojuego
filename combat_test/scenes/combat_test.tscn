@@ -1,9 +1,16 @@
-[gd_scene load_steps=5 format=3 uid="uid://cb2qhnv6mx7re"]
+[gd_scene load_steps=8 format=3 uid="uid://cb2qhnv6mx7re"]
 
 [ext_resource type="Script" path="res://combat_test.gd" id="1_d6sd7"]
 [ext_resource type="PackedScene" uid="uid://bp8hvd0qc4txe" path="res://scenes/knight.tscn" id="2_sfd7i"]
 [ext_resource type="PackedScene" uid="uid://bxfm6nxfi50s0" path="res://scenes/slime_boss.tscn" id="3_i4td7"]
 [ext_resource type="Texture2D" uid="uid://b6fi4srgcv1sp" path="res://maps/test/test.png" id="4_tnl7u"]
+[ext_resource type="PackedScene" uid="uid://bd1rec7dsrw3y" path="res://scenes/black_knight.tscn" id="5_0kaja"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_rdcux"]
+size = Vector2(864, 23)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0xmip"]
+size = Vector2(20, 433)
 
 [node name="combat_test" type="Node2D"]
 script = ExtResource("1_d6sd7")
@@ -11,8 +18,12 @@ script = ExtResource("1_d6sd7")
 [node name="Player" parent="." instance=ExtResource("2_sfd7i")]
 
 [node name="Slime_boss" parent="." instance=ExtResource("3_i4td7")]
+visible = false
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
+[node name="black_knight" parent="." instance=ExtResource("5_0kaja")]
+visible = false
+
+[node name="Background" type="Sprite2D" parent="."]
 z_index = -2
 texture_filter = 1
 position = Vector2(960, 540)
@@ -21,3 +32,41 @@ texture = ExtResource("4_tnl7u")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 anchor_mode = 0
+
+[node name="Walls" type="Node2D" parent="."]
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Walls"]
+collision_layer = 16
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Walls/StaticBody2D"]
+position = Vector2(433.5, 11.5)
+shape = SubResource("RectangleShape2D_rdcux")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Walls/StaticBody2D"]
+position = Vector2(1488, 12)
+shape = SubResource("RectangleShape2D_rdcux")
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="Walls/StaticBody2D"]
+position = Vector2(435, 1068)
+shape = SubResource("RectangleShape2D_rdcux")
+
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="Walls/StaticBody2D"]
+position = Vector2(1488, 1068.5)
+shape = SubResource("RectangleShape2D_rdcux")
+
+[node name="CollisionShape2D5" type="CollisionShape2D" parent="Walls/StaticBody2D"]
+position = Vector2(10, 213.5)
+shape = SubResource("RectangleShape2D_0xmip")
+
+[node name="CollisionShape2D6" type="CollisionShape2D" parent="Walls/StaticBody2D"]
+position = Vector2(10, 855.25)
+shape = SubResource("RectangleShape2D_0xmip")
+
+[node name="CollisionShape2D7" type="CollisionShape2D" parent="Walls/StaticBody2D"]
+position = Vector2(1910, 216.5)
+shape = SubResource("RectangleShape2D_0xmip")
+
+[node name="CollisionShape2D8" type="CollisionShape2D" parent="Walls/StaticBody2D"]
+position = Vector2(1910, 855.75)
+shape = SubResource("RectangleShape2D_0xmip")
