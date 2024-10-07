@@ -15,6 +15,9 @@ size = Vector2(864, 23)
 [node name="Test_room" type="Node2D"]
 texture_filter = 1
 
+[node name="Camera2D" type="Camera2D" parent="."]
+anchor_mode = 0
+
 [node name="Background" type="Sprite2D" parent="."]
 z_index = -2
 texture_filter = 1
@@ -22,11 +25,7 @@ position = Vector2(960, 540)
 scale = Vector2(6, 5.625)
 texture = ExtResource("4_tnl7u")
 
-[node name="Camera2D" type="Camera2D" parent="."]
-anchor_mode = 0
-
 [node name="Walls" type="Node2D" parent="."]
-z_as_relative = false
 
 [node name="StaticBody2D" type="StaticBody2D" parent="Walls"]
 collision_layer = 16
@@ -72,13 +71,13 @@ texture = ExtResource("7_u444h")
 
 [node name="vertical_wall_1" parent="Walls" instance=ExtResource("5_s523h")]
 z_index = 1
+z_as_relative = true
 position = Vector2(0, 848)
 
 [node name="vertical_wall_2" parent="Walls" instance=ExtResource("5_s523h")]
 position = Vector2(0, 211)
 
 [node name="Bush_6" parent="Walls" instance=ExtResource("7_2n6j4")]
-z_as_relative = false
 position = Vector2(0, 633)
 collision_layer = 0
 
