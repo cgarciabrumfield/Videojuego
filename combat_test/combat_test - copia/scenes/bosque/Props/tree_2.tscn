@@ -1,0 +1,45 @@
+[gd_scene load_steps=6 format=3 uid="uid://bjkratfq4pj3f"]
+
+[ext_resource type="Script" path="res://scenes/bosque/Props/tree.gd" id="1_yrwwe"]
+[ext_resource type="Texture2D" uid="uid://ctt07hh42gsxy" path="res://assets/sprites/bigger_shadow.png" id="2_epugx"]
+[ext_resource type="Texture2D" uid="uid://mrr0pn7pccwb" path="res://maps/test/tree_2.png" id="3_ahyfx"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_3bk8t"]
+radius = 8.24621
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_garvu"]
+radius = 24.6
+height = 59.2
+
+[node name="Tree_2" type="Area2D"]
+texture_filter = 1
+scale = Vector2(5, 5)
+collision_layer = 0
+collision_mask = 7
+script = ExtResource("1_yrwwe")
+
+[node name="Tree" type="StaticBody2D" parent="."]
+collision_layer = 16
+collision_mask = 0
+
+[node name="Shadow" type="Sprite2D" parent="Tree"]
+z_as_relative = false
+position = Vector2(0, 1)
+texture = ExtResource("2_epugx")
+
+[node name="Tree_stump" type="CollisionShape2D" parent="Tree"]
+position = Vector2(0, -2.4)
+rotation = 1.5708
+scale = Vector2(0.3, 0.3)
+shape = SubResource("CircleShape2D_3bk8t")
+
+[node name="Tree_sprite" type="Sprite2D" parent="."]
+position = Vector2(0.5, -31.8)
+texture = ExtResource("3_ahyfx")
+
+[node name="Area_behind_tree" type="CollisionShape2D" parent="."]
+position = Vector2(-2.98023e-08, -36)
+shape = SubResource("CapsuleShape2D_garvu")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_exited" from="." to="." method="_on_body_exited"]
