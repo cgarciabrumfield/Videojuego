@@ -19,3 +19,5 @@ func _on_area_entered(hitbox) -> void:
 		knockback_direction = (owner.global_position - hitbox.global_position).normalized()
 		knockback_strengh = hitbox.knockback
 		owner.take_damage(hitbox.damage, knockback_direction, knockback_strengh)
+	else:
+		print("Cebolleta")
