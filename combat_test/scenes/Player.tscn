@@ -1,6 +1,6 @@
-[gd_scene load_steps=304 format=3 uid="uid://bp8hvd0qc4txe"]
+[gd_scene load_steps=305 format=3 uid="uid://bp8hvd0qc4txe"]
 
-[ext_resource type="Script" path="res://scenes/knight.gd" id="1_02emr"]
+[ext_resource type="Script" path="res://scenes/player.gd" id="1_02emr"]
 [ext_resource type="Texture2D" uid="uid://bvhoh6ek5sxhx" path="res://assets/sprites/knights/green_knight/Green Knight attack 1 Sprite-sheet 32x32.png" id="1_cwjgh"]
 [ext_resource type="Texture2D" uid="uid://d0etibyfyrk6e" path="res://assets/sprites/knights/green_knight/Green Knight idle Sprite-sheet 16x16.png" id="1_ileur"]
 [ext_resource type="Texture2D" uid="uid://2gr06ageubko" path="res://assets/sprites/knights/green_knight/Green Knight attack 2 Sprite-sheet 32x32.png" id="2_cbhjw"]
@@ -1998,6 +1998,30 @@ tracks/12/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [false]
+}
+tracks/13/type = "value"
+tracks/13/imported = false
+tracks/13/enabled = true
+tracks/13/path = NodePath("KnightSprite:scale")
+tracks/13/interp = 1
+tracks/13/loop_wrap = true
+tracks/13/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+tracks/14/type = "value"
+tracks/14/imported = false
+tracks/14/enabled = true
+tracks/14/path = NodePath("KnightSprite:rotation")
+tracks/14/interp = 1
+tracks/14/loop_wrap = true
+tracks/14/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [6.28319]
 }
 
 [sub_resource type="Animation" id="Animation_qseog"]
@@ -7824,6 +7848,46 @@ tracks/11/keys = {
 "values": [false]
 }
 
+[sub_resource type="Animation" id="Animation_6b2f1"]
+resource_name = "voltereta"
+length = 0.4
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("KnightSprite:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(1, 0), Vector2(1, 1), Vector2(1, 0), Vector2(1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("KnightSprite:animation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.3, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [&"iddle_down", &"run_up", &"run_down", &"iddle_down"]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("KnightSprite:rotation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.1001, 0.2, 0.3, 0.301),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [0.0, 0.0, 3.14159, 3.14159, 3.14159, 0.0]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_0fc2o"]
 _data = {
 "RESET": SubResource("Animation_cykfu"),
@@ -7866,7 +7930,8 @@ _data = {
 "stop_block_down": SubResource("Animation_2u4ok"),
 "stop_block_left": SubResource("Animation_c4l03"),
 "stop_block_right": SubResource("Animation_p1gf5"),
-"stop_block_up": SubResource("Animation_ck86w")
+"stop_block_up": SubResource("Animation_ck86w"),
+"voltereta": SubResource("Animation_6b2f1")
 }
 
 [sub_resource type="Animation" id="Animation_ng6hg"]
@@ -8080,8 +8145,13 @@ _data = {
 [node name="Player" type="CharacterBody2D"]
 texture_filter = 1
 scale = Vector2(5, 5)
+<<<<<<< HEAD:combat_test/scenes/knight.tscn
+=======
+collision_mask = 54
+>>>>>>> 9102c080e08bfbcbae5b3df107173bb5efd95afa:combat_test/scenes/Player.tscn
 motion_mode = 1
 script = ExtResource("1_02emr")
+speed = 300
 metadata/_edit_group_ = true
 
 [node name="CollisionBox" type="CollisionShape2D" parent="."]
@@ -8091,6 +8161,7 @@ scale = Vector2(0.5, 0.5)
 shape = SubResource("RectangleShape2D_c2apc")
 
 [node name="KnightSprite" type="AnimatedSprite2D" parent="."]
+rotation = 6.28319
 sprite_frames = SubResource("SpriteFrames_0mgto")
 animation = &"iddle_down"
 
