@@ -1,6 +1,6 @@
 [gd_scene load_steps=285 format=3 uid="uid://bd1rec7dsrw3y"]
 
-[ext_resource type="Script" path="res://scenes/bosque/enemigos/black_knight.gd" id="1_58v2s"]
+[ext_resource type="Script" path="res://scenes/black_knight.gd" id="1_58v2s"]
 [ext_resource type="Texture2D" uid="uid://csypftj7ixnex" path="res://assets/sprites/enemies/black_knight/Dark Yellow Knight attack 2 Sprite-sheet 32x32.png" id="2_g2gem"]
 [ext_resource type="Texture2D" uid="uid://fwcn3p5errar" path="res://assets/sprites/enemies/black_knight/Dark Yellow Knight attack 1 Sprite-sheet 32x32.png" id="3_38wsg"]
 [ext_resource type="Texture2D" uid="uid://bjem4fhuxitks" path="res://assets/sprites/enemies/black_knight/Dark Yellow Knight block Sprite-sheet 16x20.png" id="4_cim4g"]

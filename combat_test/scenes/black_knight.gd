@@ -62,7 +62,6 @@ func _process(delta):
 		depth_control()
 
 func move(delta):
-	velocity = Vector2.ZERO
 	var player_position = get_player_position()
 	if (player_position != null):
 		if (position.distance_to(player_position) <= detection_range):
@@ -156,8 +155,7 @@ func take_damage(damage: int, knockback_direction: Vector2, knockback_strength: 
 		
 func _physics_process(delta: float) -> void:
 	if knockback_timer > 0:
-		velocity = knockback_velocity
-		move_and_slide()
+		position += knockback_velocity * delta  # Actualiza la posición manualmente
 		# Reducir suavemente la velocidad del retroceso
 		knockback_velocity = lerp(knockback_velocity, Vector2.ZERO, 0.1)
 		# Reduce el temporizador del retroceso
@@ -183,7 +181,8 @@ func kill():
 func depth_control():
 	# Actualizamos el valor de profundidad del eje z según la altura del personaje en el eje y
 	normalized_Y_pos = position.y / screen_size.y
-	z_index = normalized_Y_pos * 90 + 10
+	# Esta cosa extraña es para poner el valor de z en el rango posible según donde se ejecute el juego
+	z_index = normalized_Y_pos * 2*RenderingServer.CANVAS_ITEM_Z_MAX + RenderingServer.CANVAS_ITEM_Z_MIN
 	
 func get_player_position():
 	if get_parent() != null:

@@ -19,17 +19,6 @@ config/icon="res://icon.svg"
 
 buses/default_bus_layout=""
 
-<<<<<<< HEAD
-=======
-[display]
-
-window/size/viewport_width=1920
-window/size/viewport_height=1080
-window/size/mode=3
-window/size/initial_position_type=0
-window/stretch/mode="canvas_items"
-
->>>>>>> 9102c080e08bfbcbae5b3df107173bb5efd95afa
 [input]
 
 up={
@@ -85,13 +74,5 @@ pause2={
 
 [layer_names]
 
-<<<<<<< HEAD
 2d_physics/layer_2="attacks"
 2d_physics/layer_3="parrys"
-=======
-2d_physics/layer_1="Player"
-2d_physics/layer_2="Enemies"
-2d_physics/layer_3="Bosses"
-2d_physics/layer_4="Proyectiles"
-2d_physics/layer_5="Muros"
->>>>>>> 9102c080e08bfbcbae5b3df107173bb5efd95afa
