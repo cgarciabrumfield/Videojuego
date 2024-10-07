@@ -8,6 +8,7 @@ func _process(delta: float) -> void:
 
 #pauses and makes the pause menu visible
 func resume():
+	
 	get_tree().paused = false
 	$AnimationPlayer.play_backwards("blur")
 

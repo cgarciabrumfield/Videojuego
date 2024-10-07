@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://ddr7x4g7y2pmn"]
 
 [ext_resource type="Script" path="res://scripts/screen_title.gd" id="1_gkkox"]
-[ext_resource type="Texture2D" uid="uid://c0x364e2lfnrn" path="res://screen_title.png" id="2_hm88r"]
+[ext_resource type="Texture2D" uid="uid://btr36r07f7gd4" path="res://assets/screen_title.png" id="2_hm88r"]
 
 [node name="screen_title" type="Control"]
 layout_mode = 3
@@ -23,10 +23,10 @@ texture = ExtResource("2_hm88r")
 
 [node name="start_Button" type="Button" parent="."]
 layout_mode = 0
-offset_left = 827.0
-offset_top = 393.0
-offset_right = 1066.0
-offset_bottom = 461.0
+offset_left = 1367.0
+offset_top = 683.0
+offset_right = 1606.0
+offset_bottom = 751.0
 text = "Start"
 
 [node name="quit_button" type="Button" parent="start_Button"]
@@ -38,5 +38,5 @@ text = "Quit
 "
 
 [connection signal="pressed" from="start_Button" to="." method="_on_start_button_pressed"]
-[connection signal="pressed" from="start_Button/quit_button" to="." method="_on_quit_button_pressed"]
 [connection signal="pressed" from="start_Button/quit_button" to="." method="_on_start_button_pressed"]
+[connection signal="pressed" from="start_Button/quit_button" to="." method="_on_quit_button_pressed"]
