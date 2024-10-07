@@ -7,6 +7,7 @@ var screen_size
 const NORMAL_SPEED = 50
 const RUN_SPEED = 80
 @export var speed = NORMAL_SPEED # Velocidad a la que se moverá el limo
+@export var detection_range = 200
 var direction_change_interval: float = 2.0 # Tiempo para cambiar de dirección
 var timer: float = 0.0 # Timer para controlar el cambio de dirección
 var direction: Vector2 = Vector2.ZERO # Vector de dirección inicial
@@ -25,7 +26,6 @@ func _ready() -> void:
 	health = maxHealth
 	screen_size = get_viewport_rect().size
 	position = Vector2(randi_range(0, screen_size.x), randi_range(0, screen_size.y))
-	
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
@@ -60,11 +60,10 @@ func take_damage(ammount: int, knockback_direction: Vector2, knockback_strength)
 		
 func _physics_process(delta: float) -> void:
 	if knockback_timer > 0:
-		velocity = knockback_velocity
-		move_and_slide()
+		position += knockback_velocity * delta  # Actualiza la posición manualmente
 		# Reducir suavemente la velocidad del retroceso
 		knockback_velocity = lerp(knockback_velocity, Vector2.ZERO, 0.1)
-		# Reduce el temporizador del retroceso
+		#Reduce el temporizador del retroceso
 		knockback_timer -= delta
 		
 func _on_timer_timeout() -> void:
@@ -81,36 +80,36 @@ func kill():
 	queue_free()
 	
 func move(delta):
-	velocity = Vector2.ZERO
 	var player_position = get_player_position()
 	if (player_position != null):
-		move_towards_player(player_position, delta)
-		return
+		if (position.distance_to(player_position) <= detection_range):
+			move_towards_player(player_position, delta)
+			return
+	move_randomly(delta)
+	move_and_slide()
+
+func move_randomly(delta):
+	speed = NORMAL_SPEED
+	$SlimeSprite.speed_scale = 1
+	position += direction * speed * delta
+	position = position.clamp(Vector2.ZERO, screen_size)
 	
 func move_towards_player(player_position: Vector2, delta: float):
 	speed = RUN_SPEED
 	$SlimeSprite.speed_scale = 2
 	direction = (player_position - position).normalized()
 	position += direction * speed * delta
-	move_and_slide()
 	position = position.clamp(Vector2.ZERO, screen_size)
 	
 func depth_control():
 	# Actualizamos el valor de profundidad del eje z según la altura del personaje en el eje y
 	normalized_Y_pos = position.y / screen_size.y
 	# Esta cosa extraña es para poner el valor de z en el rango posible según donde se ejecute el juego
-	z_index = normalized_Y_pos * 90 + 10
-	
+	z_index = normalized_Y_pos * 2*RenderingServer.CANVAS_ITEM_Z_MAX + RenderingServer.CANVAS_ITEM_Z_MIN
+
 func get_player_position():
 	if get_parent() != null:
 		var parent = get_parent()
 		if parent.has_node("Player"):
 			return parent.get_node("Player").position
-	return null
-	
-func get_boss():
-	if get_parent() != null:
-		var parent = get_parent()
-		if parent.has_node("Slime_boss"):
-			return parent.get_node("Slime_boss")
 	return null
