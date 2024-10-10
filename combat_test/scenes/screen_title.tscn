@@ -1,9 +1,10 @@
-[gd_scene load_steps=22 format=3 uid="uid://ddr7x4g7y2pmn"]
+[gd_scene load_steps=23 format=3 uid="uid://ddr7x4g7y2pmn"]
 
 [ext_resource type="Script" path="res://scripts/screen_title.gd" id="1_gkkox"]
-[ext_resource type="FontFile" uid="uid://bb74qb2rqf4ub" path="res://assets/Silkscreen_font/Silkscreen-Regular.ttf" id="2_7r5ik"]
 [ext_resource type="Texture2D" uid="uid://kbv1sawkxgmk" path="res://test.png" id="2_l2ql4"]
+[ext_resource type="Theme" uid="uid://cs55wonthksqc" path="res://assets/GUI/button_theme.tres" id="3_5pxrt"]
 [ext_resource type="Texture2D" uid="uid://dkba5c2e1xcmk" path="res://assets/sprites/knights/green_knight/Green Knight standby Sprite-sheet 16x16.png" id="3_dyotv"]
+[ext_resource type="FontFile" uid="uid://bb74qb2rqf4ub" path="res://assets/GUI/Silkscreen_font/Silkscreen-Regular.ttf" id="5_560ln"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_wmyrg"]
 atlas = ExtResource("3_dyotv")
@@ -150,6 +151,7 @@ offset_left = 1424.0
 offset_top = 684.0
 offset_right = 1663.0
 offset_bottom = 752.0
+theme = ExtResource("3_5pxrt")
 text = "Start"
 
 [node name="quit_button" type="Button" parent="background/start_Button"]
@@ -173,14 +175,14 @@ offset_left = 125.0
 offset_top = -34.0
 offset_right = 1788.0
 offset_bottom = 470.0
-theme_override_fonts/font = ExtResource("2_7r5ik")
-theme_override_font_sizes/font_size = 125
+theme_override_fonts/font = ExtResource("5_560ln")
+theme_override_font_sizes/font_size = 150
 text = "Knight's curse"
 horizontal_alignment = 1
 vertical_alignment = 1
 uppercase = true
 
 [connection signal="pressed" from="background/start_Button" to="." method="_on_start_button_pressed"]
-[connection signal="pressed" from="background/start_Button/quit_button" to="." method="_on_quit_button_pressed"]
 [connection signal="pressed" from="background/start_Button/quit_button" to="." method="_on_start_button_pressed"]
+[connection signal="pressed" from="background/start_Button/quit_button" to="." method="_on_quit_button_pressed"]
 [connection signal="ready" from="background/knight_sprite" to="." method="_on_knight_sprite_ready"]
