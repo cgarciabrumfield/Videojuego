@@ -1,94 +1,99 @@
-[gd_scene load_steps=6 format=3 uid="uid://cdynk4xsmcu8y"]
+[gd_scene load_steps=14 format=3 uid="uid://cdynk4xsmcu8y"]
 
-[ext_resource type="PackedScene" uid="uid://bt7n8ow4m2ajs" path="res://scenes/bosque/Props/bush_2.tscn" id="1_khpmv"]
-[ext_resource type="PackedScene" uid="uid://d4cf65pe6oa00" path="res://scenes/bosque/Props/bush_3.tscn" id="2_8tdkk"]
-[ext_resource type="PackedScene" uid="uid://3d3bomcydsmx" path="res://scenes/bosque/Props/bush_4.tscn" id="3_2os6s"]
-[ext_resource type="PackedScene" uid="uid://qa2iaj1behmm" path="res://scenes/bosque/Props/bush_6.tscn" id="4_7ptc1"]
+[ext_resource type="Texture2D" uid="uid://b6fi4srgcv1sp" path="res://maps/test/test.png" id="1_klr43"]
+[ext_resource type="Texture2D" uid="uid://bc51gjd8x1ig4" path="res://maps/test/walls/bush_wall_bottom_open.png" id="2_ibob7"]
+[ext_resource type="Texture2D" uid="uid://cixwtsd57x80l" path="res://maps/test/walls/bush_wall_bottom_closed.png" id="3_6cte4"]
+[ext_resource type="Texture2D" uid="uid://b2dlg2hi6ydvo" path="res://maps/test/walls/bush_wall_left_open.png" id="4_bl4oc"]
+[ext_resource type="Texture2D" uid="uid://e5al04thfbl2" path="res://maps/test/walls/bush_wall_left_closed.png" id="5_o85r1"]
+[ext_resource type="Texture2D" uid="uid://cymwnvva5bfv8" path="res://maps/test/walls/bush_wall_right_closed.png" id="6_gw2jl"]
+[ext_resource type="Texture2D" uid="uid://bvmifhp06kyi6" path="res://maps/test/walls/bush_wall_top_open.png" id="6_tviuq"]
+[ext_resource type="Texture2D" uid="uid://dqmfqf5olvsea" path="res://maps/test/walls/bush_wall_right_open.png" id="7_w2u4y"]
+[ext_resource type="Texture2D" uid="uid://5js2qsfvlasd" path="res://maps/test/walls/bush_wall_top_closed.png" id="8_vpdi5"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_uhuyf"]
-size = Vector2(59, 433)
+[sub_resource type="SpriteFrames" id="SpriteFrames_dqrvp"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("5_o85r1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_bl4oc")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
 
-[node name="vertical_wall_1" type="Node2D"]
-z_as_relative = false
+[sub_resource type="SpriteFrames" id="SpriteFrames_ych5e"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_6cte4")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_ibob7")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
 
-[node name="Bush_2" parent="." instance=ExtResource("1_khpmv")]
-z_as_relative = false
-position = Vector2(0, 181.5)
-collision_layer = 0
+[sub_resource type="SpriteFrames" id="SpriteFrames_n4exg"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("6_gw2jl")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_w2u4y")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
 
-[node name="Bush_3" parent="." instance=ExtResource("2_8tdkk")]
-z_as_relative = false
-position = Vector2(0, -195.5)
-collision_layer = 0
+[sub_resource type="SpriteFrames" id="SpriteFrames_vkibj"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("8_vpdi5")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_tviuq")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
 
-[node name="Bush_4" parent="." instance=ExtResource("3_2os6s")]
-z_as_relative = false
-position = Vector2(0, -154.5)
-collision_layer = 0
+[node name="Node2D" type="Node2D"]
+texture_filter = 1
+scale = Vector2(6, 5.625)
 
-[node name="Bush_6" parent="." instance=ExtResource("4_7ptc1")]
-z_as_relative = false
-position = Vector2(0, 147.5)
-collision_layer = 0
+[node name="Camera2D" type="Camera2D" parent="."]
+scale = Vector2(1, 1)
 
-[node name="Bush_7" parent="." instance=ExtResource("2_8tdkk")]
-z_as_relative = false
-position = Vector2(0, 185.5)
-collision_layer = 0
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 
-[node name="Bush_9" parent="." instance=ExtResource("1_khpmv")]
-z_as_relative = false
-position = Vector2(0, 102.5)
-collision_layer = 0
+[node name="Ground" type="Sprite2D" parent="."]
+texture = ExtResource("1_klr43")
 
-[node name="Bush_10" parent="." instance=ExtResource("2_8tdkk")]
-z_as_relative = false
-position = Vector2(0, 74.5)
-collision_layer = 0
+[node name="Left_wall" type="Node2D" parent="."]
 
-[node name="Bush_11" parent="." instance=ExtResource("3_2os6s")]
-z_as_relative = false
-position = Vector2(0, 27.5)
-collision_layer = 0
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Left_wall"]
+sprite_frames = SubResource("SpriteFrames_dqrvp")
 
-[node name="Bush_12" parent="." instance=ExtResource("2_8tdkk")]
-z_as_relative = false
-position = Vector2(0, -8.5)
-collision_layer = 0
+[node name="Bottom_wall" type="Node2D" parent="."]
 
-[node name="Bush_13" parent="." instance=ExtResource("3_2os6s")]
-z_as_relative = false
-position = Vector2(0, -53.5)
-collision_layer = 0
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Bottom_wall"]
+sprite_frames = SubResource("SpriteFrames_ych5e")
 
-[node name="Bush_14" parent="." instance=ExtResource("2_8tdkk")]
-z_as_relative = false
-position = Vector2(0, -103.5)
-collision_layer = 0
+[node name="Right_wall" type="Node2D" parent="."]
 
-[node name="Bush_15" parent="." instance=ExtResource("1_khpmv")]
-z_as_relative = false
-position = Vector2(0, -145.5)
-collision_layer = 0
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Right_wall"]
+sprite_frames = SubResource("SpriteFrames_n4exg")
 
-[node name="Bush_8" parent="." instance=ExtResource("2_8tdkk")]
-z_as_relative = false
-position = Vector2(0, 116.5)
-collision_layer = 0
+[node name="Top_wall" type="Node2D" parent="."]
 
-[node name="Bush_5" parent="." instance=ExtResource("3_2os6s")]
-z_as_relative = false
-position = Vector2(0, 190)
-collision_layer = 0
-
-[node name="Bush_16" parent="." instance=ExtResource("3_2os6s")]
-position = Vector2(3.00001, -195)
-collision_layer = 0
-
-[node name="StaticBody2D" type="StaticBody2D" parent="."]
-collision_layer = 16
-collision_mask = 0
-
-[node name="CollisionShape2D6" type="CollisionShape2D" parent="StaticBody2D"]
-position = Vector2(0, -7)
-shape = SubResource("RectangleShape2D_uhuyf")
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Top_wall"]
+sprite_frames = SubResource("SpriteFrames_vkibj")

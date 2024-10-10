@@ -1,0 +1,144 @@
+[gd_scene load_steps=19 format=3 uid="uid://b01k7nnqxd7jq"]
+
+[ext_resource type="Texture2D" uid="uid://b6fi4srgcv1sp" path="res://maps/test/test.png" id="1_417xy"]
+[ext_resource type="Script" path="res://scenes/test_room_2.gd" id="1_nfsnx"]
+[ext_resource type="Texture2D" uid="uid://5js2qsfvlasd" path="res://maps/test/walls/bush_wall_top_closed.png" id="2_k2qlo"]
+[ext_resource type="Texture2D" uid="uid://bvmifhp06kyi6" path="res://maps/test/walls/bush_wall_top_open.png" id="3_x5us2"]
+[ext_resource type="Texture2D" uid="uid://e5al04thfbl2" path="res://maps/test/walls/bush_wall_left_closed.png" id="4_cigtk"]
+[ext_resource type="Texture2D" uid="uid://b2dlg2hi6ydvo" path="res://maps/test/walls/bush_wall_left_open.png" id="5_0npd8"]
+[ext_resource type="Texture2D" uid="uid://cixwtsd57x80l" path="res://maps/test/walls/bush_wall_bottom_closed.png" id="6_mek21"]
+[ext_resource type="Texture2D" uid="uid://bc51gjd8x1ig4" path="res://maps/test/walls/bush_wall_bottom_open.png" id="7_5qack"]
+[ext_resource type="Texture2D" uid="uid://cymwnvva5bfv8" path="res://maps/test/walls/bush_wall_right_closed.png" id="8_kw6k3"]
+[ext_resource type="Texture2D" uid="uid://dqmfqf5olvsea" path="res://maps/test/walls/bush_wall_right_open.png" id="9_11p1f"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_vkibj"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_k2qlo")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_x5us2")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_dqrvp"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_cigtk")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_0npd8")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ych5e"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("6_mek21")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_5qack")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_n4exg"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("8_kw6k3")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_11p1f")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_rt5ux"]
+size = Vector2(20, 75.4222)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_y0hd6"]
+size = Vector2(20, 79.8667)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_5k6fi"]
+size = Vector2(20, 36.0889)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_h2n30"]
+size = Vector2(20, 36.1333)
+
+[node name="Test_room_2" type="Node2D"]
+texture_filter = 1
+scale = Vector2(6, 5.625)
+script = ExtResource("1_nfsnx")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+scale = Vector2(1, 1)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+
+[node name="Ground" type="Sprite2D" parent="."]
+texture = ExtResource("1_417xy")
+
+[node name="Top_wall" type="Node2D" parent="."]
+visible = false
+z_index = 101
+z_as_relative = false
+scale = Vector2(1, 1)
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Top_wall"]
+sprite_frames = SubResource("SpriteFrames_vkibj")
+
+[node name="Left_wall" type="Node2D" parent="."]
+visible = false
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Left_wall"]
+sprite_frames = SubResource("SpriteFrames_dqrvp")
+
+[node name="Bottom_wall" type="Node2D" parent="."]
+visible = false
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Bottom_wall"]
+sprite_frames = SubResource("SpriteFrames_ych5e")
+
+[node name="Right_wall" type="Node2D" parent="."]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Right_wall"]
+sprite_frames = SubResource("SpriteFrames_n4exg")
+
+[node name="Muro" type="StaticBody2D" parent="Right_wall"]
+position = Vector2(0.166667, -24.3556)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Right_wall/Muro"]
+position = Vector2(160, -33.956)
+scale = Vector2(1, 1)
+shape = SubResource("RectangleShape2D_rt5ux")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Right_wall/Muro"]
+position = Vector2(160, 80.467)
+scale = Vector2(1, 1)
+shape = SubResource("RectangleShape2D_y0hd6")
+
+[node name="Puerta" type="StaticBody2D" parent="Right_wall"]
+
+[node name="Puerta_Muro" type="CollisionShape2D" parent="Right_wall/Puerta"]
+position = Vector2(160.167, -2.22222)
+scale = Vector2(1, 1)
+shape = SubResource("RectangleShape2D_5k6fi")
+
+[node name="Transition_area" type="CollisionShape2D" parent="Right_wall"]
+position = Vector2(170, -2.24445)
+scale = Vector2(1, 1)
+shape = SubResource("RectangleShape2D_h2n30")
