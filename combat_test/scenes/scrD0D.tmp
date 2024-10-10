@@ -1,8 +1,7 @@
-[gd_scene load_steps=22 format=3 uid="uid://ddr7x4g7y2pmn"]
+[gd_scene load_steps=21 format=3 uid="uid://ddr7x4g7y2pmn"]
 
 [ext_resource type="Script" path="res://scripts/screen_title.gd" id="1_gkkox"]
-[ext_resource type="FontFile" uid="uid://bb74qb2rqf4ub" path="res://assets/Silkscreen_font/Silkscreen-Regular.ttf" id="2_7r5ik"]
-[ext_resource type="Texture2D" uid="uid://kbv1sawkxgmk" path="res://test.png" id="2_l2ql4"]
+[ext_resource type="Texture2D" uid="uid://btr36r07f7gd4" path="res://assets/screen_title.png" id="2_hm88r"]
 [ext_resource type="Texture2D" uid="uid://dkba5c2e1xcmk" path="res://assets/sprites/knights/green_knight/Green Knight standby Sprite-sheet 16x16.png" id="3_dyotv"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_wmyrg"]
@@ -122,7 +121,7 @@ animations = [{
 }],
 "loop": true,
 "name": &"default",
-"speed": 10.0
+"speed": 5.0
 }]
 
 [node name="screen_title" type="Control"]
@@ -140,19 +139,28 @@ layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_left = -2.0
+offset_top = 13.0
+offset_right = -2.0
+offset_bottom = 13.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("2_l2ql4")
+texture = ExtResource("2_hm88r")
 
-[node name="start_Button" type="Button" parent="background"]
+[node name="title" type="Label" parent="background"]
 layout_mode = 0
-offset_left = 1424.0
-offset_top = 684.0
-offset_right = 1663.0
-offset_bottom = 752.0
+offset_right = 40.0
+offset_bottom = 23.0
+
+[node name="start_Button" type="Button" parent="."]
+layout_mode = 0
+offset_left = 1367.0
+offset_top = 683.0
+offset_right = 1606.0
+offset_bottom = 751.0
 text = "Start"
 
-[node name="quit_button" type="Button" parent="background/start_Button"]
+[node name="quit_button" type="Button" parent="start_Button"]
 layout_mode = 1
 offset_top = 90.0
 offset_right = 239.0
@@ -160,27 +168,11 @@ offset_bottom = 158.0
 text = "Quit
 "
 
-[node name="knight_sprite" type="AnimatedSprite2D" parent="background"]
-position = Vector2(966, 797)
+[node name="knight_sprite" type="AnimatedSprite2D" parent="."]
+position = Vector2(959, 797)
 scale = Vector2(17, 17)
 sprite_frames = SubResource("SpriteFrames_li4jf")
-frame = 15
-frame_progress = 0.101185
 
-[node name="title" type="Label" parent="background"]
-layout_mode = 0
-offset_left = 125.0
-offset_top = -34.0
-offset_right = 1788.0
-offset_bottom = 470.0
-theme_override_fonts/font = ExtResource("2_7r5ik")
-theme_override_font_sizes/font_size = 125
-text = "Knight's curse"
-horizontal_alignment = 1
-vertical_alignment = 1
-uppercase = true
-
-[connection signal="pressed" from="background/start_Button" to="." method="_on_start_button_pressed"]
-[connection signal="pressed" from="background/start_Button/quit_button" to="." method="_on_quit_button_pressed"]
-[connection signal="pressed" from="background/start_Button/quit_button" to="." method="_on_start_button_pressed"]
-[connection signal="ready" from="background/knight_sprite" to="." method="_on_knight_sprite_ready"]
+[connection signal="pressed" from="start_Button" to="." method="_on_start_button_pressed"]
+[connection signal="pressed" from="start_Button/quit_button" to="." method="_on_quit_button_pressed"]
+[connection signal="pressed" from="start_Button/quit_button" to="." method="_on_start_button_pressed"]
