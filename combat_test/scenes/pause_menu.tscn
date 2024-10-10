@@ -1,6 +1,7 @@
-[gd_scene load_steps=6 format=3 uid="uid://dklqo43run32r"]
+[gd_scene load_steps=7 format=3 uid="uid://dklqo43run32r"]
 
 [ext_resource type="Script" path="res://pause_menu.gd" id="1_ggst7"]
+[ext_resource type="Theme" uid="uid://cs55wonthksqc" path="res://assets/GUI/button_theme.tres" id="2_fhqd4"]
 
 [sub_resource type="Animation" id="Animation_qbdvg"]
 length = 0.001
@@ -63,6 +64,7 @@ _data = {
 
 [node name="PauseMenu" type="Control"]
 process_mode = 3
+texture_filter = 1
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -90,23 +92,29 @@ offset_top = -130.0
 offset_right = 107.0
 offset_bottom = 129.0
 
-[node name="ColorRect" type="ColorRect" parent="PanelContainer"]
+[node name="ColorRect" type="TextureRect" parent="PanelContainer"]
 material = SubResource("CanvasItemMaterial_tqgkb")
 layout_mode = 2
+theme = ExtResource("2_fhqd4")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer/ColorRect"]
 layout_mode = 0
 offset_right = 214.0
 offset_bottom = 260.0
+theme = ExtResource("2_fhqd4")
 alignment = 1
 
 [node name="Resume" type="Button" parent="PanelContainer/ColorRect/VBoxContainer"]
+custom_minimum_size = Vector2(0, 40)
 layout_mode = 2
+theme = ExtResource("2_fhqd4")
 text = "Resume"
 autowrap_mode = 2
 
 [node name="Quit" type="Button" parent="PanelContainer/ColorRect/VBoxContainer"]
+custom_minimum_size = Vector2(0, 40)
 layout_mode = 2
+theme = ExtResource("2_fhqd4")
 text = "Quit"
 
 [connection signal="pressed" from="PanelContainer/ColorRect/VBoxContainer/Resume" to="." method="_on_resume_pressed"]
