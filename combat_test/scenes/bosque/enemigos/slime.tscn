@@ -551,6 +551,7 @@ script = ExtResource("1_3q008")
 [node name="CollisionBox" type="CollisionShape2D" parent="."]
 position = Vector2(0, 0.8)
 rotation = 1.5708
+scale = Vector2(0.98, 0.98)
 shape = SubResource("CapsuleShape2D_ayddb")
 
 [node name="SlimeSprite" type="AnimatedSprite2D" parent="."]
