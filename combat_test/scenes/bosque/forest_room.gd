@@ -35,8 +35,9 @@ var ya_explorada
 func _ready() -> void:
 	generate_walls()
 
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	num_enemies = $enemigos.get_child_count()
+	print(num_enemies)
 	if num_enemies == 0:
 		open_doors()
 
@@ -77,18 +78,18 @@ func open_doors():
 		door_top.disabled = true
 		door_top_sprite.frame = 1
 
-func _on_bottom_transition_body_entered(body: Node2D) -> void:
+func _on_bottom_transition_body_entered(_body: Node2D) -> void:
 	print("Bottom area entered")
 	get_parent().cambiar_sala(Vector2(0,1))
 
-func _on_left_transition_body_entered(body: Node2D) -> void:
+func _on_left_transition_body_entered(_body: Node2D) -> void:
 	print("Left area entered")
 	get_parent().cambiar_sala(Vector2(-1,0))
 
-func _on_right_transition_body_entered(body: Node2D) -> void:
+func _on_right_transition_body_entered(_body: Node2D) -> void:
 	print("Right area entered")
 	get_parent().cambiar_sala(Vector2(1,0))
 
-func _on_top_transition_body_entered(body: Node2D) -> void:
+func _on_top_transition_body_entered(_body: Node2D) -> void:
 	print("Top area entered")
 	get_parent().cambiar_sala(Vector2(0,-1))
