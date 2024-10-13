@@ -1,6 +1,6 @@
 [gd_scene load_steps=23 format=3 uid="uid://b01k7nnqxd7jq"]
 
-[ext_resource type="Script" path="res://scenes/forest_room.gd" id="1_8os2r"]
+[ext_resource type="Script" path="res://scenes/bosque/forest_room.gd" id="1_8os2r"]
 [ext_resource type="Texture2D" uid="uid://b6fi4srgcv1sp" path="res://maps/Bosque/test.png" id="2_fp7od"]
 [ext_resource type="Texture2D" uid="uid://5js2qsfvlasd" path="res://maps/Bosque/walls/bush_wall_top_closed.png" id="3_8pwtf"]
 [ext_resource type="Texture2D" uid="uid://bvmifhp06kyi6" path="res://maps/Bosque/walls/bush_wall_top_open.png" id="4_bv7tr"]

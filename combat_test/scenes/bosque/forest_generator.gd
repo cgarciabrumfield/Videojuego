@@ -6,7 +6,7 @@ var node_sprite = load("res://assets/minimapa/map_nodes1.png")
 var branch_sprite = load("res://assets/minimapa/map_nodes2.png")
 var node_sprite_player = load("res://assets/minimapa/map_nodes_player.png")
 
-var room = preload("res://scenes/forest_room.tscn")
+var room = preload("res://scenes/bosque/forest_room.tscn")
 @onready var map_node = $MapNode
 @onready var player = $Player
 @onready var camera = $Camera2D

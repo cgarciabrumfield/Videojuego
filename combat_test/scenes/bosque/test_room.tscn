@@ -1,11 +1,11 @@
 [gd_scene load_steps=8 format=3 uid="uid://cb2qhnv6mx7re"]
 
-[ext_resource type="Texture2D" uid="uid://b6fi4srgcv1sp" path="res://maps/Bosque/test.png" id="4_tnl7u"]
-[ext_resource type="Texture2D" uid="uid://dudkk384f7pcl" path="res://maps/Bosque/bush_wall_up.png" id="6_pw2pw"]
-[ext_resource type="Texture2D" uid="uid://c3ivum2n4wwci" path="res://maps/Bosque/bush_wall_down.png" id="7_u444h"]
-[ext_resource type="PackedScene" uid="uid://bjkratfq4pj3f" path="res://scenes/bosque/Props/tree_2.tscn" id="8_acgdc"]
-[ext_resource type="PackedScene" uid="uid://6gf4yb3dj8ys" path="res://scenes/bosque/Props/tree_1.tscn" id="8_toaoc"]
-[ext_resource type="PackedScene" uid="uid://dmpodkv6vbyts" path="res://scenes/bosque/Props/tree_3.tscn" id="9_ou486"]
+[ext_resource type="Texture2D" uid="uid://b6fi4srgcv1sp" path="res://maps/Bosque/test.png" id="1_yvhyc"]
+[ext_resource type="Texture2D" uid="uid://dudkk384f7pcl" path="res://maps/Bosque/bush_wall_up.png" id="2_s17m7"]
+[ext_resource type="Texture2D" uid="uid://c3ivum2n4wwci" path="res://maps/Bosque/bush_wall_down.png" id="3_njuoe"]
+[ext_resource type="PackedScene" uid="uid://6gf4yb3dj8ys" path="res://scenes/bosque/Props/tree_1.tscn" id="4_o11uv"]
+[ext_resource type="PackedScene" uid="uid://bjkratfq4pj3f" path="res://scenes/bosque/Props/tree_2.tscn" id="5_qmafs"]
+[ext_resource type="PackedScene" uid="uid://dmpodkv6vbyts" path="res://scenes/bosque/Props/tree_3.tscn" id="6_k5r3m"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_rdcux"]
 size = Vector2(864, 23)
@@ -21,7 +21,7 @@ z_index = -2
 texture_filter = 1
 position = Vector2(960, 540)
 scale = Vector2(6, 5.625)
-texture = ExtResource("4_tnl7u")
+texture = ExtResource("1_yvhyc")
 
 [node name="Walls" type="Node2D" parent="."]
 
@@ -48,30 +48,30 @@ shape = SubResource("RectangleShape2D_rdcux")
 [node name="top1" type="Sprite2D" parent="Walls"]
 position = Vector2(390, 33)
 scale = Vector2(5, 5)
-texture = ExtResource("6_pw2pw")
+texture = ExtResource("2_s17m7")
 
 [node name="top2" type="Sprite2D" parent="Walls"]
 position = Vector2(1534, 33)
 scale = Vector2(-5, 5)
-texture = ExtResource("6_pw2pw")
+texture = ExtResource("2_s17m7")
 
 [node name="bottom1" type="Sprite2D" parent="Walls"]
 z_index = 100
 position = Vector2(381, 1062)
 scale = Vector2(5, 5)
-texture = ExtResource("7_u444h")
+texture = ExtResource("3_njuoe")
 
 [node name="bottom2" type="Sprite2D" parent="Walls"]
 z_index = 100
 position = Vector2(1546, 1062)
 scale = Vector2(-5, 5)
-texture = ExtResource("7_u444h")
+texture = ExtResource("3_njuoe")
 
-[node name="Tree" parent="." instance=ExtResource("8_toaoc")]
+[node name="Tree" parent="." instance=ExtResource("4_o11uv")]
 position = Vector2(960, 620)
 
-[node name="Tree_2" parent="." instance=ExtResource("8_acgdc")]
+[node name="Tree_2" parent="." instance=ExtResource("5_qmafs")]
 position = Vector2(299, 357)
 
-[node name="Tree_3" parent="." instance=ExtResource("9_ou486")]
+[node name="Tree_3" parent="." instance=ExtResource("6_k5r3m")]
 position = Vector2(1591, 969)
