@@ -3,7 +3,7 @@ extends Control
 func _ready() -> void:
 	$AnimationPlayer.play("RESET")
 
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	listener()
 
 #pauses and makes the pause menu visible

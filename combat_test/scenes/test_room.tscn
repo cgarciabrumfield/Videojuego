@@ -1,8 +1,8 @@
 [gd_scene load_steps=8 format=3 uid="uid://cb2qhnv6mx7re"]
 
-[ext_resource type="Texture2D" uid="uid://b6fi4srgcv1sp" path="res://maps/test/test.png" id="4_tnl7u"]
-[ext_resource type="Texture2D" uid="uid://dudkk384f7pcl" path="res://maps/test/bush_wall_up.png" id="6_pw2pw"]
-[ext_resource type="Texture2D" uid="uid://c3ivum2n4wwci" path="res://maps/test/bush_wall_down.png" id="7_u444h"]
+[ext_resource type="Texture2D" uid="uid://b6fi4srgcv1sp" path="res://maps/Bosque/test.png" id="4_tnl7u"]
+[ext_resource type="Texture2D" uid="uid://dudkk384f7pcl" path="res://maps/Bosque/bush_wall_up.png" id="6_pw2pw"]
+[ext_resource type="Texture2D" uid="uid://c3ivum2n4wwci" path="res://maps/Bosque/bush_wall_down.png" id="7_u444h"]
 [ext_resource type="PackedScene" uid="uid://bjkratfq4pj3f" path="res://scenes/bosque/Props/tree_2.tscn" id="8_acgdc"]
 [ext_resource type="PackedScene" uid="uid://6gf4yb3dj8ys" path="res://scenes/bosque/Props/tree_1.tscn" id="8_toaoc"]
 [ext_resource type="PackedScene" uid="uid://dmpodkv6vbyts" path="res://scenes/bosque/Props/tree_3.tscn" id="9_ou486"]

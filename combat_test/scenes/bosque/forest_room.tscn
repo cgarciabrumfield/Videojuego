@@ -1,0 +1,217 @@
+[gd_scene load_steps=23 format=3 uid="uid://b01k7nnqxd7jq"]
+
+[ext_resource type="Script" path="res://scenes/forest_room.gd" id="1_8os2r"]
+[ext_resource type="Texture2D" uid="uid://b6fi4srgcv1sp" path="res://maps/Bosque/test.png" id="2_fp7od"]
+[ext_resource type="Texture2D" uid="uid://5js2qsfvlasd" path="res://maps/Bosque/walls/bush_wall_top_closed.png" id="3_8pwtf"]
+[ext_resource type="Texture2D" uid="uid://bvmifhp06kyi6" path="res://maps/Bosque/walls/bush_wall_top_open.png" id="4_bv7tr"]
+[ext_resource type="Texture2D" uid="uid://cixwtsd57x80l" path="res://maps/Bosque/walls/bush_wall_bottom_closed.png" id="5_8jh4u"]
+[ext_resource type="Texture2D" uid="uid://bc51gjd8x1ig4" path="res://maps/Bosque/walls/bush_wall_bottom_open.png" id="6_f7vsv"]
+[ext_resource type="Texture2D" uid="uid://e5al04thfbl2" path="res://maps/Bosque/walls/bush_wall_left_closed.png" id="7_0aeb5"]
+[ext_resource type="Texture2D" uid="uid://b2dlg2hi6ydvo" path="res://maps/Bosque/walls/bush_wall_left_open.png" id="8_rd41d"]
+[ext_resource type="Texture2D" uid="uid://cymwnvva5bfv8" path="res://maps/Bosque/walls/bush_wall_right_closed.png" id="9_t7icx"]
+[ext_resource type="Texture2D" uid="uid://dqmfqf5olvsea" path="res://maps/Bosque/walls/bush_wall_right_open.png" id="10_w5vmv"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_gh1vj"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_8pwtf")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_bv7tr")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ksojv"]
+size = Vector2(34, 5.95552)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_kepma"]
+size = Vector2(34, 6.04444)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_5kunn"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("5_8jh4u")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_f7vsv")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_dl6j4"]
+size = Vector2(34, 5.86667)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_oqyes"]
+size = Vector2(34, 6.04443)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_jnx7g"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("7_0aeb5")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_rd41d")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7jve6"]
+size = Vector2(6, 33.9556)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_vqxf0"]
+size = Vector2(6.00003, 33.7778)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_2jdkm"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("9_t7icx")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_w5vmv")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_env7i"]
+size = Vector2(6, 33.9556)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_vbu7j"]
+size = Vector2(6, 34.1333)
+
+[node name="Test_room_2" type="Node2D"]
+texture_filter = 1
+script = ExtResource("1_8os2r")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+
+[node name="Ground" type="Sprite2D" parent="."]
+z_index = -100
+texture = ExtResource("2_fp7od")
+
+[node name="Walls" type="StaticBody2D" parent="."]
+z_index = 102
+collision_layer = 16
+collision_mask = 0
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Walls"]
+z_index = 2
+position = Vector2(10, -10)
+polygon = PackedVector2Array(7, -80, 144, -80, 144, -7, 150, -7, 150, -86, 7, -86)
+
+[node name="CollisionPolygon2D2" type="CollisionPolygon2D" parent="Walls"]
+position = Vector2(-10, 10)
+scale = Vector2(-1, -1)
+polygon = PackedVector2Array(7, -80, 144, -80, 144, -7, 150, -7, 150, -86, 7, -86)
+
+[node name="CollisionPolygon2D3" type="CollisionPolygon2D" parent="Walls"]
+z_index = 2
+position = Vector2(-10, -10)
+scale = Vector2(-1, 1)
+polygon = PackedVector2Array(7, -80, 144, -80, 144, -7, 150, -7, 150, -86, 7, -86)
+
+[node name="CollisionPolygon2D4" type="CollisionPolygon2D" parent="Walls"]
+position = Vector2(10, 10)
+scale = Vector2(1, -1)
+polygon = PackedVector2Array(7, -80, 144, -80, 144, -7, 150, -7, 150, -86, 7, -86)
+
+[node name="Top_wall" type="Node2D" parent="."]
+
+[node name="top_sprite" type="AnimatedSprite2D" parent="Top_wall"]
+z_index = -1
+sprite_frames = SubResource("SpriteFrames_gh1vj")
+
+[node name="top_transition" type="Area2D" parent="Top_wall"]
+position = Vector2(0, -99)
+collision_layer = 0
+
+[node name="top_transition_area" type="CollisionShape2D" parent="Top_wall/top_transition"]
+shape = SubResource("RectangleShape2D_ksojv")
+
+[node name="top_door" type="StaticBody2D" parent="Top_wall"]
+position = Vector2(0, -93)
+collision_layer = 16
+collision_mask = 0
+
+[node name="top_door_area" type="CollisionShape2D" parent="Top_wall/top_door"]
+shape = SubResource("RectangleShape2D_kepma")
+
+[node name="Bottom_wall" type="Node2D" parent="."]
+z_index = 100
+
+[node name="bottom_sprite" type="AnimatedSprite2D" parent="Bottom_wall"]
+sprite_frames = SubResource("SpriteFrames_5kunn")
+
+[node name="bottom_transition" type="Area2D" parent="Bottom_wall"]
+collision_layer = 0
+
+[node name="bottom_transition_area" type="CollisionShape2D" parent="Bottom_wall/bottom_transition"]
+position = Vector2(0, 99)
+shape = SubResource("RectangleShape2D_dl6j4")
+
+[node name="bottom_door" type="StaticBody2D" parent="Bottom_wall"]
+position = Vector2(0, 93)
+collision_layer = 16
+collision_mask = 0
+
+[node name="bottom_door_area" type="CollisionShape2D" parent="Bottom_wall/bottom_door"]
+shape = SubResource("RectangleShape2D_oqyes")
+
+[node name="Left_wall" type="Node2D" parent="."]
+
+[node name="left_sprite" type="AnimatedSprite2D" parent="Left_wall"]
+sprite_frames = SubResource("SpriteFrames_jnx7g")
+
+[node name="left_transition" type="Area2D" parent="Left_wall"]
+position = Vector2(-163, 0)
+collision_layer = 0
+
+[node name="left_transition_area" type="CollisionShape2D" parent="Left_wall/left_transition"]
+shape = SubResource("RectangleShape2D_7jve6")
+
+[node name="left_door" type="StaticBody2D" parent="Left_wall"]
+position = Vector2(-157, 0)
+collision_layer = 16
+collision_mask = 0
+
+[node name="left_door_area" type="CollisionShape2D" parent="Left_wall/left_door"]
+shape = SubResource("RectangleShape2D_vqxf0")
+
+[node name="Right_wall" type="Node2D" parent="."]
+
+[node name="right_sprite" type="AnimatedSprite2D" parent="Right_wall"]
+sprite_frames = SubResource("SpriteFrames_2jdkm")
+
+[node name="right_transition" type="Area2D" parent="Right_wall"]
+position = Vector2(163, 0)
+collision_layer = 0
+
+[node name="right_transition_area" type="CollisionShape2D" parent="Right_wall/right_transition"]
+shape = SubResource("RectangleShape2D_env7i")
+
+[node name="right_door" type="StaticBody2D" parent="Right_wall"]
+position = Vector2(157, 0)
+collision_layer = 16
+collision_mask = 0
+
+[node name="right_door_area" type="CollisionShape2D" parent="Right_wall/right_door"]
+shape = SubResource("RectangleShape2D_vbu7j")
+
+[node name="enemigos" type="Node2D" parent="."]
+
+[connection signal="body_entered" from="Top_wall/top_transition" to="." method="_on_top_transition_body_entered"]
+[connection signal="body_entered" from="Bottom_wall/bottom_transition" to="." method="_on_bottom_transition_body_entered"]
+[connection signal="body_entered" from="Left_wall/left_transition" to="." method="_on_left_transition_body_entered"]
+[connection signal="body_entered" from="Right_wall/right_transition" to="." method="_on_right_transition_body_entered"]

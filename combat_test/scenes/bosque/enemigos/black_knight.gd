@@ -26,11 +26,11 @@ var attack_cooldown_time = 1.0  # 1 segundo entre ataques
 
 const MOVE_CHANCE = 0.7
 var move_chance = MOVE_CHANCE
-const NORMAL_SPEED = 50
-const RUN_SPEED = 80
+const NORMAL_SPEED = 30
+const RUN_SPEED = 45
 @export var speed = NORMAL_SPEED # Velocidad a la que se moverá el limo
-@export var detection_range = 400
-@export var attack_range = 80
+@export var detection_range = 50
+@export var attack_range = 15
 
 var near_player = false
 var knockback_velocity: Vector2 = Vector2.ZERO
@@ -40,7 +40,7 @@ var knockback_timer: float = 0.0
 func _ready():
 	health = maxHealth
 	screen_size = get_viewport_rect().size #Vector de resolución de pantalla
-	position = Vector2(randi_range(0, screen_size.x), randi_range(0, screen_size.y))
+	position = Vector2(0,0)
 	$Sword1/Hitbox_Sword1.disabled = true # La hitbox (espada) empieza emvainadas
 	$Sword2/Hitbox_Sword2.disabled = true
 	add_child(attack_cooldown_timer)
@@ -85,13 +85,11 @@ func move(delta):
 func move_randomly(delta):
 	speed = NORMAL_SPEED
 	position += direction_vector * speed * delta
-	position = position.clamp(Vector2.ZERO, screen_size)
 	
 func move_towards_player(player_position: Vector2, delta: float):
 	speed = RUN_SPEED
 	direction_vector = (player_position - position).normalized()
 	position += direction_vector * speed * delta
-	position = position.clamp(Vector2.ZERO, screen_size)
 
 # Función de ataque. Si ha sido pulsado y no estamos bloqueando ni reciviendo daño, tiene lugar	
 func attack():
@@ -186,10 +184,16 @@ func depth_control():
 	z_index = normalized_Y_pos * 90 + 10
 	
 func get_player_position():
-	if get_parent() != null:
-		var parent = get_parent()
-		if parent.has_node("Player"):
-			return parent.get_node("Player").position
+	return _find_player(get_tree().get_root())
+	
+func _find_player(node):
+	if node.name == "Player":
+		return node.position
+		
+	for child in node.get_children():
+		var player_position = _find_player(child)
+		if player_position != null:
+			return player_position
 	return null
 	
 func change_direction():

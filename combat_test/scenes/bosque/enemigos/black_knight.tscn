@@ -6933,7 +6933,6 @@ bg_color = Color(1, 0.525374, 0.464771, 1)
 
 [node name="black_knight" type="CharacterBody2D"]
 texture_filter = 1
-scale = Vector2(5, 5)
 motion_mode = 1
 script = ExtResource("1_58v2s")
 metadata/_edit_group_ = true

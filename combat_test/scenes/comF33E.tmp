@@ -1,9 +1,0 @@
-[gd_scene load_steps=3 format=3 uid="uid://cb2qhnv6mx7re"]
-
-[ext_resource type="Script" path="res://combat_test.gd" id="1_d6sd7"]
-[ext_resource type="PackedScene" uid="uid://bp8hvd0qc4txe" path="res://scenes/knight.tscn" id="2_sfd7i"]
-
-[node name="combat_test" type="Node2D"]
-script = ExtResource("1_d6sd7")
-
-[node name="Player" parent="." instance=ExtResource("2_sfd7i")]
