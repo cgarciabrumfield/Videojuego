@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://ips5pehw8rb7"]
 
-[ext_resource type="PackedScene" uid="uid://cq81gb8ofbmtn" path="res://scenes/combat_test.tscn" id="1_6lq66"]
 [ext_resource type="PackedScene" uid="uid://dklqo43run32r" path="res://scenes/pause_menu.tscn" id="2_k5fb1"]
+[ext_resource type="PackedScene" uid="uid://c0dkxten8g5oe" path="res://scenes/bosque/forest.tscn" id="2_nqtp0"]
 
 [node name="main" type="Node2D"]
 
@@ -9,4 +9,4 @@
 
 [node name="PauseMenu" parent="CanvasLayer" instance=ExtResource("2_k5fb1")]
 
-[node name="Combat_test" parent="." instance=ExtResource("1_6lq66")]
+[node name="forest" parent="." instance=ExtResource("2_nqtp0")]

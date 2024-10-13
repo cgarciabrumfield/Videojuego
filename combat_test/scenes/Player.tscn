@@ -8144,11 +8144,9 @@ _data = {
 
 [node name="Player" type="CharacterBody2D"]
 texture_filter = 1
-scale = Vector2(5, 5)
-collision_mask = 54
+collision_mask = 62
 motion_mode = 1
 script = ExtResource("1_02emr")
-speed = 300
 metadata/_edit_group_ = true
 
 [node name="CollisionBox" type="CollisionShape2D" parent="."]
@@ -8166,7 +8164,7 @@ animation = &"iddle_down"
 light_mask = 2
 visibility_layer = 2
 script = ExtResource("9_1d40x")
-knockback = 300
+knockback = 60
 
 [node name="Hitbox_Sword1" type="CollisionShape2D" parent="Sword1"]
 position = Vector2(0, 11)
@@ -8184,7 +8182,7 @@ shape = SubResource("RectangleShape2D_xt1ms")
 [node name="Sword2" type="Area2D" parent="."]
 script = ExtResource("9_1d40x")
 damage = 2
-knockback = 500
+knockback = 100
 
 [node name="Hitbox_Sword2" type="CollisionShape2D" parent="Sword2"]
 position = Vector2(0, 16)

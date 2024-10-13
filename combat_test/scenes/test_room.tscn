@@ -1,10 +1,8 @@
-[gd_scene load_steps=10 format=3 uid="uid://cb2qhnv6mx7re"]
+[gd_scene load_steps=8 format=3 uid="uid://cb2qhnv6mx7re"]
 
-[ext_resource type="Texture2D" uid="uid://b6fi4srgcv1sp" path="res://maps/test/test.png" id="4_tnl7u"]
-[ext_resource type="PackedScene" uid="uid://cdynk4xsmcu8y" path="res://scenes/bosque/Props/bush_vertical_wall_1.tscn" id="5_s523h"]
-[ext_resource type="Texture2D" uid="uid://dudkk384f7pcl" path="res://maps/test/bush_wall_up.png" id="6_pw2pw"]
-[ext_resource type="PackedScene" uid="uid://qa2iaj1behmm" path="res://scenes/bosque/Props/bush_6.tscn" id="7_2n6j4"]
-[ext_resource type="Texture2D" uid="uid://c3ivum2n4wwci" path="res://maps/test/bush_wall_down.png" id="7_u444h"]
+[ext_resource type="Texture2D" uid="uid://b6fi4srgcv1sp" path="res://maps/Bosque/test.png" id="4_tnl7u"]
+[ext_resource type="Texture2D" uid="uid://dudkk384f7pcl" path="res://maps/Bosque/bush_wall_up.png" id="6_pw2pw"]
+[ext_resource type="Texture2D" uid="uid://c3ivum2n4wwci" path="res://maps/Bosque/bush_wall_down.png" id="7_u444h"]
 [ext_resource type="PackedScene" uid="uid://bjkratfq4pj3f" path="res://scenes/bosque/Props/tree_2.tscn" id="8_acgdc"]
 [ext_resource type="PackedScene" uid="uid://6gf4yb3dj8ys" path="res://scenes/bosque/Props/tree_1.tscn" id="8_toaoc"]
 [ext_resource type="PackedScene" uid="uid://dmpodkv6vbyts" path="res://scenes/bosque/Props/tree_3.tscn" id="9_ou486"]
@@ -68,29 +66,6 @@ z_index = 100
 position = Vector2(1546, 1062)
 scale = Vector2(-5, 5)
 texture = ExtResource("7_u444h")
-
-[node name="vertical_wall_1" parent="Walls" instance=ExtResource("5_s523h")]
-z_index = 1
-z_as_relative = true
-position = Vector2(0, 848)
-
-[node name="vertical_wall_2" parent="Walls" instance=ExtResource("5_s523h")]
-position = Vector2(0, 211)
-
-[node name="Bush_6" parent="Walls" instance=ExtResource("7_2n6j4")]
-position = Vector2(0, 633)
-collision_layer = 0
-
-[node name="vertical_wall_3" parent="Walls" instance=ExtResource("5_s523h")]
-position = Vector2(1920, 848)
-
-[node name="vertical_wall_4" parent="Walls" instance=ExtResource("5_s523h")]
-position = Vector2(1920, 211)
-
-[node name="Bush_7" parent="Walls" instance=ExtResource("7_2n6j4")]
-z_as_relative = false
-position = Vector2(1920, 633)
-collision_layer = 0
 
 [node name="Tree" parent="." instance=ExtResource("8_toaoc")]
 position = Vector2(960, 620)

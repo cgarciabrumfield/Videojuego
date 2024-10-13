@@ -293,7 +293,7 @@ tracks/8/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(1, 1)]
+"values": [Vector2(0.4, 0.4)]
 }
 tracks/9/type = "value"
 tracks/9/imported = false
@@ -717,7 +717,7 @@ tracks/9/keys = {
 "times": PackedFloat32Array(0, 1.26667, 4, 4.5, 5),
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1),
 "update": 1,
-"values": [0, 250, 0, 50, 50]
+"values": [0, 45, 0, 50, 50]
 }
 tracks/10/type = "value"
 tracks/10/imported = false
@@ -862,18 +862,20 @@ bg_color = Color(1, 0.525374, 0.464771, 1)
 [node name="Slime_boss" type="CharacterBody2D"]
 texture_filter = 1
 texture_repeat = 1
-scale = Vector2(10, 10)
+scale = Vector2(2, 2)
 disable_mode = 1
 collision_layer = 4
 collision_mask = 21
 motion_mode = 1
 script = ExtResource("1_oqi86")
+maxHealth = 3
+speed = 50
 
 [node name="CollisionBox" type="CollisionShape2D" parent="."]
 z_index = 1
 position = Vector2(0, 0.8)
 rotation = 1.5708
-scale = Vector2(0.9, 1)
+scale = Vector2(0.81, 0.9)
 shape = SubResource("CapsuleShape2D_ayddb")
 
 [node name="SlimeSprite" type="AnimatedSprite2D" parent="."]
@@ -886,7 +888,6 @@ light_mask = 0
 visibility_layer = 2
 script = ExtResource("3_r53pb")
 damage = 2
-knockback = 800
 
 [node name="Hitbox_Shape" type="CollisionShape2D" parent="Hitbox"]
 position = Vector2(0, 0.8)
@@ -896,7 +897,6 @@ shape = SubResource("CapsuleShape2D_ayddb")
 [node name="Jump_attack_hitbox" type="Area2D" parent="."]
 script = ExtResource("3_r53pb")
 damage = 4
-knockback = 2000
 
 [node name="Jump_attack_hitbox_shape" type="CollisionShape2D" parent="Jump_attack_hitbox"]
 position = Vector2(0, 0.8)
@@ -917,6 +917,7 @@ shape = SubResource("CapsuleShape2D_v3v8b")
 [node name="Shadow" type="Sprite2D" parent="."]
 z_index = -1
 position = Vector2(0, 4.8)
+scale = Vector2(0.4, 0.4)
 texture = ExtResource("5_c4tbn")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]

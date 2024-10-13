@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://scenes/bosque/Props/tree.gd" id="1_xumak"]
 [ext_resource type="Texture2D" uid="uid://ctt07hh42gsxy" path="res://assets/sprites/bigger_shadow.png" id="2_b1oqv"]
-[ext_resource type="Texture2D" uid="uid://baqhr0u4m5dq0" path="res://maps/test/tree_1.png" id="2_ppt5k"]
+[ext_resource type="Texture2D" uid="uid://baqhr0u4m5dq0" path="res://maps/Bosque/tree_1.png" id="2_ppt5k"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_3bk8t"]
 radius = 8.24621
@@ -13,7 +13,6 @@ height = 59.2
 
 [node name="Tree_1" type="Area2D"]
 texture_filter = 1
-scale = Vector2(5, 5)
 collision_layer = 0
 collision_mask = 7
 script = ExtResource("1_xumak")

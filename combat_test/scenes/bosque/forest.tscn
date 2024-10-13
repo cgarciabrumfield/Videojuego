@@ -1,0 +1,19 @@
+[gd_scene load_steps=3 format=3 uid="uid://c0dkxten8g5oe"]
+
+[ext_resource type="Script" path="res://scenes/bosque/forest_generator.gd" id="1_fvex4"]
+[ext_resource type="PackedScene" uid="uid://bp8hvd0qc4txe" path="res://scenes/Player.tscn" id="2_m04ox"]
+
+[node name="forest" type="Node2D"]
+texture_filter = 1
+position = Vector2(960, 540)
+script = ExtResource("1_fvex4")
+
+[node name="MapNode" type="Node2D" parent="."]
+light_mask = 0
+z_index = 110
+position = Vector2(-125, 66)
+
+[node name="Player" parent="." instance=ExtResource("2_m04ox")]
+
+[node name="Camera2D" type="Camera2D" parent="."]
+zoom = Vector2(6, 5.65)

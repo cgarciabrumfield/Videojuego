@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://qa2iaj1behmm"]
 
 [ext_resource type="Script" path="res://scenes/bosque/Props/bush.gd" id="1_aotld"]
-[ext_resource type="Texture2D" uid="uid://bopdpsg854met" path="res://maps/test/bush_6.png" id="2_vakny"]
+[ext_resource type="Texture2D" uid="uid://bopdpsg854met" path="res://maps/Bosque/bush_6.png" id="2_vakny"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_udgxv"]
 radius = 19.3333
@@ -9,7 +9,6 @@ height = 56.0
 
 [node name="Bush_6" type="StaticBody2D"]
 texture_filter = 1
-scale = Vector2(5, 5)
 collision_layer = 16
 collision_mask = 0
 script = ExtResource("1_aotld")

@@ -1,7 +1,7 @@
 class_name Player
 extends CharacterBody2D
 
-@export var speed = 150 # How fast the player will move (pixels/sec).
+@export var speed = 50 # How fast the player will move (pixels/sec).
 @export var life = 10
 var screen_size # Size of the game window.
 var direction # Izquierda derecha arriba abajo, segun a donde mire
@@ -32,7 +32,7 @@ var knockback_timer: float = 0.0
 func _ready():
 	screen_size = get_viewport_rect().size #Vector de resolución de pantalla
 	direction = str("down") # El personaje empieza mirando hacia abajo
-	position = screen_size / 2 # situamos al personaje en el centro de la pantalla
+	 #position = screen_size / 2 # situamos al personaje en el centro de la pantalla
 	$Sword1/Hitbox_Sword1.disabled = true # La hitbox (espada) empieza emvainadas
 	$Sword2/Hitbox_Sword2.disabled = true
 	# Configura y agrega el temporizador de parry al nodo actual
@@ -52,7 +52,7 @@ func _ready():
 	$Parry_effect_sprite.z_index = RenderingServer.CANVAS_ITEM_Z_MAX
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
+func _process(_delta):
 	#var current_animation = $AnimationPlayer.current_animation  # Obtiene la animación actual
 	#print("Animación en curso: ", current_animation)
 	move() # Nos movemos si se ha pulsado algo
