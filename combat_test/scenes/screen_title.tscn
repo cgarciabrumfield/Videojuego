@@ -51,7 +51,7 @@ z_index = 2
 position = Vector2(383, 577)
 scale = Vector2(6.001, 6)
 sprite_frames = ExtResource("4_gtbq7")
-animation = &"iddle_down"
+animation = &"attack2_down"
 
 [node name="shadow" type="Sprite2D" parent="knight_sprite"]
 z_index = -1

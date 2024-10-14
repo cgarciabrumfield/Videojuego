@@ -18,6 +18,7 @@ func _ready():
 	camera.zoom = CAMERA_ZOOM
 	zoomed_viewport_size = get_viewport_rect().size / CAMERA_ZOOM
 	full_map = generate(randi_range(-1000, 1000))
+	#TODO Aquí iría el algoritmo que saca las coords de las salas origen y fin
 	current_coords = Vector2(0,0)
 	discovered_map[current_coords] = full_map[current_coords]
 	add_child(full_map[current_coords])
