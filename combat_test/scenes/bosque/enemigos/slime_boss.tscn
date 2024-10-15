@@ -6,7 +6,7 @@
 [ext_resource type="Script" path="res://scripts/Hurtbox.gd" id="4_pmvf4"]
 [ext_resource type="Texture2D" uid="uid://ctt07hh42gsxy" path="res://assets/sprites/bigger_shadow.png" id="5_c4tbn"]
 [ext_resource type="AudioStream" uid="uid://cgj1t2p8yrs0x" path="res://assets/sounds/10_Battle_SFX/77_flesh_02.wav" id="6_8tsav"]
-[ext_resource type="Script" path="res://scripts/progress_bar.gd" id="7_usm8h"]
+[ext_resource type="Script" path="res://scripts/healthbar.gd" id="7_usm8h"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ayddb"]
 radius = 4.0
@@ -868,7 +868,6 @@ collision_layer = 4
 collision_mask = 21
 motion_mode = 1
 script = ExtResource("1_oqi86")
-maxHealth = 3
 speed = 50
 
 [node name="CollisionBox" type="CollisionShape2D" parent="."]
@@ -950,6 +949,7 @@ theme_override_styles/background = SubResource("StyleBoxEmpty_qotx5")
 theme_override_styles/fill = SubResource("StyleBoxFlat_23si1")
 show_percentage = false
 script = ExtResource("7_usm8h")
+metadata/_edit_use_anchors_ = true
 
 [node name="Timer" type="Timer" parent="CanvasLayer/Healthbar"]
 

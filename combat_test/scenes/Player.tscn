@@ -1,4 +1,4 @@
-[gd_scene load_steps=70 format=3 uid="uid://bp8hvd0qc4txe"]
+[gd_scene load_steps=78 format=3 uid="uid://bp8hvd0qc4txe"]
 
 [ext_resource type="Script" path="res://scenes/player.gd" id="1_02emr"]
 [ext_resource type="SpriteFrames" uid="uid://despu680qbvek" path="res://Animations/Player.tres" id="2_0s6fe"]
@@ -13,7 +13,9 @@
 [ext_resource type="AudioStream" uid="uid://dishman0meeb5" path="res://assets/sounds/12_Player_Movement_SFX/03_Step_grass_03.wav" id="14_rntyo"]
 [ext_resource type="AudioStream" uid="uid://ddteofdbmqcge" path="res://assets/sounds/10_Battle_SFX/39_Block_03.wav" id="15_b0tda"]
 [ext_resource type="Texture2D" uid="uid://w5xs36knmsrm" path="res://assets/sprites/effects/white_slash_effect/SFX304_04.png" id="15_v77qa"]
+[ext_resource type="Script" path="res://scripts/healthbar.gd" id="16_eoymm"]
 [ext_resource type="Texture2D" uid="uid://8geoquij4gpl" path="res://assets/sprites/effects/white_slash_effect/SFX304_05.png" id="16_h5wdk"]
+[ext_resource type="Script" path="res://scenes/staminabar.gd" id="17_hjhil"]
 [ext_resource type="AudioStream" uid="uid://b436qjtsc2p1s" path="res://assets/sounds/10_Battle_SFX/Sword Hits Metal Shield [ ezmp3.cc ]-[AudioTrimmer.com].mp3" id="20_3p3tk"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_c2apc"]
@@ -6357,12 +6359,34 @@ _data = {
 "parry_up": SubResource("Animation_prb3a")
 }
 
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_av1sj"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7cyny"]
+bg_color = Color(0.890196, 0.180392, 0.12549, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4uqdg"]
+bg_color = Color(0.22782, 0.180842, 0.222009, 1)
+expand_margin_left = 1.0
+expand_margin_top = 1.0
+expand_margin_right = 1.0
+expand_margin_bottom = 1.0
+shadow_color = Color(0.439216, 0.439216, 0.439216, 1)
+shadow_offset = Vector2(0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6foyy"]
+bg_color = Color(1, 0.525374, 0.464771, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3y1wv"]
+bg_color = Color(0.227451, 0.180392, 0.223529, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0iyls"]
+bg_color = Color(0.190577, 0.559738, 0.310847, 1)
+
 [node name="Player" type="CharacterBody2D"]
 texture_filter = 1
 collision_mask = 62
 motion_mode = 1
 script = ExtResource("1_02emr")
-metadata/_edit_group_ = true
 
 [node name="CollisionBox" type="CollisionShape2D" parent="."]
 z_as_relative = false
@@ -6445,5 +6469,63 @@ stream = ExtResource("20_3p3tk")
 [node name="parry_VFX" type="AudioStreamPlayer2D" parent="VFXs"]
 stream = ExtResource("15_b0tda")
 
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Healthbar" type="ProgressBar" parent="CanvasLayer"]
+z_index = 1
+anchors_preset = -1
+anchor_left = 0.01
+anchor_top = 0.017
+anchor_right = 0.271
+anchor_bottom = 0.035
+offset_left = 0.799999
+offset_top = -0.36001
+offset_right = -450.32
+offset_bottom = -17.8
+scale = Vector2(10, 10)
+size_flags_horizontal = 6
+size_flags_vertical = 4
+theme_override_styles/background = SubResource("StyleBoxEmpty_av1sj")
+theme_override_styles/fill = SubResource("StyleBoxFlat_7cyny")
+show_percentage = false
+script = ExtResource("16_eoymm")
+metadata/_edit_use_anchors_ = true
+
+[node name="Timer" type="Timer" parent="CanvasLayer/Healthbar"]
+
+[node name="Damagebar" type="ProgressBar" parent="CanvasLayer/Healthbar"]
+z_index = -1
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/background = SubResource("StyleBoxFlat_4uqdg")
+theme_override_styles/fill = SubResource("StyleBoxFlat_6foyy")
+show_percentage = false
+script = ExtResource("16_eoymm")
+
+[node name="Staminabar" type="ProgressBar" parent="CanvasLayer"]
+anchors_preset = -1
+anchor_top = 0.052
+anchor_right = 0.271
+anchor_bottom = 0.089
+offset_left = 20.0
+offset_top = -0.16
+offset_right = -450.32
+offset_bottom = -36.12
+scale = Vector2(10, 10)
+size_flags_horizontal = 6
+size_flags_vertical = 4
+theme_override_styles/background = SubResource("StyleBoxFlat_3y1wv")
+theme_override_styles/fill = SubResource("StyleBoxFlat_0iyls")
+show_percentage = false
+script = ExtResource("17_hjhil")
+
+[node name="Timer" type="Timer" parent="CanvasLayer/Staminabar"]
+
 [connection signal="area_exited" from="Hurtbox" to="Hurtbox" method="_on_area_exited"]
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
+[connection signal="timeout" from="CanvasLayer/Healthbar/Timer" to="." method="_on_health_timer_timeout"]
+[connection signal="timeout" from="CanvasLayer/Staminabar/Timer" to="." method="_on_stamina_timer_timeout"]

@@ -11,10 +11,10 @@ var number_of_connections = 0
 
 var num_enemies
 var opened_doors = false
+@onready var enemigos = $enemigos
 @onready var ground = $Ground
+var nodo_enemigos
 
-#Lista de booleanos Norte Sur Este Oeste
-var ya_explorada
 
 @onready var door_left = $Left_wall/left_door/left_door_area
 @onready var door_left_sprite = $Left_wall/left_sprite
@@ -35,11 +35,16 @@ var ya_explorada
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	generate_walls()
+	var random_number_enemies_file = randi_range(1, count_enemies_distribution_scenes())
+	var ruta_enemigos: String = ("res://scenes/bosque/salas/distribuciones_enemigos/enemies_" + 
+	str(random_number_enemies_file) + ".tscn")
+	nodo_enemigos = "enemies_" + str(random_number_enemies_file)
+	enemigos.add_child(load(ruta_enemigos).instantiate())
 	ground.texture = load(str("res://scenes/bosque/salas/suelos/ground_" + 
 	str(randi_range(1, count_ground_files()))) + ".png")
 	
 func _process(_delta: float) -> void:
-	num_enemies = $enemigos.get_child_count()
+	num_enemies = count_enemies()
 	if num_enemies == 0:
 		open_doors()
 
@@ -53,15 +58,6 @@ func generate_walls():
 	door_bottom.disabled = false
 	door_bottom_sprite.frame = 0
 	
-func visited(visitado: bool):
-	if visitado:
-		open_doors()
-	else:
-		generate_enemies()
-
-func generate_enemies():
-	print("Enemigos generados")
-
 func open_doors():
 	if opened_doors:
 		return
@@ -108,6 +104,36 @@ func count_ground_files() -> int:
 			file_name = dir.get_next()
 		dir.list_dir_end()
 	else:
-		FileAccess.get_open_error()
 		print("Failed to open directory")
+		FileAccess.get_open_error()
 	return count
+	
+func count_enemies_distribution_scenes() -> int:
+	var dir =  DirAccess.open("res://scenes/bosque/salas/distribuciones_enemigos/")
+	var count = 0
+	if dir != null:
+		dir.list_dir_begin()
+		var file_name = dir.get_next()
+		while file_name != "":
+			if file_name.begins_with("enemies_") and file_name.ends_with(".tscn"):
+				count += 1
+			file_name = dir.get_next()
+		dir.list_dir_end()
+	else:
+		print("Failed to open directory")
+		FileAccess.get_open_error()
+	return count
+
+func clear_enemies():
+	for child in enemigos.get_children():
+		for enemigo in child.get_children():
+			if enemigo is CharacterBody2D:
+				enemigo.queue_free()
+
+func count_enemies() -> int:
+	var grandchild_count = 0
+	for child in enemigos.get_children():
+		for enemigo in child.get_children():
+			if enemigo is CharacterBody2D:
+				grandchild_count += 1
+	return grandchild_count

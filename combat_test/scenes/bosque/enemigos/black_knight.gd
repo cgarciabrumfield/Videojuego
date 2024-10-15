@@ -1,7 +1,7 @@
 extends CharacterBody2D
 
-@export var maxHealth = 8
-@export var health = maxHealth
+@export var MAX_HEALTH = 8
+@export var health = MAX_HEALTH
 var screen_size # Size of the game window.
 var direction_str = "down" # Izquierda derecha arriba abajo, segun a donde mire
 var direction_vector
@@ -38,7 +38,6 @@ var knockback_duration: float = 0.2  # Duración del retroceso en segundos
 var knockback_timer: float = 0.0
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	health = maxHealth
 	screen_size = get_viewport_rect().size #Vector de resolución de pantalla
 	position = Vector2(0,0)
 	$Sword1/Hitbox_Sword1.disabled = true # La hitbox (espada) empieza emvainadas

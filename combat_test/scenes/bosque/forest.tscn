@@ -11,7 +11,7 @@ script = ExtResource("1_fvex4")
 [node name="MapNode" type="Node2D" parent="."]
 light_mask = 0
 z_index = 110
-position = Vector2(-125, 66)
+position = Vector2(-166, 82)
 
 [node name="Player" parent="." instance=ExtResource("2_m04ox")]
 

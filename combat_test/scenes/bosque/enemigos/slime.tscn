@@ -5,7 +5,7 @@
 [ext_resource type="SpriteFrames" uid="uid://daktno7p7mwfj" path="res://Animations/slime.tres" id="2_g8vsd"]
 [ext_resource type="Script" path="res://scripts/Hurtbox.gd" id="3_2ybbm"]
 [ext_resource type="Texture2D" uid="uid://dlhgyyvbwxj7r" path="res://assets/sprites/Shadow.png" id="6_oklnm"]
-[ext_resource type="Script" path="res://scripts/progress_bar.gd" id="7_qu8p8"]
+[ext_resource type="Script" path="res://scripts/healthbar.gd" id="7_qu8p8"]
 [ext_resource type="AudioStream" uid="uid://cgj1t2p8yrs0x" path="res://assets/sounds/10_Battle_SFX/77_flesh_02.wav" id="8_epxbu"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ayddb"]
