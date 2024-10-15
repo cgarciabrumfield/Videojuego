@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=3 uid="uid://b01k7nnqxd7jq"]
+[gd_scene load_steps=23 format=3 uid="uid://b01k7nnqxd7jq"]
 
 [ext_resource type="Script" path="res://scenes/bosque/forest_room.gd" id="1_8os2r"]
 [ext_resource type="Texture2D" uid="uid://b6fi4srgcv1sp" path="res://maps/Bosque/test.png" id="2_fp7od"]
@@ -10,7 +10,6 @@
 [ext_resource type="Texture2D" uid="uid://b2dlg2hi6ydvo" path="res://maps/Bosque/walls/bush_wall_left_open.png" id="8_rd41d"]
 [ext_resource type="Texture2D" uid="uid://cymwnvva5bfv8" path="res://maps/Bosque/walls/bush_wall_right_closed.png" id="9_t7icx"]
 [ext_resource type="Texture2D" uid="uid://dqmfqf5olvsea" path="res://maps/Bosque/walls/bush_wall_right_open.png" id="10_w5vmv"]
-[ext_resource type="PackedScene" uid="uid://bxfm6nxfi50s0" path="res://scenes/bosque/enemigos/slime_boss.tscn" id="11_s47cl"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_gh1vj"]
 animations = [{
@@ -211,8 +210,6 @@ collision_mask = 0
 shape = SubResource("RectangleShape2D_vbu7j")
 
 [node name="enemigos" type="Node2D" parent="."]
-
-[node name="Slime_boss" parent="enemigos" instance=ExtResource("11_s47cl")]
 
 [connection signal="body_entered" from="Top_wall/top_transition" to="." method="_on_top_transition_body_entered"]
 [connection signal="body_entered" from="Bottom_wall/bottom_transition" to="." method="_on_bottom_transition_body_entered"]
