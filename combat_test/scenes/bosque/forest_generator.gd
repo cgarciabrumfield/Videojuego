@@ -10,22 +10,22 @@ var room = preload("res://scenes/bosque/forest_room.tscn")
 @onready var map_node = $MapNode
 @onready var player = $Player
 @onready var camera = $Camera2D
-const CAMERA_ZOOM = Vector2(6, 5.65)
+const CAMERA_ZOOM = Vector2(5, 5)
 var current_coords
-var zoomed_viewport_size
+var room_size = Vector2(320, 191.15)
 
 func _ready():
 	camera.zoom = CAMERA_ZOOM
-	zoomed_viewport_size = get_viewport_rect().size / CAMERA_ZOOM
 	full_map = generate(randi_range(-1000, 1000))
 	#TODO Aquí iría el algoritmo que saca las coords de las salas origen y fin
 	current_coords = Vector2(0,0)
 	discovered_map[current_coords] = full_map[current_coords]
 	add_child(full_map[current_coords])
-	load_map(discovered_map)
+	full_map[current_coords].clear_enemies()
+	load_map(discovered_map, 0)
 
-var min_number_rooms = 6
-var max_number_rooms = 10
+var min_number_rooms = 20
+var max_number_rooms = 25
 
 var room_generation_chance = 20
 
@@ -91,56 +91,72 @@ func is_interesting(dungeon):
 			room_with_three += 1
 	return room_with_three >= 2
 
-func load_map(map):
-	# Limpiar nodos hijos anteriores
+#size = 0 para devolver el mapa limitado (minimapa), que enseña lo cercano
+# y size = 1 para devolverlo entero (mapa tecla M), que enseña todo el mapa
+func load_map(map, size):
+	# Limpiar nodos hijos anteriores, es decir, limpia el mapa
 	for i in range(0, map_node.get_child_count()):
 		map_node.get_child(i).queue_free()
-		# Añadir nodos del mapa
+
+	#Por cada nodo en el mapa
 	for i in map.keys():
 		# Crear nodo de habitación
 		var room_sprite = Sprite2D.new()
-		if i == current_coords:
-			room_sprite.texture = node_sprite_player
+		if size == 0 and !comprueba_sala_en_minimapa(i):
+			pass
 		else:
-			room_sprite.texture = node_sprite
-		room_sprite.z_index = 1
-		room_sprite.position = i * 10
-		map_node.add_child(room_sprite)  # Añadir el sprite del nodo al mapa
-		#conexiones de la habitación
-		var c_rooms = map.get(i).connected_rooms
-		# Crear conexiones en el eje X
-		if c_rooms.get(Vector2(1, 0)) != null && map.values().has(c_rooms.get(Vector2(1, 0))):  # Conexión a la derecha
-			var right_branch = Sprite2D.new()
-			right_branch.texture = branch_sprite
-			right_branch.z_index = 0
-			right_branch.position = i * 10 + Vector2(5, 0.5)
-			map_node.add_child(right_branch)
-		
-		if c_rooms.get(Vector2(-1, 0)) != null && map.values().has(c_rooms.get(Vector2(-1, 0))):  # Conexión a la izquierda
-			var left_branch = Sprite2D.new()
-			left_branch.texture = branch_sprite
-			left_branch.z_index = 0
-			left_branch.position = i * 10 + Vector2(-5, 0.5)  # Ajustar la posición
-			left_branch.rotation_degrees = 180  # Rotar 180 grados para la conexión izquierda
-			map_node.add_child(left_branch)
-			# Crear conexiones en el eje Y
-		if c_rooms.get(Vector2(0, 1)) != null && map.values().has(c_rooms.get(Vector2(0, 1))):  # Conexión hacia abajo
-			var down_branch = Sprite2D.new()
-			down_branch.texture = branch_sprite
-			down_branch.z_index = 0
-			down_branch.rotation_degrees = 90
-			down_branch.position = i * 10 + Vector2(-0.5, 5)
-			map_node.add_child(down_branch)
-		if c_rooms.get(Vector2(0, -1)) != null && map.values().has(c_rooms.get(Vector2(0, -1))):  # Conexión hacia arriba
-			var up_branch = Sprite2D.new()
-			up_branch.texture = branch_sprite
-			up_branch.z_index = 0
-			up_branch.rotation_degrees = 90
-			up_branch.position = i * 10 + Vector2(-0.5, -5)  # Ajustar la posición
-			map_node.add_child(up_branch)
+			if i == current_coords:
+				room_sprite.texture = node_sprite_player
+			else:
+				room_sprite.texture = node_sprite
+			room_sprite.z_index = 1
+			room_sprite.position = i * 10 - current_coords * 10
+			map_node.add_child(room_sprite)  # Añadir el sprite del nodo al mapa
+			#conexiones de la habitación
+			var c_rooms = map.get(i).connected_rooms
+
+			# Crear conexiones en el eje X
+			if c_rooms.get(Vector2(1, 0)) != null && map.values().has(c_rooms.get(Vector2(1, 0))) && comprueba_sala_en_minimapa(i + Vector2(1,0)):  # Conexión a la derecha
+				var right_branch = Sprite2D.new()
+				right_branch.texture = branch_sprite
+				right_branch.z_index = 0
+				right_branch.position = i * 10 + Vector2(5, 0.5)  - current_coords * 10
+				map_node.add_child(right_branch)
 			
+			if c_rooms.get(Vector2(-1, 0)) != null && map.values().has(c_rooms.get(Vector2(-1, 0)))  && comprueba_sala_en_minimapa(i + Vector2(-1,0)):  # Conexión a la izquierda
+				var left_branch = Sprite2D.new()
+				left_branch.texture = branch_sprite
+				left_branch.z_index = 0
+				left_branch.position = i * 10 + Vector2(-5, 0.5)   - current_coords * 10# Ajustar la posición
+				left_branch.rotation_degrees = 180  # Rotar 180 grados para la conexión izquierda
+				map_node.add_child(left_branch)
+				# Crear conexiones en el eje Y
+			if c_rooms.get(Vector2(0, 1)) != null && map.values().has(c_rooms.get(Vector2(0, 1)))  && comprueba_sala_en_minimapa(i + Vector2(0,1)):  # Conexión hacia abajo
+				var down_branch = Sprite2D.new()
+				down_branch.texture = branch_sprite
+				down_branch.z_index = 0
+				down_branch.rotation_degrees = 90
+				down_branch.position = i * 10 + Vector2(-0.5, 5)  - current_coords * 10
+				map_node.add_child(down_branch)
+			if c_rooms.get(Vector2(0, -1)) != null && map.values().has(c_rooms.get(Vector2(0, -1)))  && comprueba_sala_en_minimapa(i + Vector2(0,-1)):  # Conexión hacia arriba
+				var up_branch = Sprite2D.new()
+				up_branch.texture = branch_sprite
+				up_branch.z_index = 0
+				up_branch.rotation_degrees = 90
+				up_branch.position = i * 10 + Vector2(-0.5, -5)  - current_coords * 10 # Ajustar la posición
+				map_node.add_child(up_branch)
 			
 var is_changing_room = false
+
+#funcion que comprueba que una sala este dentro del margen del minimapa. Se ha establecido en 2, pero puede cambiar
+func comprueba_sala_en_minimapa(sala):
+	if (sala - current_coords).x > 2 or (sala - current_coords).x < -2:
+		return false
+	elif (sala - current_coords).y > 2 or (sala - current_coords).y < -2:
+		return false
+	else:
+		return true
+
 
 func cambiar_sala(direction: Vector2):
 	if is_changing_room:
@@ -160,20 +176,20 @@ func _realizar_cambio_sala(direction: Vector2):
 	# 2. Actualizar las coordenadas a la nueva sala
 	current_coords += direction
 	discovered_map[current_coords] = full_map[current_coords]
-	load_map(discovered_map)
+	load_map(discovered_map, 0)
 	
 	# 3. Añadir la nueva sala
 	if full_map.has(current_coords):
 		
 		# 4. Reubicar al jugador dependiendo de la dirección
 		if direction == Vector2(1, 0):
-			player.position = Vector2(-zoomed_viewport_size.x/2 + 10, player.position.y) # Viniendo desde la izquierda
+			player.position = Vector2(-room_size.x/2 + 10, player.position.y) # Viniendo desde la izquierda
 		elif direction == Vector2(-1, 0):
-			player.position = Vector2(zoomed_viewport_size.x/2 - 10, player.position.y) # Viniendo desde la derecha
+			player.position = Vector2(room_size.x/2 - 10, player.position.y) # Viniendo desde la derecha
 		elif direction == Vector2(0, 1):
-			player.position = Vector2(player.position.x, -zoomed_viewport_size.y/2 + 10) # Viniendo desde arriba
+			player.position = Vector2(player.position.x, -room_size.y/2 + 10) # Viniendo desde arriba
 		elif direction == Vector2(0, -1):
-			player.position = Vector2(player.position.x, zoomed_viewport_size.y/2 - 10) # Viniendo desde abajo
+			player.position = Vector2(player.position.x, room_size.y/2 - 10) # Viniendo desde abajo
 		print(player.position)
 		
 		if full_map[current_coords].is_inside_tree():

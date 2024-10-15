@@ -1,7 +1,7 @@
 extends CharacterBody2D
 
-@export var maxHealth = 15
-@export var health = maxHealth
+@export var MAX_HEALTH = 15
+@export var health = MAX_HEALTH
 @export var is_hurt = false
 var screen_size
 @export var jump_attack_triggered = false
@@ -29,7 +29,6 @@ var segunda_fase_iniciada = false
 @onready var summon_slime_cooldown = $summon_slime_cooldown
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	health = maxHealth
 	screen_size = get_viewport_rect().size
 	position = Vector2(0,0)
 	
@@ -43,7 +42,7 @@ func _process(delta: float) -> void:
 	timer -= delta
 	if timer <= 0:
 		change_direction()
-	if health * 2 <= maxHealth && !segunda_fase_iniciada:
+	if health * 2 <= MAX_HEALTH && !segunda_fase_iniciada:
 		segunda_fase_iniciada = true
 		summon_slime_cooldown.start()
 		
