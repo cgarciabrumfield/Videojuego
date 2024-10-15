@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://ips5pehw8rb7"]
+[gd_scene load_steps=4 format=3 uid="uid://ips5pehw8rb7"]
 
 [ext_resource type="PackedScene" uid="uid://dklqo43run32r" path="res://scenes/pause_menu.tscn" id="2_k5fb1"]
 [ext_resource type="PackedScene" uid="uid://c0dkxten8g5oe" path="res://scenes/bosque/forest.tscn" id="2_nqtp0"]
+[ext_resource type="PackedScene" uid="uid://cre54jm3bvmaf" path="res://scenes/dialogue_interface.tscn" id="3_uqy2n"]
 
 [node name="main" type="Node2D"]
 
@@ -10,3 +11,5 @@
 [node name="PauseMenu" parent="CanvasLayer" instance=ExtResource("2_k5fb1")]
 
 [node name="forest" parent="." instance=ExtResource("2_nqtp0")]
+
+[node name="dialogue_interface" parent="." instance=ExtResource("3_uqy2n")]
