@@ -11,6 +11,7 @@ var number_of_connections = 0
 
 var num_enemies
 var opened_doors = false
+@onready var ground = $Ground
 
 #Lista de booleanos Norte Sur Este Oeste
 var ya_explorada
@@ -34,10 +35,11 @@ var ya_explorada
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	generate_walls()
-
+	ground.texture = load(str("res://scenes/bosque/salas/suelos/ground_" + 
+	str(randi_range(1, count_ground_files()))) + ".png")
+	
 func _process(_delta: float) -> void:
 	num_enemies = $enemigos.get_child_count()
-	print(num_enemies)
 	if num_enemies == 0:
 		open_doors()
 
@@ -93,3 +95,19 @@ func _on_right_transition_body_entered(_body: Node2D) -> void:
 func _on_top_transition_body_entered(_body: Node2D) -> void:
 	print("Top area entered")
 	get_parent().cambiar_sala(Vector2(0,-1))
+
+func count_ground_files() -> int:
+	var dir =  DirAccess.open("res://scenes/bosque/salas/suelos/")
+	var count = 0
+	if dir != null:
+		dir.list_dir_begin()
+		var file_name = dir.get_next()
+		while file_name != "":
+			if file_name.begins_with("ground_") and not file_name.ends_with("import"):
+				count += 1
+			file_name = dir.get_next()
+		dir.list_dir_end()
+	else:
+		FileAccess.get_open_error()
+		print("Failed to open directory")
+	return count
