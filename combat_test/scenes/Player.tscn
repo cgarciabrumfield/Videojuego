@@ -1,4 +1,4 @@
-[gd_scene load_steps=78 format=3 uid="uid://bp8hvd0qc4txe"]
+[gd_scene load_steps=79 format=3 uid="uid://bp8hvd0qc4txe"]
 
 [ext_resource type="Script" path="res://scenes/player.gd" id="1_02emr"]
 [ext_resource type="SpriteFrames" uid="uid://despu680qbvek" path="res://Animations/Player.tres" id="2_0s6fe"]
@@ -13,9 +13,10 @@
 [ext_resource type="AudioStream" uid="uid://dishman0meeb5" path="res://assets/sounds/12_Player_Movement_SFX/03_Step_grass_03.wav" id="14_rntyo"]
 [ext_resource type="AudioStream" uid="uid://ddteofdbmqcge" path="res://assets/sounds/10_Battle_SFX/39_Block_03.wav" id="15_b0tda"]
 [ext_resource type="Texture2D" uid="uid://w5xs36knmsrm" path="res://assets/sprites/effects/white_slash_effect/SFX304_04.png" id="15_v77qa"]
+[ext_resource type="AudioStream" uid="uid://qqxlr4cxhg11" path="res://assets/sounds/12_Player_Movement_SFX/52_Dive_02.wav" id="16_1pqlj"]
 [ext_resource type="Script" path="res://scripts/healthbar.gd" id="16_eoymm"]
 [ext_resource type="Texture2D" uid="uid://8geoquij4gpl" path="res://assets/sprites/effects/white_slash_effect/SFX304_05.png" id="16_h5wdk"]
-[ext_resource type="Script" path="res://scenes/staminabar.gd" id="17_hjhil"]
+[ext_resource type="Script" path="res://scripts/staminabar.gd" id="17_2666h"]
 [ext_resource type="AudioStream" uid="uid://b436qjtsc2p1s" path="res://assets/sounds/10_Battle_SFX/Sword Hits Metal Shield [ ezmp3.cc ]-[AudioTrimmer.com].mp3" id="20_3p3tk"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_c2apc"]
@@ -195,7 +196,7 @@ tracks/10/keys = {
 tracks/11/type = "value"
 tracks/11/imported = false
 tracks/11/enabled = true
-tracks/11/path = NodePath("VFXs/walk_grass_VFX:playing")
+tracks/11/path = NodePath("SFXs/walk_grass_SFX:playing")
 tracks/11/interp = 1
 tracks/11/loop_wrap = true
 tracks/11/keys = {
@@ -4379,7 +4380,7 @@ tracks/10/keys = {
 tracks/11/type = "value"
 tracks/11/imported = false
 tracks/11/enabled = true
-tracks/11/path = NodePath("VFXs/walk_grass_VFX:playing")
+tracks/11/path = NodePath("SFXs/walk_grass_SFX:playing")
 tracks/11/interp = 1
 tracks/11/loop_wrap = true
 tracks/11/keys = {
@@ -4539,7 +4540,7 @@ tracks/10/keys = {
 tracks/11/type = "value"
 tracks/11/imported = false
 tracks/11/enabled = true
-tracks/11/path = NodePath("VFXs/walk_grass_VFX:playing")
+tracks/11/path = NodePath("SFXs/walk_grass_SFX:playing")
 tracks/11/interp = 1
 tracks/11/loop_wrap = true
 tracks/11/keys = {
@@ -4699,7 +4700,7 @@ tracks/10/keys = {
 tracks/11/type = "value"
 tracks/11/imported = false
 tracks/11/enabled = true
-tracks/11/path = NodePath("VFXs/walk_grass_VFX:playing")
+tracks/11/path = NodePath("SFXs/walk_grass_SFX:playing")
 tracks/11/interp = 1
 tracks/11/loop_wrap = true
 tracks/11/keys = {
@@ -4859,7 +4860,7 @@ tracks/10/keys = {
 tracks/11/type = "value"
 tracks/11/imported = false
 tracks/11/enabled = true
-tracks/11/path = NodePath("VFXs/walk_grass_VFX:playing")
+tracks/11/path = NodePath("SFXs/walk_grass_SFX:playing")
 tracks/11/interp = 1
 tracks/11/loop_wrap = true
 tracks/11/keys = {
@@ -5510,7 +5511,7 @@ tracks/2/keys = {
 "times": PackedFloat32Array(0, 0.4),
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
-"values": [true, false]
+"values": [false, false]
 }
 tracks/3/type = "value"
 tracks/3/imported = false
@@ -5658,7 +5659,7 @@ tracks/2/keys = {
 "times": PackedFloat32Array(0, 0.4),
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
-"values": [true, false]
+"values": [false, false]
 }
 tracks/3/type = "value"
 tracks/3/imported = false
@@ -5806,7 +5807,7 @@ tracks/2/keys = {
 "times": PackedFloat32Array(0, 0.4),
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
-"values": [true, false]
+"values": [false, false]
 }
 tracks/3/type = "value"
 tracks/3/imported = false
@@ -5954,7 +5955,7 @@ tracks/2/keys = {
 "times": PackedFloat32Array(0, 0.4),
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
-"values": [true, false]
+"values": [false, false]
 }
 tracks/3/type = "value"
 tracks/3/imported = false
@@ -6378,6 +6379,10 @@ bg_color = Color(1, 0.525374, 0.464771, 1)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3y1wv"]
 bg_color = Color(0.227451, 0.180392, 0.223529, 1)
+expand_margin_left = 1.0
+expand_margin_top = 1.0
+expand_margin_right = 1.0
+expand_margin_bottom = 1.0
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0iyls"]
 bg_color = Color(0.190577, 0.559738, 0.310847, 1)
@@ -6450,24 +6455,28 @@ libraries = {
 "": SubResource("AnimationLibrary_v11ep")
 }
 
-[node name="VFXs" type="Node" parent="."]
+[node name="SFXs" type="Node" parent="."]
 
-[node name="hurt_VFX" type="AudioStreamPlayer2D" parent="VFXs"]
+[node name="hurt_SFX" type="AudioStreamPlayer2D" parent="SFXs"]
 scale = Vector2(5, 5)
 stream = ExtResource("12_54qc7")
 
-[node name="Sword_VFX" type="AudioStreamPlayer2D" parent="VFXs"]
+[node name="Sword_SFX" type="AudioStreamPlayer2D" parent="SFXs"]
 scale = Vector2(5, 5)
 stream = ExtResource("13_4p0r4")
 
-[node name="walk_grass_VFX" type="AudioStreamPlayer2D" parent="VFXs"]
+[node name="walk_grass_SFX" type="AudioStreamPlayer2D" parent="SFXs"]
 stream = ExtResource("14_rntyo")
 
-[node name="block_VFX" type="AudioStreamPlayer2D" parent="VFXs"]
+[node name="block_SFX" type="AudioStreamPlayer2D" parent="SFXs"]
 stream = ExtResource("20_3p3tk")
 
-[node name="parry_VFX" type="AudioStreamPlayer2D" parent="VFXs"]
+[node name="parry_SFX" type="AudioStreamPlayer2D" parent="SFXs"]
 stream = ExtResource("15_b0tda")
+
+[node name="break_guard_SFX" type="AudioStreamPlayer2D" parent="SFXs"]
+stream = ExtResource("16_1pqlj")
+volume_db = 10.0
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
@@ -6512,16 +6521,16 @@ anchor_top = 0.052
 anchor_right = 0.271
 anchor_bottom = 0.089
 offset_left = 20.0
-offset_top = -0.16
+offset_top = 3.84
 offset_right = -450.32
-offset_bottom = -36.12
+offset_bottom = -34.12
 scale = Vector2(10, 10)
 size_flags_horizontal = 6
 size_flags_vertical = 4
 theme_override_styles/background = SubResource("StyleBoxFlat_3y1wv")
 theme_override_styles/fill = SubResource("StyleBoxFlat_0iyls")
 show_percentage = false
-script = ExtResource("17_hjhil")
+script = ExtResource("17_2666h")
 
 [node name="Timer" type="Timer" parent="CanvasLayer/Staminabar"]
 

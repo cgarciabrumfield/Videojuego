@@ -1,5 +1,6 @@
-[gd_scene load_steps=6 format=3 uid="uid://cre54jm3bvmaf"]
+[gd_scene load_steps=7 format=3 uid="uid://cre54jm3bvmaf"]
 
+[ext_resource type="Script" path="res://scripts/dialogue_interface.gd" id="1_85p12"]
 [ext_resource type="FontFile" uid="uid://bfak3to7vkksv" path="res://assets/GUI/Silkscreen_font/Silkscreen-Bold.ttf" id="1_q3l1u"]
 [ext_resource type="Texture2D" uid="uid://kdxb5kkftfm7" path="res://assets/GUI/Green_Knight_portrait.png" id="2_ml0iw"]
 
@@ -46,6 +47,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_85p12")
 
 [node name="background" type="ColorRect" parent="."]
 layout_mode = 1

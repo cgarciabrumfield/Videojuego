@@ -24,8 +24,8 @@ func _ready():
 	full_map[current_coords].clear_enemies()
 	load_map(discovered_map, 0)
 
-var min_number_rooms = 20
-var max_number_rooms = 25
+var min_number_rooms = 6
+var max_number_rooms = 10
 
 var room_generation_chance = 20
 
