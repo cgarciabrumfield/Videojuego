@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://lxt7r4o4x0pp"]
+
+[ext_resource type="Texture2D" uid="uid://cywcqikt5je2a" path="res://maps/Bosque/rocas.png" id="1_vetue"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vclwb"]
+atlas = ExtResource("1_vetue")
+region = Rect2(1, 6, 29, 22)
+
+[node name="roca_1" type="Node2D"]
+texture_filter = 1
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = SubResource("AtlasTexture_vclwb")

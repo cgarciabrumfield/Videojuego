@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://b7qov5yqusyyq"]
 
-[ext_resource type="Script" path="res://scenes/bosque/salas/distribuciones_enemigos/enemies.gd" id="1_kdurg"]
+[ext_resource type="Script" path="res://scenes/bosque/salas/distribuciones_enemigos/example_room.gd" id="1_kdurg"]
 [ext_resource type="PackedScene" uid="uid://bd1rec7dsrw3y" path="res://scenes/bosque/enemigos/black_knight.tscn" id="1_ut1eu"]
 [ext_resource type="Texture2D" uid="uid://kbv1sawkxgmk" path="res://test.png" id="3_e6ajo"]
 
