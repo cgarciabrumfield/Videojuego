@@ -1,0 +1,12 @@
+HOLA COMPAÑEROS VIDEOJUEGOCREADORES
+
+Para que sepais como hacer mas salas random:
+
+Los suelos: abrís el archivo test.tmx en Tiled y haceis
+	el dibujo que querais de ese tamañom, luego lo 
+	exportáis como png y lo llamais "ground_" y el
+	número que corresponda y ya está no tiene mas.
+
+Los enemigos: no se aún no lo he pensado/hecho
+
+Los props: no se aún no lo he hecho

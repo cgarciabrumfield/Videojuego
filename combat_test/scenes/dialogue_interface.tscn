@@ -3,7 +3,6 @@
 [ext_resource type="Script" path="res://scripts/dialogue_interface.gd" id="1_85p12"]
 [ext_resource type="FontFile" uid="uid://bfak3to7vkksv" path="res://assets/GUI/Silkscreen_font/Silkscreen-Bold.ttf" id="1_q3l1u"]
 [ext_resource type="Texture2D" uid="uid://kdxb5kkftfm7" path="res://assets/GUI/Green_Knight_portrait.png" id="2_ml0iw"]
-[ext_resource type="FontFile" uid="uid://bb74qb2rqf4ub" path="res://assets/GUI/Silkscreen_font/Silkscreen-Regular.ttf" id="3_rq3h4"]
 
 [sub_resource type="Animation" id="Animation_hhgfh"]
 length = 0.001
@@ -69,7 +68,9 @@ offset_right = 1923.0
 offset_bottom = 294.0
 scale = Vector2(0.1, 0.1)
 theme_override_fonts/font = ExtResource("1_q3l1u")
-theme_override_font_sizes/font_size = 250
+
+theme_override_font_sizes/font_size = 200
+
 text = "THE KNIGHT"
 
 [node name="portrait" type="TextureRect" parent="background"]
@@ -94,7 +95,6 @@ offset_right = -46.0
 offset_bottom = -54.0
 grow_horizontal = 2
 grow_vertical = 0
-theme_override_fonts/normal_font = ExtResource("3_rq3h4")
 theme_override_font_sizes/normal_font_size = 25
 text = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris euismod dolor diam, ac molestie urna cursus vel. "
 visible_characters = 0

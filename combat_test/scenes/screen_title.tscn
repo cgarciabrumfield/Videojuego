@@ -1,130 +1,19 @@
-[gd_scene load_steps=23 format=3 uid="uid://ddr7x4g7y2pmn"]
+[gd_scene load_steps=9 format=3 uid="uid://ddr7x4g7y2pmn"]
 
 [ext_resource type="Script" path="res://scripts/screen_title.gd" id="1_gkkox"]
 [ext_resource type="Texture2D" uid="uid://kbv1sawkxgmk" path="res://test.png" id="2_l2ql4"]
 [ext_resource type="Theme" uid="uid://cs55wonthksqc" path="res://assets/GUI/button_theme.tres" id="3_5pxrt"]
-[ext_resource type="Texture2D" uid="uid://dkba5c2e1xcmk" path="res://assets/sprites/knights/green_knight/Green Knight standby Sprite-sheet 16x16.png" id="3_dyotv"]
+[ext_resource type="SpriteFrames" uid="uid://despu680qbvek" path="res://Animations/Player.tres" id="4_gtbq7"]
 [ext_resource type="FontFile" uid="uid://bb74qb2rqf4ub" path="res://assets/GUI/Silkscreen_font/Silkscreen-Regular.ttf" id="5_560ln"]
+[ext_resource type="Texture2D" uid="uid://dlhgyyvbwxj7r" path="res://assets/sprites/Shadow.png" id="5_apjbo"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_wmyrg"]
-atlas = ExtResource("3_dyotv")
-region = Rect2(0, 0, 16, 16)
+[sub_resource type="Animation" id="Animation_mycb5"]
+resource_name = "animation_1"
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_6c3fj"]
-atlas = ExtResource("3_dyotv")
-region = Rect2(16, 0, 16, 16)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_1fw1b"]
-atlas = ExtResource("3_dyotv")
-region = Rect2(32, 0, 16, 16)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_81por"]
-atlas = ExtResource("3_dyotv")
-region = Rect2(48, 0, 16, 16)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_8wba4"]
-atlas = ExtResource("3_dyotv")
-region = Rect2(64, 0, 16, 16)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_4xwfr"]
-atlas = ExtResource("3_dyotv")
-region = Rect2(80, 0, 16, 16)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_su67k"]
-atlas = ExtResource("3_dyotv")
-region = Rect2(96, 0, 16, 16)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_c8krq"]
-atlas = ExtResource("3_dyotv")
-region = Rect2(112, 0, 16, 16)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_5e1br"]
-atlas = ExtResource("3_dyotv")
-region = Rect2(128, 0, 16, 16)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_jl2gl"]
-atlas = ExtResource("3_dyotv")
-region = Rect2(144, 0, 16, 16)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_12ula"]
-atlas = ExtResource("3_dyotv")
-region = Rect2(160, 0, 16, 16)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_6wdw7"]
-atlas = ExtResource("3_dyotv")
-region = Rect2(176, 0, 16, 16)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_r8n8n"]
-atlas = ExtResource("3_dyotv")
-region = Rect2(192, 0, 16, 16)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_afy6u"]
-atlas = ExtResource("3_dyotv")
-region = Rect2(208, 0, 16, 16)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_itl05"]
-atlas = ExtResource("3_dyotv")
-region = Rect2(224, 0, 16, 16)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_t0gyh"]
-atlas = ExtResource("3_dyotv")
-region = Rect2(240, 0, 16, 16)
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_li4jf"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_wmyrg")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_6c3fj")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_1fw1b")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_81por")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_8wba4")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_4xwfr")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_su67k")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_c8krq")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_5e1br")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_jl2gl")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_12ula")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_6wdw7")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_r8n8n")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_afy6u")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_itl05")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_t0gyh")
-}],
-"loop": true,
-"name": &"default",
-"speed": 10.0
-}]
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_2tup3"]
+_data = {
+"animation_1": SubResource("Animation_mycb5")
+}
 
 [node name="screen_title" type="Control"]
 texture_filter = 1
@@ -136,53 +25,76 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_gkkox")
 
-[node name="background" type="TextureRect" parent="."]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
+[node name="background" type="Sprite2D" parent="."]
+position = Vector2(959.81, 539.95)
+scale = Vector2(6.00119, 5.62552)
 texture = ExtResource("2_l2ql4")
 
-[node name="start_Button" type="Button" parent="background"]
-layout_mode = 0
-offset_left = 1424.0
-offset_top = 684.0
-offset_right = 1663.0
-offset_bottom = 752.0
-theme = ExtResource("3_5pxrt")
-text = "Start"
-
-[node name="quit_button" type="Button" parent="background/start_Button"]
-layout_mode = 1
-offset_top = 90.0
-offset_right = 239.0
-offset_bottom = 158.0
-text = "Quit
-"
-
-[node name="knight_sprite" type="AnimatedSprite2D" parent="background"]
-position = Vector2(966, 797)
-scale = Vector2(17, 17)
-sprite_frames = SubResource("SpriteFrames_li4jf")
-frame = 15
-frame_progress = 0.101185
-
 [node name="title" type="Label" parent="background"]
-layout_mode = 0
-offset_left = 125.0
-offset_top = -34.0
-offset_right = 1788.0
-offset_bottom = 470.0
+texture_filter = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -319.0
+offset_top = -96.0
+offset_right = 2864.0
+offset_bottom = 400.0
+grow_horizontal = 2
+scale = Vector2(0.1, 0.1)
 theme_override_fonts/font = ExtResource("5_560ln")
-theme_override_font_sizes/font_size = 150
+theme_override_font_sizes/font_size = 200
 text = "Knight's curse"
 horizontal_alignment = 1
 vertical_alignment = 1
+autowrap_mode = 2
 uppercase = true
 
-[connection signal="pressed" from="background/start_Button" to="." method="_on_start_button_pressed"]
-[connection signal="pressed" from="background/start_Button/quit_button" to="." method="_on_start_button_pressed"]
-[connection signal="pressed" from="background/start_Button/quit_button" to="." method="_on_quit_button_pressed"]
-[connection signal="ready" from="background/knight_sprite" to="." method="_on_knight_sprite_ready"]
+[node name="knight_sprite" type="AnimatedSprite2D" parent="."]
+z_index = 2
+position = Vector2(383, 577)
+scale = Vector2(6.001, 6)
+sprite_frames = ExtResource("4_gtbq7")
+animation = &"attack2_down"
+
+[node name="shadow" type="Sprite2D" parent="knight_sprite"]
+z_index = -1
+position = Vector2(0, 7.59999)
+texture = ExtResource("5_apjbo")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+root_node = NodePath("../background")
+libraries = {
+"": SubResource("AnimationLibrary_2tup3")
+}
+
+[node name="start_Button" type="Button" parent="."]
+z_index = 5
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -169.5
+offset_top = -49.0
+offset_right = 169.5
+offset_bottom = 49.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("3_5pxrt")
+theme_override_font_sizes/font_size = 50
+text = "Start"
+
+[node name="quit_button" type="Button" parent="start_Button"]
+z_index = 5
+layout_mode = 1
+offset_top = 124.0
+offset_right = 339.0
+offset_bottom = 222.0
+theme_override_font_sizes/font_size = 50
+text = "Quit
+"
+
+[connection signal="ready" from="knight_sprite" to="." method="_on_knight_sprite_ready"]
+[connection signal="pressed" from="start_Button" to="." method="_on_start_button_pressed"]
+[connection signal="pressed" from="start_Button/quit_button" to="." method="_on_quit_button_pressed"]

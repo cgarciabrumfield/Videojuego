@@ -1,13 +1,13 @@
 extends CharacterBody2D
 
-@export var maxHealth = 3
-@export var health = maxHealth
+@export var MAX_HEALTH = 3
+@export var health = MAX_HEALTH
 var is_hurt = false
 var screen_size
-const NORMAL_SPEED = 50
-const RUN_SPEED = 80
+const NORMAL_SPEED = 15
+const RUN_SPEED = 25
 @export var speed = NORMAL_SPEED # Velocidad a la que se moverá el limo
-@export var detection_range = 200
+@export var detection_range = 50
 var direction_change_interval: float = 2.0 # Tiempo para cambiar de dirección
 var timer: float = 0.0 # Timer para controlar el cambio de dirección
 var direction: Vector2 = Vector2.ZERO # Vector de dirección inicial
@@ -23,9 +23,10 @@ var knockback_timer: float = 0.0
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	health = maxHealth
 	screen_size = get_viewport_rect().size
-	position = Vector2(randi_range(0, screen_size.x), randi_range(0, screen_size.y))
+	var colors = [Color.YELLOW_GREEN, Color.MEDIUM_SPRING_GREEN, Color.SPRING_GREEN, Color.DARK_GREEN]
+	$SlimeSprite.modulate = colors[randi() % colors.size()]
+	$SlimeSprite.modulate.a8 = 160
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
@@ -94,7 +95,6 @@ func move_randomly(delta):
 	$SlimeSprite.speed_scale = 1
 	position += direction * speed * delta
 	move_and_slide()
-	position = position.clamp(Vector2.ZERO, screen_size)
 	
 func move_towards_player(player_position: Vector2, delta: float):
 	speed = RUN_SPEED
@@ -102,7 +102,6 @@ func move_towards_player(player_position: Vector2, delta: float):
 	direction = (player_position - position).normalized()
 	position += direction * speed * delta
 	move_and_slide()
-	position = position.clamp(Vector2.ZERO, screen_size)
 	
 func depth_control():
 	# Actualizamos el valor de profundidad del eje z según la altura del personaje en el eje y
@@ -110,8 +109,14 @@ func depth_control():
 	z_index = normalized_Y_pos * 90 + 10
 
 func get_player_position():
-	if get_parent() != null:
-		var parent = get_parent()
-		if parent.has_node("Player"):
-			return parent.get_node("Player").position
+	return _find_player(get_tree().get_root())
+	
+func _find_player(node):
+	if node.name == "Player":
+		return node.position
+		
+	for child in node.get_children():
+		var position_jugador = _find_player(child)
+		if position_jugador != null:
+			return position_jugador
 	return null

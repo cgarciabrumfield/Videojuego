@@ -17,7 +17,7 @@
 [ext_resource type="AudioStream" uid="uid://tc5d3mw3h6ma" path="res://assets/sounds/12_Player_Movement_SFX/08_Step_rock_02.wav" id="14_jwsha"]
 [ext_resource type="AudioStream" uid="uid://ddteofdbmqcge" path="res://assets/sounds/10_Battle_SFX/39_Block_03.wav" id="15_ys5b1"]
 [ext_resource type="Texture2D" uid="uid://bp086jaeixx13" path="res://assets/sprites/interface/exclamation.png" id="16_jgomi"]
-[ext_resource type="Script" path="res://scripts/progress_bar.gd" id="20_1y1rv"]
+[ext_resource type="Script" path="res://scripts/healthbar.gd" id="20_1y1rv"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_s7fvf"]
 
@@ -6933,7 +6933,7 @@ bg_color = Color(1, 0.525374, 0.464771, 1)
 
 [node name="black_knight" type="CharacterBody2D"]
 texture_filter = 1
-scale = Vector2(5, 5)
+collision_mask = 19
 motion_mode = 1
 script = ExtResource("1_58v2s")
 metadata/_edit_group_ = true

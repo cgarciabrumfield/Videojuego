@@ -1,12 +1,12 @@
 extends CharacterBody2D
 
-@export var maxHealth = 15
-@export var health = maxHealth
+@export var MAX_HEALTH = 15
+@export var health = MAX_HEALTH
 @export var is_hurt = false
 var screen_size
 @export var jump_attack_triggered = false
-const NORMAL_SPEED = 50
-const RUN_SPEED = 80
+const NORMAL_SPEED = 35
+const RUN_SPEED = 35
 @export var speed = NORMAL_SPEED # Velocidad a la que se moverá el limo
 var direction_change_interval: float = 2.0 # Tiempo para cambiar de dirección
 var timer: float = 0.0 # Timer para controlar el cambio de dirección
@@ -22,16 +22,15 @@ var knockback_velocity: Vector2 = Vector2.ZERO
 var knockback_duration: float = 0.2  # Duración del retroceso en segundos
 var knockback_timer: float = 0.0
 #Slimes invocados
-var slime_scene = preload("res://scenes/bosque/enemigos/summoned_slime.tscn")
+var slime_scene = preload("res://scenes/bosque/enemigos/slime.tscn")
 var summoned_slimes = 0
 var max_slimes = 3
 var segunda_fase_iniciada = false
 @onready var summon_slime_cooldown = $summon_slime_cooldown
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	health = maxHealth
 	screen_size = get_viewport_rect().size
-	position = Vector2(randi_range(0, screen_size.x), randi_range(0, screen_size.y))
+	position = Vector2(0,0)
 	
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
@@ -43,7 +42,7 @@ func _process(delta: float) -> void:
 	timer -= delta
 	if timer <= 0:
 		change_direction()
-	if health * 2 <= maxHealth && !segunda_fase_iniciada:
+	if health * 2 <= MAX_HEALTH && !segunda_fase_iniciada:
 		segunda_fase_iniciada = true
 		summon_slime_cooldown.start()
 		
@@ -103,7 +102,6 @@ func move_randomly(delta):
 	$SlimeSprite.speed_scale = 1
 	position += direction * speed * delta
 	move_and_slide()
-	position = position.clamp(Vector2.ZERO, screen_size)
 	
 func move_towards_player(player_position: Vector2, delta: float):
 	if !jump_attack_triggered:
@@ -112,7 +110,6 @@ func move_towards_player(player_position: Vector2, delta: float):
 	direction = (player_position - position).normalized()
 	position += direction * speed * delta
 	move_and_slide()
-	position = position.clamp(Vector2.ZERO, screen_size)
 	
 func depth_control():
 	# Actualizamos el valor de profundidad del eje z según la altura del personaje en el eje y
@@ -120,10 +117,16 @@ func depth_control():
 	z_index = normalized_Y_pos * 90 + 10
 
 func get_player_position():
-	if get_parent() != null:
-		var parent = get_parent()
-		if parent.has_node("Player"):
-			return parent.get_node("Player").position
+	return _find_player(get_tree().get_root())
+	
+func _find_player(node):
+	if node.name == "Player":
+		return node.position
+		
+	for child in node.get_children():
+		var position_jugador = _find_player(child)
+		if position_jugador != null:
+			return position_jugador
 	return null
 
 func jump_attack():
@@ -139,7 +142,11 @@ func summon_slime():
 		print("Slime summoned")
 		var new_slime = slime_scene.instantiate() # Instancia la escena
 		get_parent().add_child(new_slime)
-		new_slime.global_position = position + Vector2(randi_range(-100, 100), randi_range(-100, 100))
+		new_slime.position = position + Vector2(randi_range(-10,10), randi_range(-10, 10))
+		new_slime.detection_range = 1000
+		var tween = create_tween()
+		new_slime.scale = Vector2(0,0)
+		tween.tween_property(new_slime, "scale", Vector2(1,1), 0.5)
 		# Conectar la señal "tree_exited" para detectar cuando el slime muere
 		new_slime.connect("tree_exited", self._on_slime_died)
 		summoned_slimes += 1

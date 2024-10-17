@@ -1,8 +1,29 @@
 class_name Player
 extends CharacterBody2D
+#Speed
+@export var SPEED = 45 # How fast the player will move (pixels/sec).
+@export var RUN_SPEED = 65
+var speed = SPEED
+#Health
+@export var MAX_HEALTH = 10
+var health = MAX_HEALTH
+#Stamina
+@export var MAX_STAMINA = 50
+var stamina = MAX_STAMINA
+var STAMINA_REGEN = 0.20 #porcentaje de la barra de estamina que regenera por segundo
+var stamina_regen = STAMINA_REGEN
+@export var RUN_STAMINA_COST_SEC = 10
+var stamina_run_cost_sec = RUN_STAMINA_COST_SEC
+@export var ATTACK_STAMINA_COST = 15
+var attack_stamina_cost = ATTACK_STAMINA_COST
+@export var can_regen_stamina = true
+@export var STAMINA_REGEN_TIMER_TIMEOUT = 0.7
+@onready var timer_stamina = $CanvasLayer/Staminabar/Timer
 
-@export var speed = 150 # How fast the player will move (pixels/sec).
-@export var life = 10
+@onready var healthbar = $CanvasLayer/Healthbar
+@onready var timer_vida = $CanvasLayer/Healthbar/Timer
+@onready var damagebar = $CanvasLayer/Healthbar/Damagebar
+@onready var staminabar = $CanvasLayer/Staminabar
 var screen_size # Size of the game window.
 var direction # Izquierda derecha arriba abajo, segun a donde mire
 @export var is_attacking = false # Si está atacando bloquea las demás acciones y entradas
@@ -10,6 +31,7 @@ var direction # Izquierda derecha arriba abajo, segun a donde mire
 @export var is_parrying = false
 @export var is_inmune = false
 @export var is_hurt = false # Al recibir daño se bloquean las demas acciones y entradas
+@export var is_running = false
 var normalized_Y_pos # Posicion en el eje Y normalizada entre 0 y 1 para el calculo de profundidad asociado
 @export var inmune_time = 1.5
 var inmune_timer = Timer.new()
@@ -18,11 +40,12 @@ var parry_timer = Timer.new()
 # Variable para el temporizador de enfriamiento
 var attack_timer = Timer.new()
 var second_attack_queued = false
-@onready var slash_VFX = $VFXs/Sword_VFX
-@onready var hurt_VFX = $VFXs/hurt_VFX
-@onready var walk_VFX = $VFXs/walk_grass_VFX
-@onready var block_VFX = $VFXs/block_VFX
-@onready var parry_VFX = $VFXs/parry_VFX
+@onready var slash_SFX = $SFXs/Sword_SFX
+@onready var hurt_SFX = $SFXs/hurt_SFX
+@onready var walk_SFX = $SFXs/walk_grass_SFX
+@onready var block_SFX = $SFXs/block_SFX
+@onready var parry_SFX = $SFXs/parry_SFX
+@onready var guard_broken_SFX = $SFXs/break_guard_SFX
 
 var knockback_velocity: Vector2 = Vector2.ZERO
 var knockback_duration: float = 0.2  # Duración del retroceso en segundos
@@ -32,7 +55,7 @@ var knockback_timer: float = 0.0
 func _ready():
 	screen_size = get_viewport_rect().size #Vector de resolución de pantalla
 	direction = str("down") # El personaje empieza mirando hacia abajo
-	position = screen_size / 2 # situamos al personaje en el centro de la pantalla
+	 #position = screen_size / 2 # situamos al personaje en el centro de la pantalla
 	$Sword1/Hitbox_Sword1.disabled = true # La hitbox (espada) empieza emvainadas
 	$Sword2/Hitbox_Sword2.disabled = true
 	# Configura y agrega el temporizador de parry al nodo actual
@@ -50,19 +73,20 @@ func _ready():
 	add_child(attack_timer)
 	attack_timer.connect("timeout", self._on_attack_timer_timeout)
 	$Parry_effect_sprite.z_index = RenderingServer.CANVAS_ITEM_Z_MAX
+	timer_stamina.wait_time = STAMINA_REGEN_TIMER_TIMEOUT
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	#var current_animation = $AnimationPlayer.current_animation  # Obtiene la animación actual
-	#print("Animación en curso: ", current_animation)
-	move() # Nos movemos si se ha pulsado algo
+	print(speed)
+	move(delta) # Nos movemos si se ha pulsado algo
 	if Input.is_action_just_pressed("attack"):	
 		attack()
 	if Input.is_action_just_pressed("block"):	
 		block() # Bloqueamos si procede
 	depth_control()
+	stamina_control(delta)
 
-func move(): # Función que mueve al personaje
+func move(delta): # Función que mueve al personaje
 	velocity = Vector2.ZERO #Vector de movimiento del jugador
 	if !is_attacking && !is_blocking && !is_hurt && !is_parrying:
 		if Input.is_action_pressed("right"):
@@ -81,6 +105,29 @@ func move(): # Función que mueve al personaje
 		# Si nos estamos moviendo, y no hemos sido heridos, animación de correr. 
 		if !is_attacking && !is_blocking && !is_hurt && !is_parrying && velocity.length() > 0:
 			velocity = velocity.normalized() * speed
+			if Input.is_action_pressed("run") and stamina > 0:
+				if !is_running:
+					var tween1 = create_tween()
+					var tween2 = create_tween()
+					tween1.tween_property(self, "speed", RUN_SPEED, 0.5)
+					tween2.tween_property($AnimationPlayer, "speed_scale", 1.5, 0.5)
+					is_running = true
+				stamina -= RUN_STAMINA_COST_SEC * delta
+				timer_stamina.start()
+				$AnimationPlayer.speed_scale = 1.5
+			elif stamina <= 0 and !Input.is_action_just_released("run") and is_running:
+					var tween1 = create_tween()
+					var tween2 = create_tween()
+					tween1.tween_property(self, "speed", SPEED*0.5, 0.5)
+					tween2.tween_property($AnimationPlayer, "speed_scale", 0.5, 0.5)
+			else:
+				Input.action_release("run")
+				if is_running:
+					is_running = false
+					var tween1 = create_tween()
+					var tween2 = create_tween()
+					tween1.tween_property(self, "speed", SPEED, 0.5)
+					tween2.tween_property($AnimationPlayer, "speed_scale", 1, 0.5)
 			$AnimationPlayer.play(str("run_" + direction))
 		elif !is_attacking && !is_blocking && !is_hurt && !is_parrying: #Si no estamos corriendo y tampoco hemos sido heridos, animación iddle
 			$AnimationPlayer.play(str("iddle_" + direction))
@@ -90,22 +137,25 @@ func move(): # Función que mueve al personaje
 		#position = position.clamp(Vector2.ZERO, screen_size)
 # Función de ataque. Si ha sido pulsado y no estamos bloqueando ni reciviendo daño, tiene lugar	
 func attack():
-	if !is_blocking && !is_hurt && !is_parrying:
-		if !is_attacking:
-			slash_VFX.play()
-			$AnimationPlayer.play(str("attack_" + direction))
-			attack_timer.start()  # Inicia el temporizador
-		elif attack_timer.time_left > 0 && !second_attack_queued:
-			# Si la animación de ataque 1 está en curso y el temporizador no ha terminado
-			second_attack_queued = true
+	if stamina <= 0 or is_blocking or is_hurt or is_parrying:
+		return
+	if !is_attacking:
+		slash_SFX.play()
+		$AnimationPlayer.play(str("attack_" + direction))
+		stamina -= attack_stamina_cost
+		attack_timer.start()  # Inicia el temporizador
+	elif attack_timer.time_left > 0 && !second_attack_queued:
+		# Si la animación de ataque 1 está en curso y el temporizador no ha terminado
+		second_attack_queued = true
 
 # Callback cuando la animación de ataque termina
 func _on_animation_player_animation_finished(anim_name: StringName) -> void:
-	if anim_name.begins_with("attack_"):
+	if anim_name.begins_with("attack_") and stamina > 0:
 		if second_attack_queued:
 			$AnimationPlayer.play(str("attack_" + direction))
 			$AnimationPlayer.stop(false)
-			slash_VFX.play()
+			slash_SFX.play()
+			stamina -= attack_stamina_cost
 			$AnimationPlayer.play(str("attack_" + direction + "_2"))  # Reproducir la segunda animación de ataque
 			second_attack_queued = false
 
@@ -125,7 +175,6 @@ func _input(event):
 	if event.is_action_released("block"):
 		if parry_timer.time_left > 0:
 			print("Parry")
-			status()
 			$AnimationPlayer.play(str("parry_") + direction)
 		else:
 			$AnimationPlayer.play(str("stop_block_") + direction)
@@ -148,14 +197,23 @@ func take_damage(damage: int, knockback_direction: Vector2, knockback_strength: 
 		return
 	if is_blocking and can_be_blocked:
 		if check_blocking(attacker): # Devuelve true si ha bloqueado correctamente
+			stamina -= damage * 10
+			if stamina > 0:
+				block_SFX.play() 
+			else:
+				guard_broken_SFX.play()
+			can_regen_stamina = false
+			timer_stamina.start()
 			return
+	health -= damage
+	healthbar.update()
+	timer_vida.start()
 	is_blocking = false
 	is_parrying = false
 	is_inmune = true
 	is_attacking = false
-	hurt_VFX.play()
-	life -= damage
-	if life <= 0:
+	hurt_SFX.play()
+	if health <= 0:
 		kill()
 	elif not is_hurt:
 		is_hurt = true
@@ -192,7 +250,6 @@ func check_blocking(attacker: Node2D):
 	elif x < abs(y):
 		attacker_position_str = "left"
 	if attacker_position_str == direction:
-		block_VFX.play()
 		return true
 	return false
 
@@ -213,14 +270,14 @@ func try_parry(attacker: Node2D):
 		is_attacking = false
 		is_blocking = false
 		is_parrying = false
-		parry_VFX.play()
+		parry_SFX.play()
 		$Animation_parry_effect.play(str("parry_" + direction))
 		attacker.get_parried()
 
 # Animación que se reproduce al morir
 func kill():
-	hurt_VFX.pitch_scale = 0.8
-	hurt_VFX.play()
+	hurt_SFX.pitch_scale = 0.8
+	hurt_SFX.play()
 	is_hurt = true # Ponemos el estado de ser dañado simplemente para bloquear otras acciones
 	speed = 0; # Ya no nos movemos mas, por si acaso, aunque creo que no hace falta
 	$AnimationPlayer.play(str("death_" + direction))  #Animación de el cuerpo me pide tierra
@@ -245,3 +302,31 @@ func status():
 	print(is_hurt)
 	print("is_inmune: ")
 	print(is_inmune)
+
+func _on_health_timer_timeout() -> void:
+	damagebar.update()
+	timer_vida.stop()
+
+func stamina_control(delta):
+	if stamina <= 0:
+		if is_blocking:
+			$AnimationPlayer.play(str("stop_block_") + direction)
+		second_attack_queued = false
+	if stamina < 0 and can_regen_stamina:
+		stamina = 0
+	if stamina > MAX_STAMINA:
+		stamina = MAX_STAMINA
+	if is_blocking:
+		stamina_regen = STAMINA_REGEN * 0.3
+	else:
+		stamina_regen = STAMINA_REGEN
+	if is_attacking or is_running:
+		can_regen_stamina = false
+		timer_stamina.start()
+	if stamina < MAX_STAMINA and can_regen_stamina:
+		stamina += stamina_regen * MAX_STAMINA * delta
+	staminabar.update()
+
+func _on_stamina_timer_timeout() -> void:
+	can_regen_stamina = true
+	timer_stamina.stop()
