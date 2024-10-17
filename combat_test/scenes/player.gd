@@ -77,7 +77,6 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	print(speed)
 	move(delta) # Nos movemos si se ha pulsado algo
 	if Input.is_action_just_pressed("attack"):	
 		attack()
