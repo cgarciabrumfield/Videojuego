@@ -39,7 +39,7 @@ func _ready() -> void:
 	var ruta_enemigos: String = ("res://scenes/bosque/salas/distribuciones_enemigos/enemies_" + 
 	str(random_number_enemies_file) + ".tscn")
 	nodo_enemigos = "enemies_" + str(random_number_enemies_file)
-	enemigos.add_child(load(ruta_enemigos).instantiate())
+	#enemigos.add_child(load(ruta_enemigos).instantiate())
 	ground.texture = load(str("res://scenes/bosque/salas/suelos/ground_" + 
 	str(randi_range(1, count_ground_files()))) + ".png")
 	
@@ -62,7 +62,7 @@ func open_doors():
 	if opened_doors:
 		return
 	opened_doors = true
-	print("Puertas abiertas")
+	#print("Puertas abiertas")
 	if connected_bottom:
 		door_bottom.disabled = true
 		door_bottom_sprite.frame = 1
