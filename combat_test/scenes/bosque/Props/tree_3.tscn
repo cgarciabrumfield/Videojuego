@@ -1,15 +1,19 @@
-[gd_scene load_steps=6 format=3 uid="uid://dmpodkv6vbyts"]
+[gd_scene load_steps=7 format=3 uid="uid://dmpodkv6vbyts"]
 
 [ext_resource type="Script" path="res://scenes/bosque/Props/tree.gd" id="1_s2i1y"]
 [ext_resource type="Texture2D" uid="uid://ctt07hh42gsxy" path="res://assets/sprites/bigger_shadow.png" id="2_bvdna"]
-[ext_resource type="Texture2D" uid="uid://bovv62rxrjfek" path="res://maps/Bosque/tree_3.png" id="3_tr3ql"]
+[ext_resource type="Texture2D" uid="uid://f6wmqxl7aics" path="res://maps/Bosque/plants_atlas.png" id="3_nvjd2"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_3bk8t"]
 radius = 8.24621
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_sre1q"]
+atlas = ExtResource("3_nvjd2")
+region = Rect2(147, 15, 41, 61)
+
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_garvu"]
-radius = 20.8
-height = 56.0
+radius = 20.0
+height = 51.6
 
 [node name="Tree_3" type="Area2D"]
 texture_filter = 1
@@ -35,10 +39,10 @@ shape = SubResource("CircleShape2D_3bk8t")
 
 [node name="Tree_sprite" type="Sprite2D" parent="."]
 position = Vector2(-0.9, -28)
-texture = ExtResource("3_tr3ql")
+texture = SubResource("AtlasTexture_sre1q")
 
 [node name="Area_behind_tree" type="CollisionShape2D" parent="."]
-position = Vector2(-1.77636e-15, -33.8)
+position = Vector2(-1, -33.8)
 shape = SubResource("CapsuleShape2D_garvu")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

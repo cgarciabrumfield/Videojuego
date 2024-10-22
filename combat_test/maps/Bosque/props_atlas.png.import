@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bopdpsg854met"
-path="res://.godot/imported/bush_6.png-b8cd94071a9f6c254888514d621ac2d6.ctex"
+uid="uid://bjj8d78od07xw"
+path="res://.godot/imported/props_atlas.png-660924e6cab1bbaca4143cf6fd15fc85.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://maps/Bosque/bush_6.png"
-dest_files=["res://.godot/imported/bush_6.png-b8cd94071a9f6c254888514d621ac2d6.ctex"]
+source_file="res://maps/Bosque/props_atlas.png"
+dest_files=["res://.godot/imported/props_atlas.png-660924e6cab1bbaca4143cf6fd15fc85.ctex"]
 
 [params]
 
