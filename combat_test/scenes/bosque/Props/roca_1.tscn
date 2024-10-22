@@ -1,13 +1,20 @@
-[gd_scene load_steps=3 format=3 uid="uid://lxt7r4o4x0pp"]
+[gd_scene load_steps=4 format=3 uid="uid://lxt7r4o4x0pp"]
 
-[ext_resource type="Texture2D" uid="uid://cywcqikt5je2a" path="res://maps/Bosque/rocas.png" id="1_vetue"]
+[ext_resource type="Script" path="res://scenes/bosque/Props/default_prop.gd" id="1_wib00"]
+[ext_resource type="Texture2D" uid="uid://bjj8d78od07xw" path="res://maps/Bosque/props_atlas.png" id="2_ojg6u"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_vclwb"]
-atlas = ExtResource("1_vetue")
-region = Rect2(1, 6, 29, 22)
+[sub_resource type="AtlasTexture" id="AtlasTexture_m2ocj"]
+atlas = ExtResource("2_ojg6u")
+region = Rect2(1, 214, 29, 22)
 
-[node name="roca_1" type="Node2D"]
+[node name="roca_1" type="StaticBody2D"]
 texture_filter = 1
+collision_layer = 16
+collision_mask = 0
+script = ExtResource("1_wib00")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-texture = SubResource("AtlasTexture_vclwb")
+texture = SubResource("AtlasTexture_m2ocj")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+polygon = PackedVector2Array(-11, 4, 6, 8, 11, 8, 12, -1, 5, -4, 2, -7, -6, -7, -12, 1)

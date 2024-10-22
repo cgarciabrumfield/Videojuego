@@ -1,7 +1,11 @@
-[gd_scene load_steps=4 format=3 uid="uid://3d3bomcydsmx"]
+[gd_scene load_steps=5 format=3 uid="uid://3d3bomcydsmx"]
 
-[ext_resource type="Script" path="res://scenes/bosque/Props/bush.gd" id="1_fljxc"]
-[ext_resource type="Texture2D" uid="uid://cwij2snaq01ud" path="res://maps/Bosque/bush_4.png" id="2_hhj2f"]
+[ext_resource type="Script" path="res://scenes/bosque/Props/default_prop.gd" id="1_fljxc"]
+[ext_resource type="Texture2D" uid="uid://f6wmqxl7aics" path="res://maps/Bosque/plants_atlas.png" id="2_62cr3"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2u6yp"]
+atlas = ExtResource("2_62cr3")
+region = Rect2(108, 92, 24, 21)
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_udgxv"]
 radius = 20.6667
@@ -15,7 +19,7 @@ script = ExtResource("1_fljxc")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(0, -1.2)
-texture = ExtResource("2_hhj2f")
+texture = SubResource("AtlasTexture_2u6yp")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, 0.6)
