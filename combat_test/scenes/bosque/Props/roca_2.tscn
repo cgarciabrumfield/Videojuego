@@ -9,7 +9,7 @@ region = Rect2(81, 241, 14, 13)
 
 [node name="roca_2" type="StaticBody2D"]
 texture_filter = 1
-collision_layer = 16
+collision_layer = 32
 collision_mask = 0
 script = ExtResource("1_n1kjm")
 
