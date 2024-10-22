@@ -1,8 +1,9 @@
-[gd_scene load_steps=7 format=3 uid="uid://cre54jm3bvmaf"]
+[gd_scene load_steps=8 format=3 uid="uid://cre54jm3bvmaf"]
 
 [ext_resource type="Script" path="res://scripts/dialogue_interface.gd" id="1_85p12"]
 [ext_resource type="FontFile" uid="uid://bfak3to7vkksv" path="res://assets/GUI/Silkscreen_font/Silkscreen-Bold.ttf" id="1_q3l1u"]
 [ext_resource type="Texture2D" uid="uid://kdxb5kkftfm7" path="res://assets/GUI/Green_Knight_portrait.png" id="2_ml0iw"]
+[ext_resource type="FontFile" uid="uid://c1vn43cm5j0k2" path="res://assets/GUI/november/novem___.ttf" id="4_hpiym"]
 
 [sub_resource type="Animation" id="Animation_kd1lc"]
 length = 0.001
@@ -19,7 +20,7 @@ tracks/0/keys = {
 }
 
 [sub_resource type="Animation" id="Animation_wv6gf"]
-resource_name = "new_animation"
+resource_name = "show_text"
 tracks/0/type = "bezier"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -35,7 +36,7 @@ tracks/0/keys = {
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_h23t6"]
 _data = {
 "RESET": SubResource("Animation_kd1lc"),
-"new_animation": SubResource("Animation_wv6gf")
+"show_text": SubResource("Animation_wv6gf")
 }
 
 [node name="dialogue_interface" type="Control"]
@@ -67,7 +68,7 @@ offset_right = 1923.0
 offset_bottom = 294.0
 scale = Vector2(0.1, 0.1)
 theme_override_fonts/font = ExtResource("1_q3l1u")
-theme_override_font_sizes/font_size = 200
+theme_override_font_sizes/font_size = 250
 text = "THE KNIGHT"
 
 [node name="portrait" type="TextureRect" parent="background"]
@@ -89,13 +90,12 @@ anchor_bottom = 1.0
 offset_left = 375.0
 offset_top = -251.0
 offset_right = -46.0
-offset_bottom = -54.0
+offset_bottom = -36.0
 grow_horizontal = 2
 grow_vertical = 0
-theme_override_font_sizes/normal_font_size = 25
-text = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris euismod dolor diam, ac molestie urna cursus vel. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris euismod dolor diam, ac molestie urna cursus vel. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris euismod dolor diam, ac molestie urna cursus vel. "
-visible_characters = 0
-visible_ratio = 0.0
+theme_override_fonts/normal_font = ExtResource("4_hpiym")
+theme_override_font_sizes/normal_font_size = 30
+text = "Placeholder: Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum semper mi et augue sodales faucibus. Curabitur aliquet sit amet eros ac elementum. Nam tempor efficitur mattis. Cras dignissim tempor turpis, eget efficitur urna efficitur nec. Vestibulum suscipit nunc urna, ut mattis tellus ligula."
 
 [node name="dialogue_animation" type="AnimationPlayer" parent="."]
 libraries = {
