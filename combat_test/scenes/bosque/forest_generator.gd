@@ -29,7 +29,6 @@ func _ready():
 	current_coords = sala_inicio_coords
 	discovered_map[current_coords] = full_map[current_coords]
 	add_child(full_map[current_coords])
-	full_map[current_coords].clear_enemies()
 	load_map(full_map, 0)
 
 var min_number_rooms = 6
@@ -256,6 +255,8 @@ func _realizar_cambio_sala(direction: Vector2):
 			full_map[current_coords].position += Vector2(-400,0)
 		else:
 			add_child(full_map[current_coords])
+			if current_coords != sala_inicio_coords and current_coords != sala_final_coords:
+				full_map[current_coords].add_enemies()
 		
 	await get_tree().create_timer(0.1).timeout
 	is_changing_room = false
