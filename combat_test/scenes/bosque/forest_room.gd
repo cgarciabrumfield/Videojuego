@@ -14,6 +14,7 @@ var opened_doors = false
 @onready var enemigos = $enemigos
 @onready var ground = $Ground
 var nodo_enemigos
+var nodo_props
 
 
 @onready var door_left = $Left_wall/left_door/left_door_area
@@ -35,11 +36,15 @@ var nodo_enemigos
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	generate_walls()
-	var random_number_enemies_file = randi_range(1, count_enemies_distribution_scenes())
-	var ruta_enemigos: String = ("res://scenes/bosque/salas/distribuciones_enemigos/enemies_" + 
-	str(random_number_enemies_file) + ".tscn")
-	nodo_enemigos = "enemies_" + str(random_number_enemies_file)
-	#enemigos.add_child(load(ruta_enemigos).instantiate())
+	
+	var random_number_prop_file = randi_range(1, count_prop_distribution_scenes())
+	print(random_number_prop_file)
+	var ruta_props: String = ("res://scenes/bosque/salas/distribuciones_props/props_" + 
+	str(random_number_prop_file) + ".tscn")
+	print(ruta_props)
+	nodo_props = "props_" + str(random_number_prop_file)
+	add_child(load(ruta_props).instantiate())
+	
 	ground.texture = load(str("res://scenes/bosque/salas/suelos/ground_" + 
 	str(randi_range(1, count_ground_files()))) + ".png")
 	
@@ -123,6 +128,22 @@ func count_enemies_distribution_scenes() -> int:
 		print("Failed to open directory")
 		FileAccess.get_open_error()
 	return count
+	
+func count_prop_distribution_scenes() -> int:
+	var dir =  DirAccess.open("res://scenes/bosque/salas/distribuciones_props/")
+	var count = 0
+	if dir != null:
+		dir.list_dir_begin()
+		var file_name = dir.get_next()
+		while file_name != "":
+			if file_name.begins_with("props_") and file_name.ends_with(".tscn"):
+				count += 1
+			file_name = dir.get_next()
+		dir.list_dir_end()
+	else:
+		print("Failed to open directory")
+		FileAccess.get_open_error()
+	return count
 
 func clear_enemies():
 	for child in enemigos.get_children():
@@ -130,6 +151,13 @@ func clear_enemies():
 			if enemigo is CharacterBody2D:
 				enemigo.queue_free()
 
+func add_enemies():
+	var random_number_enemies_file = randi_range(1, count_enemies_distribution_scenes())
+	var ruta_enemigos: String = ("res://scenes/bosque/salas/distribuciones_enemigos/enemies_" + 
+	str(random_number_enemies_file) + ".tscn")
+	#nodo_enemigos = "enemies_" + str(random_number_enemies_file)
+	enemigos.add_child(load(ruta_enemigos).instantiate())
+	
 func count_enemies() -> int:
 	var grandchild_count = 0
 	for child in enemigos.get_children():

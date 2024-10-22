@@ -91,7 +91,7 @@ size = Vector2(6, 33.9556)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_vbu7j"]
 size = Vector2(6, 34.1333)
 
-[node name="Test_room_2" type="Node2D"]
+[node name="forest_room" type="Node2D"]
 texture_filter = 1
 script = ExtResource("1_8os2r")
 

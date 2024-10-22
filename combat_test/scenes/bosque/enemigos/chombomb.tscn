@@ -1,0 +1,80 @@
+[gd_scene load_steps=11 format=3 uid="uid://desu3h1sc52ll"]
+
+[ext_resource type="Texture2D" uid="uid://by2ot2qxsdywa" path="res://assets/sprites/enemies/wonwon.png" id="1_t5ybh"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cgjh2"]
+atlas = ExtResource("1_t5ybh")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vurxj"]
+atlas = ExtResource("1_t5ybh")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_p46wk"]
+atlas = ExtResource("1_t5ybh")
+region = Rect2(32, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kojuj"]
+atlas = ExtResource("1_t5ybh")
+region = Rect2(48, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_f2uee"]
+atlas = ExtResource("1_t5ybh")
+region = Rect2(0, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fu1kr"]
+atlas = ExtResource("1_t5ybh")
+region = Rect2(16, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dlrmd"]
+atlas = ExtResource("1_t5ybh")
+region = Rect2(32, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lpkop"]
+atlas = ExtResource("1_t5ybh")
+region = Rect2(48, 16, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_k8i3y"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cgjh2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vurxj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_p46wk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kojuj")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_f2uee")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fu1kr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dlrmd")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lpkop")
+}],
+"loop": true,
+"name": &"left",
+"speed": 5.0
+}]
+
+[node name="Chombomb" type="CharacterBody2D"]
+texture_filter = 1
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_k8i3y")
+animation = &"left"
+frame_progress = 0.554973
