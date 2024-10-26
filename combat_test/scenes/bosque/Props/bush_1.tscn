@@ -11,7 +11,7 @@ region = Rect2(19, 99, 11, 10)
 
 [node name="Bush_1" type="StaticBody2D"]
 texture_filter = 1
-collision_layer = 16
+collision_layer = 32
 collision_mask = 0
 script = ExtResource("1_662vb")
 
