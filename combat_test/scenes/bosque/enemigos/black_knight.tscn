@@ -7045,4 +7045,4 @@ theme_override_styles/fill = SubResource("StyleBoxFlat_sph8s")
 show_percentage = false
 script = ExtResource("20_1y1rv")
 
-[connection signal="timeout" from="Healthbar/Timer" to="." method="_on_timer_timeout"]
+[connection signal="timeout" from="Healthbar/Timer" to="." method="_on_health_timer_timeout"]

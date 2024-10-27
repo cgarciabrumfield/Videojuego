@@ -69,7 +69,7 @@ func _physics_process(delta: float) -> void:
 		# Reduce el temporizador del retroceso
 		knockback_timer -= delta
 		
-func _on_timer_timeout() -> void:
+func _on_health_timer_timeout() -> void:
 	damagebar.update()
 	timer_vida.stop()
 
@@ -151,7 +151,7 @@ func attack():
 func depth_control():
 	# Actualizamos el valor de profundidad del eje z según la altura del personaje en el eje y
 	normalized_Y_pos = position.y / screen_size.y
-	z_index = normalized_Y_pos * 90 + 10
+	z_index = normalized_Y_pos * 90 + 15
 
 func get_player_position():
 	return _find_player(get_tree().get_root())
