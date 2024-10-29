@@ -152,7 +152,6 @@ shape = SubResource("RectangleShape2D_kepma")
 z_index = 100
 
 [node name="bottom_sprite" type="AnimatedSprite2D" parent="Bottom_wall"]
-visible = false
 sprite_frames = SubResource("SpriteFrames_5kunn")
 
 [node name="bottom_transition" type="Area2D" parent="Bottom_wall"]

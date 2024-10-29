@@ -25,6 +25,7 @@ var direction_vector
 var rotation_vector
 const MOVE_CHANCE = 0.7
 var move_chance = MOVE_CHANCE
+var clockwise
 #Ataques
 @export var attack_range = 15
 var attack_cooldown_time = 1.0  # 1 segundo entre ataques
@@ -32,6 +33,10 @@ var attack_cooldown_time = 1.0  # 1 segundo entre ataques
 @onready var is_attacking = false
 
 func _ready():
+	if randi_range(0,1) == 0:
+		clockwise = true
+	else:
+		clockwise = false
 	position = Vector2(0,0)
 	add_child(attack_cooldown_timer)
 	attack_cooldown_timer.wait_time = attack_cooldown_time
@@ -58,7 +63,7 @@ func take_damage(ammount: int, knockback_direction: Vector2, knockback_strength)
 	if health <= 0:
 		kill()
 	elif is_hurt == false:  # Verifica que el enemigo no esté ya en animación de daño
-		$AnimationPlayer.play("damage")
+		(str("damage_" + direction_str))
 		
 func _physics_process(delta: float) -> void:
 	if knockback_timer > 0:
@@ -75,7 +80,7 @@ func _on_health_timer_timeout() -> void:
 
 # Función de me voy con San Pedro del limo
 func kill():
-	$AnimationPlayer.play("death")
+	(str("death_" + direction_str))
 	await get_tree().create_timer(0.9).timeout
 	set_process(false)
 	set_physics_process(false)
@@ -88,7 +93,7 @@ func move(delta):
 	if (player_position != null):
 		if (position.distance_to(player_position) <= detection_range):
 			near_player = true
-			move_around_player(player_position, delta)
+			move_around_player(player_position, delta, clockwise)
 		else:
 			move_randomly(delta)
 			near_player = false
@@ -120,9 +125,7 @@ func move_around_player(player_position: Vector2, delta: float, clockwise: bool 
 		rotation_vector = Vector2(-direction_vector.y, direction_vector.x)
 	if (player_position != null):
 		var distance = position.distance_to(player_position)
-		print(distance)
 		var factor_ajuste = 2 + abs(distance - 50) / 50
-		print(factor_ajuste)
 		if (distance < detection_range/2 -1):
 			adjustment_vector = -direction_vector * factor_ajuste
 		elif (distance > detection_range/2 +1):
@@ -197,3 +200,9 @@ func status():
 	print(is_attacking)
 	print("is_hurt: ")
 	print(is_hurt)
+
+func _on_wall_detection_body_entered(body: Node2D) -> void:
+	if clockwise:
+		clockwise = false
+	else:
+		clockwise = true
