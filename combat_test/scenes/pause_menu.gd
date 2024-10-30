@@ -1,28 +1,49 @@
 extends Control
 
+@onready var mapNode
+var treeSituation = false #treeSituation tiene que ser false cuando los nodos no estén pausados, y true cuando lo estén
+var pauseMenuShows = false
 func _ready() -> void:
+	mapNode = self.get_parent().get_parent().get_node("CanvasLayer2").get_node("Map")
 	$AnimationPlayer.play("RESET")
 
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
+	
 	listener()
 
 #pauses and makes the pause menu visible
 func resume():
-	get_tree().paused = false
+	if !mapNode.map_visible:
+		get_tree().paused = false
+	pauseMenuShows = false
 	$AnimationPlayer.play_backwards("blur")
 
 func pause():
-	get_tree().paused = true
+	if !mapNode.map_visible:
+		get_tree().paused = true
+	pauseMenuShows = true
 	$AnimationPlayer.play("blur")
 
 func listener():
-	if Input.is_action_just_pressed("pause") and !get_tree().paused:
+	if !get_tree().paused: #si el arbol no esta pausado es falso porque queremos que se pueda pausar 
+		treeSituation = false 
+	elif get_tree().paused and !pauseMenuShows: #si el menu no se muestra y el arbol esta pausao
+		treeSituation = false
+	else:
+		treeSituation = true
+	
+	#La logica de pausa funciona junto al mapa
+	#problema 1: no se cierra la ventana, está invisible pero ahí
+	if Input.is_action_just_pressed("pause") and !treeSituation: #-> si el arbol no está pausado
 		pause()
-	elif Input.is_action_just_pressed("pause") and get_tree().paused:
+	elif Input.is_action_just_pressed("pause") and treeSituation: #-> si el arbol está pausado
 		resume()
 
+
 func _on_resume_pressed() -> void:
-	resume()
+	if pauseMenuShows:
+		resume()
 
 func _on_quit_pressed() -> void:
-	get_tree().quit
+	if pauseMenuShows:
+		get_tree().quit()
