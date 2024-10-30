@@ -33,7 +33,6 @@ func listener():
 		treeSituation = true
 	
 	#La logica de pausa funciona junto al mapa
-	#problema 1: no se cierra la ventana, está invisible pero ahí
 	if Input.is_action_just_pressed("pause") and !treeSituation: #-> si el arbol no está pausado
 		pause()
 	elif Input.is_action_just_pressed("pause") and treeSituation: #-> si el arbol está pausado
