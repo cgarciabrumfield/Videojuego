@@ -3,23 +3,38 @@
 [ext_resource type="PackedScene" uid="uid://dklqo43run32r" path="res://scenes/pause_menu.tscn" id="2_k5fb1"]
 [ext_resource type="PackedScene" uid="uid://c0dkxten8g5oe" path="res://scenes/bosque/forest.tscn" id="2_nqtp0"]
 [ext_resource type="PackedScene" uid="uid://cre54jm3bvmaf" path="res://scenes/dialogue_interface.tscn" id="3_uqy2n"]
+[ext_resource type="PackedScene" uid="uid://hgkpniqom57j" path="res://scenes/map.tscn" id="3_fy16f"]
 
 [node name="main" type="Node2D"]
 
 [node name="CanvasLayer2" type="CanvasLayer" parent="."]
 
-[node name="dialogue_interface" parent="CanvasLayer2" instance=ExtResource("3_uqy2n")]
+[node name="Map" parent="CanvasLayer2" instance=ExtResource("3_fy16f")]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = 0.0
+offset_bottom = 0.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="CanvasLayer3" type="CanvasLayer" parent="."]
+
+[node name="dialogue_interface" parent="CanvasLayer3" instance=ExtResource("3_uqy2n")]
 offset_left = 2192.0
 offset_top = 29.0
 offset_right = 2192.0
 offset_bottom = 29.0
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
+layer = 2
 
 [node name="PauseMenu" parent="CanvasLayer" instance=ExtResource("2_k5fb1")]
 offset_left = 4293.0
 offset_top = 6.0
 offset_right = 4293.0
 offset_bottom = 6.0
+
+
 
 [node name="forest" parent="." instance=ExtResource("2_nqtp0")]
