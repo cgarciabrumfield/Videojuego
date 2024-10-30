@@ -1,0 +1,22 @@
+[gd_scene load_steps=2 format=3 uid="uid://hgkpniqom57j"]
+
+[ext_resource type="Script" path="res://scenes/map.gd" id="1_mw5eg"]
+
+[node name="Map" type="Control"]
+process_mode = 3
+texture_filter = 1
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("1_mw5eg")
+
+[node name="Button" type="Button" parent="."]
+process_mode = 3
+layout_mode = 0
+offset_right = 8.0
+offset_bottom = 8.0
+action_mode = 0
+
+[node name="Mapa" type="Node2D" parent="."]
+position = Vector2(4, 4)
