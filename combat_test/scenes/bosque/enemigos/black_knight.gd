@@ -160,7 +160,7 @@ func _physics_process(delta: float) -> void:
 		# Reduce el temporizador del retroceso
 		knockback_timer -= delta
 
-func _on_timer_timeout() -> void:
+func _on_health_timer_timeout() -> void:
 	damagebar.update()
 	timer_vida.stop()
 
