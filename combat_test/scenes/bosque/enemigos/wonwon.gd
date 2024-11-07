@@ -63,7 +63,7 @@ func take_damage(ammount: int, knockback_direction: Vector2, knockback_strength)
 	if health <= 0:
 		kill()
 	elif is_hurt == false:  # Verifica que el enemigo no esté ya en animación de daño
-		(str("damage_" + direction_str))
+		$AnimationPlayer.play(str("damage_" + direction_str))
 		
 func _physics_process(delta: float) -> void:
 	if knockback_timer > 0:
@@ -136,9 +136,6 @@ func move_around_player(player_position: Vector2, delta: float, clockwise: bool 
 	movement_vector = adjustment_vector + rotation_vector
 	movement_vector = movement_vector.normalized()
 	position += movement_vector * speed * delta
-	$direction.position = 10 * movement_vector * speed * delta
-	$direction2.position = 20 * movement_vector * speed * delta
-	$direction3.position = 30 * movement_vector * speed * delta
 	
 func attack():
 	var player_position = get_player_position()
