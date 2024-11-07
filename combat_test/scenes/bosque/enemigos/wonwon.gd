@@ -2,7 +2,7 @@ extends CharacterBody2D
 
 @export var MAX_HEALTH = 3
 @export var health = MAX_HEALTH
-var is_hurt = false
+@export var is_hurt = false
 const NORMAL_SPEED = 15
 const RUN_SPEED = 25
 @export var speed = NORMAL_SPEED # Velocidad a la que se moverá el limo
@@ -27,10 +27,10 @@ const MOVE_CHANCE = 0.7
 var move_chance = MOVE_CHANCE
 var clockwise
 #Ataques
-@export var attack_range = 15
+@export var attack_range = 60
 var attack_cooldown_time = 1.0  # 1 segundo entre ataques
 @onready var attack_cooldown_timer = Timer.new()
-@onready var is_attacking = false
+@export var is_attacking = false
 
 func _ready():
 	if randi_range(0,1) == 0:
@@ -56,6 +56,7 @@ func _process(delta: float) -> void:
 # Literalmente lo mismo que la del caballero pero mas facil. Id a mirar los comentarios en knight.gd
 func take_damage(ammount: int, knockback_direction: Vector2, knockback_strength) -> void:
 	health -= ammount
+	is_hurt = true
 	timer_vida.start()
 	healthbar.update()
 	knockback_velocity = knockback_direction * knockback_strength
@@ -63,6 +64,7 @@ func take_damage(ammount: int, knockback_direction: Vector2, knockback_strength)
 	if health <= 0:
 		kill()
 	elif is_hurt == false:  # Verifica que el enemigo no esté ya en animación de daño
+		print("OUCH")
 		$AnimationPlayer.play(str("damage_" + direction_str))
 		
 func _physics_process(delta: float) -> void:
@@ -147,6 +149,21 @@ func attack():
 					#is_attacking = true
 					#TODO animacion ataque
 					attack_cooldown_timer.start()
+
+# Código en el script del enemigo
+
+func disparar_proyectil():
+	# Carga e instancia el proyectil
+	var proyectil = preload("res://scenes/proj_test.tscn").instance()
+	# Coloca el proyectil en la posición actual del enemigo
+	proyectil.global_position = global_position
+	# Agrega el proyectil al nodo padre del enemigo para desvincularlo
+	# del movimiento del enemigo (o directamente a la escena principal)
+	get_parent().add_child(proyectil)
+	# Configura la dirección y velocidad del proyectil
+	proyectil.direccion = (get_player_position() - global_position).normalized()
+	proyectil.velocidad = 500  # Ajusta la velocidad como necesites
+
 
 func depth_control():
 	# Actualizamos el valor de profundidad del eje z según la altura del personaje en el eje y
