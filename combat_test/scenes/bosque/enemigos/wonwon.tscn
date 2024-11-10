@@ -1,4 +1,4 @@
-[gd_scene load_steps=97 format=3 uid="uid://desu3h1sc52ll"]
+[gd_scene load_steps=98 format=3 uid="uid://desu3h1sc52ll"]
 
 [ext_resource type="Script" path="res://scenes/bosque/enemigos/wonwon.gd" id="1_ovhdf"]
 [ext_resource type="Texture2D" uid="uid://bmqdpol2iy1a2" path="res://assets/sprites/enemies/wonwon.png" id="1_rtfkv"]
@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://dlhgyyvbwxj7r" path="res://assets/sprites/Shadow.png" id="3_odjml"]
 [ext_resource type="Script" path="res://scripts/healthbar.gd" id="5_asoar"]
 [ext_resource type="AudioStream" uid="uid://cttq8ha53gtou" path="res://assets/sounds/spittoothpaste-100801-[AudioTrimmer.com].mp3" id="6_b0qby"]
+[ext_resource type="AudioStream" uid="uid://bwg78ye84ud5" path="res://assets/sounds/bird-flapping-wings-6046-[AudioTrimmer.com].mp3" id="7_j0b2n"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_sexhj"]
 radius = 3.16228
@@ -1350,6 +1351,7 @@ tracks/1/keys = {
 [sub_resource type="Animation" id="Animation_ypvw4"]
 resource_name = "normal_up"
 length = 0.4
+loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -1478,6 +1480,9 @@ libraries = {
 
 [node name="shoot" type="AudioStreamPlayer2D" parent="SFX"]
 stream = ExtResource("6_b0qby")
+
+[node name="wonwon_hover" type="AudioStreamPlayer2D" parent="SFX"]
+stream = ExtResource("7_j0b2n")
 
 [connection signal="body_entered" from="WallDetection" to="." method="_on_wall_detection_body_entered"]
 [connection signal="timeout" from="Healthbar/Timer" to="." method="_on_health_timer_timeout"]
