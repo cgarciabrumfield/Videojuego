@@ -35,13 +35,15 @@ func listener():
 	#La logica de pausa funciona junto al mapa
 	#problema 1: no se cierra la ventana, está invisible pero ahí
 	if Input.is_action_just_pressed("pause") and !treeSituation: #-> si el arbol no está pausado
+		$SFX/pause_sfx.play()
 		pause()
 	elif Input.is_action_just_pressed("pause") and treeSituation: #-> si el arbol está pausado
+		$SFX/resume_sfx.play()
 		resume()
-
 
 func _on_resume_pressed() -> void:
 	if pauseMenuShows:
+		$SFX/resume_sfx.play()
 		resume()
 
 func _on_quit_pressed() -> void:

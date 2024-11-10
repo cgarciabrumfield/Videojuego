@@ -35,6 +35,8 @@ var attack_cooldown_time = 3.0  # segundos entre ataques
 @export var can_attack = false
 @onready var attack_timer = $AttackTimer
 @onready var proyectil_scene = preload("res://scenes/projectile.tscn")
+#Sonidos
+@onready var shoot_sfx = $SFX/shoot
 
 func _ready():
 	if randi_range(0,1) == 0:
@@ -212,6 +214,7 @@ func _on_attack_timer_timeout() -> void:
 func shoot():
 	if can_attack:
 		is_attacking = true
+		shoot_sfx.play()
 		$AnimationPlayer.play(str("attack_" + direction_str))
 		var proyectil = proyectil_scene.instantiate()
 		proyectil.wonwon = self
