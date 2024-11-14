@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dqmfqf5olvsea"
-path="res://.godot/imported/bush_wall_right_open.png-2ed16304edb463fb7d21fcd8690a7faa.ctex"
+uid="uid://dgm6cf2y1n6n3"
+path="res://.godot/imported/NuclearLeakDecorationDemo_128x128p.png-38787a327b43f48cd499cfe1b7208651.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://maps/Bosque/walls/bush_wall_right_open.png"
-dest_files=["res://.godot/imported/bush_wall_right_open.png-2ed16304edb463fb7d21fcd8690a7faa.ctex"]
+source_file="res://assets/sprites/maps/modern_props/NuclearLeakDecorationDemo_128x128p.png"
+dest_files=["res://.godot/imported/NuclearLeakDecorationDemo_128x128p.png-38787a327b43f48cd499cfe1b7208651.ctex"]
 
 [params]
 
