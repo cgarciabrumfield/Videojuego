@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://duuo04aixxyli"]
 
-[ext_resource type="Script" path="res://scenes/bosque/Props/default_prop.gd" id="1_662vb"]
-[ext_resource type="Texture2D" uid="uid://f6wmqxl7aics" path="res://maps/Bosque/plants_atlas.png" id="2_crpmp"]
+[ext_resource type="Script" path="res://scenes/bosque/props/default_prop.gd" id="1_662vb"]
+[ext_resource type="Texture2D" uid="uid://f6wmqxl7aics" path="res://assets/sprites/maps/Bosque/plants_atlas.png" id="2_crpmp"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_3ln1q"]
 atlas = ExtResource("2_crpmp")

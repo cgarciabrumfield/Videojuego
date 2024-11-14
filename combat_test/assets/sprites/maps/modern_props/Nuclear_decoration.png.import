@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dffa586olrnfu"
-path="res://.godot/imported/bush_wall_left_open.png-437801420ee8c7ccf65f8e46ed42cd12.ctex"
+uid="uid://ch2hkb0xe0x83"
+path="res://.godot/imported/Nuclear_decoration.png-99470fd9d08f3f70fcbb2b5182ae5a11.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://maps/test/walls/bush_wall_left_open.png"
-dest_files=["res://.godot/imported/bush_wall_left_open.png-437801420ee8c7ccf65f8e46ed42cd12.ctex"]
+source_file="res://assets/sprites/maps/modern_props/Nuclear_decoration.png"
+dest_files=["res://.godot/imported/Nuclear_decoration.png-99470fd9d08f3f70fcbb2b5182ae5a11.ctex"]
 
 [params]
 

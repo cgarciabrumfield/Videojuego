@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bebcrkqjrok2x"
-path="res://.godot/imported/bush_wall_right_closed.png-67221ce549e2797571cffa94c3dc4322.ctex"
+uid="uid://b6fi4srgcv1sp"
+path="res://.godot/imported/test.png-7cda1fcec89c4c12024574c4e28171ec.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://maps/test/walls/bush_wall_right_closed.png"
-dest_files=["res://.godot/imported/bush_wall_right_closed.png-67221ce549e2797571cffa94c3dc4322.ctex"]
+source_file="res://assets/sprites/maps/Bosque/test.png"
+dest_files=["res://.godot/imported/test.png-7cda1fcec89c4c12024574c4e28171ec.ctex"]
 
 [params]
 

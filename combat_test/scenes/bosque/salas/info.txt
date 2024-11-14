@@ -7,6 +7,12 @@ Los suelos: abrís el archivo test.tmx en Tiled y haceis
 	exportáis como png y lo llamais "ground_" y el
 	número que corresponda y ya está no tiene mas.
 
-Los enemigos: no se aún no lo he pensado/hecho
+Los enemigos: copiais una escena (.tscn) de enemigos, 
+	poneis/quitáis los enemigos que veais y la 
+	guardais con el nombre "enemigos_" y el numero 
+	que corresponda. Usad el fondo como guía, luego
+	no se verá.
 
-Los props: no se aún no lo he hecho
+Los props: igual que enemigos, pero procurad no bloquear
+	las salidas con los props o hacer lugares inaccesibles
+	llamadlo "props_" y numero.
