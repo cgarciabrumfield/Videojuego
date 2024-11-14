@@ -14,10 +14,10 @@ func depth_control():
 	normalized_Y_pos = position.y / screen_size.y
 	z_index = normalized_Y_pos * 90 + 10
 
-func _on_body_entered(body: Node2D) -> void:
+func _on_body_entered(_body: Node2D) -> void:
 	var tween = create_tween()
 	tween.tween_property(tree_sprite, "modulate:a", 0.5, 0.3) # Transición a 0.5 de opacidad en 0.5 segundos
 
-func _on_body_exited(body: Node2D) -> void:
+func _on_body_exited(_body: Node2D) -> void:
 	var tween = create_tween()
 	tween.tween_property(tree_sprite, "modulate:a", 1, 0.3) # Transición a 1 de opacidad en 0.5 segundos

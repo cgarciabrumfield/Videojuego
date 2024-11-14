@@ -1,8 +1,8 @@
 [gd_scene load_steps=7 format=3 uid="uid://6gf4yb3dj8ys"]
 
-[ext_resource type="Script" path="res://scenes/bosque/Props/tree.gd" id="1_xumak"]
+[ext_resource type="Script" path="res://scenes/bosque/props/tree.gd" id="1_xumak"]
 [ext_resource type="Texture2D" uid="uid://ctt07hh42gsxy" path="res://assets/sprites/bigger_shadow.png" id="2_b1oqv"]
-[ext_resource type="Texture2D" uid="uid://f6wmqxl7aics" path="res://maps/Bosque/plants_atlas.png" id="3_p7ach"]
+[ext_resource type="Texture2D" uid="uid://f6wmqxl7aics" path="res://assets/sprites/maps/Bosque/plants_atlas.png" id="3_p7ach"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_3bk8t"]
 radius = 8.24621

@@ -60,6 +60,8 @@ func _process(delta: float) -> void:
 		if is_hurt: 
 			is_attacking = false
 			can_attack = false
+	if !$SFX/wonwon_hover.playing:
+		$SFX/wonwon_hover.play()
 # Literalmente lo mismo que la del caballero pero mas facil. Id a mirar los comentarios en knight.gd
 func take_damage(ammount: int, knockback_direction: Vector2, knockback_strength) -> void:
 	health -= ammount
