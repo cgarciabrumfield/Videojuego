@@ -18,6 +18,7 @@ func get_dialogue(dialogue_file_path: String):
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	get_dialogue('res://dialogues/prueba.txt')
 	animation_player.speed_scale = float(CHARACTERS_PER_SECOND/text_length)
 	animation_player.play("show_text")
 
