@@ -2,7 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://dklqo43run32r" path="res://scenes/pause_menu.tscn" id="2_k5fb1"]
 [ext_resource type="PackedScene" uid="uid://c0dkxten8g5oe" path="res://scenes/bosque/forest.tscn" id="2_nqtp0"]
-[ext_resource type="PackedScene" uid="uid://cre54jm3bvmaf" path="res://scenes/dialogue_interface.tscn" id="3_uqy2n"]
+[ext_resource type="PackedScene" uid="uid://cre54jm3bvmaf" path="res://scenes/dialogue_interface_knight.tscn" id="3_uqy2n"]
 [ext_resource type="PackedScene" uid="uid://hgkpniqom57j" path="res://scenes/map.tscn" id="3_fy16f"]
 
 [node name="main" type="Node2D"]
