@@ -72,9 +72,8 @@ offset_bottom = -29.0
 grow_horizontal = 2
 grow_vertical = 0
 theme_override_fonts/normal_font = ExtResource("4_odycn")
-theme_override_font_sizes/normal_font_size = 40
+theme_override_font_sizes/normal_font_size = 90
 bbcode_enabled = true
-text = "Placeholder: Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum semper mi et augue sodales faucibus. Curabitur aliquet sit amet eros ac elementum. Nam tempor efficitur mattis. Cras dignissim tempor turpis, eget efficitur urna efficitur nec. Vestibulum suscipit nunc urna, ut mattis tellus ligula."
 
 [node name="dialogue_animation" type="AnimationPlayer" parent="."]
 libraries = {
