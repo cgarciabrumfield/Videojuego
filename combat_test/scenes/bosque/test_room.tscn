@@ -1,9 +1,10 @@
-[gd_scene load_steps=5 format=3 uid="uid://cb2qhnv6mx7re"]
+[gd_scene load_steps=6 format=3 uid="uid://cb2qhnv6mx7re"]
 
 [ext_resource type="Texture2D" uid="uid://b6fi4srgcv1sp" path="res://assets/sprites/maps/Bosque/test.png" id="1_yvhyc"]
 [ext_resource type="PackedScene" uid="uid://desu3h1sc52ll" path="res://scenes/bosque/enemigos/wonwon.tscn" id="3_pk7pj"]
-[ext_resource type="PackedScene" uid="uid://lxt7r4o4x0pp" path="res://scenes/bosque/props/roca_1.tscn" id="4_4eaxj"]
+[ext_resource type="PackedScene" uid="uid://lxt7r4o4x0pp" path="res://scenes/bosque/Props/roca_1.tscn" id="4_4eaxj"]
 [ext_resource type="PackedScene" uid="uid://bp8hvd0qc4txe" path="res://scenes/Player.tscn" id="4_vkrbd"]
+[ext_resource type="PackedScene" uid="uid://cre54jm3bvmaf" path="res://scenes/dialogue_interface_knight.tscn" id="5_qnc85"]
 
 [node name="Test_room" type="Node2D"]
 texture_filter = 1
@@ -16,6 +17,10 @@ zoom = Vector2(5, 5)
 z_index = -2
 texture_filter = 1
 texture = ExtResource("1_yvhyc")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="Background"]
+
+[node name="dialogue_interface" parent="Background/CanvasLayer" instance=ExtResource("5_qnc85")]
 
 [node name="Player" parent="." instance=ExtResource("4_vkrbd")]
 position = Vector2(-114, -3)
