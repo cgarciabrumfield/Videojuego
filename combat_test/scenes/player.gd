@@ -166,7 +166,6 @@ func _on_attack_timer_timeout():
 #Función de bloqueo. Funciona de manera practicamente idéntica a ataque, aunque la hitbox y su uso no está implementado
 func block():
 	if !is_attacking && !is_blocking && !is_hurt && !is_parrying:
-		print("Entrada")
 		parry_timer.start()
 		$AnimationPlayer.play(str("shield_up_frame_" + direction))
 		

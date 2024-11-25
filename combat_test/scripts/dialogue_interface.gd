@@ -31,4 +31,4 @@ func _ready() -> void:
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta: float) -> void:
 	dialogue.set_visible_characters(char_show_percent*text_length)
-	print(char_show_percent*text_length)
+	#print(char_show_percent*text_length)

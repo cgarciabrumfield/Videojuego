@@ -7,6 +7,7 @@ var branch_sprite = load("res://assets/minimapa/map_nodes2.png")
 var node_sprite_player = load("res://assets/minimapa/map_nodes_player.png")
 
 var room = preload("res://scenes/bosque/forest_room.tscn")
+var boss_room = preload("res://scenes/bosque/forest_boss_room.tscn")
 @onready var map_node = $MapNode
 @onready var player = $Player
 @onready var camera = $Camera2D
@@ -20,6 +21,7 @@ var sala_final_coords
 func _ready():
 	camera.zoom = CAMERA_ZOOM
 	var seed = randi_range(-1000, 1000)
+	seed = -971
 	print("seed: " + str(seed))
 	full_map = generate(seed)
 	var salas_mas_alejadas_coords = encontrar_salas_mas_alejadas()
@@ -27,12 +29,17 @@ func _ready():
 	sala_inicio_coords = salas_mas_alejadas_coords[num]
 	sala_final_coords = salas_mas_alejadas_coords[1-num]
 	current_coords = sala_inicio_coords
+	var a = full_map[sala_final_coords].connected_rooms
+	full_map[sala_final_coords] = boss_room.instantiate()
+	for clave in a.keys():
+		if a[clave] != null:
+			connect_rooms(full_map[sala_final_coords], full_map[sala_final_coords + clave], clave)
 	discovered_map[current_coords] = full_map[current_coords]
 	add_child(full_map[current_coords])
 	load_map(full_map, 0)
 
-var min_number_rooms = 6
-var max_number_rooms = 10
+var min_number_rooms = 4
+var max_number_rooms = 6
 
 var room_generation_chance = 20
 
@@ -144,8 +151,6 @@ func encontrar_salas_mas_alejadas() -> Array:
 			if (distancia == max_distancia and randi_range(0,1) == 0) or distancia > max_distancia:
 				max_distancia = distancia
 				salas_mas_alejadas = [sala1_coords, sala2_coords]
-	print(salas_mas_alejadas)
-	print(max_distancia)
 	return salas_mas_alejadas
 #size = 0 para devolver el mapa limitado (minimapa), que enseña lo cercano
 # y size = 1 para devolverlo entero (mapa tecla M), que enseña todo el mapa
@@ -248,7 +253,6 @@ func _realizar_cambio_sala(direction: Vector2):
 			player.position = Vector2(player.position.x, -room_size.y/2 + 10) # Viniendo desde arriba
 		elif direction == Vector2(0, -1):
 			player.position = Vector2(player.position.x, room_size.y/2 - 10) # Viniendo desde abajo
-		print(player.position)
 		
 		if full_map[current_coords].is_inside_tree():
 			full_map[current_coords].show()

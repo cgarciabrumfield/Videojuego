@@ -50,6 +50,7 @@ func _ready() -> void:
 	
 func _process(_delta: float) -> void:
 	num_enemies = count_enemies()
+	print(num_enemies)
 	if num_enemies == 0:
 		open_doors()
 
@@ -112,23 +113,7 @@ func count_ground_files() -> int:
 		print("Failed to open directory")
 		FileAccess.get_open_error()
 	return count
-	
-func count_enemies_distribution_scenes() -> int:
-	var dir =  DirAccess.open("res://scenes/bosque/salas/distribuciones_enemigos/")
-	var count = 0
-	if dir != null:
-		dir.list_dir_begin()
-		var file_name = dir.get_next()
-		while file_name != "":
-			if file_name.begins_with("enemies_") and file_name.ends_with(".tscn"):
-				count += 1
-			file_name = dir.get_next()
-		dir.list_dir_end()
-	else:
-		print("Failed to open directory")
-		FileAccess.get_open_error()
-	return count
-	
+
 func count_prop_distribution_scenes() -> int:
 	var dir =  DirAccess.open("res://scenes/bosque/salas/distribuciones_props/")
 	var count = 0
@@ -144,20 +129,6 @@ func count_prop_distribution_scenes() -> int:
 		print("Failed to open directory")
 		FileAccess.get_open_error()
 	return count
-
-func clear_enemies():
-	for child in enemigos.get_children():
-		for enemigo in child.get_children():
-			if enemigo is CharacterBody2D:
-				enemigo.queue_free()
-
-func add_enemies():
-	return
-	var random_number_enemies_file = randi_range(1, count_enemies_distribution_scenes())
-	var ruta_enemigos: String = ("res://scenes/bosque/salas/distribuciones_enemigos/enemies_" + 
-	str(random_number_enemies_file) + ".tscn")
-	#nodo_enemigos = "enemies_" + str(random_number_enemies_file)
-	enemigos.add_child(load(ruta_enemigos).instantiate())
 	
 func count_enemies() -> int:
 	var grandchild_count = 0

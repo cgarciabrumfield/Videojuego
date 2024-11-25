@@ -52,7 +52,6 @@ func _process(delta: float) -> void:
 	if !is_hurt:
 		timer -= delta
 		if timer <= 0 and !near_player:
-			print(move_chance)
 			change_direction()
 		set_directionVector_string()
 		move(delta) # Nos movemos si se ha pulsado algo
