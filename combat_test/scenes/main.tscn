@@ -8,6 +8,7 @@
 [node name="main" type="Node2D"]
 
 [node name="CanvasLayer2" type="CanvasLayer" parent="."]
+layer = 2
 
 [node name="Map" parent="CanvasLayer2" instance=ExtResource("3_fy16f")]
 anchors_preset = 15
@@ -27,7 +28,7 @@ offset_right = 2192.0
 offset_bottom = 29.0
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
-layer = 2
+layer = 10
 
 [node name="PauseMenu" parent="CanvasLayer" instance=ExtResource("2_k5fb1")]
 offset_left = 4293.0
