@@ -19,7 +19,7 @@ func get_dialogue(dialogue_file_path: String):
 	# tamaño de fuente variable
 	var font_size = (1.0/(text_length/AVERAGE_LENGTH)) * FONT_SIZE_DEFAULT
 	dialogue.add_theme_font_size_override("normal_font_size", font_size)
-	# Si queremos dividir el texto en vez de usar el scroll:
+	# (probar) Si queremos dividir el texto en vez de usar el scroll:
 	# var lines = content.split("\n") #o dividir con puntos
 
 # Called when the node enters the scene tree for the first time.
