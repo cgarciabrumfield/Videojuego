@@ -20,6 +20,7 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="CanvasLayer3" type="CanvasLayer" parent="."]
+layer = 2
 
 [node name="dialogue_interface" parent="CanvasLayer3" instance=ExtResource("3_uqy2n")]
 offset_left = 2192.0
