@@ -1,6 +1,23 @@
-[gd_scene load_steps=2 format=3 uid="uid://hgkpniqom57j"]
+[gd_scene load_steps=5 format=3 uid="uid://hgkpniqom57j"]
 
 [ext_resource type="Script" path="res://scenes/map.gd" id="1_mw5eg"]
+[ext_resource type="Texture2D" uid="uid://cqmq6xjpcver6" path="res://assets/minimapa/fondoDeMapa2.png" id="2_p3dt3"]
+[ext_resource type="Texture2D" uid="uid://bdrw6lm3il5ng" path="res://assets/minimapa/map_nodes_player.png" id="3_ia8sh"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_dahpu"]
+resource_local_to_scene = true
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_ia8sh")
+}, {
+"duration": 1.0,
+"texture": null
+}],
+"loop": true,
+"name": &"default",
+"speed": 1.0
+}]
 
 [node name="Map" type="Control"]
 process_mode = 3
@@ -14,9 +31,25 @@ script = ExtResource("1_mw5eg")
 [node name="Button" type="Button" parent="."]
 process_mode = 3
 layout_mode = 0
-offset_right = 8.0
+offset_left = -8.0
 offset_bottom = 8.0
 action_mode = 0
 
 [node name="Mapa" type="Node2D" parent="."]
 position = Vector2(4, 4)
+
+[node name="Fondo" type="Sprite2D" parent="."]
+visible = false
+z_index = -1
+texture_filter = 3
+texture = ExtResource("2_p3dt3")
+
+[node name="animacionesMapa" type="AnimationPlayer" parent="."]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+process_mode = 3
+visible = false
+z_index = 1
+position = Vector2(8, 8)
+sprite_frames = SubResource("SpriteFrames_dahpu")
+autoplay = "default"
