@@ -111,7 +111,7 @@ func load_map(map):
 		map_node.add_child(room_sprite)  # Añadir el sprite del nodo al mapa
 		if i == current_coords:
 			sprite_animado.scale = Vector2(8, 8)
-			sprite_animado.z_index = 2
+			sprite_animado.z_index = 4
 			sprite_animado.position = map_node.position + room_sprite.position
 			sprite_animado.show()
 			"""room_sprite.texture = node_sprite_player
