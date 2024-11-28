@@ -1437,7 +1437,7 @@ scale = Vector2(0.8, 0.8)
 texture = ExtResource("3_odjml")
 
 [node name="Healthbar" type="ProgressBar" parent="."]
-z_index = 1
+z_index = 102
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5

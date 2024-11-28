@@ -21,7 +21,6 @@ var sala_final_coords
 func _ready():
 	camera.zoom = CAMERA_ZOOM
 	var seed = randi_range(-1000, 1000)
-	seed = -971
 	print("seed: " + str(seed))
 	full_map = generate(seed)
 	var salas_mas_alejadas_coords = encontrar_salas_mas_alejadas()
@@ -38,8 +37,8 @@ func _ready():
 	add_child(full_map[current_coords])
 	load_map(discovered_map, 0)
 
-var min_number_rooms = 4
-var max_number_rooms = 6
+var min_number_rooms = 6
+var max_number_rooms = 10
 
 var room_generation_chance = 20
 

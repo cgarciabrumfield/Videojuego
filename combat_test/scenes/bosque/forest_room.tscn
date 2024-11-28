@@ -167,6 +167,7 @@ collision_mask = 0
 shape = SubResource("RectangleShape2D_kepma")
 
 [node name="Bottom_wall" type="Node2D" parent="."]
+z_index = 100
 
 [node name="bottom_sprite" type="AnimatedSprite2D" parent="Bottom_wall"]
 sprite_frames = SubResource("SpriteFrames_5kunn")
@@ -212,10 +213,8 @@ z_index = 100
 texture = ExtResource("12_h36yu")
 
 [node name="Right_wall" type="Node2D" parent="."]
-z_index = 100
 
 [node name="right_sprite" type="AnimatedSprite2D" parent="Right_wall"]
-position = Vector2(0, -1)
 sprite_frames = SubResource("SpriteFrames_2jdkm")
 
 [node name="right_transition" type="Area2D" parent="Right_wall"]

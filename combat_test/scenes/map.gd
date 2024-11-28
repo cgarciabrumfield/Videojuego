@@ -19,11 +19,11 @@ func _ready():
 	button.connect("pressed", Callable(self, "_on_Button_pressed"))
 	forest = self.get_parent().get_parent().get_node("forest")
 	map_node = self.get_node("Mapa")
+	@warning_ignore("integer_division")
 	map_node.position = Vector2(1920 / 2, 1080 / 2)
 
 	if forest == null:
 		print("Forest node not found")
-
 
 func _on_Button_pressed():
 	map_visible = !map_visible
@@ -31,7 +31,7 @@ func _on_Button_pressed():
 		sprite_animado.hide()
 	print(map_visible)
 
-	discovered_map = forest.full_map
+	discovered_map = forest.discovered_map
 	current_coords = forest.current_coords
 	
 	if map_visible:
