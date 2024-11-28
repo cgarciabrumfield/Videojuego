@@ -4,7 +4,7 @@ var full_map = {}
 var discovered_map = {}
 var node_sprite = load("res://assets/minimapa/map_nodes1.png")
 var branch_sprite = load("res://assets/minimapa/map_nodes2.png")
-var node_sprite_player = load("res://assets/minimapa/map_nodes_player.png")
+@onready var node_sprite_player = $CaballeroCabezabuque
 
 var room = preload("res://scenes/bosque/forest_room.tscn")
 @onready var map_node = $MapNode
@@ -29,7 +29,7 @@ func _ready():
 	current_coords = sala_inicio_coords
 	discovered_map[current_coords] = full_map[current_coords]
 	add_child(full_map[current_coords])
-	load_map(full_map, 0)
+	load_map(discovered_map, 0)
 
 var min_number_rooms = 6
 var max_number_rooms = 10
@@ -162,20 +162,29 @@ func load_map(map, size):
 			pass
 		else:
 			room_sprite.texture = node_sprite
-			if i == current_coords:
-				room_sprite.texture = node_sprite_player
-			elif i == sala_inicio_coords:
+				
+			if i == sala_inicio_coords:
 				room_sprite.modulate = Color.GREEN
 			elif i == sala_final_coords:
 				room_sprite.modulate = Color.RED
+
 			room_sprite.z_index = 1
 			room_sprite.position = i * 10 - current_coords * 10
 			map_node.add_child(room_sprite)  # Añadir el sprite del nodo al mapa
+			
+			if i == current_coords:
+				node_sprite_player.position = map_node.position +  room_sprite.position
+				
+				#node_sprite_player.show()
+				#map_node.add_child(playerSprite)
+			
+			
 			#conexiones de la habitación
-			var c_rooms = map.get(i).connected_rooms
+			var c_rooms = map.get(i).connected_rooms #mapa [x,y] = z
+			
 
 			# Crear conexiones en el eje X
-			if c_rooms.get(Vector2(1, 0)) != null && map.values().has(c_rooms.get(Vector2(1, 0))) && comprueba_sala_en_minimapa(i + Vector2(1,0)):  # Conexión a la derecha
+			if c_rooms.get(Vector2(1, 0)) != null && map.values().has(c_rooms.get(Vector2(1, 0)))  && comprueba_sala_en_minimapa(i + Vector2(1,0)):  # Conexión a la derecha
 				var right_branch = Sprite2D.new()
 				right_branch.texture = branch_sprite
 				right_branch.z_index = 0
@@ -204,7 +213,9 @@ func load_map(map, size):
 				up_branch.rotation_degrees = 90
 				up_branch.position = i * 10 + Vector2(-0.5, -5)  - current_coords * 10 # Ajustar la posición
 				map_node.add_child(up_branch)
-			
+				
+
+
 var is_changing_room = false
 #funcion que comprueba que una sala este dentro del margen del minimapa. Se ha establecido en 2, pero puede cambiar
 func comprueba_sala_en_minimapa(sala):
@@ -234,7 +245,7 @@ func _realizar_cambio_sala(direction: Vector2):
 	# 2. Actualizar las coordenadas a la nueva sala
 	current_coords += direction
 	discovered_map[current_coords] = full_map[current_coords]
-	load_map(full_map, 1)
+	load_map(discovered_map, 1)
 	
 	# 3. Añadir la nueva sala
 	if full_map.has(current_coords):
