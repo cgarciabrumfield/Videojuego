@@ -1,15 +1,21 @@
-[gd_scene load_steps=23 format=3 uid="uid://b01k7nnqxd7jq"]
+[gd_scene load_steps=29 format=3 uid="uid://b01k7nnqxd7jq"]
 
 [ext_resource type="Script" path="res://scenes/bosque/forest_room.gd" id="1_8os2r"]
-[ext_resource type="Texture2D" uid="uid://b6fi4srgcv1sp" path="res://assets/sprites/maps/Bosque/test.png" id="2_fp7od"]
+[ext_resource type="Texture2D" uid="uid://dr6hu4clr3nco" path="res://assets/sprites/maps/Bosque/test.png" id="2_fp7od"]
 [ext_resource type="Texture2D" uid="uid://5js2qsfvlasd" path="res://assets/sprites/maps/Bosque/walls/bush_wall_top_closed.png" id="3_8pwtf"]
 [ext_resource type="Texture2D" uid="uid://bvmifhp06kyi6" path="res://assets/sprites/maps/Bosque/walls/bush_wall_top_open.png" id="4_bv7tr"]
 [ext_resource type="Texture2D" uid="uid://cixwtsd57x80l" path="res://assets/sprites/maps/Bosque/walls/bush_wall_bottom_closed.png" id="5_8jh4u"]
+[ext_resource type="Texture2D" uid="uid://byy48gk8uro7t" path="res://assets/sprites/maps/Bosque/walls/bush_wall_top_no_exit.png" id="5_xa3r1"]
 [ext_resource type="Texture2D" uid="uid://bc51gjd8x1ig4" path="res://assets/sprites/maps/Bosque/walls/bush_wall_bottom_open.png" id="6_f7vsv"]
 [ext_resource type="Texture2D" uid="uid://e5al04thfbl2" path="res://assets/sprites/maps/Bosque/walls/bush_wall_left_closed.png" id="7_0aeb5"]
+[ext_resource type="Texture2D" uid="uid://fwgnt5chtbf" path="res://assets/sprites/maps/Bosque/walls/bush_wall_bottom_no_exit.png" id="8_8ce5w"]
 [ext_resource type="Texture2D" uid="uid://b2dlg2hi6ydvo" path="res://assets/sprites/maps/Bosque/walls/bush_wall_left_open.png" id="8_rd41d"]
 [ext_resource type="Texture2D" uid="uid://cymwnvva5bfv8" path="res://assets/sprites/maps/Bosque/walls/bush_wall_right_closed.png" id="9_t7icx"]
 [ext_resource type="Texture2D" uid="uid://dqmfqf5olvsea" path="res://assets/sprites/maps/Bosque/walls/bush_wall_right_open.png" id="10_w5vmv"]
+[ext_resource type="Texture2D" uid="uid://d0jwr7hsaojtf" path="res://assets/sprites/maps/Bosque/walls/bush_wall_left_no_exit.png" id="11_tohnx"]
+[ext_resource type="Texture2D" uid="uid://b4lnneqybdkm7" path="res://assets/sprites/maps/Bosque/walls/bush_wall_left_extra.png" id="12_h36yu"]
+[ext_resource type="Texture2D" uid="uid://ctsirq04faxdo" path="res://assets/sprites/maps/Bosque/walls/bush_wall_right_no_exit.png" id="14_2266b"]
+[ext_resource type="Texture2D" uid="uid://76w5wfvmwb02" path="res://assets/sprites/maps/Bosque/walls/bush_wall_right_extra.png" id="16_ftf0g"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_gh1vj"]
 animations = [{
@@ -19,6 +25,9 @@ animations = [{
 }, {
 "duration": 1.0,
 "texture": ExtResource("4_bv7tr")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_xa3r1")
 }],
 "loop": true,
 "name": &"default",
@@ -39,6 +48,9 @@ animations = [{
 }, {
 "duration": 1.0,
 "texture": ExtResource("6_f7vsv")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_8ce5w")
 }],
 "loop": true,
 "name": &"default",
@@ -59,6 +71,9 @@ animations = [{
 }, {
 "duration": 1.0,
 "texture": ExtResource("8_rd41d")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_tohnx")
 }],
 "loop": true,
 "name": &"default",
@@ -79,6 +94,9 @@ animations = [{
 }, {
 "duration": 1.0,
 "texture": ExtResource("10_w5vmv")
+}, {
+"duration": 1.0,
+"texture": ExtResource("14_2266b")
 }],
 "loop": true,
 "name": &"default",
@@ -109,23 +127,23 @@ collision_mask = 0
 [node name="Top-Right" type="CollisionPolygon2D" parent="Walls"]
 z_index = 2
 position = Vector2(10, -10)
-polygon = PackedVector2Array(7, -80, 144, -80, 144, -7, 150, -7, 150, -86, 7, -86)
+polygon = PackedVector2Array(7, -80, 144, -80, 144, -12, 176, -12, 176, 10, 182, 10, 182, -18, 150, -18, 150, -86, 13, -86, 13, -102, -10, -102, -10, -96, 7, -96)
 
 [node name="Bottom-Left" type="CollisionPolygon2D" parent="Walls"]
 position = Vector2(-10, 10)
 scale = Vector2(-1, -1)
-polygon = PackedVector2Array(7, -80, 144, -80, 144, -7, 150, -7, 150, -86, 7, -86)
+polygon = PackedVector2Array(7, -80, 144, -80, 144, -2, 176, -2, 176, 10, 182, 10, 182, -8, 150, -8, 150, -86, 13, -86, 13, -102, -10, -102, -10, -96, 7, -96)
 
 [node name="Top-Left" type="CollisionPolygon2D" parent="Walls"]
 z_index = 2
 position = Vector2(-10, -10)
 scale = Vector2(-1, 1)
-polygon = PackedVector2Array(7, -80, 144, -80, 144, -7, 150, -7, 150, -86, 7, -86)
+polygon = PackedVector2Array(7, -80, 144, -80, 144, -12, 176, -12, 176, 10, 182, 10, 182, -18, 150, -18, 150, -86, 13, -86, 13, -102, -10, -102, -10, -96, 7, -96)
 
 [node name="Bottom-Right" type="CollisionPolygon2D" parent="Walls"]
 position = Vector2(10, 10)
 scale = Vector2(1, -1)
-polygon = PackedVector2Array(7, -80, 144, -80, 144, -7, 150, -7, 150, -86, 7, -86)
+polygon = PackedVector2Array(7, -80, 144, -80, 144, -2, 176, -2, 176, 10, 182, 10, 182, -8, 150, -8, 150, -86, 13, -86, 13, -102, -10, -102, -10, -96, 7, -96)
 
 [node name="Top_wall" type="Node2D" parent="."]
 
@@ -134,7 +152,7 @@ z_index = -1
 sprite_frames = SubResource("SpriteFrames_gh1vj")
 
 [node name="top_transition" type="Area2D" parent="Top_wall"]
-position = Vector2(0, -99)
+position = Vector2(0, -106)
 collision_layer = 0
 
 [node name="top_transition_area" type="CollisionShape2D" parent="Top_wall/top_transition"]
@@ -149,12 +167,12 @@ collision_mask = 0
 shape = SubResource("RectangleShape2D_kepma")
 
 [node name="Bottom_wall" type="Node2D" parent="."]
-z_index = 100
 
 [node name="bottom_sprite" type="AnimatedSprite2D" parent="Bottom_wall"]
 sprite_frames = SubResource("SpriteFrames_5kunn")
 
 [node name="bottom_transition" type="Area2D" parent="Bottom_wall"]
+position = Vector2(0, 7)
 collision_layer = 0
 
 [node name="bottom_transition_area" type="CollisionShape2D" parent="Bottom_wall/bottom_transition"]
@@ -175,39 +193,50 @@ shape = SubResource("RectangleShape2D_oqyes")
 sprite_frames = SubResource("SpriteFrames_jnx7g")
 
 [node name="left_transition" type="Area2D" parent="Left_wall"]
-position = Vector2(-163, 0)
+position = Vector2(-183, -5)
 collision_layer = 0
 
 [node name="left_transition_area" type="CollisionShape2D" parent="Left_wall/left_transition"]
 shape = SubResource("RectangleShape2D_7jve6")
 
 [node name="left_door" type="StaticBody2D" parent="Left_wall"]
-position = Vector2(-157, 0)
+position = Vector2(-157, -5)
 collision_layer = 16
 collision_mask = 0
 
 [node name="left_door_area" type="CollisionShape2D" parent="Left_wall/left_door"]
 shape = SubResource("RectangleShape2D_vqxf0")
 
+[node name="left_sprite_extra" type="Sprite2D" parent="Left_wall"]
+z_index = 100
+texture = ExtResource("12_h36yu")
+
 [node name="Right_wall" type="Node2D" parent="."]
+z_index = 100
 
 [node name="right_sprite" type="AnimatedSprite2D" parent="Right_wall"]
+position = Vector2(0, -1)
 sprite_frames = SubResource("SpriteFrames_2jdkm")
 
 [node name="right_transition" type="Area2D" parent="Right_wall"]
-position = Vector2(163, 0)
+position = Vector2(183, -5)
 collision_layer = 0
 
 [node name="right_transition_area" type="CollisionShape2D" parent="Right_wall/right_transition"]
 shape = SubResource("RectangleShape2D_env7i")
 
 [node name="right_door" type="StaticBody2D" parent="Right_wall"]
-position = Vector2(157, 0)
+position = Vector2(157, -5)
 collision_layer = 16
 collision_mask = 0
 
 [node name="right_door_area" type="CollisionShape2D" parent="Right_wall/right_door"]
 shape = SubResource("RectangleShape2D_vbu7j")
+
+[node name="right_sprite_extra" type="Sprite2D" parent="Right_wall"]
+z_index = 100
+z_as_relative = false
+texture = ExtResource("16_ftf0g")
 
 [node name="enemigos" type="Node2D" parent="."]
 

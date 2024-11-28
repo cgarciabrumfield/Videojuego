@@ -55,13 +55,25 @@ func _process(_delta: float) -> void:
 
 func generate_walls():
 	door_left.disabled = false
-	door_left_sprite.frame = 0
+	if connected_left:
+		door_left_sprite.frame = 0
+	else:
+		door_left_sprite.frame = 2
 	door_right.disabled = false
-	door_right_sprite.frame = 0
+	if connected_right:
+		door_right_sprite.frame = 0
+	else:
+		door_right_sprite.frame = 2
 	door_top.disabled = false
-	door_top_sprite.frame = 0
+	if connected_top:
+		door_top_sprite.frame = 0
+	else:
+		door_top_sprite.frame = 2
 	door_bottom.disabled = false
-	door_bottom_sprite.frame = 0
+	if connected_bottom:
+		door_bottom_sprite.frame = 0
+	else:
+		door_bottom_sprite.frame = 2
 	
 func open_doors():
 	if opened_doors:
@@ -152,7 +164,6 @@ func clear_enemies():
 				enemigo.queue_free()
 
 func add_enemies():
-	return
 	var random_number_enemies_file = randi_range(1, count_enemies_distribution_scenes())
 	var ruta_enemigos: String = ("res://scenes/bosque/salas/distribuciones_enemigos/enemies_" + 
 	str(random_number_enemies_file) + ".tscn")

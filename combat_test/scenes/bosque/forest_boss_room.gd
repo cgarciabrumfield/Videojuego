@@ -56,13 +56,25 @@ func _process(_delta: float) -> void:
 
 func generate_walls():
 	door_left.disabled = false
-	door_left_sprite.frame = 0
+	if connected_left:
+		door_left_sprite.frame = 0
+	else:
+		door_left_sprite.frame = 2
 	door_right.disabled = false
-	door_right_sprite.frame = 0
+	if connected_right:
+		door_right_sprite.frame = 0
+	else:
+		door_right_sprite.frame = 2
 	door_top.disabled = false
-	door_top_sprite.frame = 0
+	if connected_top:
+		door_top_sprite.frame = 0
+	else:
+		door_top_sprite.frame = 2
 	door_bottom.disabled = false
-	door_bottom_sprite.frame = 0
+	if connected_bottom:
+		door_bottom_sprite.frame = 0
+	else:
+		door_bottom_sprite.frame = 2
 	
 func open_doors():
 	if opened_doors:
