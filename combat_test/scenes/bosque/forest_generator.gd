@@ -162,12 +162,12 @@ func load_map(map, size):
 			pass
 		else:
 			room_sprite.texture = node_sprite
-			if i == sala_inicio_coords:
+			if i == current_coords:
+				room_sprite.texture = node_sprite_player
+			elif i == sala_inicio_coords:
 				room_sprite.modulate = Color.GREEN
 			elif i == sala_final_coords:
 				room_sprite.modulate = Color.RED
-			elif i == current_coords:
-				room_sprite.texture = node_sprite_player
 			room_sprite.z_index = 1
 			room_sprite.position = i * 10 - current_coords * 10
 			map_node.add_child(room_sprite)  # Añadir el sprite del nodo al mapa
