@@ -36,6 +36,7 @@ position = Vector2(-166, 82)
 zoom = Vector2(6, 5.65)
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+process_mode = 3
 stream = ExtResource("3_wgu2s")
 volume_db = -20.0
 autoplay = true
