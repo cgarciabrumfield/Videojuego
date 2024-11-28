@@ -121,7 +121,8 @@ func load_map(map):
 		var c_rooms = map.get(i).connected_rooms
 	
 		# Crear conexiones en el eje X
-		if c_rooms.get(Vector2(1, 0)) != null && map.values().has(c_rooms.get(Vector2(1, 0))):  # Conexión a la derecha
+		if c_rooms.get(Vector2(1, 0)) != null:  # Conexión a la derecha
+			#  && map.values().has(c_rooms.get(Vector2(1, 0)))
 			var right_branch = Sprite2D.new()
 			right_branch.texture = branch_sprite
 			right_branch.scale = Vector2(6,6)
@@ -129,7 +130,8 @@ func load_map(map):
 			right_branch.position = (i - centro  + Vector2(0.5, 0)) * 120 #+ Vector2(5, 0.5)
 			map_node.add_child(right_branch)
 		
-		if c_rooms.get(Vector2(-1, 0)) != null && map.values().has(c_rooms.get(Vector2(-1, 0))):  # Conexión a la izquierda
+		if c_rooms.get(Vector2(-1, 0)) != null:  # Conexión a la izquierda
+			#  && map.values().has(c_rooms.get(Vector2(-1, 0)))
 			var left_branch = Sprite2D.new()
 			left_branch.texture = branch_sprite
 			left_branch.scale = Vector2(6,6)
@@ -138,7 +140,8 @@ func load_map(map):
 			left_branch.rotation_degrees = 180  # Rotar 180 grados para la conexión izquierda
 			map_node.add_child(left_branch)
 			# Crear conexiones en el eje Y
-		if c_rooms.get(Vector2(0, 1)) != null && map.values().has(c_rooms.get(Vector2(0, 1))):  # Conexión hacia abajo
+		if c_rooms.get(Vector2(0, 1)) != null:  # Conexión hacia abajo
+			#  && map.values().has(c_rooms.get(Vector2(0, 1)))
 			var down_branch = Sprite2D.new()
 			down_branch.texture = branch_sprite
 			down_branch.scale = Vector2(6,6)
@@ -146,7 +149,8 @@ func load_map(map):
 			down_branch.rotation_degrees = 90
 			down_branch.position = (i - centro  + Vector2(0, 0.5)) * 120 #(i - centro) * 120 + Vector2(-0.5, 5)
 			map_node.add_child(down_branch)
-		if c_rooms.get(Vector2(0, -1)) != null && map.values().has(c_rooms.get(Vector2(0, -1))):  # Conexión hacia arriba
+		if c_rooms.get(Vector2(0, -1)) != null:  # Conexión hacia arriba
+			#  && map.values().has(c_rooms.get(Vector2(0, -1)))
 			var up_branch = Sprite2D.new()
 			up_branch.texture = branch_sprite
 			up_branch.scale = Vector2(6,6)
