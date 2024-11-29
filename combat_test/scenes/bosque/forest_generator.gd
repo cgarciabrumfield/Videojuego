@@ -250,6 +250,7 @@ func _realizar_cambio_sala(direction: Vector2):
 	current_coords += direction
 	discovered_map[current_coords] = full_map[current_coords]
 	load_map(discovered_map, 1)
+	load_map(discovered_map, 0)
 	
 	# 3. Añadir la nueva sala
 	if full_map.has(current_coords):
