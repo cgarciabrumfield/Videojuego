@@ -1,5 +1,6 @@
 class_name Player
 extends CharacterBody2D
+
 #Speed
 @export var SPEED = 45 # How fast the player will move (pixels/sec).
 @export var RUN_SPEED = 65
@@ -17,7 +18,7 @@ var stamina_run_cost_sec = RUN_STAMINA_COST_SEC
 @export var ATTACK_STAMINA_COST = 15
 var attack_stamina_cost = ATTACK_STAMINA_COST
 @export var can_regen_stamina = true
-@export var STAMINA_REGEN_TIMER_TIMEOUT = 0.7
+@export var STAMINA_REGEN_TIMER_TIMEOUT = 0.3
 @onready var timer_stamina = $CanvasLayer/Staminabar/Timer
 
 @onready var healthbar = $CanvasLayer/Healthbar
