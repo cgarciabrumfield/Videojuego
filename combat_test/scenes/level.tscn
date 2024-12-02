@@ -1,7 +1,6 @@
-[gd_scene load_steps=6 format=3 uid="uid://c0dkxten8g5oe"]
+[gd_scene load_steps=5 format=3 uid="uid://c0dkxten8g5oe"]
 
-[ext_resource type="Script" path="res://scenes/bosque/forest_generator.gd" id="1_fvex4"]
-[ext_resource type="PackedScene" uid="uid://bp8hvd0qc4txe" path="res://scenes/Player.tscn" id="2_m04ox"]
+[ext_resource type="Script" path="res://scenes/level_generator.gd" id="1_fvex4"]
 [ext_resource type="AudioStream" uid="uid://qnvxupsj3s43" path="res://assets/music/Pixelstring, Wynncraft Music Team - Forest Dance (Nivla Woods)-[AudioTrimmer.com].mp3" id="3_wgu2s"]
 [ext_resource type="Texture2D" uid="uid://bdrw6lm3il5ng" path="res://assets/minimapa/map_nodes_player.png" id="4_ramw3"]
 
@@ -20,7 +19,7 @@ animations = [{
 "speed": 1.0
 }]
 
-[node name="forest" type="Node2D"]
+[node name="level" type="Node2D"]
 texture_filter = 1
 position = Vector2(960, 540)
 script = ExtResource("1_fvex4")
@@ -29,8 +28,6 @@ script = ExtResource("1_fvex4")
 light_mask = 0
 z_index = 110
 position = Vector2(-166, 82)
-
-[node name="Player" parent="." instance=ExtResource("2_m04ox")]
 
 [node name="Camera2D" type="Camera2D" parent="."]
 zoom = Vector2(6, 5.65)

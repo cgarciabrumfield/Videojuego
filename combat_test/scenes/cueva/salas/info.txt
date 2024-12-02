@@ -1,0 +1,18 @@
+HOLA COMPAÑEROS VIDEOJUEGOCREADORES
+
+Para que sepais como hacer mas salas random:
+
+Los suelos: abrís el archivo test.tmx en Tiled y haceis
+	el dibujo que querais de ese tamañom, luego lo 
+	exportáis como png y lo llamais "ground_" y el
+	número que corresponda y ya está no tiene mas.
+
+Los enemigos: copiais una escena (.tscn) de enemigos, 
+	poneis/quitáis los enemigos que veais y la 
+	guardais con el nombre "enemigos_" y el numero 
+	que corresponda. Usad el fondo como guía, luego
+	no se verá.
+
+Los props: igual que enemigos, pero procurad no bloquear
+	las salidas con los props o hacer lugares inaccesibles
+	llamadlo "props_" y numero.

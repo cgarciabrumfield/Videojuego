@@ -1,24 +1,29 @@
 extends Node2D
 
-var full_map = {}
-var discovered_map = {}
-var node_sprite = load("res://assets/minimapa/map_nodes1.png")
-var branch_sprite = load("res://assets/minimapa/map_nodes2.png")
-@onready var node_sprite_player = $CaballeroCabezabuque
+var room
+var boss_room
+var min_number_rooms
+var max_number_rooms
+var room_generation_chance
+var interest_factor
+var level
 
-var room = preload("res://scenes/bosque/forest_room.tscn")
-var boss_room = preload("res://scenes/bosque/forest_boss_room.tscn")
-@onready var map_node = $MapNode
-@onready var player = $Player
-@onready var camera = $Camera2D
-const CAMERA_ZOOM = Vector2(5, 5)
-var current_coords
-var room_size = Vector2(320, 191.15)
-
-var sala_inicio_coords
-var sala_final_coords
-
-func _ready():
+func load_level(level_argument):
+	level = level_argument
+	if level == "bosque":
+		room = preload("res://scenes/bosque/forest_room.tscn")
+		boss_room = preload("res://scenes/bosque/forest_boss_room.tscn")
+		min_number_rooms = 4
+		max_number_rooms = 6
+		room_generation_chance = 20
+		interest_factor = 3
+	elif level == "cueva":
+		room = preload("res://scenes/cueva/cave_room.tscn")
+		boss_room = preload("res://scenes/cueva/cave_boss_room.tscn")
+		min_number_rooms = 8
+		max_number_rooms = 12
+		room_generation_chance = 15
+		interest_factor = 2
 	camera.zoom = CAMERA_ZOOM
 	var seed = randi_range(-1000, 1000)
 	print("seed: " + str(seed))
@@ -37,11 +42,21 @@ func _ready():
 	add_child(full_map[current_coords])
 	load_map(discovered_map, 0)
 
-var min_number_rooms = 6
-var max_number_rooms = 10
+var full_map = {}
+var discovered_map = {}
+var node_sprite = load("res://assets/minimapa/map_nodes1.png")
+var branch_sprite = load("res://assets/minimapa/map_nodes2.png")
+@onready var node_sprite_player = $CaballeroCabezabuque
+@onready var map_node = $MapNode
+@onready var player = $Player
+@onready var camera = $Camera2D
+const CAMERA_ZOOM = Vector2(5, 5)
+var current_coords
+var room_size = Vector2(320, 191.15)
+var sala_inicio_coords
+var sala_final_coords
 
-var room_generation_chance = 20
-
+	
 func generate(room_seed):
 	seed(room_seed)
 	var dungeon = {}
@@ -98,11 +113,11 @@ func connect_rooms(room1, room2, direction):
 	room2.number_of_connections += 1
 
 func is_interesting(dungeon):
-	var room_with_three = 0
+	var interesting_rooms = 0
 	for i in dungeon.keys():
-		if(dungeon.get(i).number_of_connections >= 3):
-			room_with_three += 1
-	return room_with_three >= 2
+		if(dungeon.get(i).number_of_connections >= interest_factor):
+			interesting_rooms += 1
+	return interesting_rooms >= 2
 
 func calcular_distancia(inicio: Vector2, destino: Vector2) -> int:
 	var cola = []

@@ -5,6 +5,7 @@ extends Control
 @onready var map_node
 var map_visible = false
 var discovered_map = {}
+var full_map = {}
 var forest
 var current_coords 
 var node_sprite = load("res://assets/minimapa/sala.png")
@@ -17,13 +18,13 @@ var node_sprite_player = load("res://assets/minimapa/map_nodes_player.png")
 func _ready():
 	# Connect the button's signal using Callable instead of a string
 	button.connect("pressed", Callable(self, "_on_Button_pressed"))
-	forest = self.get_parent().get_parent().get_node("forest")
+	forest = self.get_parent().get_parent().get_node("level")
 	map_node = self.get_node("Mapa")
 	@warning_ignore("integer_division")
 	map_node.position = Vector2(1920 / 2, 1080 / 2)
 
 	if forest == null:
-		print("Forest node not found")
+		print("level node not found")
 
 func _on_Button_pressed():
 	map_visible = !map_visible
@@ -32,6 +33,7 @@ func _on_Button_pressed():
 	print(map_visible)
 
 	discovered_map = forest.discovered_map
+	full_map = forest.full_map
 	current_coords = forest.current_coords
 	
 	if map_visible:
@@ -39,7 +41,7 @@ func _on_Button_pressed():
 		mapaIntento.position = get_viewport().get_visible_rect().size/2
 		set_sprite_size(mapaIntento, get_viewport().get_visible_rect().size)
 		#mapaIntento.sca
-		load_map(discovered_map)
+		load_map(full_map)
 		
 		get_tree().paused = true  # Pause the game tree
 
