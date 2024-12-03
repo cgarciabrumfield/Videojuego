@@ -7,6 +7,8 @@ var max_number_rooms
 var room_generation_chance
 var interest_factor
 var level
+var music: AudioStreamPlayer
+var boss_music
 
 func load_level(level_argument):
 	level = level_argument
@@ -17,6 +19,8 @@ func load_level(level_argument):
 		max_number_rooms = 6
 		room_generation_chance = 20
 		interest_factor = 3
+		music = $Music/Forest_Room
+		boss_music = $Music/Forest_Boss
 	elif level == "cueva":
 		room = preload("res://scenes/cueva/cave_room.tscn")
 		boss_room = preload("res://scenes/cueva/cave_boss_room.tscn")
@@ -24,6 +28,8 @@ func load_level(level_argument):
 		max_number_rooms = 12
 		room_generation_chance = 15
 		interest_factor = 2
+		music = $Music/Cave_Room
+		boss_music = $Music/Forest_Boss #TODO obviamente no debe ser la misma
 	camera.zoom = CAMERA_ZOOM
 	var seed = randi_range(-1000, 1000)
 	print("seed: " + str(seed))
@@ -41,6 +47,7 @@ func load_level(level_argument):
 	discovered_map[current_coords] = full_map[current_coords]
 	add_child(full_map[current_coords])
 	load_map(discovered_map, 0)
+	music.play()
 
 var full_map = {}
 var discovered_map = {}

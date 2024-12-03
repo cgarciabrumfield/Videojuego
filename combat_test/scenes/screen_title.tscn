@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://ddr7x4g7y2pmn"]
+[gd_scene load_steps=10 format=3 uid="uid://ddr7x4g7y2pmn"]
 
 [ext_resource type="Script" path="res://scripts/screen_title.gd" id="1_gkkox"]
 [ext_resource type="Texture2D" uid="uid://kbv1sawkxgmk" path="res://test.png" id="2_l2ql4"]
@@ -6,6 +6,7 @@
 [ext_resource type="SpriteFrames" uid="uid://despu680qbvek" path="res://Animations/Player.tres" id="4_gtbq7"]
 [ext_resource type="FontFile" uid="uid://bb74qb2rqf4ub" path="res://assets/GUI/Silkscreen_font/Silkscreen-Regular.ttf" id="5_560ln"]
 [ext_resource type="Texture2D" uid="uid://dlhgyyvbwxj7r" path="res://assets/sprites/Shadow.png" id="5_apjbo"]
+[ext_resource type="AudioStream" uid="uid://bnbj8d30857pd" path="res://assets/music/Pixelstring, Wynncraft Music Team - Corkian National Anthem (Corkus City)-[AudioTrimmer.com].mp3" id="7_w0sc4"]
 
 [sub_resource type="Animation" id="Animation_mycb5"]
 resource_name = "animation_1"
@@ -94,6 +95,12 @@ offset_bottom = 222.0
 theme_override_font_sizes/font_size = 50
 text = "Quit
 "
+
+[node name="Main_Menu_Music" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("7_w0sc4")
+volume_db = -15.0
+autoplay = true
+parameters/looping = true
 
 [connection signal="ready" from="knight_sprite" to="." method="_on_knight_sprite_ready"]
 [connection signal="pressed" from="start_Button" to="." method="_on_start_button_pressed"]
