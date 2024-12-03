@@ -52,6 +52,21 @@ var knockback_velocity: Vector2 = Vector2.ZERO
 var knockback_duration: float = 0.2  # Duración del retroceso en segundos
 var knockback_timer: float = 0.0
 
+func save():
+	var save_dict = {
+		"speed" : SPEED,
+		"run_speed" : RUN_SPEED,
+		"max_health": MAX_HEALTH,
+		"health": health,
+		"max_stamina" : MAX_STAMINA,
+		"stamina" :MAX_STAMINA,
+		"stamina_regen" : stamina_regen,
+		"run_stamina_cost": RUN_STAMINA_COST_SEC,
+		"attack_stamina_cost" : attack_stamina_cost,
+		"stamina_regen_timer_timeout": STAMINA_REGEN_TIMER_TIMEOUT
+	}
+	return save_dict
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	screen_size = get_viewport_rect().size #Vector de resolución de pantalla

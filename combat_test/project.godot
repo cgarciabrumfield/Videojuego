@@ -32,6 +32,10 @@ window/stretch/mode="canvas_items"
 
 project/assembly_name="combat_test"
 
+[global_group]
+
+Persist=""
+
 [input]
 
 up={

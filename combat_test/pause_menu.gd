@@ -3,6 +3,8 @@ extends Control
 @onready var mapNode
 var treeSituation = false #treeSituation tiene que ser false cuando los nodos no estén pausados, y true cuando lo estén
 var pauseMenuShows = false
+var save_path = "res://saves/"
+
 func _ready() -> void:
 	mapNode = self.get_parent().get_parent().get_node("CanvasLayer2").get_node("Map")
 	$AnimationPlayer.play("RESET")
@@ -49,3 +51,8 @@ func _on_resume_pressed() -> void:
 func _on_quit_pressed() -> void:
 	if pauseMenuShows:
 		get_tree().quit()
+
+
+func _on_save_pressed() -> void:
+	$game_state.save_game()
+	pass # Replace with function body.

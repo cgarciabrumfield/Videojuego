@@ -16,3 +16,7 @@ func _on_quit_button_pressed():
 		get_tree().quit()
 	else:
 		queue_free()
+
+
+func _on_continue_pressed() -> void:
+	pass # Replace with function body.
