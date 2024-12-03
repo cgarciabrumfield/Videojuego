@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://isgkuwdidfo6"
+path="res://.godot/imported/Pixelstring, Wynncraft Music Team - All Eyes on Me (Eyeball Forest).mp3-aee570a6b2209b23b19d101c2aa62157.mp3str"
+
+[deps]
+
+source_file="res://assets/music/Pixelstring, Wynncraft Music Team - All Eyes on Me (Eyeball Forest).mp3"
+dest_files=["res://.godot/imported/Pixelstring, Wynncraft Music Team - All Eyes on Me (Eyeball Forest).mp3-aee570a6b2209b23b19d101c2aa62157.mp3str"]
+
+[params]
+
+loop=true
+loop_offset=49.62
+bpm=0.0
+beat_count=0
+bar_beats=4

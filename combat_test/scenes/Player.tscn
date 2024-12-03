@@ -6486,7 +6486,7 @@ libraries = {
 "": SubResource("AnimationLibrary_v11ep")
 }
 
-[node name="SFXs" type="Node" parent="."]
+[node name="SFXs" type="Node2D" parent="."]
 
 [node name="hurt_SFX" type="AudioStreamPlayer2D" parent="SFXs"]
 scale = Vector2(5, 5)

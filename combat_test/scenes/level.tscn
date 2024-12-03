@@ -1,9 +1,10 @@
-[gd_scene load_steps=6 format=3 uid="uid://c0dkxten8g5oe"]
+[gd_scene load_steps=7 format=3 uid="uid://c0dkxten8g5oe"]
 
 [ext_resource type="Script" path="res://scenes/level_generator.gd" id="1_fvex4"]
 [ext_resource type="AudioStream" uid="uid://dtfbtb8as2gic" path="res://assets/music/Pixelstring, Wynncraft Music Team - Blaze of Victory! (Battle for the Bonfire)-[AudioTrimmer.com].mp3" id="3_j1dxj"]
 [ext_resource type="AudioStream" uid="uid://qnvxupsj3s43" path="res://assets/music/Pixelstring, Wynncraft Music Team - Forest Dance (Nivla Woods)-[AudioTrimmer.com].mp3" id="3_wgu2s"]
 [ext_resource type="Texture2D" uid="uid://bdrw6lm3il5ng" path="res://assets/minimapa/map_nodes_player.png" id="4_ramw3"]
+[ext_resource type="AudioStream" uid="uid://isgkuwdidfo6" path="res://assets/music/Pixelstring, Wynncraft Music Team - All Eyes on Me (Eyeball Forest).mp3" id="5_hq7wc"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_c20fx"]
 resource_local_to_scene = true
@@ -43,17 +44,19 @@ autoplay = "default"
 frame = 1
 frame_progress = 1.0
 
-[node name="Music" type="Node2D" parent="."]
-
-[node name="Forest_Boss" type="AudioStreamPlayer2D" parent="Music"]
-stream = ExtResource("3_j1dxj")
-parameters/looping = true
-
-[node name="Forest_Room" type="AudioStreamPlayer2D" parent="Music"]
+[node name="Music" type="Node" parent="."]
 process_mode = 3
-stream = ExtResource("3_wgu2s")
-volume_db = -20.0
-autoplay = true
+
+[node name="Forest_Boss" type="AudioStreamPlayer" parent="Music"]
+stream = ExtResource("3_j1dxj")
+volume_db = -15.0
 parameters/looping = true
 
-[node name="Cave_Room" type="AudioStreamPlayer2D" parent="Music"]
+[node name="Forest_Room" type="AudioStreamPlayer" parent="Music"]
+stream = ExtResource("3_wgu2s")
+volume_db = -15.0
+parameters/looping = true
+
+[node name="Cave_Room" type="AudioStreamPlayer" parent="Music"]
+stream = ExtResource("5_hq7wc")
+volume_db = -15.0
