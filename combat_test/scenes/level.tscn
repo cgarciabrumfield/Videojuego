@@ -1,6 +1,7 @@
-[gd_scene load_steps=5 format=3 uid="uid://c0dkxten8g5oe"]
+[gd_scene load_steps=6 format=3 uid="uid://c0dkxten8g5oe"]
 
 [ext_resource type="Script" path="res://scenes/level_generator.gd" id="1_fvex4"]
+[ext_resource type="AudioStream" uid="uid://dtfbtb8as2gic" path="res://assets/music/Pixelstring, Wynncraft Music Team - Blaze of Victory! (Battle for the Bonfire)-[AudioTrimmer.com].mp3" id="3_j1dxj"]
 [ext_resource type="AudioStream" uid="uid://qnvxupsj3s43" path="res://assets/music/Pixelstring, Wynncraft Music Team - Forest Dance (Nivla Woods)-[AudioTrimmer.com].mp3" id="3_wgu2s"]
 [ext_resource type="Texture2D" uid="uid://bdrw6lm3il5ng" path="res://assets/minimapa/map_nodes_player.png" id="4_ramw3"]
 
@@ -32,13 +33,6 @@ position = Vector2(-166, 82)
 [node name="Camera2D" type="Camera2D" parent="."]
 zoom = Vector2(6, 5.65)
 
-[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
-process_mode = 3
-stream = ExtResource("3_wgu2s")
-volume_db = -20.0
-autoplay = true
-parameters/looping = true
-
 [node name="AnimacionesBosque" type="AnimationPlayer" parent="."]
 
 [node name="CaballeroCabezabuque" type="AnimatedSprite2D" parent="."]
@@ -48,3 +42,18 @@ sprite_frames = SubResource("SpriteFrames_c20fx")
 autoplay = "default"
 frame = 1
 frame_progress = 1.0
+
+[node name="Music" type="Node2D" parent="."]
+
+[node name="Forest_Boss" type="AudioStreamPlayer2D" parent="Music"]
+stream = ExtResource("3_j1dxj")
+parameters/looping = true
+
+[node name="Forest_Room" type="AudioStreamPlayer2D" parent="Music"]
+process_mode = 3
+stream = ExtResource("3_wgu2s")
+volume_db = -20.0
+autoplay = true
+parameters/looping = true
+
+[node name="Cave_Room" type="AudioStreamPlayer2D" parent="Music"]

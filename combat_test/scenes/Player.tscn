@@ -1,4 +1,4 @@
-[gd_scene load_steps=82 format=3 uid="uid://bp8hvd0qc4txe"]
+[gd_scene load_steps=83 format=3 uid="uid://bp8hvd0qc4txe"]
 
 [ext_resource type="Script" path="res://scenes/player.gd" id="1_02emr"]
 [ext_resource type="SpriteFrames" uid="uid://despu680qbvek" path="res://Animations/Player.tres" id="2_0s6fe"]
@@ -8,6 +8,7 @@
 [ext_resource type="AudioStream" uid="uid://cmk86b5y2lm4f" path="res://assets/sounds/ROBLOX Oof Sound Effect.wav" id="12_54qc7"]
 [ext_resource type="Texture2D" uid="uid://dlhgyyvbwxj7r" path="res://assets/sprites/Shadow.png" id="12_h0mt4"]
 [ext_resource type="AudioStream" uid="uid://5is71ajip613" path="res://assets/sounds/12_Player_Movement_SFX/56_Attack_03.wav" id="13_4p0r4"]
+[ext_resource type="AudioStream" uid="uid://dysfcpcbw8cg0" path="res://assets/sounds/10_Battle_SFX/LeatherArmor_Rustle_03-[AudioTrimmer.com].mp3" id="13_85b1o"]
 [ext_resource type="AudioStream" uid="uid://dishman0meeb5" path="res://assets/sounds/12_Player_Movement_SFX/03_Step_grass_03.wav" id="14_rntyo"]
 [ext_resource type="AudioStream" uid="uid://ddteofdbmqcge" path="res://assets/sounds/10_Battle_SFX/39_Block_03.wav" id="15_b0tda"]
 [ext_resource type="AudioStream" uid="uid://qqxlr4cxhg11" path="res://assets/sounds/12_Player_Movement_SFX/52_Dive_02.wav" id="16_1pqlj"]
@@ -6507,6 +6508,9 @@ stream = ExtResource("15_b0tda")
 [node name="break_guard_SFX" type="AudioStreamPlayer2D" parent="SFXs"]
 stream = ExtResource("16_1pqlj")
 volume_db = 10.0
+
+[node name="Raise_guard_SFX" type="AudioStreamPlayer2D" parent="SFXs"]
+stream = ExtResource("13_85b1o")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 

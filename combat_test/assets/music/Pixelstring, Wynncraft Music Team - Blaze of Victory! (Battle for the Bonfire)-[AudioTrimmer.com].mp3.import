@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://dtfbtb8as2gic"
+path="res://.godot/imported/Pixelstring, Wynncraft Music Team - Blaze of Victory! (Battle for the Bonfire)-[AudioTrimmer.com].mp3-28c0bf52344df7f49c25527cab141ef6.mp3str"
+
+[deps]
+
+source_file="res://assets/music/Pixelstring, Wynncraft Music Team - Blaze of Victory! (Battle for the Bonfire)-[AudioTrimmer.com].mp3"
+dest_files=["res://.godot/imported/Pixelstring, Wynncraft Music Team - Blaze of Victory! (Battle for the Bonfire)-[AudioTrimmer.com].mp3-28c0bf52344df7f49c25527cab141ef6.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0.0
+bpm=0.0
+beat_count=0
+bar_beats=4

@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://bnbj8d30857pd"
+path="res://.godot/imported/Pixelstring, Wynncraft Music Team - Corkian National Anthem (Corkus City)-[AudioTrimmer.com].mp3-d262e06e74d202dd20888f871da043b9.mp3str"
+
+[deps]
+
+source_file="res://assets/music/Pixelstring, Wynncraft Music Team - Corkian National Anthem (Corkus City)-[AudioTrimmer.com].mp3"
+dest_files=["res://.godot/imported/Pixelstring, Wynncraft Music Team - Corkian National Anthem (Corkus City)-[AudioTrimmer.com].mp3-d262e06e74d202dd20888f871da043b9.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0.0
+bpm=0.0
+beat_count=0
+bar_beats=4
