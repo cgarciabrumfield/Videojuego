@@ -54,8 +54,8 @@ var knockback_timer: float = 0.0
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	if "level" in get_parent():
-		$darkness.visible = get_parent().level == "cueva"
+	if "level" in get_parent().get_parent():
+		$darkness.visible = get_parent().get_parent().level == "cueva"
 	else:
 		$darkness.visible = false
 	screen_size = get_viewport_rect().size #Vector de resolución de pantalla
