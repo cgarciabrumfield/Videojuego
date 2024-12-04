@@ -1,4 +1,4 @@
-[gd_scene load_steps=83 format=3 uid="uid://bp8hvd0qc4txe"]
+[gd_scene load_steps=84 format=3 uid="uid://bp8hvd0qc4txe"]
 
 [ext_resource type="Script" path="res://scenes/player.gd" id="1_02emr"]
 [ext_resource type="SpriteFrames" uid="uid://despu680qbvek" path="res://Animations/Player.tres" id="2_0s6fe"]
@@ -13,6 +13,7 @@
 [ext_resource type="AudioStream" uid="uid://ddteofdbmqcge" path="res://assets/sounds/10_Battle_SFX/39_Block_03.wav" id="15_b0tda"]
 [ext_resource type="AudioStream" uid="uid://qqxlr4cxhg11" path="res://assets/sounds/12_Player_Movement_SFX/52_Dive_02.wav" id="16_1pqlj"]
 [ext_resource type="Script" path="res://scripts/healthbar.gd" id="16_eoymm"]
+[ext_resource type="Texture2D" uid="uid://c0j2xekr5spn1" path="res://assets/sprites/darkness.png" id="16_s5qws"]
 [ext_resource type="Script" path="res://scripts/staminabar.gd" id="17_2666h"]
 [ext_resource type="AudioStream" uid="uid://b436qjtsc2p1s" path="res://assets/sounds/10_Battle_SFX/Sword Hits Metal Shield [ ezmp3.cc ]-[AudioTrimmer.com].mp3" id="20_3p3tk"]
 
@@ -6468,6 +6469,10 @@ z_index = -1
 y_sort_enabled = true
 position = Vector2(0, 8.2)
 texture = ExtResource("12_h0mt4")
+
+[node name="darkness" type="Sprite2D" parent="."]
+z_index = 100
+texture = ExtResource("16_s5qws")
 
 [node name="Parry_effect_sprite" type="AnimatedSprite2D" parent="."]
 z_index = 2

@@ -39,7 +39,6 @@ var knockback_timer: float = 0.0
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	screen_size = get_viewport_rect().size #Vector de resolución de pantalla
-	position = Vector2(0,0)
 	$Sword1/Hitbox_Sword1.disabled = true # La hitbox (espada) empieza emvainadas
 	$Sword2/Hitbox_Sword2.disabled = true
 	add_child(attack_cooldown_timer)

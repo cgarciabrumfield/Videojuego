@@ -36,7 +36,6 @@ var attack_cooldown_time = 3.0  # segundos entre ataques
 @onready var attack_timer = $AttackTimer
 @onready var proyectil_scene = preload("res://scenes/projectile.tscn")
 #Sonidos
-@onready var shoot_sfx = $SFX/shoot
 
 func _ready():
 	if randi_range(0,1) == 0:

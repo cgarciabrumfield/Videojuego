@@ -3,7 +3,7 @@ extends Node2D
 var save_path = "user://knightsCurse.save" 
 #TODO https://github.com/cgarciabrumfield/Videojuego/issues/64
 
-var level = "cueva" #este nombre debe coincidir con el de los archivos
+var level = "bosque" #este nombre debe coincidir con el de los archivos
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:

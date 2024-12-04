@@ -54,10 +54,14 @@ var knockback_timer: float = 0.0
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	if "level" in get_parent():
+		$darkness.visible = get_parent().level == "cueva"
+	else:
+		$darkness.visible = false
 	screen_size = get_viewport_rect().size #Vector de resolución de pantalla
 	direction = str("down") # El personaje empieza mirando hacia abajo
 	 #position = screen_size / 2 # situamos al personaje en el centro de la pantalla
-	$Sword1/Hitbox_Sword1.disabled = true # La hitbox (espada) empieza emvainadas
+	$Sword1/Hitbox_Sword1.disabled = true # La hitbox (espada) empieza envainadas
 	$Sword2/Hitbox_Sword2.disabled = true
 	# Configura y agrega el temporizador de parry al nodo actual
 	parry_timer.wait_time = 0.1
