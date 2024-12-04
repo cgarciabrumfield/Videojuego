@@ -115,22 +115,6 @@ func get_parried():
 	$AnimationPlayer.play(str("parried_") + direction_str)
 	status()
 
-# Callback cuando la animación de ataque termina
-#func _on_animation_player_animation_finished(anim_name: StringName) -> void:
-	#if anim_name.begins_with("attack_"):
-		#if second_attack_queued:
-			#$AnimationPlayer.play(str("attack_" + direction_str))
-			#$AnimationPlayer.stop(false)
-			#slash_VFX.play()
-			#$AnimationPlayer.play(str("attack_" + direction_str + "_2"))  # Reproducir la segunda animación de ataque
-			#second_attack_queued = false
-
-#Función de bloqueo. Funciona de manera practicamente idéntica a ataque, aunque la hitbox y su uso no está implementado
-func block():
-	if is_attacking == false && is_blocking == false && is_hurt == false:
-		block_VFX.play()
-		$AnimationPlayer.play(str("block_" + direction_str))
-
 # Función de recivir daño. Solo se activa cuando la hurtbox del personaje detecte una hitbox 
 # con un valor de daño asociado que llamaremos amount		
 func take_damage(damage: int, knockback_direction: Vector2, knockback_strength: int) -> void:
