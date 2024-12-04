@@ -201,7 +201,7 @@ func status():
 	print("is_hurt: ")
 	print(is_hurt)
 
-func _on_wall_detection_body_entered(body: Node2D) -> void:
+func _on_wall_detection_body_entered(_body: Node2D) -> void:
 	if clockwise:
 		clockwise = false
 	else:

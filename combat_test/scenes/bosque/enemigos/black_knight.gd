@@ -48,7 +48,6 @@ func _ready():
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	# "Timer" para el movimiento random
-	
 	if !is_attacking && !is_blocking && !is_hurt && !was_parried:
 		timer -= delta
 		if timer <= 0 and !near_player:

@@ -24,3 +24,6 @@ position = Vector2(-114, -3)
 position = Vector2(-26, -3)
 
 [node name="Mushroom_Man" parent="." instance=ExtResource("4_xrv6w")]
+
+[node name="Mushroom_Man2" parent="." instance=ExtResource("4_xrv6w")]
+position = Vector2(26, 8)
