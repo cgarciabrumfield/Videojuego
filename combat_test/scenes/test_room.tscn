@@ -1,10 +1,9 @@
-[gd_scene load_steps=6 format=3 uid="uid://cb2qhnv6mx7re"]
+[gd_scene load_steps=5 format=3 uid="uid://cb2qhnv6mx7re"]
 
 [ext_resource type="Texture2D" uid="uid://dr6hu4clr3nco" path="res://assets/sprites/maps/Bosque/test.png" id="1_yvhyc"]
-[ext_resource type="PackedScene" uid="uid://desu3h1sc52ll" path="res://scenes/bosque/enemigos/wonwon.tscn" id="3_pk7pj"]
-[ext_resource type="PackedScene" uid="uid://lxt7r4o4x0pp" path="res://scenes/bosque/Props/roca_1.tscn" id="4_4eaxj"]
+[ext_resource type="PackedScene" uid="uid://lxt7r4o4x0pp" path="res://scenes/cueva/props/roca_1.tscn" id="4_4eaxj"]
 [ext_resource type="PackedScene" uid="uid://bp8hvd0qc4txe" path="res://scenes/Player.tscn" id="4_vkrbd"]
-[ext_resource type="PackedScene" uid="uid://cre54jm3bvmaf" path="res://scenes/dialogue_interface_knight.tscn" id="5_qnc85"]
+[ext_resource type="PackedScene" uid="uid://desu3h1sc52ll" path="res://scenes/cueva/enemigos/mushroomman.tscn" id="4_xrv6w"]
 
 [node name="Test_room" type="Node2D"]
 texture_filter = 1
@@ -18,14 +17,17 @@ z_index = -2
 texture_filter = 1
 texture = ExtResource("1_yvhyc")
 
-[node name="CanvasLayer" type="CanvasLayer" parent="Background"]
-
-[node name="dialogue_interface" parent="Background/CanvasLayer" instance=ExtResource("5_qnc85")]
-
 [node name="Player" parent="." instance=ExtResource("4_vkrbd")]
 position = Vector2(-114, -3)
 
-[node name="Wonwon" parent="." instance=ExtResource("3_pk7pj")]
-
 [node name="roca_1" parent="." instance=ExtResource("4_4eaxj")]
 position = Vector2(-26, -3)
+
+[node name="Mushroom_Man" parent="." instance=ExtResource("4_xrv6w")]
+
+[node name="muros" type="StaticBody2D" parent="."]
+collision_layer = 16
+collision_mask = 0
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="muros"]
+polygon = PackedVector2Array(-195, 10, -193, 107, 191, 107, 191, -108, -191, -108, -195, 10, -184, -10, -186, -103, 186, -104, 186, 102, -189, 103, -184, -10)
