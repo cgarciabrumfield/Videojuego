@@ -3,7 +3,7 @@ extends Node
 var room_size = Vector2(320, 191.15)
 const CAMERA_ZOOM = Vector2(5, 5)
 	
-func change_direction(position:Vector2, move_chance_const:float, move_anyways: bool = false) -> Vector2:
+func get_random_direction(position:Vector2, move_chance_const:float, move_anyways: bool = false) -> Vector2:
 	var x_value
 	var y_value
 	var move_chance = move_chance_const
@@ -33,7 +33,7 @@ func depth_control(position:Vector2, screen_size, offset:float = 0.0):
 	# Esta cosa extraña es para poner el valor de z en el rango posible según donde se ejecute el juego
 	return normalized_Y_pos * 90 + 11 + offset
 
-func get_player_position(node: Node) -> Vector2:
+func get_player_position(node: Node):
 	return _find_player(node.get_tree().get_root())
 
 func _find_player(node):

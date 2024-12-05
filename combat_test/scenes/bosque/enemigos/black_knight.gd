@@ -23,9 +23,8 @@ var direction_change_interval: float = 2.0 # Tiempo para cambiar de dirección
 var attack_count = 0
 var attack_cooldown_time = 1.0  # 1 segundo entre ataques
 @onready var attack_cooldown_timer = Timer.new()
-
+# Movement
 const MOVE_CHANCE = 0.7
-var move_chance = MOVE_CHANCE
 const NORMAL_SPEED = 30
 const RUN_SPEED = 45
 @export var speed = NORMAL_SPEED # Velocidad a la que se moverá el limo
@@ -51,16 +50,15 @@ func _process(delta):
 	if !is_attacking && !is_blocking && !is_hurt && !was_parried:
 		timer -= delta
 		if timer <= 0 and !near_player:
-			print(move_chance)
-			change_direction()
-		set_directionVector_string()
+			direction_vector = Globals.get_random_direction(position, MOVE_CHANCE)
+		direction_str = Globals.set_directionVector_string(direction_vector)
 		move(delta) # Nos movemos si se ha pulsado algo
 		attack()
-		depth_control()
+		z_index = Globals.depth_control(position, screen_size)
 
 func move(delta):
 	velocity = Vector2.ZERO
-	var player_position = get_player_position()
+	var player_position = Globals.get_player_position(self)
 	if (player_position != null):
 		if (position.distance_to(player_position) <= detection_range):
 			near_player = true
@@ -90,7 +88,7 @@ func move_towards_player(player_position: Vector2, delta: float):
 
 # Función de ataque. Si ha sido pulsado y no estamos bloqueando ni reciviendo daño, tiene lugar	
 func attack():
-	var player_position = get_player_position()
+	var player_position = Globals.get_player_position(self)
 	if player_position != null:
 		if position.distance_to(player_position) <= attack_range:
 			if !is_blocking and !is_hurt and !was_parried:
@@ -158,50 +156,6 @@ func kill():
 	set_process_input(false)
 	await get_tree().create_timer(0.9).timeout
 	queue_free()
-	
-func depth_control():
-	# Actualizamos el valor de profundidad del eje z según la altura del personaje en el eje y
-	normalized_Y_pos = position.y / screen_size.y
-	# Esta cosa extraña es para poner el valor de z en el rango posible según donde se ejecute el juego
-	z_index = normalized_Y_pos * 90 + 11
-	
-func get_player_position():
-	return _find_player(get_tree().get_root())
-	
-func _find_player(node):
-	if node.name == "Player":
-		return node.position
-		
-	for child in node.get_children():
-		var player_position = _find_player(child)
-		if player_position != null:
-			return player_position
-	return null
-	
-func change_direction():
-	if randf_range(0, 1) < move_chance:
-		move_chance = move_chance * MOVE_CHANCE
-		# Genera un nuevo vector aleatorio con valores entre -1 y 1
-		direction_vector = Vector2(randf_range(-1, 1), randf_range(-1, 1)).normalized()
-	else:
-		move_chance = MOVE_CHANCE
-		direction_vector = Vector2(0, 0)
-	# Reinicia el timer
-	timer = direction_change_interval
-	
-func set_directionVector_string():
-	var x = direction_vector.x
-	var y = direction_vector.y
-	if y < - abs(x):
-		direction_str = "up"
-	elif x > abs(y):
-		direction_str = "right"
-	elif y > abs(x):
-		direction_str = "down"
-	elif x < abs(y):
-		direction_str = "left"
-	#else:
-		#print("Estoy quieto")
 
 func status():
 	print("...............")

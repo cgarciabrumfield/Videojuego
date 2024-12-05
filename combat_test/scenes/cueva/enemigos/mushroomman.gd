@@ -45,7 +45,7 @@ func _process(delta):
 	if !is_attacking:
 		timer -= delta
 		if timer <= 0:
-			direction_vector = Globals.change_direction(position, MOVE_CHANCE, MushroomState.is_nervous)
+			direction_vector = Globals.get_random_direction(position, MOVE_CHANCE, MushroomState.is_nervous)
 			timer = direction_change_interval
 		direction_str = Globals.set_directionVector_string(direction_vector)
 		if !is_hurt:

@@ -2,6 +2,7 @@ extends CharacterBody2D
 
 @export var MAX_HEALTH = 3
 @export var health = MAX_HEALTH
+var MOVE_CHANCE = 0.7
 var is_hurt = false
 var screen_size
 const NORMAL_SPEED = 15
@@ -33,19 +34,13 @@ func _process(delta: float) -> void:
 	if is_hurt == false: # Mientras no esté siendo herido, el limo se mueve normal
 		move(delta)
 		$SlimeSprite.play("default")
-	depth_control()
+	z_index = Globals.depth_control(position, screen_size)
 	# Actualiza el timer para cambiar la dirección
 	timer -= delta
 	if timer <= 0:
-		change_direction()
-		
-# Función para cambiar la dirección aleatoriamente
-func change_direction():
-	# Genera un nuevo vector aleatorio con valores entre -1 y 1
-	direction = Vector2(randf_range(-1, 1), randf_range(-1, 1)).normalized()
-	# Reinicia el timer
-	timer = direction_change_interval
-	
+		direction = Globals.get_random_direction(position, MOVE_CHANCE)
+
+
 # Literalmente lo mismo que la del caballero pero mas facil. Id a mirar los comentarios en knight.gd
 func take_damage(ammount: int, knockback_direction: Vector2, knockback_strength) -> void:
 	hurt_VFX.play()
@@ -83,7 +78,7 @@ func kill():
 	
 func move(delta):
 	velocity = Vector2.ZERO
-	var player_position = get_player_position()
+	var player_position = Globals.get_player_position(self)
 	if (player_position != null):
 		if (position.distance_to(player_position) <= detection_range):
 			move_towards_player(player_position, delta)
@@ -102,21 +97,3 @@ func move_towards_player(player_position: Vector2, delta: float):
 	direction = (player_position - position).normalized()
 	position += direction * speed * delta
 	move_and_slide()
-	
-func depth_control():
-	# Actualizamos el valor de profundidad del eje z según la altura del personaje en el eje y
-	normalized_Y_pos = position.y / screen_size.y
-	z_index = normalized_Y_pos * 90 + 10
-
-func get_player_position():
-	return _find_player(get_tree().get_root())
-	
-func _find_player(node):
-	if node.name == "Player":
-		return node.position
-		
-	for child in node.get_children():
-		var position_jugador = _find_player(child)
-		if position_jugador != null:
-			return position_jugador
-	return null
