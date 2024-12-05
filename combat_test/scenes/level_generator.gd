@@ -57,9 +57,9 @@ var branch_sprite = load("res://assets/minimapa/map_nodes2.png")
 @onready var map_node = $MapNode
 @onready var player = $Player
 @onready var camera = $Camera2D
-const CAMERA_ZOOM = Vector2(5, 5)
+const CAMERA_ZOOM = Globals.CAMERA_ZOOM
+var room_size = GlobalVars.room_size
 var current_coords
-var room_size = Vector2(320, 191.15)
 var sala_inicio_coords
 var sala_final_coords
 

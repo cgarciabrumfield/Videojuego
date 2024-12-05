@@ -11,7 +11,6 @@ const RUN_SPEED = 40
 var direction_change_interval: float = 2.0 # Tiempo para cambiar de dirección
 var timer: float = 0.0 # Timer para controlar el cambio de dirección
 @onready var screen_size = get_viewport_rect().size
-var normalized_Y_pos # Posicion en el eje Y normalizada entre 0 y 1 para el calculo de profundidad asociado
 @onready var healthbar = $Healthbar
 @onready var damagebar = $Healthbar/Damagebar
 @onready var timer_vida = $Healthbar/Timer
@@ -21,13 +20,10 @@ var knockback_duration: float = 0.2  # Duración del retroceso en segundos
 var knockback_timer: float = 0.0
 var player_position
 # Movimiento
-var near_player = false
 var direction_str = "down" # Izquierda derecha arriba abajo, segun a donde mire
 var direction_vector
 var rotation_vector
 const MOVE_CHANCE = 0.4
-var SCAPE_RANGE = 60
-var move_chance = MOVE_CHANCE
 #Ataques
 @export var is_attacking = false
 @export var attack_range = 60
@@ -38,28 +34,25 @@ var attack_cooldown_time = 3.0  # segundos entre ataques
 #Sonidos
 
 func _ready():
+	MushroomState.relax()
 	attack_timer.wait_time = attack_cooldown_time
 	attack_timer.start()
-	if "normal_up" in $AnimationPlayer.get_animation_list():
-		$AnimationPlayer.play("normal_up")
-	else:
-		print("La animación 'normal_up' no existe.")
-
 
 func _process(delta):
+	print(position)
 	MushroomState.update_timer(delta)
 	# "Timer" para el movimiento random
 	if !is_attacking:
 		timer -= delta
-		if timer <= 0 and !near_player:
-			change_direction(MushroomState.is_nervous)
-		set_directionVector_string()
-		move(delta) # Nos movemos si se ha pulsado algo
-		depth_control()
-	player_position = get_player_position()
-	if player_position != null:
-		near_player = position.distance_to(player_position) < SCAPE_RANGE
-# Literalmente lo mismo que la del caballero pero mas facil. Id a mirar los comentarios en knight.gd
+		if timer <= 0:
+			direction_vector = Globals.change_direction(position, MOVE_CHANCE, MushroomState.is_nervous)
+			timer = direction_change_interval
+		direction_str = Globals.set_directionVector_string(direction_vector)
+		if !is_hurt:
+			move(delta) # Nos movemos si se ha pulsado algo
+		z_index = Globals.depth_control(position, screen_size)
+	player_position = Globals.get_player_position(self)
+	
 func take_damage(ammount: int, knockback_direction: Vector2, knockback_strength) -> void:
 	health -= ammount
 	timer_vida.start()
@@ -87,7 +80,6 @@ func _on_health_timer_timeout() -> void:
 	damagebar.update()
 	timer_vida.stop()
 
-# Función de me voy con San Pedro del limo
 func kill():
 	is_hurt = true
 	can_attack = false
@@ -104,15 +96,15 @@ func move(delta):
 	velocity = Vector2.ZERO
 	if (player_position != null):
 		if (MushroomState.is_nervous):
-			attack_timer.start()
-			run_arround(delta)
+			if MushroomState.is_fleeing:
+				direction_vector = (position - player_position).normalized()
+			speed = RUN_SPEED
 		else:
-			move_randomly(delta)
-			near_player = false
+			speed = NORMAL_SPEED
 	else:
-		move_randomly(delta)
-		near_player = false
-	
+		speed = NORMAL_SPEED
+	position += direction_vector * speed * delta
+
 	if !is_attacking && !is_hurt && direction_vector != Vector2(0,0):
 		$AnimationPlayer.play(str("run_" + direction_str))
 		$AnimationPlayer.speed_scale = 0.5
@@ -121,76 +113,9 @@ func move(delta):
 		$AnimationPlayer.speed_scale = 0.5
 	move_and_slide()
 
-func move_randomly(delta):
-	speed = NORMAL_SPEED
-	position += direction_vector * speed * delta
-
-func run_arround(delta):
-	print("AAAAH QUE MIEDO")
-	speed = RUN_SPEED
-	if near_player:
-		direction_vector = (position - player_position).normalized()
-	position += direction_vector * speed * delta
-
-func depth_control():
-	# Actualizamos el valor de profundidad del eje z según la altura del personaje en el eje y
-	normalized_Y_pos = position.y / screen_size.y
-	# Esta cosa extraña es para poner el valor de z en el rango posible según donde se ejecute el juego
-	z_index = normalized_Y_pos * 90 + 11
-
-func get_player_position():
-	return _find_player(get_tree().get_root())
-
-func _find_player(node):
-	if node.name == "Player":
-		return node.position
-		
-	for child in node.get_children():
-		var position_jugador = _find_player(child)
-		if position_jugador != null:
-			return position_jugador
-	return null
-	
-func set_directionVector_string():
-	var x = direction_vector.x
-	var y = direction_vector.y
-	if y < - abs(x):
-		direction_str = "up"
-	elif x > abs(y):
-		direction_str = "right"
-	elif y > abs(x):
-		direction_str = "down"
-	elif x < abs(y):
-		direction_str = "left"
-	#else:
-		#print("Estoy quieto")
-	
-func change_direction(move_anyways: bool = false):
-	if (randf_range(0, 1) < move_chance) or move_anyways:
-		move_chance = move_chance * MOVE_CHANCE
-		# Genera un nuevo vector aleatorio con valores entre -1 y 1
-		direction_vector = Vector2(randf_range(-1, 1), randf_range(-1, 1)).normalized()
-	else:
-		move_chance = MOVE_CHANCE
-		direction_vector = Vector2(0, 0)
-	# Reinicia el timer
-	timer = direction_change_interval
-
 func status():
 	print("...............")
 	print("can_attack: ")
 	print(can_attack)
 	print("is_hurt: ")
 	print(is_hurt)
-
-func shoot():
-	if can_attack:
-		is_attacking = true
-		$AnimationPlayer.play(str("attack_" + direction_str))
-		var proyectil = proyectil_scene.instantiate()
-		proyectil.wonwon = self
-		proyectil.position = position
-		get_parent().add_child(proyectil)
-		
-		attack_timer.start()
-		can_attack = false

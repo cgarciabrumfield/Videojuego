@@ -25,5 +25,9 @@ position = Vector2(-26, -3)
 
 [node name="Mushroom_Man" parent="." instance=ExtResource("4_xrv6w")]
 
-[node name="Mushroom_Man2" parent="." instance=ExtResource("4_xrv6w")]
-position = Vector2(26, 8)
+[node name="muros" type="StaticBody2D" parent="."]
+collision_layer = 16
+collision_mask = 0
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="muros"]
+polygon = PackedVector2Array(-195, 10, -193, 107, 191, 107, 191, -108, -191, -108, -195, 10, -184, -10, -186, -103, 186, -104, 186, 102, -189, 103, -184, -10)
