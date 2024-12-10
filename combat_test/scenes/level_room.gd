@@ -169,6 +169,7 @@ func add_enemies():
 	var random_number_enemies_file = randi_range(1, count_enemies_distribution_scenes())
 	var ruta_enemigos: String = ("res://scenes/" + level + "/salas/distribuciones_enemigos/enemies_" + 
 	str(random_number_enemies_file) + ".tscn")
+	print(ruta_enemigos)
 	#nodo_enemigos = "enemies_" + str(random_number_enemies_file)
 	enemigos.add_child(load(ruta_enemigos).instantiate())
 	

@@ -24,6 +24,7 @@ var knockback_timer: float = 0.0
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	global_position = Globals.find_valid_spawn_position(global_position, self)
 	screen_size = get_viewport_rect().size
 	var colors = [Color.YELLOW_GREEN, Color.MEDIUM_SPRING_GREEN, Color.SPRING_GREEN, Color.DARK_GREEN]
 	$SlimeSprite.modulate = colors[randi() % colors.size()]
@@ -39,6 +40,7 @@ func _process(delta: float) -> void:
 	timer -= delta
 	if timer <= 0:
 		direction = Globals.get_random_direction(position, MOVE_CHANCE)
+		timer = direction_change_interval
 
 
 # Literalmente lo mismo que la del caballero pero mas facil. Id a mirar los comentarios en knight.gd

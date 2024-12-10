@@ -29,6 +29,7 @@ var segunda_fase_iniciada = false
 @onready var summon_slime_cooldown = $summon_slime_cooldown
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	global_position = Globals.find_valid_spawn_position(global_position, self)
 	screen_size = get_viewport_rect().size
 	position = Vector2(0,0)
 	

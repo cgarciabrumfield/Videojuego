@@ -2,11 +2,11 @@ extends CharacterBody2D
 class_name Mushroom_man
 
 @export var MAX_HEALTH = 5
-@export var health = MAX_HEALTH
+var health = MAX_HEALTH
 @export var is_hurt = false
-const NORMAL_SPEED = 15
-const RUN_SPEED = 40
-@export var speed = NORMAL_SPEED # Velocidad a la que se moverá el limo
+@export var NORMAL_SPEED = 15
+@export var RUN_SPEED = 40
+var speed = NORMAL_SPEED # Velocidad a la que se moverá el limo
 @export var detection_range = 100
 var direction_change_interval: float = 2.0 # Tiempo para cambiar de dirección
 var timer: float = 0.0 # Timer para controlar el cambio de dirección
@@ -27,20 +27,20 @@ const MOVE_CHANCE = 0.4
 #Ataques
 @export var is_attacking = false
 @export var attack_range = 60
-var attack_cooldown_time = 3.0  # segundos entre ataques
+var attack_cooldown_time = 1.0  # segundos entre ataques
 @export var can_attack = false
 @onready var attack_timer = $AttackTimer
-@onready var proyectil_scene = preload("res://scenes/projectile.tscn")
+@export var NO_ATTACK_CHANCE = 0.6
+@onready var no_attack_chance = NO_ATTACK_CHANCE  #decrementa cada segundo, multiplicandose NO_ATTACK_CHANCE
+@onready var smoke_scene = preload("res://scenes/cueva/enemigos/mushroom_smoke.tscn")
 #Sonidos
 
 func _ready():
+	global_position = Globals.find_valid_spawn_position(global_position, self)
 	MushroomState.relax()
 	attack_timer.wait_time = attack_cooldown_time
-	attack_timer.start()
 
 func _process(delta):
-	print(position)
-	MushroomState.update_timer(delta)
 	# "Timer" para el movimiento random
 	if !is_attacking:
 		timer -= delta
@@ -52,6 +52,10 @@ func _process(delta):
 			move(delta) # Nos movemos si se ha pulsado algo
 		z_index = Globals.depth_control(position, screen_size)
 	player_position = Globals.get_player_position(self)
+	if !is_attacking and MushroomState.is_nervous and attack_timer.is_stopped():
+		attack_timer.start()
+		print("Timer started")
+	
 	
 func take_damage(ammount: int, knockback_direction: Vector2, knockback_strength) -> void:
 	health -= ammount
@@ -113,9 +117,29 @@ func move(delta):
 		$AnimationPlayer.speed_scale = 0.5
 	move_and_slide()
 
+
 func status():
 	print("...............")
 	print("can_attack: ")
 	print(can_attack)
 	print("is_hurt: ")
 	print(is_hurt)
+
+func _on_attack_timer_timeout() -> void:
+	if MushroomState.is_nervous:
+		attack_timer.start()
+	else: return
+	print("Attack timer finished")
+	if randf_range(0,1) > no_attack_chance:
+		print("Attack")
+		no_attack_chance = NO_ATTACK_CHANCE
+		is_attacking = true
+		$AnimationPlayer.speed_scale = 1
+		$AnimationPlayer.play(str("attack_" + direction_str))
+		var smoke_cloud = smoke_scene.instantiate()
+		smoke_cloud.position = position
+		get_parent().add_child(smoke_cloud)
+	else:
+		print("No attack")
+		no_attack_chance = no_attack_chance * NO_ATTACK_CHANCE
+		print(no_attack_chance)

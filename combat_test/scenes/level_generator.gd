@@ -58,7 +58,7 @@ var branch_sprite = load("res://assets/minimapa/map_nodes2.png")
 @onready var player = $Player
 @onready var camera = $Camera2D
 const CAMERA_ZOOM = Globals.CAMERA_ZOOM
-var room_size = GlobalVars.room_size
+var room_size = Globals.room_size
 var current_coords
 var sala_inicio_coords
 var sala_final_coords
@@ -68,7 +68,6 @@ func generate(room_seed):
 	seed(room_seed)
 	var dungeon = {}
 	var size = randi_range(min_number_rooms, max_number_rooms)
-	
 	dungeon[Vector2(0,0)] = room.instantiate()
 	for child in dungeon[Vector2(0,0)].get_node("enemigos").get_children():
 		child.queue_free()

@@ -1,9 +1,9 @@
 [gd_scene load_steps=7 format=3 uid="uid://xvxrfamjnnw5"]
 
-[ext_resource type="Script" path="res://scripts/proyectil.gd" id="1_6iius"]
-[ext_resource type="Texture2D" uid="uid://dnby4qugascd" path="res://assets/minimapa/map_nodes1.png" id="2_lqgx8"]
-[ext_resource type="Script" path="res://scripts/Hitbox.gd" id="3_fhifb"]
-[ext_resource type="Texture2D" uid="uid://dlhgyyvbwxj7r" path="res://assets/sprites/Shadow.png" id="4_a2ogu"]
+[ext_resource type="Script" path="res://scripts/proyectil.gd" id="1_othdd"]
+[ext_resource type="Texture2D" uid="uid://dnby4qugascd" path="res://assets/minimapa/map_nodes1.png" id="2_52dsm"]
+[ext_resource type="Script" path="res://scripts/Hitbox.gd" id="3_83rdy"]
+[ext_resource type="Texture2D" uid="uid://dlhgyyvbwxj7r" path="res://assets/sprites/Shadow.png" id="4_mslqw"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_0e8ne"]
 radius = 2.0
@@ -11,11 +11,11 @@ radius = 2.0
 [sub_resource type="CircleShape2D" id="CircleShape2D_kw36m"]
 radius = 4.12311
 
-[node name="Node2D" type="Area2D"]
+[node name="wonwon_proyectile" type="Area2D"]
 texture_filter = 1
 collision_layer = 8
 collision_mask = 49
-script = ExtResource("1_6iius")
+script = ExtResource("1_othdd")
 speed = 50
 
 [node name="CollisionBox" type="CollisionShape2D" parent="."]
@@ -23,10 +23,10 @@ shape = SubResource("CircleShape2D_0e8ne")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 modulate = Color(0.950833, 0.584115, 7.70092e-07, 1)
-texture = ExtResource("2_lqgx8")
+texture = ExtResource("2_52dsm")
 
 [node name="Hitbox" type="Area2D" parent="."]
-script = ExtResource("3_fhifb")
+script = ExtResource("3_83rdy")
 damage = 1
 knockback = 20
 can_be_parried = true
@@ -39,6 +39,6 @@ z_index = -1
 z_as_relative = false
 position = Vector2(0, 6.25)
 scale = Vector2(0.653846, 0.7)
-texture = ExtResource("4_a2ogu")
+texture = ExtResource("4_mslqw")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
