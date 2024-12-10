@@ -7,7 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://c0dkxten8g5oe" path="res://scenes/level.tscn" id="5_fo7t5"]
 [ext_resource type="PackedScene" uid="uid://bp8hvd0qc4txe" path="res://scenes/Player.tscn" id="5_jh4cb"]
 
-[node name="main" type="Node2D"]
+[node name="main" type="Node2D" groups=["Persist"]]
 script = ExtResource("1_oknsr")
 
 [node name="CanvasLayer2" type="CanvasLayer" parent="."]
@@ -40,4 +40,4 @@ offset_right = 2131.0
 
 [node name="level" parent="." instance=ExtResource("5_fo7t5")]
 
-[node name="Player" parent="level" instance=ExtResource("5_jh4cb")]
+[node name="Player" parent="level" groups=["Persist"] instance=ExtResource("5_jh4cb")]

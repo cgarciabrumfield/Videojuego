@@ -22,6 +22,7 @@ buses/default_bus_layout=""
 
 [autoload]
 
+GameState="*res://GameState.gd"
 MushroomState="*res://scenes/cueva/enemigos/mushrooms_state.gd"
 Globals="*res://scripts/globals.gd"
 
@@ -36,6 +37,10 @@ window/stretch/mode="canvas_items"
 [dotnet]
 
 project/assembly_name="combat_test"
+
+[global_group]
+
+Persist=""
 
 [input]
 

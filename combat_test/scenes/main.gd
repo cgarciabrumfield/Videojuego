@@ -1,9 +1,15 @@
 extends Node2D
 
-var save_path = "user://knightsCurse.save" 
-#TODO https://github.com/cgarciabrumfield/Videojuego/issues/64
+@onready var nodo_Player = $level/Player
+var level = GameState.level #este nombre debe coincidir con el de los archivos
 
-var level = "bosque" #este nombre debe coincidir con el de los archivos
+func save():
+	var save_dict = {
+		"filename" : get_scene_file_path(),
+		"parent" : get_parent().get_path(),
+		"level" : level
+	}
+	return save_dict
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -13,7 +19,3 @@ func _ready() -> void:
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	pass
-
-func save():
-	var file = FileAccess.open(save_path, FileAccess.WRITE)
-	#TODO https://github.com/cgarciabrumfield/Videojuego/issues/64
