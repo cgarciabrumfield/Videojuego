@@ -34,7 +34,7 @@ var clockwise
 var attack_cooldown_time = 3.0  # segundos entre ataques
 @export var can_attack = false
 @onready var attack_timer = $AttackTimer
-@onready var proyectil_scene = preload("res://scenes/projectile.tscn")
+@onready var proyectil_scene = preload("res://scenes/bosque/enemigos/wonwon_projectile.tscn")
 #Sonidos
 @onready var shoot_sfx = $SFX/shoot
 
@@ -52,7 +52,8 @@ func _process(delta: float) -> void:
 	if !is_hurt:
 		timer -= delta
 		if timer <= 0 and !near_player:
-			Globals.get_random_direction(position, MOVE_CHANCE)
+			direction_vector = Globals.get_random_direction(position, MOVE_CHANCE)
+			timer = direction_change_interval
 		direction_str = Globals.set_directionVector_string(direction_vector)
 		move(delta) # Nos movemos si se ha pulsado algo
 		z_index = Globals.depth_control(position, screen_size, 4)

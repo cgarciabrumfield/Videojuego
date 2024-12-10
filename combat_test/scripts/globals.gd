@@ -59,3 +59,28 @@ func set_directionVector_string(direction_vector:Vector2) -> String:
 		return "left"
 	else:
 		return "down"
+
+func find_valid_spawn_position(initial_position: Vector2, mob: Node2D) -> Vector2:
+	const MAX_ATTEMPTS = 5      # Intentos por distancia
+	const INCREMENT = 5         # Incremento de distancia
+	const COLLISION_LAYER = 48  # Máscara de capa 5 + 6
+	var space_state = mob.get_world_2d().direct_space_state
+	var distance = INCREMENT
+	while true:
+		for i in range(MAX_ATTEMPTS):
+			# Generar un punto aleatorio en un círculo alrededor de la posición inicial
+			var angle = randf() * TAU
+			var offset = Vector2(cos(angle), sin(angle)) * distance
+			var test_position = initial_position + offset
+			# Configurar los parámetros de la consulta
+			var query = PhysicsPointQueryParameters2D.new()
+			query.position = test_position
+			query.collision_mask = COLLISION_LAYER
+			# Verificar si hay colisión en el punto
+			var results = space_state.intersect_point(query, 1)  # Máximo 1 resultado
+			if not results:
+				return test_position  # Retornar posición válida
+			# Incrementar la distancia si no se encontró un lugar válido
+		distance += INCREMENT
+		print("Incrementando distancia a:", distance)
+	return initial_position

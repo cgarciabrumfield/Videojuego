@@ -16,7 +16,7 @@ func relax():
 	is_nervous = false
 	is_fleeing = false
 
-func update_timer(delta: float):
+func _process(delta: float):
 	if is_nervous:
 		nervous_timer -= delta  # Reduce el tiempo restante
 		if nervous_timer <= nervous_duration - 3.0:
@@ -24,3 +24,5 @@ func update_timer(delta: float):
 		if nervous_timer <= 0.0:
 			is_nervous = false  # Calma a los enemigos
 			nervous_timer = 0.0  # Reinicia el temporizador por seguridad
+	print(nervous_timer)
+	print(is_nervous)

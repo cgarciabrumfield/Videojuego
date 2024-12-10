@@ -37,6 +37,7 @@ var knockback_duration: float = 0.2  # Duración del retroceso en segundos
 var knockback_timer: float = 0.0
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	global_position = Globals.find_valid_spawn_position(global_position, self)
 	screen_size = get_viewport_rect().size #Vector de resolución de pantalla
 	$Sword1/Hitbox_Sword1.disabled = true # La hitbox (espada) empieza emvainadas
 	$Sword2/Hitbox_Sword2.disabled = true
@@ -51,6 +52,7 @@ func _process(delta):
 		timer -= delta
 		if timer <= 0 and !near_player:
 			direction_vector = Globals.get_random_direction(position, MOVE_CHANCE)
+			timer = direction_change_interval
 		direction_str = Globals.set_directionVector_string(direction_vector)
 		move(delta) # Nos movemos si se ha pulsado algo
 		attack()

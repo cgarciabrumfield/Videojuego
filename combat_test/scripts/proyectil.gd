@@ -6,30 +6,26 @@ var direction
 @onready var screen_size = get_viewport_rect().size
 var wonwon
 var was_parried = false
+#Tiempo de vida del proyectil. 0 si no muere por tiempo
+@export var LIFE_TIME = 0
+var timer = 0
 
 func _ready():
 	direction = direction_to_player()
+	if $Sprite2D is AnimatedSprite2D:
+		$Sprite2D.play()
 	
 func _process(delta: float) -> void:
 	global_position = global_position + direction * delta * speed
 	depth_control()
+	if LIFE_TIME != 0:
+		timer += delta
+		if timer >= LIFE_TIME:
+			queue_free()
 	
 func direction_to_player():
-	var vector = get_player_position() - position
+	var vector = Globals.get_player_position(self) - position
 	return vector.normalized()
-
-func get_player_position():
-	return _find_player(get_tree().get_root())
-
-func _find_player(node):
-	if node.name == "Player":
-		return node.position
-		
-	for child in node.get_children():
-		var position_jugador = _find_player(child)
-		if position_jugador != null:
-			return position_jugador
-	return null
 
 func _on_body_entered(hitbox) -> void:
 	if was_parried:
