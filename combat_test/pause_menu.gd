@@ -54,5 +54,5 @@ func _on_quit_pressed() -> void:
 
 
 func _on_save_pressed() -> void:
-	$game_state.save_game()
+	GameState.save_game()
 	pass # Replace with function body.

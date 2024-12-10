@@ -22,7 +22,7 @@ buses/default_bus_layout=""
 
 [autoload]
 
-GameState="*res://game_state.gd"
+GameState="*res://GameState.gd"
 
 [display]
 
