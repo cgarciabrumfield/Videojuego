@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://scenes/example_room.gd" id="1_ycv5c"]
 [ext_resource type="Texture2D" uid="uid://dk6ksu6lyt1di" path="res://scenes/cueva/salas/suelos/ground_1.png" id="2_mv8x5"]
-[ext_resource type="PackedScene" uid="uid://desu3h1sc52ll" path="res://scenes/cueva/enemigos/mushroomman.tscn" id="3_eysou"]
+[ext_resource type="PackedScene" uid="uid://desu3h1sc52ll" path="res://scenes/cueva/enemigos/mushroomman.tscn" id="3_emc67"]
 
 [node name="enemies_1" type="Node2D"]
 script = ExtResource("1_ycv5c")
@@ -13,8 +13,10 @@ z_as_relative = false
 texture = ExtResource("2_mv8x5")
 metadata/_edit_lock_ = true
 
-[node name="Mushroom_Man" parent="." instance=ExtResource("3_eysou")]
+[node name="Mushroom_Man" parent="." instance=ExtResource("3_emc67")]
 
-[node name="Mushroom_Man2" parent="." instance=ExtResource("3_eysou")]
+[node name="Mushroom_Man2" parent="." instance=ExtResource("3_emc67")]
+position = Vector2(-31, 21)
 
-[node name="Mushroom_Man3" parent="." instance=ExtResource("3_eysou")]
+[node name="Mushroom_Man3" parent="." instance=ExtResource("3_emc67")]
+position = Vector2(34, -14)
