@@ -29,6 +29,7 @@ var segunda_fase_iniciada = false
 @onready var summon_slime_cooldown = $summon_slime_cooldown
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	global_position = Globals.find_valid_spawn_position(global_position, self)
 	screen_size = get_viewport_rect().size
 	position = Vector2(0,0)
 	
@@ -37,7 +38,7 @@ func _process(delta: float) -> void:
 	if is_hurt == false: # Mientras no esté siendo herido, el limo se mueve normal
 		move(delta)
 		$SlimeSprite.play("default")
-	depth_control()
+	z_index = Globals.depth_control(position, screen_size)
 	# Actualiza el timer para cambiar la dirección
 	timer -= delta
 	if timer <= 0:
@@ -92,7 +93,7 @@ func kill():
 	
 func move(delta):
 	velocity = Vector2.ZERO
-	var player_position = get_player_position()
+	var player_position = Globals.get_player_position(self)
 	if (player_position != null):
 		move_towards_player(player_position, delta)
 		return
@@ -110,24 +111,6 @@ func move_towards_player(player_position: Vector2, delta: float):
 	direction = (player_position - position).normalized()
 	position += direction * speed * delta
 	move_and_slide()
-	
-func depth_control():
-	# Actualizamos el valor de profundidad del eje z según la altura del personaje en el eje y
-	normalized_Y_pos = position.y / screen_size.y
-	z_index = normalized_Y_pos * 90 + 10
-
-func get_player_position():
-	return _find_player(get_tree().get_root())
-	
-func _find_player(node):
-	if node.name == "Player":
-		return node.position
-		
-	for child in node.get_children():
-		var position_jugador = _find_player(child)
-		if position_jugador != null:
-			return position_jugador
-	return null
 
 func jump_attack():
 	jump_attack_triggered = true

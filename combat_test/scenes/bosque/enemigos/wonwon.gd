@@ -34,7 +34,7 @@ var clockwise
 var attack_cooldown_time = 3.0  # segundos entre ataques
 @export var can_attack = false
 @onready var attack_timer = $AttackTimer
-@onready var proyectil_scene = preload("res://scenes/projectile.tscn")
+@onready var proyectil_scene = preload("res://scenes/bosque/enemigos/wonwon_projectile.tscn")
 #Sonidos
 @onready var shoot_sfx = $SFX/shoot
 
@@ -52,10 +52,11 @@ func _process(delta: float) -> void:
 	if !is_hurt:
 		timer -= delta
 		if timer <= 0 and !near_player:
-			change_direction()
-		set_directionVector_string()
+			direction_vector = Globals.get_random_direction(position, MOVE_CHANCE)
+			timer = direction_change_interval
+		direction_str = Globals.set_directionVector_string(direction_vector)
 		move(delta) # Nos movemos si se ha pulsado algo
-		depth_control()
+		z_index = Globals.depth_control(position, screen_size, 4)
 		if is_hurt: 
 			is_attacking = false
 			can_attack = false
@@ -103,7 +104,7 @@ func kill():
 	
 func move(delta):
 	velocity = Vector2.ZERO
-	player_position = get_player_position()
+	player_position = Globals.get_player_position(self)
 	if (player_position != null):
 		if (position.distance_to(player_position) <= detection_range):
 			near_player = true
@@ -151,49 +152,6 @@ func move_around_player(player_position: Vector2, delta: float, clockwise: bool 
 	movement_vector = movement_vector.normalized()
 	position += movement_vector * speed * delta
 
-func depth_control():
-	# Actualizamos el valor de profundidad del eje z según la altura del personaje en el eje y
-	normalized_Y_pos = position.y / screen_size.y
-	z_index = normalized_Y_pos * 90 + 15
-
-func get_player_position():
-	return _find_player(get_tree().get_root())
-
-func _find_player(node):
-	if node.name == "Player":
-		return node.position
-		
-	for child in node.get_children():
-		var position_jugador = _find_player(child)
-		if position_jugador != null:
-			return position_jugador
-	return null
-	
-func set_directionVector_string():
-	var x = direction_vector.x
-	var y = direction_vector.y
-	if y < - abs(x):
-		direction_str = "up"
-	elif x > abs(y):
-		direction_str = "right"
-	elif y > abs(x):
-		direction_str = "down"
-	elif x < abs(y):
-		direction_str = "left"
-	#else:
-		#print("Estoy quieto")
-	
-func change_direction():
-	if randf_range(0, 1) < move_chance:
-		move_chance = move_chance * MOVE_CHANCE
-		# Genera un nuevo vector aleatorio con valores entre -1 y 1
-		direction_vector = Vector2(randf_range(-1, 1), randf_range(-1, 1)).normalized()
-	else:
-		move_chance = MOVE_CHANCE
-		direction_vector = Vector2(0, 0)
-	# Reinicia el timer
-	timer = direction_change_interval
-
 func status():
 	print("...............")
 	print("can_attack: ")
@@ -201,7 +159,7 @@ func status():
 	print("is_hurt: ")
 	print(is_hurt)
 
-func _on_wall_detection_body_entered(body: Node2D) -> void:
+func _on_wall_detection_body_entered(_body: Node2D) -> void:
 	if clockwise:
 		clockwise = false
 	else:

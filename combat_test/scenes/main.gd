@@ -1,6 +1,5 @@
 extends Node2D
 
-#TODO https://github.com/cgarciabrumfield/Videojuego/issues/64
 @onready var nodo_Player = $level/Player
 var level = GameState.level #este nombre debe coincidir con el de los archivos
 
