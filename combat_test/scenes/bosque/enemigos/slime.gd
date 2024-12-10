@@ -1,4 +1,5 @@
 extends CharacterBody2D
+class_name Slime
 
 @export var MAX_HEALTH = 3
 @export var health = MAX_HEALTH
@@ -12,7 +13,6 @@ const RUN_SPEED = 25
 var direction_change_interval: float = 2.0 # Tiempo para cambiar de dirección
 var timer: float = 0.0 # Timer para controlar el cambio de dirección
 var direction: Vector2 = Vector2.ZERO # Vector de dirección inicial
-var normalized_Y_pos # Posicion en el eje Y normalizada entre 0 y 1 para el calculo de profundidad asociado
 @onready var hurt_VFX = $hurt_vfx
 @onready var healthbar = $Healthbar
 @onready var damagebar = $Healthbar/Damagebar
