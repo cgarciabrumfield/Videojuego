@@ -18,5 +18,9 @@ func _on_quit_button_pressed():
 		queue_free()
 
 
-func _on_continue_pressed() -> void:
+func _on_continue_button_pressed() -> void:
+	print("continue pressed")
+	await get_tree().create_timer(0.2).timeout
+	GameState.load_game()
+	get_tree().change_scene_to_file("res://scenes/main.tscn")
 	pass # Replace with function body.

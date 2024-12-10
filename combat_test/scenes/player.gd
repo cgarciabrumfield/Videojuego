@@ -2,9 +2,9 @@ class_name Player
 extends CharacterBody2D
 
 #Speed
-@export var SPEED = 45 # How fast the player will move (pixels/sec).
+@export var WALK_SPEED = 45 # How fast the player will move (pixels/sec).
 @export var RUN_SPEED = 65
-var speed = SPEED
+var speed = WALK_SPEED
 #Health
 @export var MAX_HEALTH = 10
 var health = MAX_HEALTH
@@ -54,16 +54,20 @@ var knockback_timer: float = 0.0
 
 func save():
 	var save_dict = {
-		"speed" : SPEED,
-		"run_speed" : RUN_SPEED,
-		"max_health": MAX_HEALTH,
+		"filename" : get_scene_file_path(),
+		"parent" : get_parent().get_path(),
+		"pos_x" : position.x, # Vector2 is not supported by JSON
+		"pos_y" : position.y,
+		"WALK_SPEED" : WALK_SPEED,
+		"RUN_SPEED" : RUN_SPEED,
+		"MAX_HEALTH": MAX_HEALTH,
 		"health": health,
-		"max_stamina" : MAX_STAMINA,
-		"stamina" :MAX_STAMINA,
+		"MAX_STAMINA" : MAX_STAMINA,
+		"stamina" : MAX_STAMINA,
 		"stamina_regen" : stamina_regen,
-		"run_stamina_cost": RUN_STAMINA_COST_SEC,
+		"RUN_STAMINA_COST_SEC": RUN_STAMINA_COST_SEC,
 		"attack_stamina_cost" : attack_stamina_cost,
-		"stamina_regen_timer_timeout": STAMINA_REGEN_TIMER_TIMEOUT
+		"STAMINA_REGEN_TIMER_TIMEOUT": STAMINA_REGEN_TIMER_TIMEOUT
 	}
 	return save_dict
 
@@ -133,7 +137,7 @@ func move(delta): # Función que mueve al personaje
 			elif stamina <= 0 and !Input.is_action_just_released("run") and is_running:
 					var tween1 = create_tween()
 					var tween2 = create_tween()
-					tween1.tween_property(self, "speed", SPEED*0.5, 0.5)
+					tween1.tween_property(self, "speed", WALK_SPEED*0.5, 0.5)
 					tween2.tween_property($AnimationPlayer, "speed_scale", 0.5, 0.5)
 			else:
 				Input.action_release("run")
@@ -141,7 +145,7 @@ func move(delta): # Función que mueve al personaje
 					is_running = false
 					var tween1 = create_tween()
 					var tween2 = create_tween()
-					tween1.tween_property(self, "speed", SPEED, 0.5)
+					tween1.tween_property(self, "speed", WALK_SPEED, 0.5)
 					tween2.tween_property($AnimationPlayer, "speed_scale", 1, 0.5)
 			$AnimationPlayer.play(str("run_" + direction))
 		elif !is_attacking && !is_blocking && !is_hurt && !is_parrying: #Si no estamos corriendo y tampoco hemos sido heridos, animación iddle

@@ -20,6 +20,10 @@ config/icon="res://scripts/icon.svg"
 
 buses/default_bus_layout=""
 
+[autoload]
+
+GameState="*res://game_state.gd"
+
 [display]
 
 window/size/viewport_width=1920
