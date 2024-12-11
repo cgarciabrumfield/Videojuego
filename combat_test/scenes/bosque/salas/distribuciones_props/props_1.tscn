@@ -1,14 +1,14 @@
 [gd_scene load_steps=10 format=3 uid="uid://crv38kjprjvkx"]
 
-[ext_resource type="PackedScene" uid="uid://6gf4yb3dj8ys" path="res://scenes/cueva/props/tree_1.tscn" id="1_mfwnn"]
+[ext_resource type="PackedScene" uid="uid://6gf4yb3dj8ys" path="res://scenes/bosque/props/tree_1.tscn" id="1_mfwnn"]
 [ext_resource type="Script" path="res://scenes/example_room.gd" id="1_wfm5x"]
-[ext_resource type="PackedScene" uid="uid://dmpodkv6vbyts" path="res://scenes/cueva/props/tree_3.tscn" id="3_2hdcc"]
+[ext_resource type="PackedScene" uid="uid://dmpodkv6vbyts" path="res://scenes/bosque/props/tree_3.tscn" id="3_2hdcc"]
 [ext_resource type="Texture2D" uid="uid://dr6hu4clr3nco" path="res://assets/sprites/maps/Bosque/test.png" id="4_2chwu"]
-[ext_resource type="PackedScene" uid="uid://d4cf65pe6oa00" path="res://scenes/cueva/props/bush_3.tscn" id="8_61bk8"]
-[ext_resource type="PackedScene" uid="uid://3d3bomcydsmx" path="res://scenes/cueva/props/bush_4.tscn" id="9_06olw"]
-[ext_resource type="PackedScene" uid="uid://qa2iaj1behmm" path="res://scenes/cueva/props/bush_6.tscn" id="11_uieaa"]
-[ext_resource type="PackedScene" uid="uid://lxt7r4o4x0pp" path="res://scenes/cueva/props/roca_1.tscn" id="12_4cl48"]
-[ext_resource type="PackedScene" uid="uid://ctfv8gfk0w1w5" path="res://scenes/cueva/props/roca_3.tscn" id="14_ld3ub"]
+[ext_resource type="PackedScene" uid="uid://d4cf65pe6oa00" path="res://scenes/bosque/props/bush_3.tscn" id="8_61bk8"]
+[ext_resource type="PackedScene" uid="uid://3d3bomcydsmx" path="res://scenes/bosque/props/bush_4.tscn" id="9_06olw"]
+[ext_resource type="PackedScene" uid="uid://qa2iaj1behmm" path="res://scenes/bosque/props/bush_6.tscn" id="11_uieaa"]
+[ext_resource type="PackedScene" uid="uid://lxt7r4o4x0pp" path="res://scenes/bosque/props/roca_1.tscn" id="12_4cl48"]
+[ext_resource type="PackedScene" uid="uid://ctfv8gfk0w1w5" path="res://scenes/bosque/props/roca_3.tscn" id="14_ld3ub"]
 
 [node name="Props1" type="Node2D"]
 texture_filter = 1

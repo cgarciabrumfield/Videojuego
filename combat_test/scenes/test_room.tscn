@@ -1,9 +1,9 @@
 [gd_scene load_steps=5 format=3 uid="uid://du4pwprape6pd"]
 
 [ext_resource type="Texture2D" uid="uid://dr6hu4clr3nco" path="res://assets/sprites/maps/Bosque/test.png" id="1_yvhyc"]
-[ext_resource type="PackedScene" uid="uid://lxt7r4o4x0pp" path="res://scenes/cueva/props/roca_1.tscn" id="4_4eaxj"]
+[ext_resource type="PackedScene" uid="uid://lxt7r4o4x0pp" path="res://scenes/bosque/props/roca_1.tscn" id="4_4eaxj"]
 [ext_resource type="PackedScene" uid="uid://bp8hvd0qc4txe" path="res://scenes/Player.tscn" id="4_vkrbd"]
-[ext_resource type="PackedScene" uid="uid://desu3h1sc52ll" path="res://scenes/cueva/enemigos/mushroomman.tscn" id="5_pyoft"]
+[ext_resource type="PackedScene" uid="uid://bxfm6nxfi50s0" path="res://scenes/bosque/enemigos/slime_boss.tscn" id="4_xv02h"]
 
 [node name="Test_room" type="Node2D"]
 texture_filter = 1
@@ -30,10 +30,4 @@ polygon = PackedVector2Array(-195, 10, -193, 107, 191, 107, 191, -108, -191, -10
 [node name="Player" parent="." instance=ExtResource("4_vkrbd")]
 position = Vector2(-126, -1)
 
-[node name="Mushroom_Man" parent="." instance=ExtResource("5_pyoft")]
-
-[node name="Mushroom_Man2" parent="." instance=ExtResource("5_pyoft")]
-position = Vector2(21, 15)
-
-[node name="Mushroom_Man3" parent="." instance=ExtResource("5_pyoft")]
-position = Vector2(21, -11)
+[node name="Slime_boss" parent="." instance=ExtResource("4_xv02h")]

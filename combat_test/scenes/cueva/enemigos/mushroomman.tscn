@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://scenes/cueva/enemigos/mushroomman.gd" id="1_8d4q6"]
 [ext_resource type="Script" path="res://scripts/Hurtbox.gd" id="2_1niq2"]
-[ext_resource type="SpriteFrames" uid="uid://b12w10xpmg5px" path="res://Animations/frog.tres" id="2_cgfid"]
+[ext_resource type="SpriteFrames" uid="uid://5ywjcdi6s6ei" path="res://Animations/mushroomman.tres" id="2_xdpwq"]
 [ext_resource type="Texture2D" uid="uid://ctt07hh42gsxy" path="res://assets/sprites/bigger_shadow.png" id="4_yrprr"]
 [ext_resource type="Script" path="res://scripts/healthbar.gd" id="5_asoar"]
 
@@ -988,7 +988,7 @@ script = ExtResource("1_8d4q6")
 
 [node name="Mushroomman_prite" type="AnimatedSprite2D" parent="."]
 position = Vector2(-0.5, 0)
-sprite_frames = ExtResource("2_cgfid")
+sprite_frames = ExtResource("2_xdpwq")
 animation = &"normal_up"
 
 [node name="CollisionBox" type="CollisionShape2D" parent="."]

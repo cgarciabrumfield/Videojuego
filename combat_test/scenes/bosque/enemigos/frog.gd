@@ -1,19 +1,20 @@
 extends CharacterBody2D
-class_name Slime
+class_name Frog
 
 @export var MAX_HEALTH = 3
 @export var health = MAX_HEALTH
-var MOVE_CHANCE = 0.7
+var MOVE_CHANCE = 0.8
 @export var is_hurt = false
-var screen_size
-const NORMAL_SPEED = 15
-const RUN_SPEED = 25
+@onready var screen_size = get_viewport_rect().size
+const NORMAL_SPEED = 0
+const JUMP_SPEED = 65
+@export var is_jumping = false
 @export var speed = NORMAL_SPEED # Velocidad a la que se moverá el limo
-@export var detection_range = 50
-var direction_change_interval: float = 2.0 # Tiempo para cambiar de dirección
+@export var detection_range = 80
+var JUMP_INTERVAL: float = 2.0 # Tiempo para cambiar de dirección
 var timer: float = 0.0 # Timer para controlar el cambio de dirección
 var direction: Vector2 = Vector2.ZERO # Vector de dirección inicial
-@onready var hurt_VFX = $hurt_vfx
+var direction_str = "down"
 @onready var healthbar = $Healthbar
 @onready var damagebar = $Healthbar/Damagebar
 @onready var timer_vida = $Healthbar/Timer
@@ -25,27 +26,18 @@ var knockback_timer: float = 0.0
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	global_position = Globals.find_valid_spawn_position(global_position, self)
-	screen_size = get_viewport_rect().size
-	var colors = [Color.YELLOW_GREEN, Color.MEDIUM_SPRING_GREEN, Color.SPRING_GREEN, Color.DARK_GREEN]
-	$SlimeSprite.modulate = colors[randi() % colors.size()]
-	$SlimeSprite.modulate.a8 = 160
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	if is_hurt == false: # Mientras no esté siendo herido, el limo se mueve normal
 		move(delta)
-		$SlimeSprite.play("default")
 	z_index = Globals.depth_control(position, screen_size)
 	# Actualiza el timer para cambiar la dirección
 	timer -= delta
-	if timer <= 0:
-		direction = Globals.get_random_direction(position, MOVE_CHANCE)
-		timer = direction_change_interval
-
 
 # Literalmente lo mismo que la del caballero pero mas facil. Id a mirar los comentarios en knight.gd
 func take_damage(ammount: int, knockback_direction: Vector2, knockback_strength) -> void:
-	hurt_VFX.play()
+	timer = JUMP_INTERVAL/2
 	health -= ammount
 	timer_vida.start()
 	healthbar.update()
@@ -54,7 +46,8 @@ func take_damage(ammount: int, knockback_direction: Vector2, knockback_strength)
 	if health <= 0:
 		kill()
 	elif is_hurt == false:  # Verifica que el enemigo no esté ya en animación de daño
-		$AnimationPlayer.play("damage")
+		is_hurt = true
+		$AnimationPlayer.play(str("damage_" + direction_str))
 		
 func _physics_process(delta: float) -> void:
 	if knockback_timer > 0:
@@ -71,31 +64,39 @@ func _on_timer_timeout() -> void:
 
 # Función de me voy con San Pedro del limo
 func kill():
-	$AnimationPlayer.play("death")
-	await get_tree().create_timer(0.9).timeout
+	is_hurt = true
+	speed = 0
+	$AnimationPlayer.play(str("death_" + direction_str))
 	set_process(false)
 	set_physics_process(false)
 	set_process_input(false)
+	await get_tree().create_timer(0.9).timeout
 	queue_free()
 	
 func move(delta):
 	velocity = Vector2.ZERO
 	var player_position = Globals.get_player_position(self)
-	if (player_position != null):
-		if (position.distance_to(player_position) <= detection_range):
-			move_towards_player(player_position, delta)
-			return
-	move_randomly(delta)
-
-func move_randomly(delta):
-	speed = NORMAL_SPEED
-	$SlimeSprite.speed_scale = 1
+	if timer <= 0:
+		timer = JUMP_INTERVAL
+		direction = Globals.get_random_direction(position, MOVE_CHANCE)
+		if (player_position != null):
+			if (position.distance_to(player_position) <= detection_range):
+				direction = (player_position - position).normalized()
+				timer = JUMP_INTERVAL
+		direction_str = Globals.set_directionVector_string(direction)
+		is_jumping = direction != Vector2.ZERO
+	if is_jumping:
+		collision_mask = 19 #Mirad la documentacion de las mascaras de colision si no entendeis esto
+		collision_layer = 64
+		speed = JUMP_SPEED
+		$AnimationPlayer.play(str("jump_" + direction_str))
+	else:
+		collision_mask = 51 #Mirad la documentacion de las mascaras de colision si no entendeis esto
+		collision_layer = 2
+		speed = NORMAL_SPEED
+		direction = Vector2.ZERO
+		$AnimationPlayer.play(str("iddle_" + direction_str))
 	position += direction * speed * delta
 	move_and_slide()
+		
 	
-func move_towards_player(player_position: Vector2, delta: float):
-	speed = RUN_SPEED
-	$SlimeSprite.speed_scale = 2
-	direction = (player_position - position).normalized()
-	position += direction * speed * delta
-	move_and_slide()
