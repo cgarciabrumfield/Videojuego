@@ -13,7 +13,7 @@
 [ext_resource type="Texture2D" uid="uid://cymwnvva5bfv8" path="res://assets/sprites/maps/Bosque/walls/bush_wall_right_closed.png" id="9_bld6s"]
 [ext_resource type="Texture2D" uid="uid://dqmfqf5olvsea" path="res://assets/sprites/maps/Bosque/walls/bush_wall_right_open.png" id="10_mikx3"]
 [ext_resource type="Texture2D" uid="uid://d0jwr7hsaojtf" path="res://assets/sprites/maps/Bosque/walls/bush_wall_left_no_exit.png" id="11_6keth"]
-[ext_resource type="PackedScene" uid="uid://bxfm6nxfi50s0" path="res://scenes/cueva/enemigos/slime_boss.tscn" id="11_nkqe6"]
+[ext_resource type="PackedScene" uid="uid://bxfm6nxfi50s0" path="res://scenes/bosque/enemigos/slime_boss.tscn" id="11_nkqe6"]
 [ext_resource type="Texture2D" uid="uid://b4lnneqybdkm7" path="res://assets/sprites/maps/Bosque/walls/bush_wall_left_extra.png" id="12_7s5qk"]
 [ext_resource type="Texture2D" uid="uid://ctsirq04faxdo" path="res://assets/sprites/maps/Bosque/walls/bush_wall_right_no_exit.png" id="14_8amqa"]
 [ext_resource type="Texture2D" uid="uid://76w5wfvmwb02" path="res://assets/sprites/maps/Bosque/walls/bush_wall_right_extra.png" id="15_l8cdj"]

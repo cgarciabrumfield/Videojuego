@@ -82,5 +82,4 @@ func find_valid_spawn_position(initial_position: Vector2, mob: Node2D) -> Vector
 				return test_position  # Retornar posición válida
 			# Incrementar la distancia si no se encontró un lugar válido
 		distance += INCREMENT
-		print("Incrementando distancia a:", distance)
 	return initial_position

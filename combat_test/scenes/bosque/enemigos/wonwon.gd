@@ -176,7 +176,7 @@ func shoot():
 		shoot_sfx.play()
 		$AnimationPlayer.play(str("attack_" + direction_str))
 		var proyectil = proyectil_scene.instantiate()
-		proyectil.wonwon = self
+		proyectil.disparador = self
 		proyectil.position = position
 		get_parent().add_child(proyectil)
 		

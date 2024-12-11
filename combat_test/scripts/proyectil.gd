@@ -4,10 +4,11 @@ class_name Bullet
 @export var speed = 100
 var direction
 @onready var screen_size = get_viewport_rect().size
-var wonwon
+var disparador
 var was_parried = false
 #Tiempo de vida del proyectil. 0 si no muere por tiempo
 @export var LIFE_TIME = 0
+@export var tracking = false
 var timer = 0
 
 func _ready():
@@ -16,6 +17,8 @@ func _ready():
 		$Sprite2D.play()
 	
 func _process(delta: float) -> void:
+	if tracking:
+		direction = direction_to_player()
 	global_position = global_position + direction * delta * speed
 	depth_control()
 	if LIFE_TIME != 0:
@@ -41,6 +44,6 @@ func depth_control():
 
 func get_parried():
 	was_parried = true
-	$Hitbox.damage = wonwon.MAX_HEALTH
-	direction = (wonwon.position - position).normalized()
+	$Hitbox.damage = disparador.MAX_HEALTH
+	direction = (disparador.position - position).normalized()
 	speed = speed * 2

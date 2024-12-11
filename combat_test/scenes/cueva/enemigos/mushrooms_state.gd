@@ -24,5 +24,3 @@ func _process(delta: float):
 		if nervous_timer <= 0.0:
 			is_nervous = false  # Calma a los enemigos
 			nervous_timer = 0.0  # Reinicia el temporizador por seguridad
-	print(nervous_timer)
-	print(is_nervous)
