@@ -1,9 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://du4pwprape6pd"]
+[gd_scene load_steps=4 format=3 uid="uid://du4pwprape6pd"]
 
 [ext_resource type="Texture2D" uid="uid://dr6hu4clr3nco" path="res://assets/sprites/maps/Bosque/test.png" id="1_yvhyc"]
-[ext_resource type="PackedScene" uid="uid://lxt7r4o4x0pp" path="res://scenes/bosque/props/roca_1.tscn" id="4_4eaxj"]
+[ext_resource type="PackedScene" uid="uid://4td6mhpfd5mh" path="res://scenes/bosque/props/puddle.tscn" id="3_72neh"]
 [ext_resource type="PackedScene" uid="uid://bp8hvd0qc4txe" path="res://scenes/Player.tscn" id="4_vkrbd"]
-[ext_resource type="PackedScene" uid="uid://bxfm6nxfi50s0" path="res://scenes/bosque/enemigos/slime_boss.tscn" id="4_xv02h"]
 
 [node name="Test_room" type="Node2D"]
 texture_filter = 1
@@ -17,9 +16,6 @@ z_index = -2
 texture_filter = 1
 texture = ExtResource("1_yvhyc")
 
-[node name="roca_1" parent="." instance=ExtResource("4_4eaxj")]
-position = Vector2(-26, -3)
-
 [node name="muros" type="StaticBody2D" parent="."]
 collision_layer = 16
 collision_mask = 0
@@ -28,6 +24,6 @@ collision_mask = 0
 polygon = PackedVector2Array(-195, 10, -193, 107, 191, 107, 191, -108, -191, -108, -195, 10, -184, -10, -186, -103, 186, -104, 186, 102, -189, 103, -184, -10)
 
 [node name="Player" parent="." instance=ExtResource("4_vkrbd")]
-position = Vector2(-126, -1)
+position = Vector2(-36, -8)
 
-[node name="Slime_boss" parent="." instance=ExtResource("4_xv02h")]
+[node name="Puddle" parent="." instance=ExtResource("3_72neh")]
