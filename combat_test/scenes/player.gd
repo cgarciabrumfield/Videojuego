@@ -1,26 +1,28 @@
 class_name Player
 extends CharacterBody2D
 
-#Speed
-@export var WALK_SPEED = 45 # How fast the player will move (pixels/sec).
-@export var RUN_SPEED = 65
+#Modifiable stats
+@export var WALK_SPEED = GameState.WALK_SPEED # How fast the player will move (pixels/sec). default:45
+@export var RUN_SPEED = GameState.RUN_SPEED
+@export var MAX_HEALTH = GameState.MAX_HEALTH
+@export var MAX_STAMINA = GameState.MAX_STAMINA
+var STAMINA_REGEN = GameState.STAMINA_REGEN #porcentaje de la barra de estamina que regenera por segundo
+@export var RUN_STAMINA_COST_SEC = GameState.RUN_STAMINA_COST_SEC
+@export var ATTACK_STAMINA_COST = GameState.ATTACK_STAMINA_COST
+@export var STAMINA_REGEN_TIMER_TIMEOUT = GameState.STAMINA_REGEN_TIMER_TIMEOUT
+
+#speed
 var speed = WALK_SPEED
 #Health
-@export var MAX_HEALTH = 10
 var health = MAX_HEALTH
 #Stamina
-@export var MAX_STAMINA = 50
 var stamina = MAX_STAMINA
-var STAMINA_REGEN = 0.20 #porcentaje de la barra de estamina que regenera por segundo
 var stamina_regen = STAMINA_REGEN
-@export var RUN_STAMINA_COST_SEC = 10
 var stamina_run_cost_sec = RUN_STAMINA_COST_SEC
-@export var ATTACK_STAMINA_COST = 15
 var attack_stamina_cost = ATTACK_STAMINA_COST
-@export var can_regen_stamina = true
-@export var STAMINA_REGEN_TIMER_TIMEOUT = 0.3
-@onready var timer_stamina = $CanvasLayer/Staminabar/Timer
 
+@export var can_regen_stamina = true
+@onready var timer_stamina = $CanvasLayer/Staminabar/Timer
 @onready var healthbar = $CanvasLayer/Healthbar
 @onready var timer_vida = $CanvasLayer/Healthbar/Timer
 @onready var damagebar = $CanvasLayer/Healthbar/Damagebar
@@ -54,10 +56,6 @@ var knockback_timer: float = 0.0
 
 func save():
 	var save_dict = {
-		"filename" : get_scene_file_path(),
-		"parent" : get_parent().get_path(),
-		"pos_x" : position.x, # Vector2 is not supported by JSON
-		"pos_y" : position.y,
 		"WALK_SPEED" : WALK_SPEED,
 		"RUN_SPEED" : RUN_SPEED,
 		"MAX_HEALTH": MAX_HEALTH,
@@ -352,3 +350,15 @@ func stamina_control(delta):
 func _on_stamina_timer_timeout() -> void:
 	can_regen_stamina = true
 	timer_stamina.stop()
+
+func update_stats():
+	#speed
+	speed = WALK_SPEED
+	#Health
+	health = MAX_HEALTH
+	#Stamina
+	stamina = MAX_STAMINA
+	stamina_regen = STAMINA_REGEN
+	stamina_run_cost_sec = RUN_STAMINA_COST_SEC
+	attack_stamina_cost = ATTACK_STAMINA_COST
+	
