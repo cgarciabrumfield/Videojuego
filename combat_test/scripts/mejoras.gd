@@ -84,7 +84,7 @@ func _on_mejora_1_pressed() -> void:
 	var original = player.get(stat_1)
 	player.set(stat_1, original + mejora_1_valor)
 	player.update_stats()
-	queue_free()
+	reinicia_nodo()
 	pass # Replace with function body.
 
 
@@ -92,7 +92,7 @@ func _on_mejora_2_pressed() -> void:
 	var original = player.get(stat_2)
 	player.set(stat_2, original + mejora_2_valor)
 	player.update_stats()
-	queue_free()
+	reinicia_nodo()
 	pass # Replace with function body.
 
 
@@ -100,7 +100,7 @@ func _on_mejora_3_pressed() -> void:
 	var original = player.get(stat_3)
 	player.set(stat_3, original + mejora_3_valor)
 	player.update_stats()
-	queue_free()
+	reinicia_nodo()
 	pass # Replace with function body.
 
 func desactiva_nodo():
@@ -115,3 +115,8 @@ func activa_nodo():
 
 func sube_nivel() -> void:
 	activa_nodo()
+
+# se encarga de dar nuevas mejoras para la siguiente llamada 
+func reinicia_nodo():
+	_ready()
+	pass
