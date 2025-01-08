@@ -1,0 +1,67 @@
+[gd_scene load_steps=10 format=3 uid="uid://dpu8fi6hjdab0"]
+
+[ext_resource type="Texture2D" uid="uid://c5qweaobiwebf" path="res://assets/sprites/enemies/ataques_golem/Laser_sheet_rayo.png" id="1_dje56"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fm22u"]
+atlas = ExtResource("1_dje56")
+region = Rect2(0, 0, 45, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_b2kdb"]
+atlas = ExtResource("1_dje56")
+region = Rect2(0, 100, 45, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4ms6b"]
+atlas = ExtResource("1_dje56")
+region = Rect2(0, 200, 45, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cgs4n"]
+atlas = ExtResource("1_dje56")
+region = Rect2(0, 300, 45, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8amx1"]
+atlas = ExtResource("1_dje56")
+region = Rect2(0, 400, 45, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_r8eib"]
+atlas = ExtResource("1_dje56")
+region = Rect2(0, 500, 45, 100)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_5xb3g"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fm22u")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_b2kdb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4ms6b")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cgs4n")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8amx1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_r8eib")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ejusv"]
+size = Vector2(46, 19)
+
+[node name="Node2D" type="Node2D"]
+
+[node name="laser" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_5xb3g")
+
+[node name="laser2" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="laser2"]
+position = Vector2(0, -16.5)
+shape = SubResource("RectangleShape2D_ejusv")

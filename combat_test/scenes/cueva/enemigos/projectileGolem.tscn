@@ -1,0 +1,44 @@
+[gd_scene load_steps=7 format=3 uid="uid://dmwe8n36xrcjw"]
+
+[ext_resource type="Script" path="res://scenes/cueva/enemigos/projectile_golem.gd" id="1_0mquq"]
+[ext_resource type="Texture2D" uid="uid://bk10u7pabkl2g" path="res://assets/sprites/enemies/ataques_golem/tiroRight.png" id="2_gs6gi"]
+[ext_resource type="Script" path="res://scripts/Hitbox.gd" id="3_sqy8w"]
+[ext_resource type="Texture2D" uid="uid://dlhgyyvbwxj7r" path="res://assets/sprites/Shadow.png" id="4_aycjf"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_0e8ne"]
+radius = 2.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_hukvv"]
+size = Vector2(29, 7)
+
+[node name="Node2D" type="Area2D"]
+texture_filter = 1
+collision_layer = 8
+collision_mask = 49
+script = ExtResource("1_0mquq")
+
+[node name="CollisionBox" type="CollisionShape2D" parent="."]
+position = Vector2(30, -12)
+shape = SubResource("CircleShape2D_0e8ne")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_gs6gi")
+
+[node name="Hitbox" type="Area2D" parent="."]
+script = ExtResource("3_sqy8w")
+damage = 1
+knockback = 20
+can_be_parried = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
+position = Vector2(28.5, -12.5)
+shape = SubResource("RectangleShape2D_hukvv")
+
+[node name="Shadow" type="Sprite2D" parent="."]
+z_index = -1
+z_as_relative = false
+position = Vector2(26.5, 1)
+scale = Vector2(2.69231, 0.7)
+texture = ExtResource("4_aycjf")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
