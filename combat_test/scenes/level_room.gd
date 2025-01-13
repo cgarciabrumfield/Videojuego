@@ -42,7 +42,7 @@ func _ready() -> void:
 	var chance_lore = randf()
 	if chance_lore > chanceDeLore:
 		print("entro")
-		tipo = true
+		esSalaLore = true
 		var random_number_prop_file = randi_range(1, count_prop_lore_distribution_scenes())
 		if random_number_prop_file == 0:
 			random_number_prop_file = 1
