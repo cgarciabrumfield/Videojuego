@@ -1,0 +1,41 @@
+[gd_scene load_steps=6 format=3 uid="uid://d0eyr7j26h7bx"]
+
+[ext_resource type="Script" path="res://scenes/example_room.gd" id="1_a6vng"]
+[ext_resource type="Texture2D" uid="uid://dr6hu4clr3nco" path="res://assets/sprites/maps/Bosque/test.png" id="2_uf7sl"]
+[ext_resource type="PackedScene" uid="uid://lxt7r4o4x0pp" path="res://scenes/bosque/Props/roca_1.tscn" id="3_n6kcp"]
+[ext_resource type="PackedScene" uid="uid://cpqshfjy3b0lb" path="res://scenes/bosque/Props/roca_2.tscn" id="4_hdd61"]
+[ext_resource type="PackedScene" uid="uid://ctfv8gfk0w1w5" path="res://scenes/bosque/Props/roca_3.tscn" id="5_oijab"]
+
+[node name="Props1" type="Node2D"]
+texture_filter = 1
+script = ExtResource("1_a6vng")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+z_index = -100
+texture = ExtResource("2_uf7sl")
+metadata/_edit_lock_ = true
+
+[node name="roca_1" parent="." instance=ExtResource("3_n6kcp")]
+position = Vector2(84, -58)
+
+[node name="roca_2" parent="." instance=ExtResource("4_hdd61")]
+position = Vector2(78, -49)
+
+[node name="roca_5" parent="." instance=ExtResource("4_hdd61")]
+position = Vector2(87, -49)
+
+[node name="roca_3" parent="." instance=ExtResource("5_oijab")]
+position = Vector2(69, -52)
+
+[node name="roca_4" parent="." instance=ExtResource("3_n6kcp")]
+position = Vector2(-43, -13)
+rotation = 3.14159
+scale = Vector2(1, -1)
+
+[node name="roca_8" parent="." instance=ExtResource("3_n6kcp")]
+position = Vector2(-124, -74)
+rotation = 3.14159
+scale = Vector2(1, -1)
+
+[node name="roca_7" parent="." instance=ExtResource("4_hdd61")]
+position = Vector2(-126, 56)
