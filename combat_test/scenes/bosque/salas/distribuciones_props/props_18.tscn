@@ -1,0 +1,76 @@
+[gd_scene load_steps=9 format=3 uid="uid://s3qqp0gik6wg"]
+
+[ext_resource type="Script" path="res://scenes/example_room.gd" id="1_62m5g"]
+[ext_resource type="PackedScene" uid="uid://6gf4yb3dj8ys" path="res://scenes/bosque/Props/tree_1.tscn" id="2_6tdb2"]
+[ext_resource type="PackedScene" uid="uid://dmpodkv6vbyts" path="res://scenes/bosque/Props/tree_3.tscn" id="3_epf0t"]
+[ext_resource type="Texture2D" uid="uid://dr6hu4clr3nco" path="res://assets/sprites/maps/Bosque/test.png" id="4_cd86q"]
+[ext_resource type="PackedScene" uid="uid://d4cf65pe6oa00" path="res://scenes/bosque/Props/bush_3.tscn" id="5_ap5sd"]
+[ext_resource type="PackedScene" uid="uid://3d3bomcydsmx" path="res://scenes/bosque/Props/bush_4.tscn" id="6_mcblh"]
+[ext_resource type="PackedScene" uid="uid://qa2iaj1behmm" path="res://scenes/bosque/Props/bush_6.tscn" id="7_x28d1"]
+[ext_resource type="PackedScene" uid="uid://bjkratfq4pj3f" path="res://scenes/bosque/Props/tree_2.tscn" id="8_f2yeu"]
+
+[node name="Props1" type="Node2D"]
+texture_filter = 1
+script = ExtResource("1_62m5g")
+
+[node name="Tree_1" parent="." instance=ExtResource("2_6tdb2")]
+position = Vector2(-1, -24)
+
+[node name="Tree_4" parent="." instance=ExtResource("2_6tdb2")]
+position = Vector2(84, -31)
+
+[node name="Tree_3" parent="." instance=ExtResource("3_epf0t")]
+position = Vector2(-47, 67)
+
+[node name="Tree_5" parent="." instance=ExtResource("3_epf0t")]
+position = Vector2(-86, -40)
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+z_index = -100
+texture = ExtResource("4_cd86q")
+metadata/_edit_lock_ = true
+
+[node name="Bush_3" parent="." instance=ExtResource("5_ap5sd")]
+position = Vector2(-99, -51)
+
+[node name="Bush_4" parent="." instance=ExtResource("6_mcblh")]
+position = Vector2(103, -40)
+
+[node name="Bush_5" parent="." instance=ExtResource("6_mcblh")]
+position = Vector2(74, -23)
+
+[node name="Bush_7" parent="." instance=ExtResource("6_mcblh")]
+position = Vector2(36, 26)
+
+[node name="Bush_6" parent="." instance=ExtResource("7_x28d1")]
+position = Vector2(75, 54)
+
+[node name="Bush_8" parent="." instance=ExtResource("7_x28d1")]
+position = Vector2(104, 23)
+
+[node name="Bush_9" parent="." instance=ExtResource("7_x28d1")]
+position = Vector2(-19, 35)
+
+[node name="Bush_10" parent="." instance=ExtResource("7_x28d1")]
+position = Vector2(-38, 76)
+
+[node name="Bush_11" parent="." instance=ExtResource("7_x28d1")]
+position = Vector2(-108, 47)
+
+[node name="Bush_12" parent="." instance=ExtResource("7_x28d1")]
+position = Vector2(-80, 12)
+
+[node name="Bush_13" parent="." instance=ExtResource("7_x28d1")]
+position = Vector2(-15, -22)
+
+[node name="Bush_14" parent="." instance=ExtResource("7_x28d1")]
+position = Vector2(15, -23)
+
+[node name="Bush_15" parent="." instance=ExtResource("7_x28d1")]
+position = Vector2(-133, -22)
+
+[node name="Tree_2" parent="." instance=ExtResource("8_f2yeu")]
+position = Vector2(63, 63)
+
+[node name="Tree_6" parent="." instance=ExtResource("8_f2yeu")]
+position = Vector2(-125, 41)
