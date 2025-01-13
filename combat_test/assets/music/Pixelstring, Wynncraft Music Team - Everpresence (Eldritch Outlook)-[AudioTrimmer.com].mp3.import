@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://0yvvrrgdgjtt"
+path="res://.godot/imported/Pixelstring, Wynncraft Music Team - Everpresence (Eldritch Outlook)-[AudioTrimmer.com].mp3-2dcbf6526dbfa619d24a4b89b553604b.mp3str"
+
+[deps]
+
+source_file="res://assets/music/Pixelstring, Wynncraft Music Team - Everpresence (Eldritch Outlook)-[AudioTrimmer.com].mp3"
+dest_files=["res://.godot/imported/Pixelstring, Wynncraft Music Team - Everpresence (Eldritch Outlook)-[AudioTrimmer.com].mp3-2dcbf6526dbfa619d24a4b89b553604b.mp3str"]
+
+[params]
+
+loop=true
+loop_offset=0.0
+bpm=0.0
+beat_count=0
+bar_beats=4

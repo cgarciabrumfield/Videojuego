@@ -1,10 +1,13 @@
-[gd_scene load_steps=34 format=3 uid="uid://desu3h1sc52ll"]
+[gd_scene load_steps=37 format=3 uid="uid://desu3h1sc52ll"]
 
 [ext_resource type="Script" path="res://scenes/cueva/enemigos/mushroomman.gd" id="1_8d4q6"]
 [ext_resource type="Script" path="res://scripts/Hurtbox.gd" id="2_1niq2"]
 [ext_resource type="SpriteFrames" uid="uid://5ywjcdi6s6ei" path="res://Animations/mushroomman.tres" id="2_xdpwq"]
 [ext_resource type="Texture2D" uid="uid://ctt07hh42gsxy" path="res://assets/sprites/bigger_shadow.png" id="4_yrprr"]
 [ext_resource type="Script" path="res://scripts/healthbar.gd" id="5_asoar"]
+[ext_resource type="AudioStream" uid="uid://bckrjeal64amg" path="res://assets/sounds/hit-flesh-03-266308.mp3" id="6_r18gl"]
+[ext_resource type="AudioStream" uid="uid://c0s74syjkuley" path="res://assets/sounds/tomato-squishwet-103934-[AudioTrimmer.com].mp3" id="7_cfko3"]
+[ext_resource type="AudioStream" uid="uid://cic40e10ho65n" path="res://assets/sounds/short-fart-185140-[AudioTrimmer.com].mp3" id="8_a8n8s"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_fechr"]
 radius = 9.0
@@ -1053,6 +1056,15 @@ libraries = {
 [node name="AttackTimer" type="Timer" parent="."]
 
 [node name="SFX" type="Node" parent="."]
+
+[node name="Take_damage" type="AudioStreamPlayer2D" parent="SFX"]
+stream = ExtResource("6_r18gl")
+
+[node name="Walk" type="AudioStreamPlayer2D" parent="SFX"]
+stream = ExtResource("7_cfko3")
+
+[node name="Spore" type="AudioStreamPlayer2D" parent="SFX"]
+stream = ExtResource("8_a8n8s")
 
 [connection signal="timeout" from="Healthbar/Timer" to="." method="_on_health_timer_timeout"]
 [connection signal="timeout" from="AttackTimer" to="." method="_on_attack_timer_timeout"]
