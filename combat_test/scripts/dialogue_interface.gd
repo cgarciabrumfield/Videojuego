@@ -14,7 +14,6 @@ var time = 0
 
 # Se tiene que llamar antes de cambiar de escena para que tenga los datos
 func get_dialogue(nombre_sala: String):
-	print("LLEGA A GET DIALOGUE")
 	var json_text = FileAccess.open(dialogo_ruta, FileAccess.READ).get_as_text()
 	
 	var data = JSON.parse_string(json_text)
@@ -48,7 +47,6 @@ func _process(_delta: float) -> void:
 	
 	time += _delta
 	if time >= 5:
-		print("Han pasado 5 segundos")
 		dialogue.clear()
 		self.visible = false
 		set_process(false)
