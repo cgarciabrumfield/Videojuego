@@ -62,11 +62,12 @@ func save_game():
 # is path independent.
 func load_game():
 	# Abrir el archivo JSON
-	var json_text = FileAccess.open(save_route, FileAccess.READ).get_as_text()
+	var json = FileAccess.open(save_route, FileAccess.READ)
 	#si no hay guardado no hace nada porque ya se ha delcarada el primer nivel
-	if (json_text == null):
+	if (json == null):
 		return
 
+	var json_text = json.get_as_text()
 	var data = JSON.parse_string(json_text)
 	
 	var main_data = data["main"]

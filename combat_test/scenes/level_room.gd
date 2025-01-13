@@ -41,7 +41,6 @@ func _ready() -> void:
 	generate_walls()
 	var chance_lore = randf()
 	if chance_lore > chanceDeLore:
-		print("entro")
 		esSalaLore = true
 		var random_number_prop_file = randi_range(1, count_prop_lore_distribution_scenes())
 		if random_number_prop_file == 0:
@@ -51,6 +50,7 @@ func _ready() -> void:
 		str(random_number_prop_file) + ".tscn")
 		nodo_props = "lore_" + str(random_number_prop_file)
 		add_child(load(ruta_props).instantiate())
+		Globals.get_dialogo_node(self).get_dialogue(nodo_props)
 	else:
 		var random_number_prop_file = randi_range(1, count_prop_distribution_scenes())
 		print(random_number_prop_file)
