@@ -15,8 +15,9 @@ var opened_doors = false
 @onready var ground = $Ground
 var nodo_enemigos
 var nodo_props
-
+var esSalaLore = false #variable que indica si es una sala normal o una de lore
 var level
+var chanceDeLore = 0.5 #variable que indica la probabilidad de que haya sala de lore
 
 @onready var door_left = $Left_wall/left_door/left_door_area
 @onready var door_left_sprite = $Left_wall/left_sprite
@@ -38,14 +39,26 @@ var level
 func _ready() -> void:
 	level = get_parent().level
 	generate_walls()
-	
-	var random_number_prop_file = randi_range(1, count_prop_distribution_scenes())
-	print(random_number_prop_file)
-	var ruta_props: String = ("res://scenes/" + level + "/salas/distribuciones_props/props_" + 
-	str(random_number_prop_file) + ".tscn")
-	print(ruta_props)
-	nodo_props = "props_" + str(random_number_prop_file)
-	add_child(load(ruta_props).instantiate())
+	var chance_lore = randf()
+	if chance_lore > chanceDeLore:
+		print("entro")
+		esSalaLore = true
+		var random_number_prop_file = randi_range(1, count_prop_lore_distribution_scenes())
+		if random_number_prop_file == 0:
+			random_number_prop_file = 1
+		print(random_number_prop_file)
+		var ruta_props: String = ("res://scenes/" + level + "/salas/distribuciones_props_lore/lore_" + 
+		str(random_number_prop_file) + ".tscn")
+		nodo_props = "lore_" + str(random_number_prop_file)
+		add_child(load(ruta_props).instantiate())
+	else:
+		var random_number_prop_file = randi_range(1, count_prop_distribution_scenes())
+		print(random_number_prop_file)
+		var ruta_props: String = ("res://scenes/" + level + "/salas/distribuciones_props/props_" + 
+		str(random_number_prop_file) + ".tscn")
+		print(ruta_props)
+		nodo_props = "props_" + str(random_number_prop_file)
+		add_child(load(ruta_props).instantiate())
 	
 	ground.texture = load(str("res://scenes/" + level + "/salas/suelos/ground_" + 
 	str(randi_range(1, count_ground_files()))) + ".png")
@@ -94,7 +107,8 @@ func open_doors():
 	if connected_top:
 		door_top.disabled = true
 		door_top_sprite.frame = 1
-
+	Globals.get_mejoras_node(self).sube_nivel()
+	
 func _on_bottom_transition_body_entered(_body: Node2D) -> void:
 	print("Bottom area entered")
 	get_parent().cambiar_sala(Vector2(0,1))
@@ -145,6 +159,22 @@ func count_enemies_distribution_scenes() -> int:
 	
 func count_prop_distribution_scenes() -> int:
 	var dir =  DirAccess.open("res://scenes/" + level + "/salas/distribuciones_props/")
+	var count = 0
+	if dir != null:
+		dir.list_dir_begin()
+		var file_name = dir.get_next()
+		while file_name != "":
+			if file_name.begins_with("props_") and file_name.ends_with(".tscn"):
+				count += 1
+			file_name = dir.get_next()
+		dir.list_dir_end()
+	else:
+		print("Failed to open directory")
+		FileAccess.get_open_error()
+	return count
+	
+func count_prop_lore_distribution_scenes() -> int:
+	var dir =  DirAccess.open("res://scenes/" + level + "/salas/distribuciones_props_lore/")
 	var count = 0
 	if dir != null:
 		dir.list_dir_begin()

@@ -1,6 +1,26 @@
 extends Node
 var save_route = "user://save_data.save"
-var level = "bosque"
+var FIRST_LEVEL = "bosque"
+var level = FIRST_LEVEL
+
+#Speed
+@export var WALK_SPEED = 45 # How fast the player will move (pixels/sec).
+@export var RUN_SPEED = 65
+var speed = WALK_SPEED
+#Health
+@export var MAX_HEALTH = 10
+var health = MAX_HEALTH
+#Stamina
+@export var MAX_STAMINA = 50
+var stamina = MAX_STAMINA
+var STAMINA_REGEN = 0.20 #porcentaje de la barra de estamina que regenera por segundo
+var stamina_regen = STAMINA_REGEN
+@export var RUN_STAMINA_COST_SEC = 10
+var stamina_run_cost_sec = RUN_STAMINA_COST_SEC
+@export var ATTACK_STAMINA_COST = 15
+var attack_stamina_cost = ATTACK_STAMINA_COST
+@export var can_regen_stamina = true
+@export var STAMINA_REGEN_TIMER_TIMEOUT = 0.3
 
 # Note: This can be called from anywhere inside the tree. This function is
 # path independent.
@@ -43,6 +63,9 @@ func save_game():
 func load_game():
 	# Abrir el archivo JSON
 	var json_text = FileAccess.open(save_route, FileAccess.READ).get_as_text()
+	#si no hay guardado no hace nada porque ya se ha delcarada el primer nivel
+	if (json_text == null):
+		return
 
 	var data = JSON.parse_string(json_text)
 	
@@ -50,6 +73,17 @@ func load_game():
 	var player_data = data["Player"]
 	print(player_data)
 	level = main_data["level"]
+	
+	WALK_SPEED = player_data["WALK_SPEED"]
+	RUN_SPEED = player_data["RUN_SPEED"]
+	MAX_HEALTH = player_data["MAX_HEALTH"]
+	health = player_data["health"]
+	MAX_STAMINA = player_data["MAX_STAMINA"]
+	stamina = player_data["MAX_STAMINA"]
+	stamina_regen = player_data["stamina_regen"]
+	RUN_STAMINA_COST_SEC = player_data["RUN_STAMINA_COST_SEC"]
+	attack_stamina_cost = player_data["attack_stamina_cost"]
+	STAMINA_REGEN_TIMER_TIMEOUT = player_data["STAMINA_REGEN_TIMER_TIMEOUT"]
 	
 	#var nodo_main = preload("res://scenes/main.tscn").instantiate()
 	#nodo_main.level = level

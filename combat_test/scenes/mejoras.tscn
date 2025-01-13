@@ -1,0 +1,189 @@
+[gd_scene load_steps=5 format=3 uid="uid://c1loord66luc0"]
+
+[ext_resource type="Theme" uid="uid://cbb1sod7iqg7r" path="res://assets/GUI/mejoras_theme.tres" id="1_4036t"]
+[ext_resource type="Script" path="res://scripts/mejoras.gd" id="1_ouy41"]
+[ext_resource type="Texture2D" uid="uid://c1ouuscwqqadu" path="res://assets/GUI/GUI.png" id="2_hyw3m"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xwx56"]
+atlas = ExtResource("2_hyw3m")
+region = Rect2(2, 34, 44, 44)
+
+[node name="mejoras" type="Control"]
+texture_filter = 1
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_ouy41")
+
+[node name="contenedor" type="HBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 200.0
+offset_top = 200.0
+offset_right = -200.0
+offset_bottom = -200.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_4036t")
+theme_override_constants/separation = 100
+
+[node name="mejora_1" type="Button" parent="contenedor"]
+self_modulate = Color(1, 1, 1, 0)
+visibility_layer = 513
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme = ExtResource("1_4036t")
+
+[node name="fondo" type="TextureRect" parent="contenedor/mejora_1"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("AtlasTexture_xwx56")
+
+[node name="titulo" type="Label" parent="contenedor/mejora_1/fondo"]
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = 45.0
+offset_top = -267.0
+offset_right = -32.0
+offset_bottom = -126.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 50
+text = "LOREM IPSUM EJEMPLO"
+horizontal_alignment = 1
+autowrap_mode = 3
+
+[node name="descripcion" type="Label" parent="contenedor/mejora_1/fondo/titulo"]
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = 42.0
+offset_top = 120.5
+offset_right = -50.0
+offset_bottom = 454.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 35
+text = "+ 20 regeneracion"
+horizontal_alignment = 1
+autowrap_mode = 3
+
+[node name="mejora_2" type="Button" parent="contenedor"]
+self_modulate = Color(1, 1, 1, 0)
+visibility_layer = 513
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme = ExtResource("1_4036t")
+
+[node name="fondo" type="TextureRect" parent="contenedor/mejora_2"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("AtlasTexture_xwx56")
+
+[node name="titulo" type="Label" parent="contenedor/mejora_2/fondo"]
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = 45.0
+offset_top = -267.0
+offset_right = -32.0
+offset_bottom = -126.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 50
+text = "LOREM IPSUM EJEMPLO"
+horizontal_alignment = 1
+autowrap_mode = 3
+
+[node name="descripcion" type="Label" parent="contenedor/mejora_2/fondo/titulo"]
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = 42.0
+offset_top = 120.5
+offset_right = -50.0
+offset_bottom = 454.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 35
+text = "+ 20 regeneracion"
+horizontal_alignment = 1
+autowrap_mode = 3
+
+[node name="mejora_3" type="Button" parent="contenedor"]
+self_modulate = Color(1, 1, 1, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme = ExtResource("1_4036t")
+
+[node name="fondo" type="TextureRect" parent="contenedor/mejora_3"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("AtlasTexture_xwx56")
+
+[node name="titulo" type="Label" parent="contenedor/mejora_3/fondo"]
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = 45.0
+offset_top = -267.0
+offset_right = -32.0
+offset_bottom = -126.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 50
+text = "LOREM IPSUM EJEMPLO"
+horizontal_alignment = 1
+autowrap_mode = 3
+
+[node name="descripcion" type="Label" parent="contenedor/mejora_3/fondo/titulo"]
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = 42.0
+offset_top = 120.5
+offset_right = -50.0
+offset_bottom = 454.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 35
+text = "+ 20 regeneracion"
+horizontal_alignment = 1
+autowrap_mode = 3
+
+[connection signal="pressed" from="contenedor/mejora_1" to="." method="_on_mejora_1_pressed"]
+[connection signal="pressed" from="contenedor/mejora_2" to="." method="_on_mejora_2_pressed"]
+[connection signal="pressed" from="contenedor/mejora_3" to="." method="_on_mejora_3_pressed"]

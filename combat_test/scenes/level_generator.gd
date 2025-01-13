@@ -291,7 +291,8 @@ func _realizar_cambio_sala(direction: Vector2):
 		else:
 			add_child(full_map[current_coords])
 			if current_coords != sala_inicio_coords and current_coords != sala_final_coords:
-				full_map[current_coords].add_enemies()
+				if full_map[current_coords].esSalaLore == false:
+					full_map[current_coords].add_enemies()
 		
 	await get_tree().create_timer(0.1).timeout
 	if current_coords == sala_final_coords:
