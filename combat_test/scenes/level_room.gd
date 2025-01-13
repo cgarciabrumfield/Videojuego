@@ -17,8 +17,7 @@ var nodo_enemigos
 var nodo_props
 var esSalaLore = false #variable que indica si es una sala normal o una de lore
 var level
-var chanceDeLore = 5 #variable que indica la probabilidad de que haya sala de lore
-var totalChance = 10 #variable que indica las posibilidades totales
+var chanceDeLore = 0.5 #variable que indica la probabilidad de que haya sala de lore
 
 @onready var door_left = $Left_wall/left_door/left_door_area
 @onready var door_left_sprite = $Left_wall/left_sprite
@@ -40,7 +39,7 @@ var totalChance = 10 #variable que indica las posibilidades totales
 func _ready() -> void:
 	level = get_parent().level
 	generate_walls()
-	var chance_lore = randi_range(1,totalChance)
+	var chance_lore = randf()
 	if chance_lore > chanceDeLore:
 		print("entro")
 		tipo = true
