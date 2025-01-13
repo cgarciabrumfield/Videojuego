@@ -1,0 +1,40 @@
+[gd_scene load_steps=10 format=3 uid="uid://bd5coj6v4iqma"]
+
+[ext_resource type="Script" path="res://scenes/example_room.gd" id="1_tcpkc"]
+[ext_resource type="PackedScene" uid="uid://dmpodkv6vbyts" path="res://scenes/bosque/props/tree_3.tscn" id="3_ajxx5"]
+[ext_resource type="Texture2D" uid="uid://dr6hu4clr3nco" path="res://assets/sprites/maps/Bosque/test.png" id="4_e2qpk"]
+[ext_resource type="PackedScene" uid="uid://d4cf65pe6oa00" path="res://scenes/bosque/props/bush_3.tscn" id="5_5q307"]
+[ext_resource type="PackedScene" uid="uid://3d3bomcydsmx" path="res://scenes/bosque/props/bush_4.tscn" id="6_q1rbs"]
+[ext_resource type="PackedScene" uid="uid://qa2iaj1behmm" path="res://scenes/bosque/props/bush_6.tscn" id="7_480ko"]
+[ext_resource type="PackedScene" uid="uid://lxt7r4o4x0pp" path="res://scenes/bosque/props/roca_1.tscn" id="8_o57tx"]
+[ext_resource type="PackedScene" uid="uid://ctfv8gfk0w1w5" path="res://scenes/bosque/props/roca_3.tscn" id="9_8v8cl"]
+[ext_resource type="PackedScene" uid="uid://itc1mm6qdk1" path="res://scenes/bosque/props/car.tscn" id="9_apkmw"]
+
+[node name="Props2" type="Node2D"]
+texture_filter = 1
+script = ExtResource("1_tcpkc")
+
+[node name="Tree_3" parent="." instance=ExtResource("3_ajxx5")]
+position = Vector2(-80, 69)
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+z_index = -100
+texture = ExtResource("4_e2qpk")
+metadata/_edit_lock_ = true
+
+[node name="Bush_3" parent="." instance=ExtResource("5_5q307")]
+position = Vector2(-99, -51)
+
+[node name="Bush_4" parent="." instance=ExtResource("6_q1rbs")]
+position = Vector2(103, -40)
+
+[node name="Bush_6" parent="." instance=ExtResource("7_480ko")]
+position = Vector2(72, 49)
+
+[node name="roca_1" parent="." instance=ExtResource("8_o57tx")]
+position = Vector2(89, 45)
+
+[node name="roca_3" parent="." instance=ExtResource("9_8v8cl")]
+position = Vector2(115, -34)
+
+[node name="Car_1" parent="." instance=ExtResource("9_apkmw")]

@@ -1,0 +1,50 @@
+{"mejoras" :[{
+	"nombre": "More  max stamina",
+	"valor": [5, 10, 15],
+	"descripcion_start": "Increase your max stamina by ",
+	"descripcion_end": "",
+	"stat": "MAX_STAMINA"
+},
+{
+	"nombre": "More health",
+	"valor": [10, 20, 30],
+	"descripcion_start": "Gain +",
+	"descripcion_end": "max HP",
+	"stat": "MAX_HEALTH"
+},
+{
+	"nombre": "Walk faster",
+	"valor": [5, 5, 10],
+	"descripcion_start": "Gain +",
+	"descripcion_end": "speed when walking",
+	"stat": "WALK_SPEED"
+}, 
+{
+	"nombre": "Run faster",
+	"valor": [5, 10, 10],
+	"descripcion_start": "Gain +",
+	"descripcion_end": "speed when running",
+	"stat": "RUN_SPEED"
+}, 
+{
+	"nombre": "Run more",
+	"valor": [-1, -2, -3],
+	"descripcion_start": "Spend ",
+	"descripcion_end": " stamina when running",
+	"stat": "RUN_STAMINA_COST_SEC"
+}, 
+{
+	"nombre": "More attacks",
+	"valor": [-1, -2, -3],
+	"descripcion_start": "Spend ",
+	"descripcion_end": " stamina when attacking",
+	"stat": "attack_stamina_cost"
+}, 
+{
+	"nombre": "More stamina",
+	"valor": [0.1, 0.2, 0.3],
+	"descripcion_start": "Regen +",
+	"descripcion_end": "stamina per second",
+	"stat": "stamina_regen"
+}
+]}

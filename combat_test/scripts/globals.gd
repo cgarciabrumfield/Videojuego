@@ -1,5 +1,7 @@
 extends Node
 
+var rooms_for_lvl_up = 3
+var rooms_til_lvl_up = rooms_for_lvl_up
 var room_size = Vector2(320, 191.15)
 const CAMERA_ZOOM = Vector2(5, 5)
 	
@@ -33,17 +35,47 @@ func depth_control(position:Vector2, screen_size, offset:float = 0.0):
 	# Esta cosa extraña es para poner el valor de z en el rango posible según donde se ejecute el juego
 	return normalized_Y_pos * 90 + 11 + offset
 
-func get_player_position(node: Node):
+func get_player_position(node: Node) -> Vector2:
+	var player = _find_player(node.get_tree().get_root())
+	return player.position
+	
+func get_player_node(node: Node) -> Player:
 	return _find_player(node.get_tree().get_root())
 
-func _find_player(node):
+func _find_player(node) -> Node:
 	if node.name == "Player":
-		return node.position
+		return node
 		
 	for child in node.get_children():
 		var position_jugador = _find_player(child)
 		if position_jugador != null:
 			return position_jugador
+	return null
+	
+func get_mejoras_node(node: Node) -> Mejoras:
+	return _find_mejoras(node.get_tree().get_root())
+
+func _find_mejoras(node) -> Node:
+	if node.name == "mejoras":
+		return node
+		
+	for child in node.get_children():
+		var nodo = _find_mejoras(child)
+		if nodo != null:
+			return nodo
+	return null
+	
+func get_dialogo_node(node: Node) -> Dialogue_Interface:
+	return _find_dialogo(node.get_tree().get_root())
+
+func _find_dialogo(node) -> Node:
+	if node.name == "dialogue_interface":
+		return node
+		
+	for child in node.get_children():
+		var nodo = _find_dialogo(child)
+		if nodo != null:
+			return nodo
 	return null
 	
 func set_directionVector_string(direction_vector:Vector2) -> String:
