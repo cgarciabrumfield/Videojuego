@@ -1,0 +1,26 @@
+[gd_scene load_steps=4 format=3 uid="uid://bn81htq8adqia"]
+
+[ext_resource type="Script" path="res://scenes/example_room.gd" id="1_j2sa5"]
+[ext_resource type="Texture2D" uid="uid://kbv1sawkxgmk" path="res://test.png" id="2_67avl"]
+[ext_resource type="PackedScene" uid="uid://bd1rec7dsrw3y" path="res://scenes/bosque/enemigos/black_knight.tscn" id="3_ewau1"]
+
+[node name="enemies_1" type="Node2D"]
+script = ExtResource("1_j2sa5")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+z_index = -100
+z_as_relative = false
+texture = ExtResource("2_67avl")
+metadata/_edit_lock_ = true
+
+[node name="black_knight" parent="." instance=ExtResource("3_ewau1")]
+position = Vector2(43, -44)
+
+[node name="black_knight2" parent="." instance=ExtResource("3_ewau1")]
+position = Vector2(40, 20)
+
+[node name="black_knight3" parent="." instance=ExtResource("3_ewau1")]
+position = Vector2(-28, 25)
+
+[node name="black_knight4" parent="." instance=ExtResource("3_ewau1")]
+position = Vector2(-41, -39)
