@@ -1,5 +1,7 @@
 extends Node
 
+var rooms_for_lvl_up = 3
+var rooms_til_lvl_up = rooms_for_lvl_up
 var room_size = Vector2(320, 191.15)
 const CAMERA_ZOOM = Vector2(5, 5)
 	

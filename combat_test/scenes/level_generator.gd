@@ -62,7 +62,14 @@ var room_size = Globals.room_size
 var current_coords
 var sala_inicio_coords
 var sala_final_coords
+@onready var boss_defeated = false
 
+func _process(delta):
+	if current_coords == sala_final_coords && !boss_defeated && !music.playing:
+		if full_map[current_coords].count_enemies() == 0:
+			boss_defeated == true
+			boss_music.stop()
+			music.play()
 	
 func generate(room_seed):
 	seed(room_seed)
@@ -295,7 +302,8 @@ func _realizar_cambio_sala(direction: Vector2):
 					full_map[current_coords].add_enemies()
 		
 	await get_tree().create_timer(0.1).timeout
-	if current_coords == sala_final_coords:
-		music.stop()
-		boss_music.play()
+	if current_coords == sala_final_coords && !boss_defeated:
+		if full_map[sala_final_coords].num_enemies != 0:
+			music.stop()
+			boss_music.play()
 	is_changing_room = false
