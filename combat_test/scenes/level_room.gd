@@ -15,7 +15,7 @@ var opened_doors = false
 @onready var ground = $Ground
 var nodo_enemigos
 var nodo_props
-var tipo = false #variable que indica si es una sala normal o una de lore
+var esSalaLore = false #variable que indica si es una sala normal o una de lore
 var level
 var chanceDeLore = 5 #variable que indica la probabilidad de que haya sala de lore
 var totalChance = 10 #variable que indica las posibilidades totales
