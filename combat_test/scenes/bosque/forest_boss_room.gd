@@ -93,6 +93,7 @@ func open_doors():
 	if connected_top:
 		door_top.disabled = true
 		door_top_sprite.frame = 1
+	Globals.get_mejoras_node(self).sube_nivel()
 
 func _on_bottom_transition_body_entered(_body: Node2D) -> void:
 	print("Bottom area entered")

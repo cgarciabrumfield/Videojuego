@@ -17,7 +17,7 @@ var nodo_enemigos
 var nodo_props
 var esSalaLore = false #variable que indica si es una sala normal o una de lore
 var level
-var chanceDeLore = 0.5 #variable que indica la probabilidad de que haya sala de lore
+var chanceDeLore = 0.95 #variable que indica la probabilidad de que haya sala de lore
 
 @onready var door_left = $Left_wall/left_door/left_door_area
 @onready var door_left_sprite = $Left_wall/left_sprite
@@ -107,7 +107,11 @@ func open_doors():
 	if connected_top:
 		door_top.disabled = true
 		door_top_sprite.frame = 1
-	Globals.get_mejoras_node(self).sube_nivel()
+	if !esSalaLore:
+		Globals.rooms_til_lvl_up = Globals.rooms_til_lvl_up - 1
+		if Globals.rooms_til_lvl_up == 0:
+			Globals.rooms_til_lvl_up = Globals.rooms_for_lvl_up
+			Globals.get_mejoras_node(self).sube_nivel()
 	
 func _on_bottom_transition_body_entered(_body: Node2D) -> void:
 	print("Bottom area entered")
