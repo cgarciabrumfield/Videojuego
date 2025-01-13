@@ -1,0 +1,20 @@
+[gd_scene load_steps=4 format=3 uid="uid://cyoxwch57244"]
+
+[ext_resource type="Script" path="res://scenes/default_prop.gd" id="1_3mb5n"]
+[ext_resource type="Texture2D" uid="uid://c8xbwh3iisyux" path="res://assets/sprites/maps/Bosque/props_atlas.png" id="2_p36rs"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hxf2y"]
+atlas = ExtResource("2_p36rs")
+region = Rect2(81, 241, 14, 13)
+
+[node name="roca_2" type="StaticBody2D"]
+texture_filter = 1
+collision_layer = 32
+collision_mask = 0
+script = ExtResource("1_3mb5n")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = SubResource("AtlasTexture_hxf2y")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+polygon = PackedVector2Array(-4, 5, 1, 5, 5, 2, 5, 0, 3, -3, -3, -3, -5, 2)

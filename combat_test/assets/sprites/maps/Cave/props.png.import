@@ -1,0 +1,14 @@
+[remap]
+
+importer="image"
+type="Image"
+uid="uid://bg3tlabwe2l2l"
+path="res://.godot/imported/props.png-bdcb57a51004c63611f2f7c974727909.image"
+
+[deps]
+
+source_file="res://assets/sprites/maps/Cave/props.png"
+dest_files=["res://.godot/imported/props.png-bdcb57a51004c63611f2f7c974727909.image"]
+
+[params]
+
