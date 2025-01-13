@@ -1,6 +1,7 @@
 extends Node
 var save_route = "user://save_data.save"
-var level = "bosque"
+var FIRST_LEVEL = "bosque"
+var level = FIRST_LEVEL
 
 #Speed
 @export var WALK_SPEED = 45 # How fast the player will move (pixels/sec).
@@ -62,6 +63,9 @@ func save_game():
 func load_game():
 	# Abrir el archivo JSON
 	var json_text = FileAccess.open(save_route, FileAccess.READ).get_as_text()
+	#si no hay guardado no hace nada porque ya se ha delcarada el primer nivel
+	if (json_text == null):
+		return
 
 	var data = JSON.parse_string(json_text)
 	
