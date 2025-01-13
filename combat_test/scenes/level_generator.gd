@@ -29,7 +29,7 @@ func load_level(level_argument):
 		room_generation_chance = 15
 		interest_factor = 2
 		music = $Music/Cave_Room
-		boss_music = $Music/Forest_Boss #TODO obviamente no debe ser la misma
+		boss_music = $Music/Cave_Boss
 	camera.zoom = CAMERA_ZOOM
 	var seed = randi_range(-1000, 1000)
 	print("seed: " + str(seed))
@@ -296,4 +296,7 @@ func _realizar_cambio_sala(direction: Vector2):
 					full_map[current_coords].add_enemies()
 		
 	await get_tree().create_timer(0.1).timeout
+	if current_coords == sala_final_coords:
+		music.stop()
+		boss_music.play()
 	is_changing_room = false

@@ -58,6 +58,7 @@ func _process(delta):
 	
 	
 func take_damage(ammount: int, knockback_direction: Vector2, knockback_strength) -> void:
+	$SFX/Take_damage.play()
 	health -= ammount
 	timer_vida.start()
 	healthbar.update()
@@ -110,6 +111,8 @@ func move(delta):
 	position += direction_vector * speed * delta
 
 	if !is_attacking && !is_hurt && direction_vector != Vector2(0,0):
+		if !$SFX/Walk.playing:
+			$SFX/Walk.play()
 		$AnimationPlayer.play(str("run_" + direction_str))
 		$AnimationPlayer.speed_scale = 0.5
 	elif !is_attacking && !is_hurt: #Si no estamos corriendo y tampoco hemos sido heridos, animación iddle
@@ -139,6 +142,7 @@ func _on_attack_timer_timeout() -> void:
 		var smoke_cloud = smoke_scene.instantiate()
 		smoke_cloud.position = position
 		get_parent().add_child(smoke_cloud)
+		$SFX/Spore.play()
 	else:
 		print("No attack")
 		no_attack_chance = no_attack_chance * NO_ATTACK_CHANCE
