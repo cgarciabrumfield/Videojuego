@@ -1,0 +1,22 @@
+[gd_scene load_steps=4 format=3 uid="uid://itc1mm6qdk1"]
+
+[ext_resource type="Script" path="res://scenes/default_prop.gd" id="1_yia4o"]
+[ext_resource type="Texture2D" uid="uid://djesiixgmjj2p" path="res://assets/sprites/maps/modern_props/wrecked_cars/Burnt/Jeep/JEEP_Burnt_005.png" id="2_od1ck"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_sknvu"]
+radius = 60.0925
+
+[node name="Car_1" type="StaticBody2D"]
+texture_filter = 1
+collision_layer = 32
+collision_mask = 0
+script = ExtResource("1_yia4o")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(0, -0.8)
+texture = ExtResource("2_od1ck")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(2, 3)
+scale = Vector2(0.3, 0.3)
+shape = SubResource("CircleShape2D_sknvu")
