@@ -1,0 +1,23 @@
+[gd_scene load_steps=6 format=3 uid="uid://cihc02vcsvnon"]
+
+[ext_resource type="Script" path="res://scenes/example_room.gd" id="1_05xni"]
+[ext_resource type="Texture2D" uid="uid://dk6ksu6lyt1di" path="res://scenes/cueva/salas/suelos/ground_1.png" id="2_ai1bj"]
+[ext_resource type="PackedScene" uid="uid://i18myxiswp6c" path="res://scenes/bosque/enemigos/slime.tscn" id="3_6pcbc"]
+[ext_resource type="PackedScene" uid="uid://bd1rec7dsrw3y" path="res://scenes/bosque/enemigos/black_knight.tscn" id="4_dhdgh"]
+[ext_resource type="PackedScene" uid="uid://d0kxnhbcgagmx" path="res://scenes/cueva/enemigos/skeleton.tscn" id="5_5r1xo"]
+
+[node name="enemies_1" type="Node2D"]
+script = ExtResource("1_05xni")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+z_index = -100
+z_as_relative = false
+texture = ExtResource("2_ai1bj")
+
+[node name="Slime" parent="." instance=ExtResource("3_6pcbc")]
+position = Vector2(-67, 51)
+
+[node name="black_knight2" parent="." instance=ExtResource("4_dhdgh")]
+position = Vector2(-55, -40)
+
+[node name="Skeleton" parent="." instance=ExtResource("5_5r1xo")]
