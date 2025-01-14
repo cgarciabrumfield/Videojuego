@@ -1,0 +1,54 @@
+[gd_scene load_steps=5 format=3 uid="uid://cd38ubr00blto"]
+
+[ext_resource type="Script" path="res://scenes/example_room.gd" id="1_1brig"]
+[ext_resource type="PackedScene" uid="uid://6gf4yb3dj8ys" path="res://scenes/bosque/Props/tree_1.tscn" id="2_3kn5n"]
+[ext_resource type="Texture2D" uid="uid://dr6hu4clr3nco" path="res://assets/sprites/maps/Bosque/test.png" id="4_pwxdf"]
+[ext_resource type="PackedScene" uid="uid://3d3bomcydsmx" path="res://scenes/bosque/Props/bush_4.tscn" id="6_wt4s6"]
+
+[node name="Props1" type="Node2D"]
+texture_filter = 1
+script = ExtResource("1_1brig")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+z_index = -100
+texture = ExtResource("4_pwxdf")
+metadata/_edit_lock_ = true
+
+[node name="Bush_4" parent="." instance=ExtResource("6_wt4s6")]
+position = Vector2(-148, -85)
+
+[node name="Bush_10" parent="." instance=ExtResource("6_wt4s6")]
+position = Vector2(148, 66)
+
+[node name="Bush_11" parent="." instance=ExtResource("6_wt4s6")]
+position = Vector2(123, 86)
+
+[node name="Bush_12" parent="." instance=ExtResource("6_wt4s6")]
+position = Vector2(147, 86)
+
+[node name="Bush_13" parent="." instance=ExtResource("6_wt4s6")]
+position = Vector2(-127, 87)
+
+[node name="Bush_14" parent="." instance=ExtResource("6_wt4s6")]
+position = Vector2(-150, 69)
+
+[node name="Bush_15" parent="." instance=ExtResource("6_wt4s6")]
+position = Vector2(-149, 87)
+
+[node name="Bush_5" parent="." instance=ExtResource("6_wt4s6")]
+position = Vector2(148, -68)
+
+[node name="Bush_6" parent="." instance=ExtResource("6_wt4s6")]
+position = Vector2(126, -86)
+
+[node name="Bush_7" parent="." instance=ExtResource("6_wt4s6")]
+position = Vector2(148, -86)
+
+[node name="Bush_8" parent="." instance=ExtResource("6_wt4s6")]
+position = Vector2(-127, -85)
+
+[node name="Bush_9" parent="." instance=ExtResource("6_wt4s6")]
+position = Vector2(-148, -66)
+
+[node name="Tree_1" parent="." instance=ExtResource("2_3kn5n")]
+position = Vector2(1, 2)

@@ -1,0 +1,45 @@
+[gd_scene load_steps=11 format=3 uid="uid://c0pbyjojhm80"]
+
+[ext_resource type="Script" path="res://scenes/example_room.gd" id="1_mm08q"]
+[ext_resource type="Texture2D" uid="uid://dk6ksu6lyt1di" path="res://scenes/cueva/salas/suelos/ground_1.png" id="2_gp5gm"]
+[ext_resource type="PackedScene" uid="uid://ueofhlemakog" path="res://scenes/cueva/props/columna2.tscn" id="3_2i4kh"]
+[ext_resource type="PackedScene" uid="uid://cquc6vqxvmb43" path="res://scenes/cueva/props/calaveras_1.tscn" id="3_cm2lw"]
+[ext_resource type="PackedScene" uid="uid://b0ifm1lwwqu6e" path="res://scenes/cueva/props/roca_5.tscn" id="4_nfnnv"]
+[ext_resource type="PackedScene" uid="uid://2qoenoxroww4" path="res://scenes/cueva/props/seta_1.tscn" id="5_3nrlm"]
+[ext_resource type="PackedScene" uid="uid://xvusn0h7cmlv" path="res://scenes/cueva/props/roca_7.tscn" id="6_xnsir"]
+[ext_resource type="PackedScene" uid="uid://dgooxqxet0g7e" path="res://scenes/cueva/props/seta_2.tscn" id="7_wcs5p"]
+[ext_resource type="PackedScene" uid="uid://bsdblfw0f6ptc" path="res://scenes/cueva/props/seta_3.tscn" id="8_qvdhg"]
+[ext_resource type="PackedScene" uid="uid://cw41lx3tvmfrn" path="res://scenes/cueva/props/seta_4.tscn" id="9_xnxpx"]
+
+[node name="Props2" type="Node2D"]
+texture_filter = 1
+script = ExtResource("1_mm08q")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+z_index = -100
+texture = ExtResource("2_gp5gm")
+metadata/_edit_lock_ = true
+
+[node name="calaveras_1" parent="." instance=ExtResource("3_cm2lw")]
+position = Vector2(-90, -53)
+
+[node name="roca_5" parent="." instance=ExtResource("4_nfnnv")]
+position = Vector2(-17, -16)
+
+[node name="roca_7" parent="." instance=ExtResource("6_xnsir")]
+position = Vector2(93, 18)
+
+[node name="columna2" parent="." instance=ExtResource("3_2i4kh")]
+position = Vector2(76, -45)
+
+[node name="seta_2" parent="." instance=ExtResource("7_wcs5p")]
+position = Vector2(-90, 47)
+
+[node name="seta_3" parent="." instance=ExtResource("8_qvdhg")]
+position = Vector2(-78, 49)
+
+[node name="seta_4" parent="." instance=ExtResource("9_xnxpx")]
+position = Vector2(22, 36)
+
+[node name="seta_1" parent="." instance=ExtResource("5_3nrlm")]
+position = Vector2(89, 56)

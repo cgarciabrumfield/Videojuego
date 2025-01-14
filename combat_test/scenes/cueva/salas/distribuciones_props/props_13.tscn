@@ -1,0 +1,39 @@
+[gd_scene load_steps=5 format=3 uid="uid://dekti8sp6osbj"]
+
+[ext_resource type="Script" path="res://scenes/example_room.gd" id="1_rhc11"]
+[ext_resource type="Texture2D" uid="uid://dk6ksu6lyt1di" path="res://scenes/cueva/salas/suelos/ground_1.png" id="2_6l76j"]
+[ext_resource type="PackedScene" uid="uid://2qoenoxroww4" path="res://scenes/cueva/props/seta_1.tscn" id="4_ed0hp"]
+[ext_resource type="PackedScene" uid="uid://dsa2v24ej6url" path="res://scenes/cueva/props/columna5.tscn" id="5_v82ai"]
+
+[node name="Props3" type="Node2D"]
+texture_filter = 1
+script = ExtResource("1_rhc11")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+z_index = -100
+texture = ExtResource("2_6l76j")
+metadata/_edit_lock_ = true
+
+[node name="columna5" parent="." instance=ExtResource("5_v82ai")]
+position = Vector2(-38, 33)
+
+[node name="columna6" parent="." instance=ExtResource("5_v82ai")]
+position = Vector2(43, -40)
+
+[node name="columna7" parent="." instance=ExtResource("5_v82ai")]
+position = Vector2(46, 34)
+
+[node name="columna8" parent="." instance=ExtResource("5_v82ai")]
+position = Vector2(-40, -38)
+
+[node name="seta_1" parent="." instance=ExtResource("4_ed0hp")]
+position = Vector2(-105, 63)
+
+[node name="seta_2" parent="." instance=ExtResource("4_ed0hp")]
+position = Vector2(107, 59)
+
+[node name="seta_3" parent="." instance=ExtResource("4_ed0hp")]
+position = Vector2(106, -66)
+
+[node name="seta_4" parent="." instance=ExtResource("4_ed0hp")]
+position = Vector2(-109, -64)

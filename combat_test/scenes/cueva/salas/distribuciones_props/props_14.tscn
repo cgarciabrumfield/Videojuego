@@ -1,0 +1,29 @@
+[gd_scene load_steps=7 format=3 uid="uid://n23mrkgcpvl7"]
+
+[ext_resource type="Script" path="res://scenes/example_room.gd" id="1_y4fmw"]
+[ext_resource type="Texture2D" uid="uid://dk6ksu6lyt1di" path="res://scenes/cueva/salas/suelos/ground_1.png" id="2_vmqfc"]
+[ext_resource type="PackedScene" uid="uid://dy5jkshiw5jxe" path="res://scenes/cueva/props/columna4.tscn" id="3_1w7l4"]
+[ext_resource type="PackedScene" uid="uid://ueofhlemakog" path="res://scenes/cueva/props/columna2.tscn" id="5_5nuuc"]
+[ext_resource type="PackedScene" uid="uid://i1j655xqicb3" path="res://scenes/cueva/props/columna3.tscn" id="10_2sbs3"]
+[ext_resource type="PackedScene" uid="uid://dpvxr4opbvq1d" path="res://scenes/cueva/props/columna1.tscn" id="11_fwgbj"]
+
+[node name="Props4" type="Node2D"]
+texture_filter = 1
+script = ExtResource("1_y4fmw")
+
+[node name="columna1" parent="." instance=ExtResource("11_fwgbj")]
+position = Vector2(24, -22)
+
+[node name="columna4" parent="." instance=ExtResource("3_1w7l4")]
+position = Vector2(-23, -20)
+
+[node name="columna3" parent="." instance=ExtResource("10_2sbs3")]
+position = Vector2(-22, 26)
+
+[node name="columna2" parent="." instance=ExtResource("5_5nuuc")]
+position = Vector2(24, 26)
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+z_index = -100
+texture = ExtResource("2_vmqfc")
+metadata/_edit_lock_ = true
