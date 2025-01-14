@@ -191,7 +191,7 @@ func revive():
 	damagebar.visible = true
 	healthbar.visible = true
 	$Shadow.visible = true
-	health = MAX_HEALTH
+	health = 1
 	damagebar.update()
 	healthbar.update()
 	await get_tree().create_timer(0.9).timeout

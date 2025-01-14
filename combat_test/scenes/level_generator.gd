@@ -46,6 +46,8 @@ func load_level(level_argument):
 			connect_rooms(full_map[sala_final_coords], full_map[sala_final_coords + clave], clave)
 	discovered_map[current_coords] = full_map[current_coords]
 	add_child(full_map[current_coords])
+	
+	full_map[current_coords].load_scenary(false,false)
 	load_map(discovered_map, 0)
 	music.play()
 
@@ -299,9 +301,9 @@ func _realizar_cambio_sala(direction: Vector2):
 		else:
 			add_child(full_map[current_coords])
 			if current_coords != sala_inicio_coords and current_coords != sala_final_coords:
-				if full_map[current_coords].esSalaLore == false:
-					full_map[current_coords].add_enemies()
-		
+				full_map[current_coords].load_scenary(true,true)
+			else:
+				full_map[current_coords].load_scenary(false,false)
 	await get_tree().create_timer(0.1).timeout
 	if current_coords == sala_final_coords && !boss_defeated:
 		if full_map[sala_final_coords].num_enemies != 0:
