@@ -1,0 +1,26 @@
+[gd_scene load_steps=5 format=3 uid="uid://cjompqdtyssmb"]
+
+[ext_resource type="Script" path="res://scenes/example_room.gd" id="1_623y7"]
+[ext_resource type="Texture2D" uid="uid://dk6ksu6lyt1di" path="res://scenes/cueva/salas/suelos/ground_1.png" id="2_5nfbh"]
+[ext_resource type="PackedScene" uid="uid://d0kxnhbcgagmx" path="res://scenes/cueva/enemigos/skeleton.tscn" id="3_5juhm"]
+[ext_resource type="PackedScene" uid="uid://desu3h1sc52ll" path="res://scenes/cueva/enemigos/mushroomman.tscn" id="4_nhr0x"]
+
+[node name="enemies_1" type="Node2D"]
+script = ExtResource("1_623y7")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+z_index = -100
+z_as_relative = false
+texture = ExtResource("2_5nfbh")
+
+[node name="Skeleton" parent="." instance=ExtResource("3_5juhm")]
+position = Vector2(-1, -35)
+
+[node name="Skeleton2" parent="." instance=ExtResource("3_5juhm")]
+position = Vector2(2, 30)
+
+[node name="Mushroom_Man" parent="." instance=ExtResource("4_nhr0x")]
+position = Vector2(43, -1)
+
+[node name="Mushroom_Man2" parent="." instance=ExtResource("4_nhr0x")]
+position = Vector2(-49, -2)

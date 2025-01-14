@@ -1,0 +1,22 @@
+[gd_scene load_steps=4 format=3 uid="uid://dgwcahd860410"]
+
+[ext_resource type="Script" path="res://scenes/example_room.gd" id="1_k4bgh"]
+[ext_resource type="Texture2D" uid="uid://dk6ksu6lyt1di" path="res://scenes/cueva/salas/suelos/ground_1.png" id="2_k2m6p"]
+[ext_resource type="PackedScene" uid="uid://d0kxnhbcgagmx" path="res://scenes/cueva/enemigos/skeleton.tscn" id="5_yyo5o"]
+
+[node name="enemies_1" type="Node2D"]
+script = ExtResource("1_k4bgh")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+z_index = -100
+z_as_relative = false
+texture = ExtResource("2_k2m6p")
+
+[node name="Skeleton" parent="." instance=ExtResource("5_yyo5o")]
+position = Vector2(-1, -35)
+
+[node name="Skeleton2" parent="." instance=ExtResource("5_yyo5o")]
+position = Vector2(34, 23)
+
+[node name="Skeleton3" parent="." instance=ExtResource("5_yyo5o")]
+position = Vector2(-32, 23)

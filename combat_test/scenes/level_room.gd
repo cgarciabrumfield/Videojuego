@@ -90,6 +90,7 @@ func open_doors():
 		Globals.rooms_til_lvl_up = Globals.rooms_til_lvl_up - 1
 		if Globals.rooms_til_lvl_up == 0:
 			Globals.rooms_til_lvl_up = Globals.rooms_for_lvl_up
+			LevelUpSfx.play_sfx()
 			Globals.get_mejoras_node(self).sube_nivel()
 	
 func _on_bottom_transition_body_entered(_body: Node2D) -> void:

@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://ixr2abbaeg30"]
+
+[ext_resource type="Script" path="res://scenes/level_up_sfx.gd" id="1_gabj3"]
+[ext_resource type="AudioStream" uid="uid://04pcsx1dpjap" path="res://assets/sounds/level-up-4-243762.mp3" id="2_ovmt3"]
+
+[node name="LevelUpSfx" type="Node"]
+script = ExtResource("1_gabj3")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_ovmt3")
