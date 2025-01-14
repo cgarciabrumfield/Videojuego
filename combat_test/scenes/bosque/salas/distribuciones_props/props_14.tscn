@@ -1,0 +1,34 @@
+[gd_scene load_steps=6 format=3 uid="uid://blio5iffqudep"]
+
+[ext_resource type="Script" path="res://scenes/example_room.gd" id="1_qb0fg"]
+[ext_resource type="PackedScene" uid="uid://6gf4yb3dj8ys" path="res://scenes/bosque/Props/tree_1.tscn" id="2_yl00n"]
+[ext_resource type="PackedScene" uid="uid://dmpodkv6vbyts" path="res://scenes/bosque/Props/tree_3.tscn" id="3_vut5y"]
+[ext_resource type="Texture2D" uid="uid://dr6hu4clr3nco" path="res://assets/sprites/maps/Bosque/test.png" id="4_36o6v"]
+[ext_resource type="PackedScene" uid="uid://4td6mhpfd5mh" path="res://scenes/bosque/Props/puddle.tscn" id="12_yvmid"]
+
+[node name="Props4" type="Node2D"]
+texture_filter = 1
+script = ExtResource("1_qb0fg")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+z_index = -100
+texture = ExtResource("4_36o6v")
+metadata/_edit_lock_ = true
+
+[node name="Puddle" parent="." instance=ExtResource("12_yvmid")]
+position = Vector2(-74, -57)
+
+[node name="Puddle2" parent="." instance=ExtResource("12_yvmid")]
+position = Vector2(63, 39)
+
+[node name="Puddle3" parent="." instance=ExtResource("12_yvmid")]
+position = Vector2(-32, 19)
+
+[node name="Puddle4" parent="." instance=ExtResource("12_yvmid")]
+position = Vector2(29, -45)
+
+[node name="Tree_1" parent="." instance=ExtResource("2_yl00n")]
+position = Vector2(-96, 58)
+
+[node name="Tree_3" parent="." instance=ExtResource("3_vut5y")]
+position = Vector2(91, -44)

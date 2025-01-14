@@ -47,6 +47,7 @@ func take_damage(ammount: int, knockback_direction: Vector2, knockback_strength)
 		kill()
 	elif is_hurt == false:  # Verifica que el enemigo no esté ya en animación de daño
 		is_hurt = true
+		$SFX/Hurt.play()
 		$AnimationPlayer.play(str("damage_" + direction_str))
 		
 func _physics_process(delta: float) -> void:
@@ -64,6 +65,8 @@ func _on_timer_timeout() -> void:
 
 # Función de me voy con San Pedro del limo
 func kill():
+	$SFX/Hurt.pitch_scale = 0.7
+	$SFX/Hurt.play()
 	is_hurt = true
 	speed = 0
 	$AnimationPlayer.play(str("death_" + direction_str))
@@ -89,6 +92,7 @@ func move(delta):
 		collision_mask = 19 #Mirad la documentacion de las mascaras de colision si no entendeis esto
 		collision_layer = 64
 		speed = JUMP_SPEED
+		$SFX/Leap.play()
 		$AnimationPlayer.play(str("jump_" + direction_str))
 	else:
 		collision_mask = 51 #Mirad la documentacion de las mascaras de colision si no entendeis esto

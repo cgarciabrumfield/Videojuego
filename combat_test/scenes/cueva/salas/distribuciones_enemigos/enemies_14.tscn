@@ -1,0 +1,29 @@
+[gd_scene load_steps=5 format=3 uid="uid://2thrae7ggdbn"]
+
+[ext_resource type="Script" path="res://scenes/example_room.gd" id="1_bme7a"]
+[ext_resource type="Texture2D" uid="uid://dk6ksu6lyt1di" path="res://scenes/cueva/salas/suelos/ground_1.png" id="2_utwwt"]
+[ext_resource type="PackedScene" uid="uid://cta6d2ymdq2p6" path="res://scenes/bosque/enemigos/frog.tscn" id="3_ovtkb"]
+[ext_resource type="PackedScene" uid="uid://desu3h1sc52ll" path="res://scenes/cueva/enemigos/mushroomman.tscn" id="4_dixhm"]
+
+[node name="enemies_4" type="Node2D"]
+script = ExtResource("1_bme7a")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+z_index = -100
+z_as_relative = false
+texture = ExtResource("2_utwwt")
+
+[node name="Frog" parent="." instance=ExtResource("3_ovtkb")]
+position = Vector2(33, -39)
+
+[node name="Frog2" parent="." instance=ExtResource("3_ovtkb")]
+position = Vector2(-48, 31)
+
+[node name="Frog3" parent="." instance=ExtResource("3_ovtkb")]
+position = Vector2(-84, -56)
+
+[node name="Mushroom_Man" parent="." instance=ExtResource("4_dixhm")]
+position = Vector2(-16, -19)
+
+[node name="Mushroom_Man2" parent="." instance=ExtResource("4_dixhm")]
+position = Vector2(61, 37)

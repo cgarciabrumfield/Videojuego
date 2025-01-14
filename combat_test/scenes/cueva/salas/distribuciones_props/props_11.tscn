@@ -1,0 +1,32 @@
+[gd_scene load_steps=8 format=3 uid="uid://ch1exeq3bgx1b"]
+
+[ext_resource type="Script" path="res://scenes/example_room.gd" id="1_t4s3n"]
+[ext_resource type="Texture2D" uid="uid://dk6ksu6lyt1di" path="res://scenes/cueva/salas/suelos/ground_1.png" id="2_6dvyt"]
+[ext_resource type="PackedScene" uid="uid://dsa2v24ej6url" path="res://scenes/cueva/props/columna5.tscn" id="3_h438x"]
+[ext_resource type="PackedScene" uid="uid://dpvxr4opbvq1d" path="res://scenes/cueva/props/columna1.tscn" id="3_qvyel"]
+[ext_resource type="PackedScene" uid="uid://ueofhlemakog" path="res://scenes/cueva/props/columna2.tscn" id="4_diw3r"]
+[ext_resource type="PackedScene" uid="uid://i1j655xqicb3" path="res://scenes/cueva/props/columna3.tscn" id="4_ekuxo"]
+[ext_resource type="PackedScene" uid="uid://dy5jkshiw5jxe" path="res://scenes/cueva/props/columna4.tscn" id="6_wk2tb"]
+
+[node name="Props1" type="Node2D"]
+texture_filter = 1
+script = ExtResource("1_t4s3n")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+z_index = -100
+texture = ExtResource("2_6dvyt")
+metadata/_edit_lock_ = true
+
+[node name="columna1" parent="." instance=ExtResource("3_qvyel")]
+position = Vector2(-91, 37)
+
+[node name="columna2" parent="." instance=ExtResource("4_diw3r")]
+position = Vector2(-96, -51)
+
+[node name="columna3" parent="." instance=ExtResource("4_ekuxo")]
+position = Vector2(100, -50)
+
+[node name="columna4" parent="." instance=ExtResource("6_wk2tb")]
+position = Vector2(107, 39)
+
+[node name="columna5" parent="." instance=ExtResource("3_h438x")]
