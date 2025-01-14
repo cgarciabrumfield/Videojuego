@@ -14,13 +14,10 @@ texture = ExtResource("2_67avl")
 metadata/_edit_lock_ = true
 
 [node name="black_knight" parent="." instance=ExtResource("3_ewau1")]
-position = Vector2(43, -44)
+position = Vector2(-20, 20)
 
 [node name="black_knight2" parent="." instance=ExtResource("3_ewau1")]
-position = Vector2(40, 20)
+position = Vector2(20, 20)
 
 [node name="black_knight3" parent="." instance=ExtResource("3_ewau1")]
-position = Vector2(-28, 25)
-
-[node name="black_knight4" parent="." instance=ExtResource("3_ewau1")]
-position = Vector2(-41, -39)
+position = Vector2(0, -20)
