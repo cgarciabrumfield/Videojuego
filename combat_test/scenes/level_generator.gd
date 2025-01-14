@@ -260,6 +260,7 @@ func comprueba_sala_en_minimapa(sala):
 
 
 func cambiar_sala(direction: Vector2):
+	
 	if is_changing_room:
 		return
 	

@@ -65,6 +65,19 @@ func _find_mejoras(node) -> Node:
 			return nodo
 	return null
 	
+func get_dialogo_node(node: Node) -> Dialogue_Interface:
+	return _find_dialogo(node.get_tree().get_root())
+
+func _find_dialogo(node) -> Node:
+	if node.name == "dialogue_interface":
+		return node
+		
+	for child in node.get_children():
+		var nodo = _find_dialogo(child)
+		if nodo != null:
+			return nodo
+	return null
+	
 func set_directionVector_string(direction_vector:Vector2) -> String:
 	var x = direction_vector.x
 	var y = direction_vector.y

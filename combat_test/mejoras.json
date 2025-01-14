@@ -28,16 +28,16 @@
 }, 
 {
 	"nombre": "Run more",
-	"valor": [1, 2, 3],
+	"valor": [-1, -2, -3],
 	"descripcion_start": "Spend ",
-	"descripcion_end": " less stamina when running",
+	"descripcion_end": " stamina when running",
 	"stat": "RUN_STAMINA_COST_SEC"
 }, 
 {
 	"nombre": "More attacks",
-	"valor": [1, 2, 3],
+	"valor": [-1, -2, -3],
 	"descripcion_start": "Spend ",
-	"descripcion_end": " less stamina when attacking",
+	"descripcion_end": " stamina when attacking",
 	"stat": "attack_stamina_cost"
 }, 
 {
@@ -47,5 +47,4 @@
 	"descripcion_end": "stamina per second",
 	"stat": "stamina_regen"
 }
-
 ]}
