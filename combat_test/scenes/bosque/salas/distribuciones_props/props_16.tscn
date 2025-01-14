@@ -40,4 +40,3 @@ position = Vector2(115, -34)
 [node name="Puddle" parent="." instance=ExtResource("9_1tc57")]
 position = Vector2(0, 14)
 rotation = 3.14159
-scale = Vector2(2, 2)
