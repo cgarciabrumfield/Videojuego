@@ -1,0 +1,52 @@
+[gd_scene load_steps=12 format=3 uid="uid://swqd1pu2tcy5"]
+
+[ext_resource type="Script" path="res://scenes/example_room.gd" id="1_6h0aa"]
+[ext_resource type="PackedScene" uid="uid://dmpodkv6vbyts" path="res://scenes/bosque/Props/tree_3.tscn" id="3_uhus2"]
+[ext_resource type="Texture2D" uid="uid://dr6hu4clr3nco" path="res://assets/sprites/maps/Bosque/test.png" id="4_2iqq3"]
+[ext_resource type="PackedScene" uid="uid://3d3bomcydsmx" path="res://scenes/bosque/Props/bush_4.tscn" id="6_il20l"]
+[ext_resource type="PackedScene" uid="uid://qa2iaj1behmm" path="res://scenes/bosque/Props/bush_6.tscn" id="7_jevcq"]
+[ext_resource type="PackedScene" uid="uid://dkfv8422ujo1k" path="res://scenes/bosque/Props/bush_5.tscn" id="7_v1l0m"]
+[ext_resource type="PackedScene" uid="uid://lxt7r4o4x0pp" path="res://scenes/bosque/Props/roca_1.tscn" id="8_h6bh3"]
+[ext_resource type="PackedScene" uid="uid://ctfv8gfk0w1w5" path="res://scenes/bosque/Props/roca_3.tscn" id="9_8b2cp"]
+[ext_resource type="PackedScene" uid="uid://4td6mhpfd5mh" path="res://scenes/bosque/Props/puddle.tscn" id="9_nfkyw"]
+[ext_resource type="PackedScene" uid="uid://cpqshfjy3b0lb" path="res://scenes/bosque/Props/roca_2.tscn" id="11_vurbk"]
+[ext_resource type="PackedScene" uid="uid://bjkratfq4pj3f" path="res://scenes/bosque/Props/tree_2.tscn" id="14_n8ofa"]
+
+[node name="Props6" type="Node2D"]
+texture_filter = 1
+script = ExtResource("1_6h0aa")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+z_index = -100
+texture = ExtResource("4_2iqq3")
+metadata/_edit_lock_ = true
+
+[node name="Bush_8" parent="." instance=ExtResource("7_jevcq")]
+position = Vector2(-113, 45)
+
+[node name="Bush_5" parent="." instance=ExtResource("7_v1l0m")]
+position = Vector2(-99, 28)
+
+[node name="Bush_4" parent="." instance=ExtResource("6_il20l")]
+position = Vector2(-73, 28)
+
+[node name="Bush_9" parent="." instance=ExtResource("7_v1l0m")]
+position = Vector2(-64, 47)
+
+[node name="Puddle3" parent="." instance=ExtResource("9_nfkyw")]
+position = Vector2(-87, 36)
+
+[node name="roca_1" parent="." instance=ExtResource("8_h6bh3")]
+position = Vector2(84, -52)
+
+[node name="roca_2" parent="roca_1" instance=ExtResource("11_vurbk")]
+position = Vector2(4, 7)
+
+[node name="roca_3" parent="roca_1" instance=ExtResource("9_8b2cp")]
+position = Vector2(-7, 7)
+
+[node name="Tree_2" parent="." instance=ExtResource("14_n8ofa")]
+position = Vector2(113, 54)
+
+[node name="Tree_3" parent="." instance=ExtResource("3_uhus2")]
+position = Vector2(-79, -50)

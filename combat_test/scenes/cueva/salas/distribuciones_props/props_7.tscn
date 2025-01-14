@@ -1,0 +1,60 @@
+[gd_scene load_steps=14 format=3 uid="uid://brgchktunmab6"]
+
+[ext_resource type="Script" path="res://scenes/example_room.gd" id="1_inpnf"]
+[ext_resource type="Texture2D" uid="uid://dk6ksu6lyt1di" path="res://scenes/cueva/salas/suelos/ground_1.png" id="2_l2tva"]
+[ext_resource type="PackedScene" uid="uid://cquc6vqxvmb43" path="res://scenes/cueva/props/calaveras_1.tscn" id="3_3yxmy"]
+[ext_resource type="PackedScene" uid="uid://dy5jkshiw5jxe" path="res://scenes/cueva/props/columna4.tscn" id="4_st65g"]
+[ext_resource type="PackedScene" uid="uid://dsa2v24ej6url" path="res://scenes/cueva/props/columna5.tscn" id="5_4he01"]
+[ext_resource type="PackedScene" uid="uid://bkihfgku83xwt" path="res://scenes/cueva/props/roca_4.tscn" id="6_3w1bk"]
+[ext_resource type="PackedScene" uid="uid://o17l64v2xs22" path="res://scenes/cueva/props/roca_6.tscn" id="7_72iei"]
+[ext_resource type="PackedScene" uid="uid://xvusn0h7cmlv" path="res://scenes/cueva/props/roca_7.tscn" id="8_vqxn5"]
+[ext_resource type="PackedScene" uid="uid://dwm5ss25i4vdj" path="res://scenes/cueva/props/roca_8.tscn" id="9_uy7bf"]
+[ext_resource type="PackedScene" uid="uid://2qoenoxroww4" path="res://scenes/cueva/props/seta_1.tscn" id="10_u32jf"]
+[ext_resource type="PackedScene" uid="uid://dgooxqxet0g7e" path="res://scenes/cueva/props/seta_2.tscn" id="11_11r6x"]
+[ext_resource type="PackedScene" uid="uid://bsdblfw0f6ptc" path="res://scenes/cueva/props/seta_3.tscn" id="12_muga1"]
+[ext_resource type="PackedScene" uid="uid://cw41lx3tvmfrn" path="res://scenes/cueva/props/seta_4.tscn" id="13_vox8t"]
+
+[node name="Props7" type="Node2D"]
+texture_filter = 1
+script = ExtResource("1_inpnf")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+z_index = -100
+texture = ExtResource("2_l2tva")
+metadata/_edit_lock_ = true
+
+[node name="calaveras_1" parent="." instance=ExtResource("3_3yxmy")]
+position = Vector2(68, 31)
+
+[node name="columna4" parent="." instance=ExtResource("4_st65g")]
+position = Vector2(59, -61)
+
+[node name="columna5" parent="." instance=ExtResource("5_4he01")]
+position = Vector2(-64, -29)
+
+[node name="roca_4" parent="." instance=ExtResource("6_3w1bk")]
+position = Vector2(-143, -86)
+
+[node name="roca_6" parent="." instance=ExtResource("7_72iei")]
+position = Vector2(53, -27)
+
+[node name="roca_7" parent="." instance=ExtResource("8_vqxn5")]
+position = Vector2(63, -16)
+
+[node name="roca_8" parent="." instance=ExtResource("9_uy7bf")]
+position = Vector2(51, -11)
+
+[node name="seta_1" parent="." instance=ExtResource("10_u32jf")]
+position = Vector2(-74, 66)
+
+[node name="seta_2" parent="." instance=ExtResource("11_11r6x")]
+position = Vector2(-36, -45)
+
+[node name="seta_3" parent="." instance=ExtResource("12_muga1")]
+position = Vector2(137, 73)
+
+[node name="seta_5" parent="." instance=ExtResource("13_vox8t")]
+position = Vector2(90, -86)
+
+[node name="seta_4" parent="." instance=ExtResource("13_vox8t")]
+position = Vector2(-39, -11)

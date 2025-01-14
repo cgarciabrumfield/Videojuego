@@ -1,11 +1,13 @@
-[gd_scene load_steps=7 format=3 uid="uid://bhsaix5gm0351"]
+[gd_scene load_steps=9 format=3 uid="uid://bhsaix5gm0351"]
 
 [ext_resource type="Script" path="res://scenes/example_room.gd" id="1_ll0lj"]
 [ext_resource type="Texture2D" uid="uid://dr6hu4clr3nco" path="res://assets/sprites/maps/Bosque/test.png" id="2_7f5bu"]
-[ext_resource type="PackedScene" uid="uid://lxt7r4o4x0pp" path="res://scenes/bosque/props/roca_1.tscn" id="3_q7bug"]
-[ext_resource type="PackedScene" uid="uid://cpqshfjy3b0lb" path="res://scenes/bosque/props/roca_2.tscn" id="4_ew6oi"]
-[ext_resource type="PackedScene" uid="uid://ctfv8gfk0w1w5" path="res://scenes/bosque/props/roca_3.tscn" id="5_fykei"]
-[ext_resource type="PackedScene" uid="uid://3d3bomcydsmx" path="res://scenes/bosque/props/bush_4.tscn" id="6_lpwny"]
+[ext_resource type="PackedScene" uid="uid://lxt7r4o4x0pp" path="res://scenes/bosque/Props/roca_1.tscn" id="3_q7bug"]
+[ext_resource type="PackedScene" uid="uid://cpqshfjy3b0lb" path="res://scenes/bosque/Props/roca_2.tscn" id="4_ew6oi"]
+[ext_resource type="PackedScene" uid="uid://ctfv8gfk0w1w5" path="res://scenes/bosque/Props/roca_3.tscn" id="5_fykei"]
+[ext_resource type="PackedScene" uid="uid://3d3bomcydsmx" path="res://scenes/bosque/Props/bush_4.tscn" id="6_lpwny"]
+[ext_resource type="PackedScene" uid="uid://2qoenoxroww4" path="res://scenes/cueva/props/seta_1.tscn" id="7_kdku5"]
+[ext_resource type="PackedScene" uid="uid://cw41lx3tvmfrn" path="res://scenes/cueva/props/seta_4.tscn" id="8_c2lax"]
 
 [node name="Props1" type="Node2D"]
 texture_filter = 1
@@ -51,3 +53,15 @@ position = Vector2(12, 18)
 
 [node name="Bush_5" parent="." instance=ExtResource("6_lpwny")]
 position = Vector2(-19, 1)
+
+[node name="seta_1" parent="." instance=ExtResource("7_kdku5")]
+position = Vector2(-22, 27)
+
+[node name="seta_2" parent="." instance=ExtResource("7_kdku5")]
+position = Vector2(-130, 65)
+
+[node name="seta_4" parent="." instance=ExtResource("8_c2lax")]
+position = Vector2(94, -45)
+
+[node name="seta_5" parent="." instance=ExtResource("8_c2lax")]
+position = Vector2(84, -45)

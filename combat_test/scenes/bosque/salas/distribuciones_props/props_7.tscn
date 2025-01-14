@@ -1,0 +1,51 @@
+[gd_scene load_steps=11 format=3 uid="uid://cpyf7hgwxhslw"]
+
+[ext_resource type="Script" path="res://scenes/example_room.gd" id="1_ky52a"]
+[ext_resource type="Texture2D" uid="uid://dr6hu4clr3nco" path="res://assets/sprites/maps/Bosque/test.png" id="2_52ebs"]
+[ext_resource type="PackedScene" uid="uid://qa2iaj1behmm" path="res://scenes/bosque/Props/bush_6.tscn" id="3_j5gb2"]
+[ext_resource type="PackedScene" uid="uid://dkfv8422ujo1k" path="res://scenes/bosque/Props/bush_5.tscn" id="4_6cpv5"]
+[ext_resource type="PackedScene" uid="uid://3d3bomcydsmx" path="res://scenes/bosque/Props/bush_4.tscn" id="5_8lode"]
+[ext_resource type="PackedScene" uid="uid://duuo04aixxyli" path="res://scenes/bosque/Props/bush_1.tscn" id="7_5ymwt"]
+[ext_resource type="PackedScene" uid="uid://bt7n8ow4m2ajs" path="res://scenes/bosque/Props/bush_2.tscn" id="8_5jtmf"]
+[ext_resource type="PackedScene" uid="uid://d4cf65pe6oa00" path="res://scenes/bosque/Props/bush_3.tscn" id="9_nu5e8"]
+[ext_resource type="PackedScene" uid="uid://bjkratfq4pj3f" path="res://scenes/bosque/Props/tree_2.tscn" id="10_48amw"]
+[ext_resource type="PackedScene" uid="uid://6gf4yb3dj8ys" path="res://scenes/bosque/Props/tree_1.tscn" id="10_vald3"]
+
+[node name="Props7" type="Node2D"]
+texture_filter = 1
+script = ExtResource("1_ky52a")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+z_index = -100
+texture = ExtResource("2_52ebs")
+metadata/_edit_lock_ = true
+
+[node name="Bush_8" parent="." instance=ExtResource("3_j5gb2")]
+position = Vector2(-16, 38)
+
+[node name="Bush_5" parent="." instance=ExtResource("4_6cpv5")]
+position = Vector2(66, 32)
+
+[node name="Bush_4" parent="." instance=ExtResource("5_8lode")]
+position = Vector2(-34, -27)
+
+[node name="Bush_9" parent="." instance=ExtResource("4_6cpv5")]
+position = Vector2(82, -21)
+
+[node name="Tree_2" parent="." instance=ExtResource("10_48amw")]
+position = Vector2(110, -53)
+
+[node name="Bush_1" parent="." instance=ExtResource("7_5ymwt")]
+position = Vector2(-110, 69)
+
+[node name="Bush_2" parent="." instance=ExtResource("8_5jtmf")]
+position = Vector2(35, -57)
+
+[node name="Bush_3" parent="." instance=ExtResource("9_nu5e8")]
+position = Vector2(-99, -61)
+
+[node name="Tree_1" parent="." instance=ExtResource("10_vald3")]
+position = Vector2(-92, 46)
+
+[node name="Bush_6" parent="." instance=ExtResource("7_5ymwt")]
+position = Vector2(121, 71)
