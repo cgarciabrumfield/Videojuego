@@ -17,7 +17,7 @@ var nodo_enemigos
 var nodo_props
 var esSalaLore = false #variable que indica si es una sala normal o una de lore
 var level
-var chanceDeLore = 0 #variable que indica la probabilidad de que haya sala de lore
+var chanceDeLore = 0.05 #variable que indica la probabilidad de que haya sala de lore
 
 @onready var door_left = $Left_wall/left_door/left_door_area
 @onready var door_left_sprite = $Left_wall/left_sprite

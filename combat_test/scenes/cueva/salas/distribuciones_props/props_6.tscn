@@ -1,8 +1,7 @@
-[gd_scene load_steps=12 format=3 uid="uid://djir74pscjyk0"]
+[gd_scene load_steps=11 format=3 uid="uid://djir74pscjyk0"]
 
 [ext_resource type="Script" path="res://scenes/example_room.gd" id="1_b6dq1"]
 [ext_resource type="Texture2D" uid="uid://dk6ksu6lyt1di" path="res://scenes/cueva/salas/suelos/ground_1.png" id="2_eydvi"]
-[ext_resource type="PackedScene" uid="uid://dsa2v24ej6url" path="res://scenes/cueva/props/columna5.tscn" id="3_83jlq"]
 [ext_resource type="PackedScene" uid="uid://i1j655xqicb3" path="res://scenes/cueva/props/columna3.tscn" id="4_3df7k"]
 [ext_resource type="PackedScene" uid="uid://dy5jkshiw5jxe" path="res://scenes/cueva/props/columna4.tscn" id="4_vp14v"]
 [ext_resource type="PackedScene" uid="uid://ueofhlemakog" path="res://scenes/cueva/props/columna2.tscn" id="6_ewf6r"]
@@ -20,8 +19,6 @@ script = ExtResource("1_b6dq1")
 z_index = -100
 texture = ExtResource("2_eydvi")
 metadata/_edit_lock_ = true
-
-[node name="columna5" parent="." instance=ExtResource("3_83jlq")]
 
 [node name="columna4" parent="." instance=ExtResource("4_vp14v")]
 position = Vector2(84, 38)
