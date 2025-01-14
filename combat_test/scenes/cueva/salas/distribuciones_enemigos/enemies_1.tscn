@@ -14,9 +14,16 @@ texture = ExtResource("2_mv8x5")
 metadata/_edit_lock_ = true
 
 [node name="Mushroom_Man" parent="." instance=ExtResource("3_emc67")]
+position = Vector2(-79, -25)
 
 [node name="Mushroom_Man2" parent="." instance=ExtResource("3_emc67")]
-position = Vector2(-31, 21)
+position = Vector2(-77, 55)
 
 [node name="Mushroom_Man3" parent="." instance=ExtResource("3_emc67")]
-position = Vector2(34, -14)
+position = Vector2(27, 53)
+
+[node name="Mushroom_Man4" parent="." instance=ExtResource("3_emc67")]
+position = Vector2(13, -14)
+
+[node name="Mushroom_Man5" parent="." instance=ExtResource("3_emc67")]
+position = Vector2(90, -37)

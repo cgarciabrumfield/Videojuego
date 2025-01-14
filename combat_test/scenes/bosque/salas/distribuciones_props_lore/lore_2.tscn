@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://bd5coj6v4iqma"]
+[gd_scene load_steps=12 format=3 uid="uid://bd5coj6v4iqma"]
 
 [ext_resource type="Script" path="res://scenes/example_room.gd" id="1_tcpkc"]
 [ext_resource type="PackedScene" uid="uid://dmpodkv6vbyts" path="res://scenes/bosque/props/tree_3.tscn" id="3_ajxx5"]
@@ -9,6 +9,8 @@
 [ext_resource type="PackedScene" uid="uid://lxt7r4o4x0pp" path="res://scenes/bosque/props/roca_1.tscn" id="8_o57tx"]
 [ext_resource type="PackedScene" uid="uid://ctfv8gfk0w1w5" path="res://scenes/bosque/props/roca_3.tscn" id="9_8v8cl"]
 [ext_resource type="PackedScene" uid="uid://itc1mm6qdk1" path="res://scenes/bosque/props/car.tscn" id="9_apkmw"]
+[ext_resource type="PackedScene" uid="uid://dkfv8422ujo1k" path="res://scenes/bosque/props/bush_5.tscn" id="10_0f03c"]
+[ext_resource type="PackedScene" uid="uid://4td6mhpfd5mh" path="res://scenes/bosque/props/puddle.tscn" id="11_feo23"]
 
 [node name="Props2" type="Node2D"]
 texture_filter = 1
@@ -22,11 +24,14 @@ z_index = -100
 texture = ExtResource("4_e2qpk")
 metadata/_edit_lock_ = true
 
+[node name="Tree_3" parent="Sprite2D" instance=ExtResource("3_ajxx5")]
+position = Vector2(82, -28)
+
 [node name="Bush_3" parent="." instance=ExtResource("5_5q307")]
-position = Vector2(-99, -51)
+position = Vector2(124, -47)
 
 [node name="Bush_4" parent="." instance=ExtResource("6_q1rbs")]
-position = Vector2(103, -40)
+position = Vector2(-80, -45)
 
 [node name="Bush_6" parent="." instance=ExtResource("7_480ko")]
 position = Vector2(72, 49)
@@ -35,6 +40,21 @@ position = Vector2(72, 49)
 position = Vector2(89, 45)
 
 [node name="roca_3" parent="." instance=ExtResource("9_8v8cl")]
-position = Vector2(115, -34)
+position = Vector2(-68, -36)
 
 [node name="Car_1" parent="." instance=ExtResource("9_apkmw")]
+
+[node name="Bush_5" parent="." instance=ExtResource("6_q1rbs")]
+position = Vector2(-1, 19)
+
+[node name="roca_2" parent="." instance=ExtResource("8_o57tx")]
+position = Vector2(-2, -20)
+
+[node name="Bush_7" parent="." instance=ExtResource("6_q1rbs")]
+position = Vector2(25, 14)
+
+[node name="Bush_8" parent="." instance=ExtResource("10_0f03c")]
+position = Vector2(-23, 7)
+
+[node name="Puddle" parent="." instance=ExtResource("11_feo23")]
+position = Vector2(-115, -64)
