@@ -94,6 +94,7 @@ func open_doors():
 		door_top.disabled = true
 		door_top_sprite.frame = 1
 	Globals.get_mejoras_node(self).sube_nivel()
+	LevelUpSfx.play_sfx()
 
 func _on_bottom_transition_body_entered(_body: Node2D) -> void:
 	print("Bottom area entered")

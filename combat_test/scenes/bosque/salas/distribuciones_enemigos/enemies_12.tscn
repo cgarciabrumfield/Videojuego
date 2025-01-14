@@ -1,0 +1,29 @@
+[gd_scene load_steps=5 format=3 uid="uid://b3jcm7dvn8s78"]
+
+[ext_resource type="Script" path="res://scenes/example_room.gd" id="1_8s8vp"]
+[ext_resource type="Texture2D" uid="uid://kbv1sawkxgmk" path="res://test.png" id="2_m4ow2"]
+[ext_resource type="PackedScene" uid="uid://dvakrevjo8gwo" path="res://scenes/bosque/enemigos/wonwon.tscn" id="3_ep60l"]
+[ext_resource type="PackedScene" uid="uid://i18myxiswp6c" path="res://scenes/bosque/enemigos/slime.tscn" id="4_138xh"]
+
+[node name="enemies_1" type="Node2D"]
+script = ExtResource("1_8s8vp")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+z_index = -100
+z_as_relative = false
+texture = ExtResource("2_m4ow2")
+metadata/_edit_lock_ = true
+
+[node name="Wonwon" parent="." instance=ExtResource("3_ep60l")]
+position = Vector2(49, 39)
+
+[node name="Wonwon2" parent="." instance=ExtResource("3_ep60l")]
+position = Vector2(-47, -40)
+
+[node name="Slime" parent="." instance=ExtResource("4_138xh")]
+position = Vector2(-88, -3)
+
+[node name="Slime2" parent="." instance=ExtResource("4_138xh")]
+position = Vector2(89, -1)
+
+[node name="Slime3" parent="." instance=ExtResource("4_138xh")]

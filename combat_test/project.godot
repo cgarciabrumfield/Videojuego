@@ -25,6 +25,7 @@ buses/default_bus_layout=""
 GameState="*res://GameState.gd"
 MushroomState="*res://scenes/cueva/enemigos/mushrooms_state.gd"
 Globals="*res://scripts/globals.gd"
+LevelUpSfx="*res://scenes/level_up_sfx.tscn"
 SkeletonsState="*res://scenes/cueva/enemigos/skeletons_state.gd"
 
 [display]
