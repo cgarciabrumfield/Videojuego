@@ -1,0 +1,23 @@
+[gd_scene load_steps=5 format=3 uid="uid://b3ft7cxunkqaj"]
+
+[ext_resource type="Script" path="res://scenes/example_room.gd" id="1_c0w2l"]
+[ext_resource type="Texture2D" uid="uid://dk6ksu6lyt1di" path="res://scenes/cueva/salas/suelos/ground_1.png" id="2_hlyoc"]
+[ext_resource type="PackedScene" uid="uid://cta6d2ymdq2p6" path="res://scenes/bosque/enemigos/frog.tscn" id="3_bdqol"]
+[ext_resource type="PackedScene" uid="uid://d0kxnhbcgagmx" path="res://scenes/cueva/enemigos/skeleton.tscn" id="4_7yuf8"]
+
+[node name="enemies_6" type="Node2D"]
+script = ExtResource("1_c0w2l")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+z_index = -100
+z_as_relative = false
+texture = ExtResource("2_hlyoc")
+
+[node name="Frog2" parent="." instance=ExtResource("3_bdqol")]
+position = Vector2(69, 39)
+
+[node name="Skeleton" parent="." instance=ExtResource("4_7yuf8")]
+position = Vector2(-98, -43)
+
+[node name="Skeleton2" parent="." instance=ExtResource("4_7yuf8")]
+position = Vector2(-41, -51)

@@ -1,0 +1,43 @@
+[gd_scene load_steps=9 format=3 uid="uid://c7td0jmmxf565"]
+
+[ext_resource type="Script" path="res://scenes/example_room.gd" id="1_e8t00"]
+[ext_resource type="Texture2D" uid="uid://dk6ksu6lyt1di" path="res://scenes/cueva/salas/suelos/ground_1.png" id="2_tqc4e"]
+[ext_resource type="PackedScene" uid="uid://ueofhlemakog" path="res://scenes/cueva/props/columna2.tscn" id="3_bobkf"]
+[ext_resource type="PackedScene" uid="uid://dpvxr4opbvq1d" path="res://scenes/cueva/props/columna1.tscn" id="4_ygmww"]
+[ext_resource type="PackedScene" uid="uid://cquc6vqxvmb43" path="res://scenes/cueva/props/calaveras_1.tscn" id="5_5pnql"]
+[ext_resource type="PackedScene" uid="uid://dgooxqxet0g7e" path="res://scenes/cueva/props/seta_2.tscn" id="8_w01n7"]
+[ext_resource type="PackedScene" uid="uid://xvusn0h7cmlv" path="res://scenes/cueva/props/roca_7.tscn" id="10_y2541"]
+[ext_resource type="PackedScene" uid="uid://o17l64v2xs22" path="res://scenes/cueva/props/roca_6.tscn" id="12_pbmtl"]
+
+[node name="Props8" type="Node2D"]
+texture_filter = 1
+script = ExtResource("1_e8t00")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+z_index = -100
+texture = ExtResource("2_tqc4e")
+metadata/_edit_lock_ = true
+
+[node name="calaveras_1" parent="." instance=ExtResource("5_5pnql")]
+position = Vector2(103, 53)
+
+[node name="columna1" parent="." instance=ExtResource("4_ygmww")]
+position = Vector2(-71, -36)
+
+[node name="columna2" parent="." instance=ExtResource("3_bobkf")]
+position = Vector2(78, 28)
+
+[node name="calaveras_2" parent="." instance=ExtResource("5_5pnql")]
+position = Vector2(60, -48)
+
+[node name="roca_6" parent="." instance=ExtResource("12_pbmtl")]
+position = Vector2(-134, -82)
+
+[node name="calaveras_3" parent="." instance=ExtResource("5_5pnql")]
+position = Vector2(-87, 59)
+
+[node name="roca_7" parent="." instance=ExtResource("10_y2541")]
+position = Vector2(-48, -4)
+
+[node name="seta_2" parent="." instance=ExtResource("8_w01n7")]
+position = Vector2(134, -76)
