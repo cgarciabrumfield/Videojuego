@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://scenes/example_room.gd" id="1_66law"]
 [ext_resource type="Texture2D" uid="uid://dr6hu4clr3nco" path="res://assets/sprites/maps/Bosque/test.png" id="2_qmli7"]
-[ext_resource type="PackedScene" uid="uid://lxt7r4o4x0pp" path="res://scenes/bosque/Props/roca_1.tscn" id="3_jkk3a"]
+[ext_resource type="PackedScene" uid="uid://lxt7r4o4x0pp" path="res://scenes/bosque/props/roca_1.tscn" id="3_jkk3a"]
 
 [node name="Props1" type="Node2D"]
 texture_filter = 1
