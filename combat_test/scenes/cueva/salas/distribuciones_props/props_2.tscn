@@ -1,54 +1,45 @@
-[gd_scene load_steps=10 format=3 uid="uid://vitplq8btau0"]
+[gd_scene load_steps=11 format=3 uid="uid://ciixuyiamha3f"]
 
-[ext_resource type="Script" path="res://scenes/example_room.gd" id="1_i7nq3"]
-[ext_resource type="PackedScene" uid="uid://6gf4yb3dj8ys" path="res://scenes/cueva/props/tree_1.tscn" id="2_x11vu"]
-[ext_resource type="PackedScene" uid="uid://bjkratfq4pj3f" path="res://scenes/cueva/props/tree_2.tscn" id="3_hewvo"]
-[ext_resource type="PackedScene" uid="uid://dmpodkv6vbyts" path="res://scenes/cueva/props/tree_3.tscn" id="4_usbi4"]
-[ext_resource type="Texture2D" uid="uid://dr6hu4clr3nco" path="res://assets/sprites/maps/Bosque/test.png" id="5_4bygc"]
-[ext_resource type="PackedScene" uid="uid://lxt7r4o4x0pp" path="res://scenes/cueva/props/roca_1.tscn" id="6_ibgs4"]
-[ext_resource type="PackedScene" uid="uid://cpqshfjy3b0lb" path="res://scenes/cueva/props/roca_2.tscn" id="7_da7r0"]
-[ext_resource type="PackedScene" uid="uid://ctfv8gfk0w1w5" path="res://scenes/cueva/props/roca_3.tscn" id="8_jv8bh"]
-[ext_resource type="PackedScene" uid="uid://3d3bomcydsmx" path="res://scenes/cueva/props/bush_4.tscn" id="9_x4vxp"]
+[ext_resource type="Script" path="res://scenes/example_room.gd" id="1_bs31f"]
+[ext_resource type="Texture2D" uid="uid://dk6ksu6lyt1di" path="res://scenes/cueva/salas/suelos/ground_1.png" id="2_kb64a"]
+[ext_resource type="PackedScene" uid="uid://dsa2v24ej6url" path="res://scenes/cueva/props/columna5.tscn" id="3_hcq1y"]
+[ext_resource type="PackedScene" uid="uid://ueofhlemakog" path="res://scenes/cueva/props/columna2.tscn" id="3_nvuqd"]
+[ext_resource type="PackedScene" uid="uid://dy5jkshiw5jxe" path="res://scenes/cueva/props/columna4.tscn" id="4_boq1s"]
+[ext_resource type="PackedScene" uid="uid://xvusn0h7cmlv" path="res://scenes/cueva/props/roca_7.tscn" id="6_6khsn"]
+[ext_resource type="PackedScene" uid="uid://o17l64v2xs22" path="res://scenes/cueva/props/roca_6.tscn" id="7_415un"]
+[ext_resource type="PackedScene" uid="uid://bwr0dw0fr8rgy" path="res://scenes/cueva/props/roca_3.tscn" id="8_3tl6u"]
+[ext_resource type="PackedScene" uid="uid://2qoenoxroww4" path="res://scenes/cueva/props/seta_1.tscn" id="10_j7xg8"]
+[ext_resource type="PackedScene" uid="uid://cyoxwch57244" path="res://scenes/cueva/props/roca_2.tscn" id="13_j21ny"]
 
-[node name="Props1" type="Node2D"]
+[node name="Props2" type="Node2D"]
 texture_filter = 1
-script = ExtResource("1_i7nq3")
-
-[node name="Tree_1" parent="." instance=ExtResource("2_x11vu")]
-position = Vector2(-67, 72)
-
-[node name="Tree_2" parent="." instance=ExtResource("3_hewvo")]
-position = Vector2(119, 56)
-
-[node name="Tree_3" parent="." instance=ExtResource("4_usbi4")]
-position = Vector2(-98, -23)
+script = ExtResource("1_bs31f")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 z_index = -100
-texture = ExtResource("5_4bygc")
+texture = ExtResource("2_kb64a")
 metadata/_edit_lock_ = true
 
-[node name="roca_1" parent="." instance=ExtResource("6_ibgs4")]
-position = Vector2(84, -58)
+[node name="columna2" parent="." instance=ExtResource("3_nvuqd")]
+position = Vector2(-100, -46)
 
-[node name="roca_2" parent="." instance=ExtResource("7_da7r0")]
-position = Vector2(78, -49)
+[node name="columna4" parent="." instance=ExtResource("4_boq1s")]
+position = Vector2(107, 39)
 
-[node name="roca_3" parent="." instance=ExtResource("8_jv8bh")]
-position = Vector2(69, -52)
+[node name="seta_1" parent="." instance=ExtResource("10_j7xg8")]
+position = Vector2(9, 23)
 
-[node name="roca_4" parent="." instance=ExtResource("6_ibgs4")]
-position = Vector2(-43, -13)
-rotation = 3.14159
-scale = Vector2(1, -1)
+[node name="roca_7" parent="." instance=ExtResource("6_6khsn")]
+position = Vector2(-18, -16)
 
-[node name="roca_5" parent="." instance=ExtResource("7_da7r0")]
-position = Vector2(42, 54)
+[node name="roca_6" parent="." instance=ExtResource("7_415un")]
+position = Vector2(-63, 54)
 
-[node name="roca_6" parent="." instance=ExtResource("8_jv8bh")]
-position = Vector2(21, 53)
-rotation = 3.14159
-scale = Vector2(1, -1)
+[node name="roca_3" parent="." instance=ExtResource("8_3tl6u")]
+position = Vector2(12, -52)
 
-[node name="Bush_4" parent="." instance=ExtResource("9_x4vxp")]
-position = Vector2(31, 56)
+[node name="roca_2" parent="." instance=ExtResource("13_j21ny")]
+position = Vector2(-108, 33)
+
+[node name="columna5" parent="." instance=ExtResource("3_hcq1y")]
+position = Vector2(92, -44)

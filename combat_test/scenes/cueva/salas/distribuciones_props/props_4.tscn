@@ -1,0 +1,52 @@
+[gd_scene load_steps=12 format=3 uid="uid://b4cdvdjjocol5"]
+
+[ext_resource type="Script" path="res://scenes/example_room.gd" id="1_tkseu"]
+[ext_resource type="Texture2D" uid="uid://dk6ksu6lyt1di" path="res://scenes/cueva/salas/suelos/ground_1.png" id="2_4k18h"]
+[ext_resource type="PackedScene" uid="uid://xvusn0h7cmlv" path="res://scenes/cueva/props/roca_7.tscn" id="3_3i0x4"]
+[ext_resource type="PackedScene" uid="uid://o17l64v2xs22" path="res://scenes/cueva/props/roca_6.tscn" id="4_nhr5g"]
+[ext_resource type="PackedScene" uid="uid://cw41lx3tvmfrn" path="res://scenes/cueva/props/seta_4.tscn" id="5_3kcj2"]
+[ext_resource type="PackedScene" uid="uid://bsdblfw0f6ptc" path="res://scenes/cueva/props/seta_3.tscn" id="6_l2ty5"]
+[ext_resource type="PackedScene" uid="uid://dgooxqxet0g7e" path="res://scenes/cueva/props/seta_2.tscn" id="7_rskjo"]
+[ext_resource type="PackedScene" uid="uid://bwr0dw0fr8rgy" path="res://scenes/cueva/props/roca_3.tscn" id="8_u4tkv"]
+[ext_resource type="PackedScene" uid="uid://hcb6okhj8ahh" path="res://scenes/cueva/props/roca_1.tscn" id="9_rk47t"]
+[ext_resource type="PackedScene" uid="uid://i1j655xqicb3" path="res://scenes/cueva/props/columna3.tscn" id="10_b12px"]
+[ext_resource type="PackedScene" uid="uid://dpvxr4opbvq1d" path="res://scenes/cueva/props/columna1.tscn" id="11_4lx6q"]
+
+[node name="Props4" type="Node2D"]
+texture_filter = 1
+script = ExtResource("1_tkseu")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+z_index = -100
+texture = ExtResource("2_4k18h")
+metadata/_edit_lock_ = true
+
+[node name="roca_7" parent="." instance=ExtResource("3_3i0x4")]
+position = Vector2(8, 6)
+
+[node name="roca_6" parent="." instance=ExtResource("4_nhr5g")]
+position = Vector2(-114, -28)
+
+[node name="seta_4" parent="." instance=ExtResource("5_3kcj2")]
+position = Vector2(-23, 52)
+
+[node name="seta_3" parent="." instance=ExtResource("6_l2ty5")]
+position = Vector2(-56, 19)
+
+[node name="seta_2" parent="." instance=ExtResource("7_rskjo")]
+position = Vector2(16, -55)
+
+[node name="roca_8" parent="." instance=ExtResource("4_nhr5g")]
+position = Vector2(-49, -60)
+
+[node name="roca_3" parent="." instance=ExtResource("8_u4tkv")]
+position = Vector2(-87, 44)
+
+[node name="roca_1" parent="." instance=ExtResource("9_rk47t")]
+position = Vector2(-100, 51)
+
+[node name="columna3" parent="." instance=ExtResource("10_b12px")]
+position = Vector2(87, -40)
+
+[node name="columna1" parent="." instance=ExtResource("11_4lx6q")]
+position = Vector2(86, 43)

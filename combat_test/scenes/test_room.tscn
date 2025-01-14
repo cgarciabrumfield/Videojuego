@@ -2,7 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://dr6hu4clr3nco" path="res://assets/sprites/maps/Bosque/test.png" id="1_yvhyc"]
 [ext_resource type="PackedScene" uid="uid://4td6mhpfd5mh" path="res://scenes/bosque/props/puddle.tscn" id="3_72neh"]
-[ext_resource type="PackedScene" uid="uid://d0kxnhbcgagmx" path="res://scenes/cueva/enemigos/skeleton.tscn" id="4_dtfkt"]
+[ext_resource type="PackedScene" uid="uid://bd1rec7dsrw3y" path="res://scenes/bosque/enemigos/black_knight.tscn" id="4_1oydx"]
 [ext_resource type="PackedScene" uid="uid://bp8hvd0qc4txe" path="res://scenes/Player.tscn" id="4_vkrbd"]
 
 [node name="Test_room" type="Node2D"]
@@ -25,11 +25,8 @@ collision_mask = 0
 polygon = PackedVector2Array(-195, 10, -193, 107, 191, 107, 191, -108, -191, -108, -195, 10, -184, -10, -186, -103, 186, -104, 186, 102, -189, 103, -184, -10)
 
 [node name="Player" parent="." instance=ExtResource("4_vkrbd")]
-position = Vector2(-36, -8)
+position = Vector2(-113, 9)
 
 [node name="Puddle" parent="." instance=ExtResource("3_72neh")]
 
-[node name="Skeleton" parent="." instance=ExtResource("4_dtfkt")]
-
-[node name="Skeleton2" parent="." instance=ExtResource("4_dtfkt")]
-position = Vector2(117, -2)
+[node name="black_knight" parent="." instance=ExtResource("4_1oydx")]

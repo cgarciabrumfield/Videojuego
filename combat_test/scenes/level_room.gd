@@ -17,7 +17,7 @@ var nodo_enemigos
 var nodo_props
 var esSalaLore = false #variable que indica si es una sala normal o una de lore
 var level
-var chanceDeLore = 0.95 #variable que indica la probabilidad de que haya sala de lore
+var chanceDeLore = 0 #variable que indica la probabilidad de que haya sala de lore
 
 @onready var door_left = $Left_wall/left_door/left_door_area
 @onready var door_left_sprite = $Left_wall/left_sprite
@@ -39,27 +39,6 @@ var chanceDeLore = 0.95 #variable que indica la probabilidad de que haya sala de
 func _ready() -> void:
 	level = get_parent().level
 	generate_walls()
-	var chance_lore = randf()
-	if chance_lore > chanceDeLore:
-		esSalaLore = true
-		var random_number_prop_file = randi_range(1, count_prop_lore_distribution_scenes())
-		if random_number_prop_file == 0:
-			random_number_prop_file = 1
-		print(random_number_prop_file)
-		var ruta_props: String = ("res://scenes/" + level + "/salas/distribuciones_props_lore/lore_" + 
-		str(random_number_prop_file) + ".tscn")
-		nodo_props = "lore_" + str(random_number_prop_file)
-		add_child(load(ruta_props).instantiate())
-		Globals.get_dialogo_node(self).get_dialogue(nodo_props)
-	else:
-		var random_number_prop_file = randi_range(1, count_prop_distribution_scenes())
-		print(random_number_prop_file)
-		var ruta_props: String = ("res://scenes/" + level + "/salas/distribuciones_props/props_" + 
-		str(random_number_prop_file) + ".tscn")
-		print(ruta_props)
-		nodo_props = "props_" + str(random_number_prop_file)
-		add_child(load(ruta_props).instantiate())
-	
 	ground.texture = load(str("res://scenes/" + level + "/salas/suelos/ground_" + 
 	str(randi_range(1, count_ground_files()))) + ".png")
 	
@@ -207,6 +186,28 @@ func add_enemies():
 	print(ruta_enemigos)
 	#nodo_enemigos = "enemies_" + str(random_number_enemies_file)
 	enemigos.add_child(load(ruta_enemigos).instantiate())
+func load_scenary(can_be_lore:bool, can_have_enemies:bool):
+	if chanceDeLore > randf() and can_be_lore:
+		esSalaLore = true
+		var random_number_prop_file = randi_range(1, count_prop_lore_distribution_scenes())
+		if random_number_prop_file == 0:
+			random_number_prop_file = 1
+		print(random_number_prop_file)
+		var ruta_props: String = ("res://scenes/" + level + "/salas/distribuciones_props_lore/lore_" + 
+		str(random_number_prop_file) + ".tscn")
+		nodo_props = "lore_" + str(random_number_prop_file)
+		add_child(load(ruta_props).instantiate())
+		Globals.get_dialogo_node(self).get_dialogue(nodo_props)
+	else:
+		if can_have_enemies:
+			add_enemies()
+		var random_number_prop_file = randi_range(1, count_prop_distribution_scenes())
+		print(random_number_prop_file)
+		var ruta_props: String = ("res://scenes/" + level + "/salas/distribuciones_props/props_" + 
+		str(random_number_prop_file) + ".tscn")
+		print(ruta_props)
+		nodo_props = "props_" + str(random_number_prop_file)
+		add_child(load(ruta_props).instantiate())
 	
 func count_enemies() -> int:
 	var grandchild_count = 0

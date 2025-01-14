@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://casw8j6enr0q2"
-path="res://.godot/imported/ground_3.png-b959eb8303fc75966e0176dc0ff62ca5.ctex"
+uid="uid://bcctye1qj08a5"
+path="res://.godot/imported/ground_4.png-bf998f6dda37223e1229d2393e9f4ea5.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://scenes/cueva/salas/suelos/ground_3.png"
-dest_files=["res://.godot/imported/ground_3.png-b959eb8303fc75966e0176dc0ff62ca5.ctex"]
+source_file="res://scenes/cueva/salas/suelos/ground_4.png"
+dest_files=["res://.godot/imported/ground_4.png-bf998f6dda37223e1229d2393e9f4ea5.ctex"]
 
 [params]
 

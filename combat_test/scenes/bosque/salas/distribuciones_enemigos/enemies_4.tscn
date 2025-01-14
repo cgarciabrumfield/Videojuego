@@ -1,0 +1,24 @@
+[gd_scene load_steps=6 format=3 uid="uid://bk27idkka1o0h"]
+
+[ext_resource type="Script" path="res://scenes/example_room.gd" id="1_wsg5k"]
+[ext_resource type="Texture2D" uid="uid://kbv1sawkxgmk" path="res://test.png" id="2_nx2el"]
+[ext_resource type="PackedScene" uid="uid://dvakrevjo8gwo" path="res://scenes/bosque/enemigos/wonwon.tscn" id="4_78bl7"]
+[ext_resource type="PackedScene" uid="uid://bd1rec7dsrw3y" path="res://scenes/bosque/enemigos/black_knight.tscn" id="5_8ee6h"]
+[ext_resource type="PackedScene" uid="uid://cta6d2ymdq2p6" path="res://scenes/bosque/enemigos/frog.tscn" id="5_pdlmq"]
+
+[node name="enemies_4" type="Node2D"]
+script = ExtResource("1_wsg5k")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+z_index = -100
+z_as_relative = false
+texture = ExtResource("2_nx2el")
+
+[node name="Wonwon" parent="." instance=ExtResource("4_78bl7")]
+position = Vector2(-80, -38)
+
+[node name="Frog" parent="." instance=ExtResource("5_pdlmq")]
+position = Vector2(91, -5)
+
+[node name="black_knight" parent="." instance=ExtResource("5_8ee6h")]
+position = Vector2(0, 21)

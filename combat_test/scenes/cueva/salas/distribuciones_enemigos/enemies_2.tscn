@@ -1,17 +1,31 @@
-[gd_scene load_steps=4 format=3 uid="uid://b7qov5yqusyyq"]
+[gd_scene load_steps=5 format=3 uid="uid://b7qov5yqusyyq"]
 
 [ext_resource type="Script" path="res://scenes/example_room.gd" id="1_kdurg"]
-[ext_resource type="PackedScene" uid="uid://bd1rec7dsrw3y" path="res://scenes/bosque/enemigos/black_knight.tscn" id="1_ut1eu"]
 [ext_resource type="Texture2D" uid="uid://dk6ksu6lyt1di" path="res://scenes/cueva/salas/suelos/ground_1.png" id="3_h3mtq"]
+[ext_resource type="PackedScene" uid="uid://cta6d2ymdq2p6" path="res://scenes/bosque/enemigos/frog.tscn" id="3_ncbu1"]
+[ext_resource type="PackedScene" uid="uid://d0kxnhbcgagmx" path="res://scenes/cueva/enemigos/skeleton.tscn" id="4_42yeq"]
 
 [node name="enemies_2" type="Node2D"]
 texture_filter = 1
 script = ExtResource("1_kdurg")
-
-[node name="black_knight" parent="." instance=ExtResource("1_ut1eu")]
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 z_index = -100
 z_as_relative = false
 texture = ExtResource("3_h3mtq")
 metadata/_edit_lock_ = true
+
+[node name="Frog" parent="." instance=ExtResource("3_ncbu1")]
+position = Vector2(-73, -37)
+
+[node name="Frog2" parent="." instance=ExtResource("3_ncbu1")]
+position = Vector2(87, 52)
+
+[node name="Skeleton" parent="." instance=ExtResource("4_42yeq")]
+position = Vector2(61, -40)
+
+[node name="Skeleton2" parent="." instance=ExtResource("4_42yeq")]
+position = Vector2(-89, 49)
+
+[node name="Skeleton3" parent="." instance=ExtResource("4_42yeq")]
+position = Vector2(-5, 7)
