@@ -1,10 +1,13 @@
-[gd_scene load_steps=6 format=3 uid="uid://d0eyr7j26h7bx"]
+[gd_scene load_steps=9 format=3 uid="uid://d0eyr7j26h7bx"]
 
 [ext_resource type="Script" path="res://scenes/example_room.gd" id="1_a6vng"]
 [ext_resource type="Texture2D" uid="uid://dr6hu4clr3nco" path="res://assets/sprites/maps/Bosque/test.png" id="2_uf7sl"]
 [ext_resource type="PackedScene" uid="uid://lxt7r4o4x0pp" path="res://scenes/bosque/Props/roca_1.tscn" id="3_n6kcp"]
 [ext_resource type="PackedScene" uid="uid://cpqshfjy3b0lb" path="res://scenes/bosque/Props/roca_2.tscn" id="4_hdd61"]
 [ext_resource type="PackedScene" uid="uid://ctfv8gfk0w1w5" path="res://scenes/bosque/Props/roca_3.tscn" id="5_oijab"]
+[ext_resource type="PackedScene" uid="uid://2qoenoxroww4" path="res://scenes/cueva/props/seta_1.tscn" id="6_yad3s"]
+[ext_resource type="PackedScene" uid="uid://dgooxqxet0g7e" path="res://scenes/cueva/props/seta_2.tscn" id="7_5qaha"]
+[ext_resource type="PackedScene" uid="uid://bsdblfw0f6ptc" path="res://scenes/cueva/props/seta_3.tscn" id="8_8341b"]
 
 [node name="Props1" type="Node2D"]
 texture_filter = 1
@@ -39,3 +42,12 @@ scale = Vector2(1, -1)
 
 [node name="roca_7" parent="." instance=ExtResource("4_hdd61")]
 position = Vector2(-126, 56)
+
+[node name="seta_1" parent="." instance=ExtResource("6_yad3s")]
+position = Vector2(109, 64)
+
+[node name="seta_2" parent="." instance=ExtResource("7_5qaha")]
+position = Vector2(99, -51)
+
+[node name="seta_3" parent="." instance=ExtResource("8_8341b")]
+position = Vector2(-55, -6)
