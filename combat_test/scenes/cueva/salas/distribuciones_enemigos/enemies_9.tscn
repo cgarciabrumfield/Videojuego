@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://co64ff7prrijv"]
+[gd_scene load_steps=6 format=3 uid="uid://c0b7rp5ovlc35"]
 
 [ext_resource type="Script" path="res://scenes/example_room.gd" id="1_vkgmc"]
 [ext_resource type="Texture2D" uid="uid://dk6ksu6lyt1di" path="res://scenes/cueva/salas/suelos/ground_1.png" id="2_x7bpy"]
@@ -23,9 +23,8 @@ position = Vector2(-101, -37)
 [node name="Mushroom_Man" parent="." instance=ExtResource("4_47s48")]
 position = Vector2(65, 26)
 
-[node name="Mushroom_Man" parent="Mushroom_Man" instance=ExtResource("4_47s48")]
-position = Vector2(-42, -55)
-
 [node name="Slime" parent="." instance=ExtResource("5_t10v3")]
 position = Vector2(-45, 16)
-MAX_HEALTH = 4
+
+[node name="Mushroom_Man2" parent="." instance=ExtResource("4_47s48")]
+position = Vector2(23, -29)

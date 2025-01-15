@@ -282,6 +282,7 @@ size = Vector2(44, 19.5)
 [sub_resource type="CircleShape2D" id="CircleShape2D_f7gde"]
 
 [node name="RayoLaser" type="Node2D"]
+z_index = 150
 script = ExtResource("1_8s6dd")
 
 [node name="cabeza" type="AnimatedSprite2D" parent="."]

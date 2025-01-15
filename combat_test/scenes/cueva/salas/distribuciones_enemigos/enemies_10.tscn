@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://ddir4irlrp3ql"]
+[gd_scene load_steps=6 format=3 uid="uid://2ohbemtukits"]
 
 [ext_resource type="Script" path="res://scenes/example_room.gd" id="1_13gf6"]
 [ext_resource type="Texture2D" uid="uid://dk6ksu6lyt1di" path="res://scenes/cueva/salas/suelos/ground_1.png" id="2_fygkw"]
@@ -17,16 +17,14 @@ texture = ExtResource("2_fygkw")
 [node name="Skeleton" parent="." instance=ExtResource("3_ta61v")]
 position = Vector2(104, 48)
 
-[node name="Skeleton" parent="Skeleton" instance=ExtResource("3_ta61v")]
-position = Vector2(-192, -100)
-
 [node name="Slime" parent="." instance=ExtResource("5_ybeq1")]
 position = Vector2(-30, -7)
-MAX_HEALTH = 4
 
 [node name="Slime2" parent="." instance=ExtResource("5_ybeq1")]
 position = Vector2(34, -13)
-MAX_HEALTH = 4
 
 [node name="Frog" parent="." instance=ExtResource("3_ceho6")]
 position = Vector2(6, 19)
+
+[node name="Skeleton2" parent="." instance=ExtResource("3_ta61v")]
+position = Vector2(-88, -52)

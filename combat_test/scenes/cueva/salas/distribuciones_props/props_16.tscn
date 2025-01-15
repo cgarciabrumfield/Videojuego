@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://c6xteiw3bkpd7"]
+[gd_scene load_steps=7 format=3 uid="uid://c6xteiw3bkpd7"]
 
 [ext_resource type="Script" path="res://scenes/example_room.gd" id="1_ktymf"]
 [ext_resource type="PackedScene" uid="uid://2qoenoxroww4" path="res://scenes/cueva/props/seta_1.tscn" id="3_28i7m"]
@@ -6,7 +6,6 @@
 [ext_resource type="PackedScene" uid="uid://lxt7r4o4x0pp" path="res://scenes/bosque/props/roca_1.tscn" id="6_vxpk0"]
 [ext_resource type="PackedScene" uid="uid://cpqshfjy3b0lb" path="res://scenes/bosque/props/roca_2.tscn" id="7_davos"]
 [ext_resource type="PackedScene" uid="uid://ctfv8gfk0w1w5" path="res://scenes/bosque/props/roca_3.tscn" id="8_s1stn"]
-[ext_resource type="PackedScene" uid="uid://3d3bomcydsmx" path="res://scenes/bosque/props/bush_4.tscn" id="9_g13o2"]
 
 [node name="Props1" type="Node2D"]
 texture_filter = 1
@@ -40,7 +39,7 @@ rotation = 3.14159
 scale = Vector2(1, -1)
 
 [node name="roca_5" parent="." instance=ExtResource("7_davos")]
-position = Vector2(42, 54)
+position = Vector2(33, 53)
 
 [node name="roca_7" parent="." instance=ExtResource("7_davos")]
 position = Vector2(-126, 56)
@@ -49,6 +48,3 @@ position = Vector2(-126, 56)
 position = Vector2(21, 53)
 rotation = 3.14159
 scale = Vector2(1, -1)
-
-[node name="Bush_4" parent="." instance=ExtResource("9_g13o2")]
-position = Vector2(31, 55)

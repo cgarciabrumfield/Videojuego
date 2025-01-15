@@ -24,6 +24,7 @@ collision_mask = 0
 polygon = PackedVector2Array(-195, 10, -193, 107, 191, 107, 191, -108, -191, -108, -195, 10, -184, -10, -186, -103, 186, -104, 186, 102, -189, 103, -184, -10)
 
 [node name="Player" parent="." instance=ExtResource("4_vkrbd")]
-position = Vector2(-113, 9)
+position = Vector2(-44, -5)
 
 [node name="Skeleton" parent="." instance=ExtResource("3_aef8s")]
+position = Vector2(51, 0)

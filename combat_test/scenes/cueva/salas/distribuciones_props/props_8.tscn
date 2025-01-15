@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://0qdbmb7nefwx"]
+[gd_scene load_steps=10 format=3 uid="uid://bngx12kdjtjm0"]
 
 [ext_resource type="Script" path="res://scenes/example_room.gd" id="1_m6esw"]
 [ext_resource type="Texture2D" uid="uid://dk6ksu6lyt1di" path="res://scenes/cueva/salas/suelos/ground_1.png" id="2_5e8h0"]
