@@ -9,7 +9,7 @@ var text_length = 0
 var CHARACTERS_PER_SECOND = 48.0
 var AVERAGE_LENGTH = 65.0
 var FONT_SIZE_DEFAULT = 25
-var dialogo_ruta = "res://dialogos.json"
+var dialogo_ruta = "res://dialogues/dialogos.json"
 var time = 0
 
 # Se tiene que llamar antes de cambiar de escena para que tenga los datos
