@@ -24,7 +24,7 @@ metadata/_edit_lock_ = true
 position = Vector2(-90, -53)
 
 [node name="roca_5" parent="." instance=ExtResource("4_nfnnv")]
-position = Vector2(-17, -16)
+position = Vector2(-25, -23)
 
 [node name="roca_7" parent="." instance=ExtResource("6_xnsir")]
 position = Vector2(93, 18)

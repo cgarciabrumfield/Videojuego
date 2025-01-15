@@ -16,7 +16,6 @@ var opened_doors = false
 var nodo_enemigos
 var nodo_props
 
-
 @onready var door_left = $Left_wall/left_door/left_door_area
 @onready var door_left_sprite = $Left_wall/left_sprite
 @onready var connected_left = connected_rooms.get(Vector2(-1,0)) != null
