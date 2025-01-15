@@ -15,16 +15,16 @@ texture = ExtResource("2_6l76j")
 metadata/_edit_lock_ = true
 
 [node name="columna5" parent="." instance=ExtResource("5_v82ai")]
-position = Vector2(-38, 33)
+position = Vector2(-40, 40)
 
 [node name="columna6" parent="." instance=ExtResource("5_v82ai")]
-position = Vector2(43, -40)
+position = Vector2(40, -40)
 
 [node name="columna7" parent="." instance=ExtResource("5_v82ai")]
-position = Vector2(46, 34)
+position = Vector2(40, 40)
 
 [node name="columna8" parent="." instance=ExtResource("5_v82ai")]
-position = Vector2(-40, -38)
+position = Vector2(-40, -40)
 
 [node name="seta_1" parent="." instance=ExtResource("4_ed0hp")]
 position = Vector2(-105, 63)

@@ -23,10 +23,9 @@ position = Vector2(-101, -37)
 [node name="Mushroom_Man" parent="." instance=ExtResource("4_47s48")]
 position = Vector2(65, 26)
 
+[node name="Mushroom_Man" parent="Mushroom_Man" instance=ExtResource("4_47s48")]
+position = Vector2(-42, -55)
+
 [node name="Slime" parent="." instance=ExtResource("5_t10v3")]
 position = Vector2(-45, 16)
-MAX_HEALTH = 4
-
-[node name="Slime2" parent="." instance=ExtResource("5_t10v3")]
-position = Vector2(3, -25)
 MAX_HEALTH = 4

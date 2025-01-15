@@ -12,16 +12,16 @@ texture_filter = 1
 script = ExtResource("1_y4fmw")
 
 [node name="columna1" parent="." instance=ExtResource("11_fwgbj")]
-position = Vector2(24, -22)
+position = Vector2(55, -55)
 
 [node name="columna4" parent="." instance=ExtResource("3_1w7l4")]
-position = Vector2(-23, -20)
+position = Vector2(-55, -55)
 
 [node name="columna3" parent="." instance=ExtResource("10_2sbs3")]
-position = Vector2(-22, 26)
+position = Vector2(-55, 55)
 
 [node name="columna2" parent="." instance=ExtResource("5_5nuuc")]
-position = Vector2(24, 26)
+position = Vector2(55, 55)
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 z_index = -100

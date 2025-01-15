@@ -1,10 +1,8 @@
-[gd_scene load_steps=6 format=3 uid="uid://du4pwprape6pd"]
+[gd_scene load_steps=4 format=3 uid="uid://du4pwprape6pd"]
 
 [ext_resource type="Texture2D" uid="uid://dr6hu4clr3nco" path="res://assets/sprites/maps/Bosque/test.png" id="1_yvhyc"]
-[ext_resource type="PackedScene" uid="uid://djir74pscjyk0" path="res://scenes/cueva/salas/distribuciones_props/props_6.tscn" id="3_uleso"]
-[ext_resource type="PackedScene" uid="uid://0qdbmb7nefwx" path="res://scenes/cueva/salas/distribuciones_props/props_8.tscn" id="4_i31id"]
+[ext_resource type="PackedScene" uid="uid://d0kxnhbcgagmx" path="res://scenes/cueva/enemigos/skeleton.tscn" id="3_aef8s"]
 [ext_resource type="PackedScene" uid="uid://bp8hvd0qc4txe" path="res://scenes/Player.tscn" id="4_vkrbd"]
-[ext_resource type="PackedScene" uid="uid://bdkctyalu67ub" path="res://scenes/cueva/salas/distribuciones_props/props_9.tscn" id="5_wljek"]
 
 [node name="Test_room" type="Node2D"]
 texture_filter = 1
@@ -14,7 +12,6 @@ position = Vector2(-378, -245)
 zoom = Vector2(5, 5)
 
 [node name="Background" type="Sprite2D" parent="."]
-visible = false
 z_index = -2
 texture_filter = 1
 texture = ExtResource("1_yvhyc")
@@ -29,14 +26,4 @@ polygon = PackedVector2Array(-195, 10, -193, 107, 191, 107, 191, -108, -191, -10
 [node name="Player" parent="." instance=ExtResource("4_vkrbd")]
 position = Vector2(-113, 9)
 
-[node name="Props6" parent="." instance=ExtResource("3_uleso")]
-visible = false
-
-[node name="Props7" parent="." instance=ExtResource("3_uleso")]
-visible = false
-
-[node name="Props8" parent="." instance=ExtResource("4_i31id")]
-visible = false
-
-[node name="Props9" parent="." instance=ExtResource("5_wljek")]
-visible = false
+[node name="Skeleton" parent="." instance=ExtResource("3_aef8s")]

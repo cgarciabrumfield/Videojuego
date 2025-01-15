@@ -1,9 +1,9 @@
 [gd_scene load_steps=6 format=3 uid="uid://hft1eyuj6rba"]
 
 [ext_resource type="Script" path="res://scenes/example_room.gd" id="1_lle7r"]
-[ext_resource type="PackedScene" uid="uid://6gf4yb3dj8ys" path="res://scenes/bosque/Props/tree_1.tscn" id="2_un2c0"]
-[ext_resource type="PackedScene" uid="uid://dmpodkv6vbyts" path="res://scenes/bosque/Props/tree_3.tscn" id="3_hr5i6"]
-[ext_resource type="PackedScene" uid="uid://bjkratfq4pj3f" path="res://scenes/bosque/Props/tree_2.tscn" id="3_q1es1"]
+[ext_resource type="PackedScene" uid="uid://6gf4yb3dj8ys" path="res://scenes/bosque/props/tree_1.tscn" id="2_un2c0"]
+[ext_resource type="PackedScene" uid="uid://dmpodkv6vbyts" path="res://scenes/bosque/props/tree_3.tscn" id="3_hr5i6"]
+[ext_resource type="PackedScene" uid="uid://bjkratfq4pj3f" path="res://scenes/bosque/props/tree_2.tscn" id="3_q1es1"]
 [ext_resource type="Texture2D" uid="uid://dr6hu4clr3nco" path="res://assets/sprites/maps/Bosque/test.png" id="4_hlx60"]
 
 [node name="Props1" type="Node2D"]
@@ -22,6 +22,7 @@ position = Vector2(-78, -38)
 position = Vector2(90, 53)
 
 [node name="Tree_1" parent="." instance=ExtResource("2_un2c0")]
+position = Vector2(0, -10)
 
 [node name="Tree_3" parent="." instance=ExtResource("3_hr5i6")]
 position = Vector2(87, -44)

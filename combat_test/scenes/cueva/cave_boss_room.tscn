@@ -1,34 +1,34 @@
 [gd_scene load_steps=30 format=3 uid="uid://bl125si3t2x40"]
 
-[ext_resource type="Script" path="res://scenes/bosque/forest_boss_room.gd" id="1_tt6gb"]
+[ext_resource type="Script" path="res://scenes/bosque/boss_room.gd" id="1_tt6gb"]
 [ext_resource type="Texture2D" uid="uid://dr6hu4clr3nco" path="res://assets/sprites/maps/Bosque/test.png" id="2_3xw4j"]
-[ext_resource type="Texture2D" uid="uid://5js2qsfvlasd" path="res://assets/sprites/maps/Bosque/walls/bush_wall_top_closed.png" id="3_u8cw2"]
-[ext_resource type="Texture2D" uid="uid://bvmifhp06kyi6" path="res://assets/sprites/maps/Bosque/walls/bush_wall_top_open.png" id="4_v2x6u"]
-[ext_resource type="Texture2D" uid="uid://cixwtsd57x80l" path="res://assets/sprites/maps/Bosque/walls/bush_wall_bottom_closed.png" id="5_jpn2x"]
-[ext_resource type="Texture2D" uid="uid://byy48gk8uro7t" path="res://assets/sprites/maps/Bosque/walls/bush_wall_top_no_exit.png" id="5_tc2ur"]
-[ext_resource type="Texture2D" uid="uid://bc51gjd8x1ig4" path="res://assets/sprites/maps/Bosque/walls/bush_wall_bottom_open.png" id="6_e2v2f"]
-[ext_resource type="Texture2D" uid="uid://e5al04thfbl2" path="res://assets/sprites/maps/Bosque/walls/bush_wall_left_closed.png" id="7_h07bf"]
-[ext_resource type="Texture2D" uid="uid://b2dlg2hi6ydvo" path="res://assets/sprites/maps/Bosque/walls/bush_wall_left_open.png" id="8_dekwf"]
-[ext_resource type="Texture2D" uid="uid://fwgnt5chtbf" path="res://assets/sprites/maps/Bosque/walls/bush_wall_bottom_no_exit.png" id="8_kv1v4"]
-[ext_resource type="Texture2D" uid="uid://cymwnvva5bfv8" path="res://assets/sprites/maps/Bosque/walls/bush_wall_right_closed.png" id="9_bld6s"]
-[ext_resource type="Texture2D" uid="uid://dqmfqf5olvsea" path="res://assets/sprites/maps/Bosque/walls/bush_wall_right_open.png" id="10_mikx3"]
-[ext_resource type="Texture2D" uid="uid://d0jwr7hsaojtf" path="res://assets/sprites/maps/Bosque/walls/bush_wall_left_no_exit.png" id="11_6keth"]
-[ext_resource type="PackedScene" uid="uid://bxfm6nxfi50s0" path="res://scenes/bosque/enemigos/slime_boss.tscn" id="11_nkqe6"]
+[ext_resource type="Texture2D" uid="uid://c6ynfympvwebf" path="res://assets/sprites/maps/Cave/walls/wall_top_closed.png" id="3_kd0hc"]
+[ext_resource type="Texture2D" uid="uid://dlu37sb0lj45s" path="res://assets/sprites/maps/Cave/walls/wall_top_open.png" id="4_q51hy"]
+[ext_resource type="Texture2D" uid="uid://0ymnaha1r6ne" path="res://assets/sprites/maps/Cave/walls/wall_top_no_exit.png" id="5_e7tww"]
+[ext_resource type="Texture2D" uid="uid://dorjm2f4xujqi" path="res://assets/sprites/maps/Cave/walls/wall_bottom_closed.png" id="6_7i7hu"]
+[ext_resource type="Texture2D" uid="uid://oqraajowj7ap" path="res://assets/sprites/maps/Cave/walls/wall_bottom_open.png" id="7_oas45"]
+[ext_resource type="Texture2D" uid="uid://bk6no15d1g2p0" path="res://assets/sprites/maps/Cave/walls/wall_bottom_no_exit.png" id="8_j6dni"]
+[ext_resource type="Texture2D" uid="uid://bee6pk3f2ruln" path="res://assets/sprites/maps/Cave/walls/wall_left_closed.png" id="9_tctsm"]
+[ext_resource type="Texture2D" uid="uid://btbfsysa0aw1o" path="res://assets/sprites/maps/Cave/walls/wall_left_open.png" id="10_o1g5o"]
+[ext_resource type="Texture2D" uid="uid://85ycr2ingthx" path="res://assets/sprites/maps/Cave/walls/wall_left_no_exit.png" id="11_bu1qi"]
 [ext_resource type="Texture2D" uid="uid://b4lnneqybdkm7" path="res://assets/sprites/maps/Bosque/walls/bush_wall_left_extra.png" id="12_7s5qk"]
-[ext_resource type="Texture2D" uid="uid://ctsirq04faxdo" path="res://assets/sprites/maps/Bosque/walls/bush_wall_right_no_exit.png" id="14_8amqa"]
+[ext_resource type="Texture2D" uid="uid://cifhc6fmfpk53" path="res://assets/sprites/maps/Cave/walls/wall_right_closed.png" id="13_d22mg"]
+[ext_resource type="Texture2D" uid="uid://cpqwkrllc7k38" path="res://assets/sprites/maps/Cave/walls/wall_right_open.png" id="14_3itcs"]
+[ext_resource type="Texture2D" uid="uid://cccmw0i0s3oep" path="res://assets/sprites/maps/Cave/walls/wall_right_no_exit.png" id="15_ead4b"]
 [ext_resource type="Texture2D" uid="uid://76w5wfvmwb02" path="res://assets/sprites/maps/Bosque/walls/bush_wall_right_extra.png" id="15_l8cdj"]
+[ext_resource type="PackedScene" uid="uid://de5vwibfsiipw" path="res://scenes/cueva/enemigos/golem_boss.tscn" id="17_6xwmv"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_gh1vj"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("3_u8cw2")
+"texture": ExtResource("3_kd0hc")
 }, {
 "duration": 1.0,
-"texture": ExtResource("4_v2x6u")
+"texture": ExtResource("4_q51hy")
 }, {
 "duration": 1.0,
-"texture": ExtResource("5_tc2ur")
+"texture": ExtResource("5_e7tww")
 }],
 "loop": true,
 "name": &"default",
@@ -45,13 +45,13 @@ size = Vector2(34, 6.04444)
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("5_jpn2x")
+"texture": ExtResource("6_7i7hu")
 }, {
 "duration": 1.0,
-"texture": ExtResource("6_e2v2f")
+"texture": ExtResource("7_oas45")
 }, {
 "duration": 1.0,
-"texture": ExtResource("8_kv1v4")
+"texture": ExtResource("8_j6dni")
 }],
 "loop": true,
 "name": &"default",
@@ -68,13 +68,13 @@ size = Vector2(34, 6.04443)
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("7_h07bf")
+"texture": ExtResource("9_tctsm")
 }, {
 "duration": 1.0,
-"texture": ExtResource("8_dekwf")
+"texture": ExtResource("10_o1g5o")
 }, {
 "duration": 1.0,
-"texture": ExtResource("11_6keth")
+"texture": ExtResource("11_bu1qi")
 }],
 "loop": true,
 "name": &"default",
@@ -91,13 +91,13 @@ size = Vector2(6.00003, 33.7778)
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("9_bld6s")
+"texture": ExtResource("13_d22mg")
 }, {
 "duration": 1.0,
-"texture": ExtResource("10_mikx3")
+"texture": ExtResource("14_3itcs")
 }, {
 "duration": 1.0,
-"texture": ExtResource("14_8amqa")
+"texture": ExtResource("15_ead4b")
 }],
 "loop": true,
 "name": &"default",
@@ -110,7 +110,7 @@ size = Vector2(6, 33.9556)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_vbu7j"]
 size = Vector2(6, 34.1333)
 
-[node name="forest_boss_room" type="Node2D"]
+[node name="cave_boss_room" type="Node2D"]
 texture_filter = 1
 script = ExtResource("1_tt6gb")
 
@@ -242,7 +242,7 @@ texture = ExtResource("15_l8cdj")
 
 [node name="Node2D" type="Node2D" parent="enemigos"]
 
-[node name="Slime_boss" parent="enemigos/Node2D" instance=ExtResource("11_nkqe6")]
+[node name="Golem_boss" parent="enemigos/Node2D" instance=ExtResource("17_6xwmv")]
 
 [connection signal="body_entered" from="Top_wall/top_transition" to="." method="_on_top_transition_body_entered"]
 [connection signal="body_entered" from="Bottom_wall/bottom_transition" to="." method="_on_bottom_transition_body_entered"]

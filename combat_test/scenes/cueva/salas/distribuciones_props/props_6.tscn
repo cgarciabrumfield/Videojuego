@@ -20,6 +20,9 @@ z_index = -100
 texture = ExtResource("2_eydvi")
 metadata/_edit_lock_ = true
 
+[node name="columna5" parent="." instance=ExtResource("3_83jlq")]
+position = Vector2(0, -50)
+
 [node name="columna4" parent="." instance=ExtResource("4_vp14v")]
 position = Vector2(84, 38)
 
@@ -73,3 +76,6 @@ position = Vector2(144, 64)
 
 [node name="seta_16" parent="." instance=ExtResource("8_ey1jl")]
 position = Vector2(144, 74)
+
+[node name="columna6" parent="." instance=ExtResource("3_83jlq")]
+position = Vector2(0, 50)

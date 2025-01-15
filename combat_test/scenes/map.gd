@@ -41,7 +41,7 @@ func _on_Button_pressed():
 		mapaIntento.position = get_viewport().get_visible_rect().size/2
 		set_sprite_size(mapaIntento, get_viewport().get_visible_rect().size)
 		#mapaIntento.sca
-		load_map(full_map)
+		load_map(discovered_map)
 		
 		get_tree().paused = true  # Pause the game tree
 

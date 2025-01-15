@@ -2,12 +2,12 @@
 
 [ext_resource type="Script" path="res://scenes/example_room.gd" id="1_qbh2x"]
 [ext_resource type="PackedScene" uid="uid://bwr0dw0fr8rgy" path="res://scenes/cueva/props/roca_3.tscn" id="3_frixt"]
-[ext_resource type="PackedScene" uid="uid://dmpodkv6vbyts" path="res://scenes/bosque/Props/tree_3.tscn" id="4_h5pya"]
+[ext_resource type="PackedScene" uid="uid://dmpodkv6vbyts" path="res://scenes/bosque/props/tree_3.tscn" id="4_h5pya"]
 [ext_resource type="Texture2D" uid="uid://dr6hu4clr3nco" path="res://assets/sprites/maps/Bosque/test.png" id="5_xsq6p"]
-[ext_resource type="PackedScene" uid="uid://lxt7r4o4x0pp" path="res://scenes/bosque/Props/roca_1.tscn" id="6_6atoa"]
-[ext_resource type="PackedScene" uid="uid://cpqshfjy3b0lb" path="res://scenes/bosque/Props/roca_2.tscn" id="7_tuxoh"]
-[ext_resource type="PackedScene" uid="uid://4td6mhpfd5mh" path="res://scenes/bosque/Props/puddle.tscn" id="8_hi72r"]
-[ext_resource type="PackedScene" uid="uid://ctfv8gfk0w1w5" path="res://scenes/bosque/Props/roca_3.tscn" id="8_jusdm"]
+[ext_resource type="PackedScene" uid="uid://lxt7r4o4x0pp" path="res://scenes/bosque/props/roca_1.tscn" id="6_6atoa"]
+[ext_resource type="PackedScene" uid="uid://cpqshfjy3b0lb" path="res://scenes/bosque/props/roca_2.tscn" id="7_tuxoh"]
+[ext_resource type="PackedScene" uid="uid://4td6mhpfd5mh" path="res://scenes/bosque/props/puddle.tscn" id="8_hi72r"]
+[ext_resource type="PackedScene" uid="uid://ctfv8gfk0w1w5" path="res://scenes/bosque/props/roca_3.tscn" id="8_jusdm"]
 
 [node name="Props1" type="Node2D"]
 texture_filter = 1

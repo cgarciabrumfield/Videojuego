@@ -1,15 +1,15 @@
 [gd_scene load_steps=11 format=3 uid="uid://gud0fpqvhiac"]
 
 [ext_resource type="Script" path="res://scenes/example_room.gd" id="1_ysu3h"]
-[ext_resource type="PackedScene" uid="uid://bjkratfq4pj3f" path="res://scenes/bosque/Props/tree_2.tscn" id="3_37luh"]
-[ext_resource type="PackedScene" uid="uid://dmpodkv6vbyts" path="res://scenes/bosque/Props/tree_3.tscn" id="4_wu5p0"]
+[ext_resource type="PackedScene" uid="uid://bjkratfq4pj3f" path="res://scenes/bosque/props/tree_2.tscn" id="3_37luh"]
+[ext_resource type="PackedScene" uid="uid://dmpodkv6vbyts" path="res://scenes/bosque/props/tree_3.tscn" id="4_wu5p0"]
 [ext_resource type="Texture2D" uid="uid://dr6hu4clr3nco" path="res://assets/sprites/maps/Bosque/test.png" id="5_cqlpm"]
-[ext_resource type="PackedScene" uid="uid://lxt7r4o4x0pp" path="res://scenes/bosque/Props/roca_1.tscn" id="6_aef0d"]
-[ext_resource type="PackedScene" uid="uid://dkfv8422ujo1k" path="res://scenes/bosque/Props/bush_5.tscn" id="7_23rbg"]
-[ext_resource type="PackedScene" uid="uid://d4cf65pe6oa00" path="res://scenes/bosque/Props/bush_3.tscn" id="8_ldh84"]
-[ext_resource type="PackedScene" uid="uid://duuo04aixxyli" path="res://scenes/bosque/Props/bush_1.tscn" id="8_q6mt8"]
-[ext_resource type="PackedScene" uid="uid://bt7n8ow4m2ajs" path="res://scenes/bosque/Props/bush_2.tscn" id="9_qbmfv"]
-[ext_resource type="PackedScene" uid="uid://3d3bomcydsmx" path="res://scenes/bosque/Props/bush_4.tscn" id="10_2ftat"]
+[ext_resource type="PackedScene" uid="uid://lxt7r4o4x0pp" path="res://scenes/bosque/props/roca_1.tscn" id="6_aef0d"]
+[ext_resource type="PackedScene" uid="uid://dkfv8422ujo1k" path="res://scenes/bosque/props/bush_5.tscn" id="7_23rbg"]
+[ext_resource type="PackedScene" uid="uid://d4cf65pe6oa00" path="res://scenes/bosque/props/bush_3.tscn" id="8_ldh84"]
+[ext_resource type="PackedScene" uid="uid://duuo04aixxyli" path="res://scenes/bosque/props/bush_1.tscn" id="8_q6mt8"]
+[ext_resource type="PackedScene" uid="uid://bt7n8ow4m2ajs" path="res://scenes/bosque/props/bush_2.tscn" id="9_qbmfv"]
+[ext_resource type="PackedScene" uid="uid://3d3bomcydsmx" path="res://scenes/bosque/props/bush_4.tscn" id="10_2ftat"]
 
 [node name="Props5" type="Node2D"]
 texture_filter = 1
@@ -36,7 +36,7 @@ position = Vector2(88, 41)
 position = Vector2(-86, 66)
 
 [node name="roca_1" parent="." instance=ExtResource("6_aef0d")]
-position = Vector2(0, -1)
+position = Vector2(-3, 21)
 
 [node name="Bush_1" parent="." instance=ExtResource("8_q6mt8")]
 position = Vector2(60, -39)

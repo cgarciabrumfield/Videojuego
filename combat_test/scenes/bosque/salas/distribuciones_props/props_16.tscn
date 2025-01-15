@@ -1,14 +1,14 @@
 [gd_scene load_steps=10 format=3 uid="uid://l3dd67jbu366"]
 
 [ext_resource type="Script" path="res://scenes/example_room.gd" id="1_bra2e"]
-[ext_resource type="PackedScene" uid="uid://dmpodkv6vbyts" path="res://scenes/bosque/Props/tree_3.tscn" id="3_lnffe"]
+[ext_resource type="PackedScene" uid="uid://dmpodkv6vbyts" path="res://scenes/bosque/props/tree_3.tscn" id="3_lnffe"]
 [ext_resource type="Texture2D" uid="uid://dr6hu4clr3nco" path="res://assets/sprites/maps/Bosque/test.png" id="4_gi2t2"]
-[ext_resource type="PackedScene" uid="uid://d4cf65pe6oa00" path="res://scenes/bosque/Props/bush_3.tscn" id="5_1kvhq"]
-[ext_resource type="PackedScene" uid="uid://3d3bomcydsmx" path="res://scenes/bosque/Props/bush_4.tscn" id="6_ednxn"]
-[ext_resource type="PackedScene" uid="uid://qa2iaj1behmm" path="res://scenes/bosque/Props/bush_6.tscn" id="7_6v701"]
-[ext_resource type="PackedScene" uid="uid://lxt7r4o4x0pp" path="res://scenes/bosque/Props/roca_1.tscn" id="8_a27h2"]
-[ext_resource type="PackedScene" uid="uid://4td6mhpfd5mh" path="res://scenes/bosque/Props/puddle.tscn" id="9_1tc57"]
-[ext_resource type="PackedScene" uid="uid://ctfv8gfk0w1w5" path="res://scenes/bosque/Props/roca_3.tscn" id="9_si0cl"]
+[ext_resource type="PackedScene" uid="uid://d4cf65pe6oa00" path="res://scenes/bosque/props/bush_3.tscn" id="5_1kvhq"]
+[ext_resource type="PackedScene" uid="uid://3d3bomcydsmx" path="res://scenes/bosque/props/bush_4.tscn" id="6_ednxn"]
+[ext_resource type="PackedScene" uid="uid://qa2iaj1behmm" path="res://scenes/bosque/props/bush_6.tscn" id="7_6v701"]
+[ext_resource type="PackedScene" uid="uid://lxt7r4o4x0pp" path="res://scenes/bosque/props/roca_1.tscn" id="8_a27h2"]
+[ext_resource type="PackedScene" uid="uid://4td6mhpfd5mh" path="res://scenes/bosque/props/puddle.tscn" id="9_1tc57"]
+[ext_resource type="PackedScene" uid="uid://ctfv8gfk0w1w5" path="res://scenes/bosque/props/roca_3.tscn" id="9_si0cl"]
 
 [node name="Props1" type="Node2D"]
 texture_filter = 1
@@ -38,5 +38,4 @@ position = Vector2(89, 45)
 position = Vector2(115, -34)
 
 [node name="Puddle" parent="." instance=ExtResource("9_1tc57")]
-position = Vector2(0, 14)
-rotation = 3.14159
+position = Vector2(0, 8)

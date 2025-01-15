@@ -1,9 +1,9 @@
 [gd_scene load_steps=5 format=3 uid="uid://cd38ubr00blto"]
 
 [ext_resource type="Script" path="res://scenes/example_room.gd" id="1_1brig"]
-[ext_resource type="PackedScene" uid="uid://6gf4yb3dj8ys" path="res://scenes/bosque/Props/tree_1.tscn" id="2_3kn5n"]
+[ext_resource type="PackedScene" uid="uid://6gf4yb3dj8ys" path="res://scenes/bosque/props/tree_1.tscn" id="2_3kn5n"]
 [ext_resource type="Texture2D" uid="uid://dr6hu4clr3nco" path="res://assets/sprites/maps/Bosque/test.png" id="4_pwxdf"]
-[ext_resource type="PackedScene" uid="uid://3d3bomcydsmx" path="res://scenes/bosque/Props/bush_4.tscn" id="6_wt4s6"]
+[ext_resource type="PackedScene" uid="uid://3d3bomcydsmx" path="res://scenes/bosque/props/bush_4.tscn" id="6_wt4s6"]
 
 [node name="Props1" type="Node2D"]
 texture_filter = 1
@@ -51,4 +51,4 @@ position = Vector2(-127, -85)
 position = Vector2(-148, -66)
 
 [node name="Tree_1" parent="." instance=ExtResource("2_3kn5n")]
-position = Vector2(1, 2)
+position = Vector2(0, -8)

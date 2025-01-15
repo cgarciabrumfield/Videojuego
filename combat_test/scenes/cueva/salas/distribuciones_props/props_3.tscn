@@ -27,7 +27,7 @@ position = Vector2(-91, -27)
 position = Vector2(60, 40)
 
 [node name="columna5" parent="." instance=ExtResource("10_kpuxk")]
-position = Vector2(-17, 3)
+position = Vector2(-29, 9)
 
 [node name="seta_3" parent="." instance=ExtResource("6_38n5h")]
 position = Vector2(-43, -58)

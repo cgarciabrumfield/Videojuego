@@ -22,7 +22,7 @@ texture = ExtResource("2_4k18h")
 metadata/_edit_lock_ = true
 
 [node name="roca_7" parent="." instance=ExtResource("3_3i0x4")]
-position = Vector2(8, 6)
+position = Vector2(22, 13)
 
 [node name="roca_6" parent="." instance=ExtResource("4_nhr5g")]
 position = Vector2(-114, -28)

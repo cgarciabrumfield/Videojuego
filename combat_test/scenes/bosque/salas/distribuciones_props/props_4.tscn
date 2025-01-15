@@ -50,4 +50,4 @@ position = Vector2(87, 67)
 position = Vector2(12, 41)
 
 [node name="Puddle" parent="." instance=ExtResource("12_l3enl")]
-position = Vector2(84, -32)
+position = Vector2(95, -45)

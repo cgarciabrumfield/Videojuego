@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://bd5coj6v4iqma"]
+[gd_scene load_steps=10 format=3 uid="uid://k3jnbhmaqrrk"]
 
 [ext_resource type="Script" path="res://scenes/example_room.gd" id="1_tcpkc"]
 [ext_resource type="PackedScene" uid="uid://dmpodkv6vbyts" path="res://scenes/bosque/props/tree_3.tscn" id="3_ajxx5"]

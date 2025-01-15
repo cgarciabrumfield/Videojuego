@@ -17,6 +17,9 @@ texture = ExtResource("2_fygkw")
 [node name="Skeleton" parent="." instance=ExtResource("3_ta61v")]
 position = Vector2(104, 48)
 
+[node name="Skeleton" parent="Skeleton" instance=ExtResource("3_ta61v")]
+position = Vector2(-192, -100)
+
 [node name="Slime" parent="." instance=ExtResource("5_ybeq1")]
 position = Vector2(-30, -7)
 MAX_HEALTH = 4

@@ -1,10 +1,19 @@
-[gd_scene load_steps=6 format=3 uid="uid://cvjky5aldbos6"]
+[gd_scene load_steps=15 format=3 uid="uid://cvjky5aldbos6"]
 
 [ext_resource type="Script" path="res://scenes/example_room.gd" id="1_7som3"]
 [ext_resource type="Texture2D" uid="uid://dr6hu4clr3nco" path="res://assets/sprites/maps/Bosque/test.png" id="2_jkgse"]
 [ext_resource type="PackedScene" uid="uid://itc1mm6qdk1" path="res://scenes/bosque/props/car.tscn" id="3_effr3"]
-[ext_resource type="PackedScene" uid="uid://ctfv8gfk0w1w5" path="res://scenes/bosque/props/roca_3.tscn" id="4_7l4ag"]
-[ext_resource type="PackedScene" uid="uid://dmpodkv6vbyts" path="res://scenes/bosque/props/tree_3.tscn" id="5_ci6sk"]
+[ext_resource type="PackedScene" uid="uid://i1j655xqicb3" path="res://scenes/cueva/props/columna3.tscn" id="4_tyu1p"]
+[ext_resource type="PackedScene" uid="uid://dsa2v24ej6url" path="res://scenes/cueva/props/columna5.tscn" id="5_4f6dv"]
+[ext_resource type="PackedScene" uid="uid://bkihfgku83xwt" path="res://scenes/cueva/props/roca_4.tscn" id="6_cs3lj"]
+[ext_resource type="PackedScene" uid="uid://xvusn0h7cmlv" path="res://scenes/cueva/props/roca_7.tscn" id="7_hq11y"]
+[ext_resource type="PackedScene" uid="uid://2qoenoxroww4" path="res://scenes/cueva/props/seta_1.tscn" id="8_4r0lx"]
+[ext_resource type="PackedScene" uid="uid://dgooxqxet0g7e" path="res://scenes/cueva/props/seta_2.tscn" id="9_rtm8j"]
+[ext_resource type="PackedScene" uid="uid://cw41lx3tvmfrn" path="res://scenes/cueva/props/seta_4.tscn" id="10_4sln4"]
+[ext_resource type="PackedScene" uid="uid://bsdblfw0f6ptc" path="res://scenes/cueva/props/seta_3.tscn" id="11_oa2ys"]
+[ext_resource type="PackedScene" uid="uid://cyoxwch57244" path="res://scenes/cueva/props/roca_2.tscn" id="12_717in"]
+[ext_resource type="PackedScene" uid="uid://o17l64v2xs22" path="res://scenes/cueva/props/roca_6.tscn" id="13_0bhbv"]
+[ext_resource type="PackedScene" uid="uid://cquc6vqxvmb43" path="res://scenes/cueva/props/calaveras_1.tscn" id="14_3j6xf"]
 
 [node name="Lore1_tscn" type="Node2D"]
 script = ExtResource("1_7som3")
@@ -16,8 +25,35 @@ metadata/_edit_lock_ = true
 
 [node name="Car_1" parent="." instance=ExtResource("3_effr3")]
 
-[node name="roca_3" parent="." instance=ExtResource("4_7l4ag")]
-position = Vector2(115, -34)
+[node name="columna3" parent="." instance=ExtResource("4_tyu1p")]
+position = Vector2(84, -30)
 
-[node name="Tree_3" parent="." instance=ExtResource("5_ci6sk")]
-position = Vector2(-80, 69)
+[node name="columna5" parent="." instance=ExtResource("5_4f6dv")]
+position = Vector2(-99, 33)
+
+[node name="roca_4" parent="." instance=ExtResource("6_cs3lj")]
+position = Vector2(24, 19)
+
+[node name="roca_7" parent="." instance=ExtResource("7_hq11y")]
+position = Vector2(6, 26)
+
+[node name="seta_1" parent="." instance=ExtResource("8_4r0lx")]
+position = Vector2(-96, -56)
+
+[node name="seta_2" parent="." instance=ExtResource("9_rtm8j")]
+position = Vector2(-15, 16)
+
+[node name="seta_4" parent="." instance=ExtResource("10_4sln4")]
+position = Vector2(-8, -21)
+
+[node name="seta_3" parent="." instance=ExtResource("11_oa2ys")]
+position = Vector2(17, -17)
+
+[node name="roca_2" parent="." instance=ExtResource("12_717in")]
+position = Vector2(71, -13)
+
+[node name="roca_6" parent="." instance=ExtResource("13_0bhbv")]
+position = Vector2(80, 52)
+
+[node name="calaveras_1" parent="." instance=ExtResource("14_3j6xf")]
+position = Vector2(-80, 56)

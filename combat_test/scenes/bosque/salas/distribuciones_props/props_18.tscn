@@ -1,13 +1,13 @@
 [gd_scene load_steps=9 format=3 uid="uid://s3qqp0gik6wg"]
 
 [ext_resource type="Script" path="res://scenes/example_room.gd" id="1_62m5g"]
-[ext_resource type="PackedScene" uid="uid://6gf4yb3dj8ys" path="res://scenes/bosque/Props/tree_1.tscn" id="2_6tdb2"]
-[ext_resource type="PackedScene" uid="uid://dmpodkv6vbyts" path="res://scenes/bosque/Props/tree_3.tscn" id="3_epf0t"]
+[ext_resource type="PackedScene" uid="uid://6gf4yb3dj8ys" path="res://scenes/bosque/props/tree_1.tscn" id="2_6tdb2"]
+[ext_resource type="PackedScene" uid="uid://dmpodkv6vbyts" path="res://scenes/bosque/props/tree_3.tscn" id="3_epf0t"]
 [ext_resource type="Texture2D" uid="uid://dr6hu4clr3nco" path="res://assets/sprites/maps/Bosque/test.png" id="4_cd86q"]
-[ext_resource type="PackedScene" uid="uid://d4cf65pe6oa00" path="res://scenes/bosque/Props/bush_3.tscn" id="5_ap5sd"]
-[ext_resource type="PackedScene" uid="uid://3d3bomcydsmx" path="res://scenes/bosque/Props/bush_4.tscn" id="6_mcblh"]
-[ext_resource type="PackedScene" uid="uid://qa2iaj1behmm" path="res://scenes/bosque/Props/bush_6.tscn" id="7_x28d1"]
-[ext_resource type="PackedScene" uid="uid://bjkratfq4pj3f" path="res://scenes/bosque/Props/tree_2.tscn" id="8_f2yeu"]
+[ext_resource type="PackedScene" uid="uid://d4cf65pe6oa00" path="res://scenes/bosque/props/bush_3.tscn" id="5_ap5sd"]
+[ext_resource type="PackedScene" uid="uid://3d3bomcydsmx" path="res://scenes/bosque/props/bush_4.tscn" id="6_mcblh"]
+[ext_resource type="PackedScene" uid="uid://qa2iaj1behmm" path="res://scenes/bosque/props/bush_6.tscn" id="7_x28d1"]
+[ext_resource type="PackedScene" uid="uid://bjkratfq4pj3f" path="res://scenes/bosque/props/tree_2.tscn" id="8_f2yeu"]
 
 [node name="Props1" type="Node2D"]
 texture_filter = 1

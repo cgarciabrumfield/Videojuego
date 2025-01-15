@@ -29,7 +29,7 @@ const NORMAL_SPEED = 30
 const RUN_SPEED = 25
 @export var speed = NORMAL_SPEED # Velocidad a la que se moverá el limo
 @export var detection_range = 50
-@export var attack_range = 15
+@export var attack_range = 18
 
 var dead = false
 @export var revive_time = 10

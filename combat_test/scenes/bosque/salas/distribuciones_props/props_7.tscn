@@ -2,14 +2,14 @@
 
 [ext_resource type="Script" path="res://scenes/example_room.gd" id="1_ky52a"]
 [ext_resource type="Texture2D" uid="uid://dr6hu4clr3nco" path="res://assets/sprites/maps/Bosque/test.png" id="2_52ebs"]
-[ext_resource type="PackedScene" uid="uid://qa2iaj1behmm" path="res://scenes/bosque/Props/bush_6.tscn" id="3_j5gb2"]
-[ext_resource type="PackedScene" uid="uid://dkfv8422ujo1k" path="res://scenes/bosque/Props/bush_5.tscn" id="4_6cpv5"]
-[ext_resource type="PackedScene" uid="uid://3d3bomcydsmx" path="res://scenes/bosque/Props/bush_4.tscn" id="5_8lode"]
-[ext_resource type="PackedScene" uid="uid://duuo04aixxyli" path="res://scenes/bosque/Props/bush_1.tscn" id="7_5ymwt"]
-[ext_resource type="PackedScene" uid="uid://bt7n8ow4m2ajs" path="res://scenes/bosque/Props/bush_2.tscn" id="8_5jtmf"]
-[ext_resource type="PackedScene" uid="uid://d4cf65pe6oa00" path="res://scenes/bosque/Props/bush_3.tscn" id="9_nu5e8"]
-[ext_resource type="PackedScene" uid="uid://bjkratfq4pj3f" path="res://scenes/bosque/Props/tree_2.tscn" id="10_48amw"]
-[ext_resource type="PackedScene" uid="uid://6gf4yb3dj8ys" path="res://scenes/bosque/Props/tree_1.tscn" id="10_vald3"]
+[ext_resource type="PackedScene" uid="uid://qa2iaj1behmm" path="res://scenes/bosque/props/bush_6.tscn" id="3_j5gb2"]
+[ext_resource type="PackedScene" uid="uid://dkfv8422ujo1k" path="res://scenes/bosque/props/bush_5.tscn" id="4_6cpv5"]
+[ext_resource type="PackedScene" uid="uid://3d3bomcydsmx" path="res://scenes/bosque/props/bush_4.tscn" id="5_8lode"]
+[ext_resource type="PackedScene" uid="uid://duuo04aixxyli" path="res://scenes/bosque/props/bush_1.tscn" id="7_5ymwt"]
+[ext_resource type="PackedScene" uid="uid://bt7n8ow4m2ajs" path="res://scenes/bosque/props/bush_2.tscn" id="8_5jtmf"]
+[ext_resource type="PackedScene" uid="uid://d4cf65pe6oa00" path="res://scenes/bosque/props/bush_3.tscn" id="9_nu5e8"]
+[ext_resource type="PackedScene" uid="uid://bjkratfq4pj3f" path="res://scenes/bosque/props/tree_2.tscn" id="10_48amw"]
+[ext_resource type="PackedScene" uid="uid://6gf4yb3dj8ys" path="res://scenes/bosque/props/tree_1.tscn" id="10_vald3"]
 
 [node name="Props7" type="Node2D"]
 texture_filter = 1

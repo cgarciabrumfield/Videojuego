@@ -1240,7 +1240,6 @@ _data = {
 [node name="Golem_boss" type="CharacterBody2D"]
 texture_filter = 1
 texture_repeat = 1
-scale = Vector2(2, 2)
 disable_mode = 1
 collision_layer = 4
 collision_mask = 53
